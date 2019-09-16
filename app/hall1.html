@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<a onclick="onClick();">点几我进入游戏</a>
+		<script>
+			let app = null;
+			document.addEventListener('plusready', function(){
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+				console.log(window['loadLib']); 
+				app = plus.webview.getWebviewById(plus.runtime.appid);
+			});
+			
+			function onClick()
+			{
+				console.log("进入子游戏")
+				//enterGame({name:"ddz"});
+				app.evalJS('enterGame({name:"ddz"})');
+			}
+		</script>
+	</body>
+</html>
