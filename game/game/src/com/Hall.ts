@@ -65,6 +65,7 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     protected onShow():void
     {
         super.onShow();
+        g_net.request(gamelib.GameMsg.GongGao,0);
     }
     private onTabChange(index:number):void
     {
