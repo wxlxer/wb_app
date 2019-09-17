@@ -11,6 +11,7 @@ P 4943691E btn_1.png
 P F089B64C btn_appgx.png
 P F6F171B8 btn_cjwt.png
 P 316AD948 btn_close.png
+P E4E12D62 btn_czgz.png
 P 7E364D04 btn_dlcz.png
 P 2EC1EDE8 btn_game_by.png
 P 049E05A6 btn_game_dzyy.png
@@ -18,6 +19,8 @@ P 46D1CBBA btn_game_qp.png
 P 062F17A3 btn_game_rm.png
 P A64BCB05 btn_game_ty.png
 P 31F15C93 btn_game_zr.png
+P 51E31F18 btn_grbb.png
+P 6AE653DB btn_grxx.png
 P CEEE8C9F btn_hd_dz.png
 P D34C1ED7 btn_hd_fish.png
 P 54E4E0FC btn_hd_qp.png
@@ -27,6 +30,7 @@ P 96C56BA2 btn_hd_zh.png
 P 06875AEE btn_qqkf.png
 P 3CE4156C btn_soundSz.png
 P 4F6CD642 btn_txdyhk.png
+P 840F489C btn_tzjl.png
 P 43222CF1 btn_wdtg.png
 P 57500DC6 btn_wxcz.png
 P E60E8625 btn_wxkf.png
@@ -502,6 +506,7 @@ P 23FB4D29 img_bg3.png
 P 5FD17798 img_bg4.png
 P 2BE22124 img_bg5.png
 P BA28BD65 img_blank.png
+P 996DC142 img_touxiangMask.png
 P E081DEEA instruction_no.png
 P A1B9A9FF instruction_yes.png
 P E3BE4759 laba_bg.png
@@ -537,10 +542,10 @@ P 5BA25C15 tab.png
 P A3D7A036 textarea.png
 P A3D7A036 textinput.png
 R E14C597F tuiguang_img.png
-P 2DCE1DF9 vscroll$bar.png
-P 6FE7EA34 vscroll$down.png
-P 0587871F vscroll$up.png
-P 5FD17798 vscroll.png
+P 155402C0 vscroll$bar.png
+P D546370D vscroll$down.png
+P F3E3F8FC vscroll$up.png
+P 1BB7D05D vscroll.png
 P DDDDFB9E vslider$bar.png
 P 01BAE7F5 vslider.png
 R 0A44BA4C webbg.png

@@ -1,13 +1,13 @@
 {
     "x":0,
-    "type":"Dialog",
+    "type":"View",
     "selectedBox":2,
-    "selecteID":71,
-    "searchKey":"Dialog",
+    "selecteID":22,
+    "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
     "maxID":117,
-    "label":"Dialog",
+    "label":"View",
     "isOpen":true,
     "isDirectory":true,
     "isAniNode":true,
@@ -21,13 +21,14 @@
             "props":{"y":0,"x":0,"var":"b_title","right":0,"left":0},
             "nodeParent":2,
             "label":"b_title",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":3,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":0,"skin":"comp/dgetcharge_header.png","right":0,"left":0},
@@ -41,6 +42,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_close",
                     "props":{"y":18,"x":43,"var":"btn_close","stateNum":"1","skin":"comp/dgetcharge_go_back.png"},
@@ -54,6 +56,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":18,"x":263,"skin":"comp/dextension_tuiguangzhuanqianbiaoti.png"},
@@ -71,21 +74,22 @@
             "x":15,
             "type":"Tab",
             "searchKey":"Tab,tab_1",
-            "props":{"y":93,"x":27,"var":"tab_1"},
+            "props":{"y":92,"width":1195,"var":"tab_1","height":105,"centerX":0},
             "nodeParent":2,
             "label":"tab_1",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":7,
             "child":[
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":0,"x":0,"stateNum":"2","skin":"comp/btn_wdtg.png","scaleY":0.85,"scaleX":0.85},
+                    "searchKey":"Button,item0",
+                    "props":{"y":0,"x":0,"stateNum":"2","skin":"comp/btn_wdtg.png","scaleY":0.85,"scaleX":0.85,"name":"item0"},
                     "nodeParent":7,
-                    "label":"Button",
+                    "label":"item0",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -94,11 +98,12 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":0,"x":399,"stateNum":"2","skin":"comp/btn_zscx.png","scaleY":0.85,"scaleX":0.85},
+                    "searchKey":"Button,item1",
+                    "props":{"y":0,"x":399,"stateNum":"2","skin":"comp/btn_zscx.png","scaleY":0.85,"scaleX":0.85,"name":"item1"},
                     "nodeParent":7,
-                    "label":"Button",
+                    "label":"item1",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -111,19 +116,20 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_1",
-            "props":{"y":196,"x":0,"width":1280,"var":"b_1","height":527},
+            "props":{"y":196,"width":1221,"var":"b_1","height":527,"centerX":0},
             "nodeParent":2,
             "label":"b_1",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":22,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":0,"x":27,"width":819,"skin":"comp/ddeposit_chonzhikuaisuchonzhibg.png","height":524},
+                    "props":{"y":0,"x":0,"width":819,"skin":"comp/ddeposit_chonzhikuaisuchonzhibg.png","height":524},
                     "nodeParent":22,
                     "label":"Image",
                     "isOpen":false,
@@ -241,9 +247,10 @@
                         }]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":330,"x":49,"skin":"comp/history.png","scaleY":0.7,"scaleX":0.7},
+                    "props":{"y":330,"x":23.279296875,"skin":"comp/history.png","scaleY":0.7,"scaleX":0.7},
                     "nodeParent":22,
                     "label":"Image",
                     "isDirectory":false,
@@ -254,9 +261,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":333,"x":342,"skin":"comp/canget.png","scaleY":0.7,"scaleX":0.7},
+                    "props":{"y":333,"x":316,"skin":"comp/canget.png","scaleY":0.7,"scaleX":0.7},
                     "nodeParent":22,
                     "label":"Image",
                     "isDirectory":false,
@@ -267,6 +275,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":17,"x":58,"text":"我的ID:","fontSize":28,"color":"#d8d5ab"},
@@ -280,6 +289,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_myId",
                     "props":{"y":17,"x":158,"width":222,"var":"txt_myId","text":"123456","height":28,"fontSize":28,"color":"#ffffff"},
@@ -293,9 +303,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_fx_hy",
-                    "props":{"y":8,"x":1079.5,"var":"btn_fx_hy","stateNum":"1","skin":"comp/sharetofriend.png","scaleY":0.5,"scaleX":0.5},
+                    "props":{"y":8,"x":1046.5,"var":"btn_fx_hy","stateNum":"1","skin":"comp/sharetofriend.png","scaleY":0.5,"scaleX":0.5},
                     "nodeParent":22,
                     "label":"btn_fx_hy",
                     "isDirectory":false,
@@ -306,9 +317,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_fx_qq",
-                    "props":{"y":85,"x":1079,"var":"btn_fx_qq","stateNum":"1","skin":"comp/sharetoqq.png","scaleY":0.5,"scaleX":0.5},
+                    "props":{"y":85,"x":1046,"var":"btn_fx_qq","stateNum":"1","skin":"comp/sharetoqq.png","scaleY":0.5,"scaleX":0.5},
                     "nodeParent":22,
                     "label":"btn_fx_qq",
                     "isDirectory":false,
@@ -319,9 +331,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_fx_pyq",
-                    "props":{"y":162,"x":1079,"var":"btn_fx_pyq","stateNum":"1","skin":"comp/sharetocircle.png","scaleY":0.5,"scaleX":0.5},
+                    "props":{"y":162,"x":1046,"var":"btn_fx_pyq","stateNum":"1","skin":"comp/sharetocircle.png","scaleY":0.5,"scaleX":0.5},
                     "nodeParent":22,
                     "label":"btn_fx_pyq",
                     "isDirectory":false,
@@ -332,6 +345,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":17,"x":454,"text":"推荐ID:","fontSize":28,"color":"#d8d5ab"},
@@ -345,6 +359,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_tjId",
                     "props":{"y":17,"x":556,"width":222,"var":"txt_tjId","text":"123456","height":28,"fontSize":28,"color":"#ffffff"},
@@ -358,6 +373,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":79,"x":59,"text":"团队人数:","fontSize":28,"color":"#d8d5ab"},
@@ -371,6 +387,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_tdrs",
                     "props":{"y":82,"x":191,"width":198,"var":"txt_tdrs","text":"3(0)","height":28,"fontSize":28,"color":"#ffffff"},
@@ -384,6 +401,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":82,"x":455,"text":"今日团队业绩:","fontSize":28,"color":"#d8d5ab"},
@@ -397,6 +415,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_jrtdyj",
                     "props":{"y":84,"x":634,"width":179,"var":"txt_jrtdyj","text":"123456","height":28,"fontSize":28,"color":"#e2dc84"},
@@ -410,6 +429,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":143.5,"x":57,"text":"直属团队新增:","fontSize":28,"color":"#d8d5ab"},
@@ -423,6 +443,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_zstdxz",
                     "props":{"y":145,"x":244,"width":163,"var":"txt_zstdxz","text":"123456","height":28,"fontSize":28,"color":"#ffffff"},
@@ -436,6 +457,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":145,"x":453,"text":"今日自营业绩:","fontSize":28,"color":"#d8d5ab"},
@@ -449,6 +471,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_zyyj",
                     "props":{"y":145.5,"x":634,"width":164,"var":"txt_zyyj","text":"123456","height":28,"fontSize":28,"color":"#e2dc84"},
@@ -462,6 +485,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":207,"x":57,"text":"今日佣金估计:","fontSize":28,"color":"#d8d5ab"},
@@ -475,6 +499,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_yjgj",
                     "props":{"y":210,"x":235,"width":164,"var":"txt_yjgj","text":"123456","height":28,"fontSize":28,"color":"#e2dc84"},
@@ -488,6 +513,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":273,"x":57,"text":"昨日佣金:","fontSize":28,"color":"#d8d5ab"},
@@ -501,6 +527,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_zryj",
                     "props":{"y":273,"x":191,"width":164,"var":"txt_zryj","text":"123456","height":28,"fontSize":28,"color":"#e2dc84"},
@@ -514,6 +541,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_refresh",
                     "props":{"y":209,"x":407,"var":"btn_refresh","stateNum":"1","skin":"comp/ddeposit_chonzhishuaxin.png"},
@@ -527,9 +555,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_get",
-                    "props":{"y":339,"x":645,"var":"btn_get","stateNum":"1","skin":"comp/getmoney.png","scaleY":0.7,"scaleX":0.7},
+                    "props":{"y":339,"x":619,"var":"btn_get","stateNum":"1","skin":"comp/getmoney.png","scaleY":0.7,"scaleX":0.7},
                     "nodeParent":22,
                     "label":"btn_get",
                     "isDirectory":false,
@@ -540,6 +569,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_lszyj",
                     "props":{"y":437.5,"x":83,"width":222,"var":"txt_lszyj","text":"123456","height":28,"fontSize":28,"color":"#ffffff","align":"center"},
@@ -553,6 +583,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_klyj",
                     "props":{"y":437.5,"x":380,"width":222,"var":"txt_klyj","text":"123456","height":28,"fontSize":28,"color":"#ffffff","align":"center"},
@@ -566,9 +597,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,img_ewm",
-                    "props":{"y":7,"x":860,"width":215,"var":"img_ewm","height":215},
+                    "props":{"y":7,"x":827,"width":215,"var":"img_ewm","height":215},
                     "nodeParent":22,
                     "label":"img_ewm",
                     "isDirectory":false,
@@ -579,9 +611,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":258,"x":860,"width":310,"skin":"comp/webbg.png","sizeGrid":"2,2,2,2","height":54},
+                    "props":{"y":258,"x":827,"width":310,"skin":"comp/webbg.png","sizeGrid":"2,2,2,2","height":54},
                     "nodeParent":22,
                     "label":"Image",
                     "isDirectory":false,
@@ -592,9 +625,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_copy",
-                    "props":{"y":258.5,"x":1187,"var":"btn_copy","stateNum":"1","skin":"comp/copywebsite.png","scaleY":0.4,"scaleX":0.4},
+                    "props":{"y":258.5,"x":1154,"var":"btn_copy","stateNum":"1","skin":"comp/copywebsite.png","scaleY":0.4,"scaleX":0.4},
                     "nodeParent":22,
                     "label":"btn_copy",
                     "isDirectory":false,
@@ -605,9 +639,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_web",
-                    "props":{"y":271,"x":872,"width":299,"var":"txt_web","text":"123456","height":28,"fontSize":28,"color":"#ffffff"},
+                    "props":{"y":271,"x":839,"width":299,"var":"txt_web","text":"123456","height":28,"fontSize":28,"color":"#ffffff"},
                     "nodeParent":22,
                     "label":"txt_web",
                     "isDirectory":false,
@@ -618,9 +653,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_histroy",
-                    "props":{"y":353,"x":863,"var":"btn_histroy","stateNum":"1","skin":"comp/gethitory.png","scaleY":0.55,"scaleX":0.55},
+                    "props":{"y":353,"x":830,"var":"btn_histroy","stateNum":"1","skin":"comp/gethitory.png","scaleY":0.55,"scaleX":0.55},
                     "nodeParent":22,
                     "label":"btn_histroy",
                     "isDirectory":false,
@@ -631,9 +667,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_fylist",
-                    "props":{"y":353,"x":1070,"var":"btn_fylist","stateNum":"1","skin":"comp/moneychat.png","scaleY":0.55,"scaleX":0.55},
+                    "props":{"y":353,"x":1037,"var":"btn_fylist","stateNum":"1","skin":"comp/moneychat.png","scaleY":0.55,"scaleX":0.55},
                     "nodeParent":22,
                     "label":"btn_fylist",
                     "isDirectory":false,
@@ -643,26 +680,25 @@
                     "child":[
                         ]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_2",
-            "props":{"y":207,"x":33,"width":1236,"var":"b_2","height":504},
+            "props":{"y":196,"width":1221,"var":"b_2","height":504,"centerX":0},
             "nodeParent":2,
             "label":"b_2",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":71,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"width":1236,"top":0,"skin":"comp/ic_gathering_bg.png","sizeGrid":"10,10,10,10","right":0,"left":9,"height":516,"bottom":0},
+                    "props":{"top":0,"skin":"comp/ic_gathering_bg.png","sizeGrid":"10,10,10,10","right":0,"left":9,"bottom":0},
                     "nodeParent":71,
                     "label":"Image",
                     "isOpen":true,
@@ -674,7 +710,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":33,"x":34,"text":"直属人数:","fontSize":24,"color":"#d8d5ab"},
@@ -688,7 +723,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":33,"x":247,"text":"直属总流水:","fontSize":24,"color":"#d8d5ab"},
@@ -702,7 +736,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":33,"x":550,"text":"账号搜索","fontSize":24,"color":"#f9da64"},
@@ -716,7 +749,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_playerNum",
                     "props":{"y":33,"x":137,"width":101,"var":"txt_playerNum","text":"99999999","height":24,"fontSize":24,"color":"#d8d5ab"},
@@ -730,7 +762,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":31,"x":384,"width":113,"text":"99999999","height":24,"fontSize":24,"color":"#d8d5ab"},
@@ -744,7 +775,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":22.5,"x":505,"skin":"comp/ic_chosed.png"},
@@ -758,7 +788,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":28,"x":679,"width":206,"skin":"comp/dlogin_iptbox.png","sizeGrid":"5,20,5,20","height":35},
@@ -773,7 +802,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"TextInput",
                     "searchKey":"TextInput,txt_newPwd1",
                     "props":{"y":28,"x":679,"width":198,"var":"txt_newPwd1","type":"password","prompt":"输入直接玩家账号","height":36,"fontSize":24,"color":"#d6c09a"},
@@ -787,7 +815,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_search",
                     "props":{"y":24.5,"x":915,"var":"btn_search","stateNum":"1","skin":"comp/search.png","scaleY":0.5,"scaleX":0.5},
@@ -801,7 +828,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_reset",
                     "props":{"y":24.5,"x":1075,"var":"btn_reset","stateNum":"1","skin":"comp/reset.png","scaleY":0.5,"scaleX":0.5},
@@ -815,7 +841,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":72,"x":13,"width":1206,"skin":"comp/dpersonalcenter_gerenzhonxinlan1.png","sizeGrid":"2,2,2,2","height":40},
@@ -830,7 +855,6 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":82,"x":119,"text":"id","fontSize":20,"color":"#f3d667"},
@@ -844,7 +868,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":82,"x":401,"text":"姓名","fontSize":20,"color":"#f3d667"},
@@ -858,7 +881,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":82,"x":710,"text":"总流水","fontSize":20,"color":"#f3d667"},
@@ -872,7 +894,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":82,"x":1041,"text":"直属人数","fontSize":20,"color":"#f3d667"},
@@ -886,13 +907,12 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"List",
                     "searchKey":"List,list_1",
-                    "props":{"y":120,"x":13,"width":1206,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","height":384},
+                    "props":{"y":120,"width":1206,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","height":384,"centerX":0},
                     "nodeParent":71,
                     "label":"list_1",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
@@ -994,7 +1014,6 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_tips",
                     "props":{"y":0,"x":0,"var":"txt_tips","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":52,"centerX":-1},
@@ -1007,7 +1026,6 @@
                     "compId":115,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":-94,"x":-10,"skin":"comp/dactivity_no_data.png","scaleY":0.7,"scaleX":0.7},
@@ -1023,7 +1041,7 @@
                         }],
                     "$HIDDEN":false
                 }],
-            "$HIDDEN":false
+            "$HIDDEN":true
         }],
     "animations":[
         {

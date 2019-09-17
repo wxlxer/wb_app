@@ -108,7 +108,7 @@
             "x":15,
             "type":"List",
             "searchKey":"List,list_1",
-            "props":{"y":170,"x":8,"width":1078,"var":"list_1","spaceY":10,"height":460},
+            "props":{"y":170,"x":8,"width":1078,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","spaceY":10,"height":460},
             "nodeParent":2,
             "label":"list_1",
             "isOpen":true,

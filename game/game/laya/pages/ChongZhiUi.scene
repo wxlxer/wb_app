@@ -1,13 +1,13 @@
 {
     "x":0,
-    "type":"Dialog",
+    "type":"View",
     "selectedBox":87,
-    "selecteID":108,
-    "searchKey":"Dialog",
+    "selecteID":111,
+    "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":115,
-    "label":"Dialog",
+    "maxID":130,
+    "label":"View",
     "isOpen":true,
     "isDirectory":true,
     "isAniNode":true,
@@ -35,13 +35,14 @@
             "props":{"y":0,"var":"b_title","right":0,"left":0},
             "nodeParent":2,
             "label":"b_title",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":4,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":0,"skin":"comp/dgetcharge_header.png","right":0,"left":0},
@@ -55,6 +56,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_close",
                     "props":{"y":18,"x":43,"var":"btn_close","stateNum":"1","skin":"comp/dgetcharge_go_back.png"},
@@ -68,6 +70,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":18,"x":263,"skin":"comp/ddeposit_chonzhibiaoti.png"},
@@ -81,6 +84,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":18,"x":708,"skin":"comp/ddeposit_chonzhiyue.png"},
@@ -94,9 +98,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_sx",
-                    "props":{"y":30,"x":997,"var":"btn_sx","stateNum":"1","skin":"comp/ddeposit_chonzhishuaxin.png"},
+                    "props":{"y":30,"var":"btn_sx","stateNum":"1","skin":"comp/ddeposit_chonzhishuaxin.png","right":250},
                     "nodeParent":4,
                     "label":"btn_sx",
                     "isDirectory":false,
@@ -107,6 +112,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":18,"x":1050,"width":224,"skin":"comp/ddeposit_chonzhidailibg.png","sizeGrid":"2,2,2,2","height":58},
@@ -120,9 +126,10 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_histroy",
-                    "props":{"y":30,"x":1066,"var":"btn_histroy","stateNum":"1","skin":"comp/ddeposit_chonzhichontijilu.png"},
+                    "props":{"y":30,"var":"btn_histroy","stateNum":"1","skin":"comp/ddeposit_chonzhichontijilu.png","right":200},
                     "nodeParent":4,
                     "label":"btn_histroy",
                     "isOpen":true,
@@ -132,6 +139,7 @@
                     "compId":9,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
                             "props":{"y":5,"x":44,"width":160,"text":"充值记录","height":24,"fontSize":24,"color":"#736451"},
@@ -146,6 +154,7 @@
                         }]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_money",
                     "props":{"y":34,"x":783,"width":191,"var":"txt_money","text":"0.0","height":28,"fontSize":28,"color":"#ffffff"},
@@ -166,18 +175,19 @@
             "props":{"y":136,"x":0,"var":"tab_1"},
             "nodeParent":2,
             "label":"tab_1",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":15,
             "child":[
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":0,"stateNum":"2","skin":"comp/btn_yhcz.png"},
+                    "searchKey":"Button,item0",
+                    "props":{"y":0,"stateNum":"2","skin":"comp/btn_yhcz.png","name":"item0"},
                     "nodeParent":15,
-                    "label":"Button",
+                    "label":"item0",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -186,11 +196,12 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":86,"x":0,"stateNum":"2","skin":"comp/btn_zfbzz.png"},
+                    "searchKey":"Button,item1",
+                    "props":{"y":86,"x":0,"stateNum":"2","skin":"comp/btn_zfbzz.png","name":"item1"},
                     "nodeParent":15,
-                    "label":"Button",
+                    "label":"item1",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -199,11 +210,12 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":170,"x":0,"stateNum":"2","skin":"comp/btn_wxcz.png"},
+                    "searchKey":"Button,item2",
+                    "props":{"y":170,"x":0,"stateNum":"2","skin":"comp/btn_wxcz.png","name":"item2"},
                     "nodeParent":15,
-                    "label":"Button",
+                    "label":"item2",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -279,10 +291,10 @@
                         },
                         {
                             "type":"Button",
-                            "searchKey":"Button",
-                            "props":{"y":145,"x":767,"stateNum":"1","skin":"comp/ddeposit_chonzhiqianwangchonzhi.png","scaleY":0.6,"scaleX":0.6},
+                            "searchKey":"Button,btn_goCz",
+                            "props":{"y":145,"x":767,"var":"btn_goCz","stateNum":"1","skin":"comp/ddeposit_chonzhiqianwangchonzhi.png","scaleY":0.6,"scaleX":0.6},
                             "nodeParent":25,
-                            "label":"Button",
+                            "label":"btn_goCz",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
@@ -666,7 +678,7 @@
                             "props":{"y":125,"x":654,"width":302,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"18,27,9,18","height":48},
                             "nodeParent":26,
                             "label":"Image",
-                            "isOpen":true,
+                            "isOpen":false,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
@@ -765,7 +777,8 @@
                             "compId":86,
                             "child":[
                                 ]
-                        }]
+                        }],
+                    "$HIDDEN":false
                 }],
             "$HIDDEN":true
         },
@@ -773,7 +786,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_zfb",
-            "props":{"y":92,"x":293,"var":"b_zfb"},
+            "props":{"y":92,"var":"b_zfb","right":0,"left":293,"height":623},
             "nodeParent":2,
             "label":"b_zfb",
             "isOpen":true,
@@ -800,7 +813,7 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_1",
-                    "props":{"y":104,"x":57,"var":"btn_1","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
+                    "props":{"y":115,"x":42,"var":"btn_1","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
                     "nodeParent":87,
                     "label":"btn_1",
                     "isOpen":true,
@@ -813,7 +826,7 @@
                             "x":45,
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"100元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "props":{"y":15,"x":0,"width":180,"text":"100元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
                             "nodeParent":89,
                             "label":"Label",
                             "isDirectory":false,
@@ -826,205 +839,9 @@
                 },
                 {
                     "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_2",
-                    "props":{"y":104,"x":287,"var":"btn_2","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_2",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":94,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"200元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":94,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":95,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_3",
-                    "props":{"y":104,"x":516,"var":"btn_3","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_3",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":96,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"500元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":96,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":97,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_4",
-                    "props":{"y":104,"x":746,"var":"btn_4","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_4",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":98,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"1000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":98,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":99,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_5",
-                    "props":{"y":215,"x":57,"var":"btn_5","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_5",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":100,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"2000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":100,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":104,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_6",
-                    "props":{"y":216,"x":287,"var":"btn_6","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_6",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":101,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"5000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":101,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":105,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_7",
-                    "props":{"y":216,"x":516,"var":"btn_7","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_7",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":102,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"10000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":102,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":106,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_8",
-                    "props":{"y":216,"x":746,"var":"btn_8","stateNum":"1","skin":"comp/ddeposit_chonzhijinebut2.png","scaleY":0.8,"scaleX":0.8,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_8",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":103,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":25.5,"x":19.5,"width":195,"text":"20000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":103,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":107,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":316,"x":45,"width":926,"skin":"comp/ddeposit_chonzhichonzhijinebg.png","sizeGrid":"19,23,12,16","height":174},
+                    "props":{"y":316,"width":926,"skin":"comp/ddeposit_chonzhichonzhijinebg.png","sizeGrid":"19,23,12,16","height":174,"centerX":0},
                     "nodeParent":87,
                     "label":"Image",
                     "isDirectory":false,
@@ -1052,28 +869,30 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":382,"x":224,"width":507,"skin":"comp/ddeposit_chonzhiweixinhao.png","sizeGrid":"0,13,0,16","height":42},
+                    "props":{"y":382,"x":224,"width":507,"skin":"comp/ddeposit_chonzhiweixinhao.png","sizeGrid":"0,13,0,16","mouseThrough":true,"height":42},
                     "nodeParent":87,
                     "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
+                    "isOpen":true,
+                    "isDirectory":false,
                     "isAniNode":true,
-                    "hasChild":true,
+                    "hasChild":false,
                     "compId":110,
                     "child":[
-                        {
-                            "type":"TextInput",
-                            "searchKey":"TextInput",
-                            "props":{"y":6,"x":10,"width":482,"prompt":"请输入充值金额","mouseEnabled":false,"height":30,"fontSize":26,"color":"#ffffff","align":"left"},
-                            "nodeParent":110,
-                            "label":"TextInput",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":111,
-                            "child":[
-                                ]
-                        }]
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"TextInput",
+                    "searchKey":"TextInput,txt_input",
+                    "props":{"y":388,"x":234,"width":482,"var":"txt_input","prompt":"请输入充值金额","mouseEnabled":true,"height":30,"fontSize":26,"color":"#ffffff","align":"left"},
+                    "nodeParent":87,
+                    "label":"txt_input",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":111,
+                    "child":[
+                        ]
                 },
                 {
                     "x":30,
@@ -1093,7 +912,7 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_tjcz1",
-                    "props":{"y":538,"x":328.5,"var":"btn_tjcz1","stateNum":"1","skin":"comp/ddeposit_chonzhitijiaochongzhi.png","scaleY":0.8,"scaleX":0.8},
+                    "props":{"y":538,"var":"btn_tjcz1","stateNum":"1","skin":"comp/ddeposit_chonzhitijiaochongzhi.png","scaleY":0.8,"scaleX":0.8,"centerX":0},
                     "nodeParent":87,
                     "label":"btn_tjcz1",
                     "isDirectory":false,
@@ -1102,7 +921,204 @@
                     "compId":114,
                     "child":[
                         ]
-                }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,btn_2",
+                    "props":{"y":115,"x":272,"var":"btn_2","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
+                    "nodeParent":87,
+                    "label":"btn_2",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":116,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":15,"x":0,"width":180,"text":"200元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "nodeParent":116,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":117,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,btn_3",
+                    "props":{"y":115,"x":501,"var":"btn_3","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
+                    "nodeParent":87,
+                    "label":"btn_3",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":118,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":15,"x":0,"width":180,"text":"500元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "nodeParent":118,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":119,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,btn_4",
+                    "props":{"y":115,"x":731,"var":"btn_4","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
+                    "nodeParent":87,
+                    "label":"btn_4",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":120,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":15,"x":0,"width":180,"text":"1000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "nodeParent":120,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":121,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,btn_5",
+                    "props":{"y":210,"x":42,"var":"btn_5","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
+                    "nodeParent":87,
+                    "label":"btn_5",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":122,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":15,"x":0,"width":180,"text":"2000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "nodeParent":122,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":126,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,btn_6",
+                    "props":{"y":210,"x":272,"var":"btn_6","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
+                    "nodeParent":87,
+                    "label":"btn_6",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":123,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":15,"x":0,"width":180,"text":"5000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "nodeParent":123,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":127,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,btn_7",
+                    "props":{"y":210,"x":501,"var":"btn_7","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
+                    "nodeParent":87,
+                    "label":"btn_7",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":124,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":15,"x":0,"width":180,"text":"10000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "nodeParent":124,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":128,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,btn_8",
+                    "props":{"y":210,"x":731,"var":"btn_8","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
+                    "nodeParent":87,
+                    "label":"btn_8",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":125,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":15,"x":0,"width":180,"text":"20000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+                            "nodeParent":125,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":129,
+                            "child":[
+                                ]
+                        }]
+                }],
+            "$HIDDEN":false
         }],
     "animations":[
         {

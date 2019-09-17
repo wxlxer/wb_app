@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"Dialog",
-    "selectedBox":2,
-    "selecteID":11,
+    "selectedBox":5,
+    "selecteID":8,
     "searchKey":"Dialog",
     "props":{"width":1084,"sceneColor":"#000000","height":635},
     "nodeParent":-1,
@@ -64,18 +64,19 @@
             "props":{"y":136,"x":0,"var":"tab_1"},
             "nodeParent":2,
             "label":"tab_1",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":5,
             "child":[
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":0,"stateNum":"2","skin":"comp/btn_soundSz.png"},
+                    "searchKey":"Button,item0",
+                    "props":{"y":0,"stateNum":"2","skin":"comp/btn_soundSz.png","name":"item0"},
                     "nodeParent":5,
-                    "label":"Button",
+                    "label":"item0",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -84,11 +85,12 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":86,"x":0,"stateNum":"2","skin":"comp/btn_xgmm.png"},
+                    "searchKey":"Button,item1",
+                    "props":{"y":86,"x":0,"stateNum":"2","skin":"comp/btn_xgmm.png","name":"item1"},
                     "nodeParent":5,
-                    "label":"Button",
+                    "label":"item1",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -97,11 +99,12 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button",
-                    "props":{"y":170,"x":0,"stateNum":"2","skin":"comp/btn_appgx.png"},
+                    "searchKey":"Button,item2",
+                    "props":{"y":170,"x":0,"stateNum":"2","skin":"comp/btn_appgx.png","name":"item2"},
                     "nodeParent":5,
-                    "label":"Button",
+                    "label":"item2",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -117,13 +120,14 @@
             "props":{"y":106,"x":285,"width":797,"var":"b_sound","height":522},
             "nodeParent":2,
             "label":"b_sound",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":10,
             "child":[
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":36,"x":22,"text":"基础信息:","fontSize":30,"color":"#d6c09a"},
@@ -137,6 +141,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,img_head",
                     "props":{"y":89,"x":31,"var":"img_head","skin":"comp/dindex_index_icon.png"},
@@ -150,6 +155,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":185,"x":22,"text":"声音设置:","fontSize":30,"color":"#d6c09a"},
@@ -163,6 +169,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":113,"x":123,"text":"账号:","fontSize":20,"color":"#b89068"},
@@ -176,6 +183,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_id",
                     "props":{"y":137,"x":123,"width":243,"var":"txt_id","text":"wx123456","height":24,"fontSize":24,"color":"#ffffff"},
@@ -189,6 +197,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":253,"x":27,"text":"背景音乐:","fontSize":20,"color":"#b89068"},
@@ -202,6 +211,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,slider_bg",
                     "props":{"y":253,"x":173,"width":514,"var":"slider_bg","skin":"comp/dsetting_yinyuebg.png","sizeGrid":"2,13,2,12","height":17},
@@ -215,6 +225,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,slider",
                     "props":{"y":253,"x":173,"width":514,"skin":"comp/dsetting_yinyue.png","sizeGrid":"2,13,2,12","name":"slider","height":17},
@@ -228,6 +239,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,slider_bar",
                     "props":{"y":264,"x":181,"width":38,"skin":"comp/dmessageset_xiaoxishezhiyinliangdian.png","pivotY":19,"pivotX":19,"name":"slider_bar","height":37},
@@ -241,6 +253,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_logout",
                     "props":{"y":346,"var":"btn_logout","stateNum":"1","skin":"comp/dsetting_logout_btn.png","centerX":0},
@@ -253,7 +266,7 @@
                     "child":[
                         ]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -398,7 +411,7 @@
                     "child":[
                         ]
                 }],
-            "$HIDDEN":false
+            "$HIDDEN":true
         },
         {
             "x":15,

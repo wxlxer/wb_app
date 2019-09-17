@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":17,
+    "selectedBox":72,
+    "selecteID":77,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":99,
+    "maxID":104,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -14,6 +14,73 @@
     "hasChild":true,
     "compId":2,
     "child":[
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":10,"x":10,"skin":"comp/dactivity_nav_left.png"},
+            "nodeParent":2,
+            "label":"Image",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":99,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Tab",
+            "searchKey":"Tab,tab_2",
+            "props":{"y":108,"x":11.5,"width":286,"var":"tab_2","stateNum":2,"selectedIndex":0,"height":290,"direction":"vertical"},
+            "nodeParent":2,
+            "label":"tab_2",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":100,
+            "child":[
+                {
+                    "type":"Button",
+                    "searchKey":"Button,item0",
+                    "props":{"y":0,"x":0,"stateNum":"2","skin":"comp/btn_grxx.png","name":"item0"},
+                    "nodeParent":100,
+                    "label":"item0",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":101,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Button",
+                    "searchKey":"Button,item1",
+                    "props":{"y":96,"x":0,"stateNum":"2","skin":"comp/btn_tzjl.png","name":"item1"},
+                    "nodeParent":100,
+                    "label":"item1",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":102,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Button",
+                    "searchKey":"Button,item2",
+                    "props":{"y":193,"x":0,"stateNum":"2","skin":"comp/btn_grbb.png","name":"item2"},
+                    "nodeParent":100,
+                    "label":"item2",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":103,
+                    "child":[
+                        ]
+                }]
+        },
         {
             "x":15,
             "type":"Box",
@@ -66,118 +133,6 @@
                     "child":[
                         ]
                 }]
-        },
-        {
-            "x":15,
-            "type":"Box",
-            "searchKey":"Box,b_left",
-            "props":{"y":108,"x":16,"var":"b_left"},
-            "nodeParent":2,
-            "label":"b_left",
-            "isOpen":false,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":7,
-            "child":[
-                {
-                    "type":"Image",
-                    "searchKey":"Image,tab_1_1",
-                    "props":{"var":"tab_1_1","skin":"comp/dpersonalcenter_gerenzhonxingerenxinxi.png"},
-                    "nodeParent":7,
-                    "label":"tab_1_1",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":8,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image,tab_1_2",
-                    "props":{"y":0,"x":0,"var":"tab_1_2","skin":"comp/dpersonalcenter_gerenzhonxingerenxinxi2.png"},
-                    "nodeParent":7,
-                    "label":"tab_1_2",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":9,
-                    "child":[
-                        ],
-                    "$HIDDEN":true
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image,tab_2_1",
-                    "props":{"y":97,"x":0,"var":"tab_2_1","skin":"comp/dpersonalcenter_gerenzhonxintouzhujilu.png"},
-                    "nodeParent":7,
-                    "label":"tab_2_1",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":10,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image,tab_2_2",
-                    "props":{"y":97,"x":0,"var":"tab_2_2","skin":"comp/dpersonalcenter_gerenzhonxintouzhujilu2.png"},
-                    "nodeParent":7,
-                    "label":"tab_2_2",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":12,
-                    "child":[
-                        ],
-                    "$HIDDEN":true
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image,tab_3_1",
-                    "props":{"y":194,"x":0,"var":"tab_3_1","skin":"comp/dpersonalcenter_gerenzhonxingerenbaobiao.png"},
-                    "nodeParent":7,
-                    "label":"tab_3_1",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":13,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image,tab_3_2",
-                    "props":{"y":194,"x":0,"var":"tab_3_2","skin":"comp/dpersonalcenter_gerenzhonxingerenbaobiao2.png"},
-                    "nodeParent":7,
-                    "label":"tab_3_2",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":14,
-                    "child":[
-                        ]
-                }]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image",
-            "props":{"y":110,"x":313,"width":600,"skin":"comp/dpersonalcenter_gerenzhonxinline.png","rotation":90},
-            "nodeParent":2,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":15,
-            "child":[
-                ]
         },
         {
             "x":15,
@@ -544,7 +499,7 @@
                     "props":{"var":"txt_tips","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":52,"centerX":-1},
                     "nodeParent":17,
                     "label":"txt_tips",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
@@ -569,7 +524,7 @@
                 {
                     "type":"List",
                     "searchKey":"List,list_1",
-                    "props":{"y":72,"x":0,"width":921,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","height":523},
+                    "props":{"y":72,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","right":0,"left":0,"height":523},
                     "nodeParent":17,
                     "label":"list_1",
                     "isOpen":false,
@@ -682,7 +637,7 @@
                                         ]
                                 }]
                         }],
-                    "$HIDDEN":true
+                    "$HIDDEN":false
                 }],
             "$HIDDEN":false
         },
@@ -721,18 +676,19 @@
                     "props":{"y":7,"x":1.1000000000000227,"var":"tab_1"},
                     "nodeParent":18,
                     "label":"tab_1",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":72,
                     "child":[
                         {
+                            "x":45,
                             "type":"Button",
-                            "searchKey":"Button",
-                            "props":{"y":0,"x":0,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"labelSize":30,"labelColors":"#666666,#666666","label":"棋牌平台报表","height":77},
+                            "searchKey":"Button,item0",
+                            "props":{"y":0,"x":0,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"name":"item0","labelSize":30,"labelColors":"#666666,#666666","label":"棋牌平台报表","height":77},
                             "nodeParent":72,
-                            "label":"Button",
+                            "label":"item0",
                             "isOpen":true,
                             "isDirectory":false,
                             "isAniNode":true,
@@ -742,11 +698,12 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Button",
-                            "searchKey":"Button",
-                            "props":{"y":0,"x":185,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"labelSize":30,"labelColors":"#666666,#666666","label":"真人视讯报表","height":77},
+                            "searchKey":"Button,item1",
+                            "props":{"y":0,"x":185,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"name":"item1","labelSize":30,"labelColors":"#666666,#666666","label":"真人视讯报表","height":77},
                             "nodeParent":72,
-                            "label":"Button",
+                            "label":"item1",
                             "isOpen":true,
                             "isDirectory":false,
                             "isAniNode":true,
@@ -756,11 +713,12 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Button",
-                            "searchKey":"Button",
-                            "props":{"y":0,"x":370,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"labelSize":30,"labelColors":"#666666,#666666","label":"电子游艺报表","height":77},
+                            "searchKey":"Button,item2",
+                            "props":{"y":0,"x":370,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"name":"item2","labelSize":30,"labelColors":"#666666,#666666","label":"电子游艺报表","height":77},
                             "nodeParent":72,
-                            "label":"Button",
+                            "label":"item2",
                             "isOpen":true,
                             "isDirectory":false,
                             "isAniNode":true,
@@ -770,11 +728,12 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Button",
-                            "searchKey":"Button",
-                            "props":{"y":0,"x":555,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"labelSize":30,"labelColors":"#666666,#666666","label":"体育平台报表","height":77},
+                            "searchKey":"Button,item3",
+                            "props":{"y":0,"x":555,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"name":"item3","labelSize":30,"labelColors":"#666666,#666666","label":"体育平台报表","height":77},
                             "nodeParent":72,
-                            "label":"Button",
+                            "label":"item3",
                             "isOpen":true,
                             "isDirectory":false,
                             "isAniNode":true,
@@ -784,11 +743,12 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Button",
-                            "searchKey":"Button",
-                            "props":{"y":0,"x":740,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"labelSize":30,"labelColors":"#666666,#666666","label":"捕鱼平台报表","height":77},
+                            "searchKey":"Button,item4",
+                            "props":{"y":0,"x":740,"width":214,"stateNum":"2","skin":"comp/btn_1.png","sizeGrid":"13,20,13,16","scaleY":0.85,"scaleX":0.85,"name":"item4","labelSize":30,"labelColors":"#666666,#666666","label":"捕鱼平台报表","height":77},
                             "nodeParent":72,
-                            "label":"Button",
+                            "label":"item4",
                             "isOpen":true,
                             "isDirectory":false,
                             "isAniNode":true,
