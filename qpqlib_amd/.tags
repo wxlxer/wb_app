@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+SignalMsg	.\bin\qpqlib.js	/^    var SignalMsg;$/;"	v
+appShare	.\bin\qpqlib.js	/^    function appShare(bTips, callBack, thisObj, wx_firendCircle) {$/;"	f
+enterGameByRoomId	.\bin\qpqlib.js	/^    function enterGameByRoomId(gz_id, roomId) {$/;"	f
+enterGameByValidation	.\bin\qpqlib.js	/^    function enterGameByValidation(validation) {$/;"	f
+enterRoom	.\bin\qpqlib.js	/^    function enterRoom(gz_id, rd) {$/;"	f
+joinMatchByValidation	.\bin\qpqlib.js	/^    function joinMatchByValidation(validation) {$/;"	f
+openVipPage	.\bin\qpqlib.js	/^    function openVipPage(ignoreCheckVip) {$/;"	f
+parser.colors.button	.\bin\qpqlib.js	/^                "button": "#694121",$/;"	p
+parser.colors.label	.\bin\qpqlib.js	/^                "label": "#ca3e08"$/;"	p
+parser.colors.title	.\bin\qpqlib.js	/^                "title": "#694121",$/;"	p
+parser.side_label_style_default.height	.\bin\qpqlib.js	/^                "height": 30,$/;"	p
+parser.side_label_style_default.size	.\bin\qpqlib.js	/^                "size": 17.5,$/;"	p
+parser.side_label_style_default.textColor	.\bin\qpqlib.js	/^                "textColor": "#C1E2FE",$/;"	p
+parser.sizes.font_size	.\bin\qpqlib.js	/^                "font_size": 24,$/;"	p
+parser.sizes.title_size	.\bin\qpqlib.js	/^                "title_size": 24$/;"	p
+qpq	.\bin\qpqlib.js	/^var qpq;$/;"	v
+registrerSignalHandle	.\bin\qpqlib.js	/^    function registrerSignalHandle(msg, handleClass) {$/;"	f
+signleHandle	.\bin\qpqlib.js	/^    function signleHandle(msg, data) {$/;"	f

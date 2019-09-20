@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es5",
+    "sourceMap": false,
+    "experimentalDecorators": true,
+    "outDir": "bin",
+    "declaration": true,
+     "outFile":"bin/qpqlib.js"
+  },
+  "exclude": [
+    "node_modules",
+    "bin"
+  ]
+}
