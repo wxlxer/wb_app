@@ -8,10 +8,14 @@ class Main  extends gamelib.core.GameMain
 		var arr:Array<any> = [];
 		arr.push({url:"atlas/comp.atlas",type:Laya.Loader.ATLAS});
 		Laya.loader.load(arr,Laya.Handler.create(this,this.onResloaded));
+
+
 	}
 
     protected onResloaded(): void {
 		super.onResloaded();
+
+		GameVar.s_domain = "http://show2.bodemo.vip";
 		//加载IDE指定的场景
 		//GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
 

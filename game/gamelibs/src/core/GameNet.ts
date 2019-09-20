@@ -2,7 +2,6 @@ namespace gamelib.core
 {
     export class GameNet
     {
-        public m_domain:string = "";
         private _signal:gamelib.core.Signal;
         private _listeners:Array<INet>;
         public constructor()
@@ -13,7 +12,7 @@ namespace gamelib.core
 
         public request(url:string,data:any):void
         {
-            utils.tools.http_request(this.m_domain + url,data,"post",Laya.Handler.create(this,this.onReciveNetMsg,[url]))
+            utils.tools.http_request(GameVar.s_domain + url,data,"post",Laya.Handler.create(this,this.onReciveNetMsg,[url]))
 
         }
         private onReciveNetMsg(api:string,data:any):void

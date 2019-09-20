@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":19,
-    "selecteID":21,
+    "selectedBox":5,
+    "selecteID":52,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":51,
+    "maxID":56,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -106,14 +106,13 @@
                     "props":{"y":5,"var":"b_money","centerX":-100},
                     "nodeParent":5,
                     "label":"b_money",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":41,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":19,"x":22,"width":351,"skin":"comp/db7_room.png","sizeGrid":"7,7,7,7","scaleY":0.8,"scaleX":0.8,"height":39},
@@ -128,7 +127,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":0,"x":0,"skin":"comp/dindex_capital.png","scaleY":0.8,"scaleX":0.8},
@@ -144,7 +142,6 @@
                             "$HIDDEN":false
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,txt_money",
                             "props":{"y":22,"x":51,"width":249,"var":"txt_money","text":"0.00","height":24,"fontSize":24,"color":"#f8f1f1","align":"center"},
@@ -159,7 +156,6 @@
                             "$LOCKED":true
                         },
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_reload",
                             "props":{"y":35,"x":315,"var":"btn_reload","stateNum":"1","skin":"comp/dindex_reload.png","anchorY":0.5,"anchorX":0.5},
@@ -181,14 +177,13 @@
                     "props":{"y":17,"x":44},
                     "nodeParent":5,
                     "label":"Box",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":49,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":-11,"x":-1,"width":98,"skin":"comp/img_touxiangMask.png","sizeGrid":"45,48,51,52","renderType":"mask","height":83},
@@ -202,7 +197,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,img_head",
                             "props":{"y":-4,"x":12,"var":"img_head","skin":"comp/dindex_index_icon.png"},
@@ -212,6 +206,62 @@
                             "isAniNode":true,
                             "hasChild":false,
                             "compId":7,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,b_unlogin",
+                    "props":{"y":2,"x":135.5,"var":"b_unlogin"},
+                    "nodeParent":5,
+                    "label":"b_unlogin",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":52,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button",
+                            "props":{"y":30,"x":0.5,"stateNum":"1","skin":"comp/dindex_login.png"},
+                            "nodeParent":52,
+                            "label":"Button",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":53,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button",
+                            "props":{"y":29,"x":88,"stateNum":"1","skin":"comp/dindex_register.png"},
+                            "nodeParent":52,
+                            "label":"Button",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":54,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":0,"x":0,"text":"未登录","fontSize":26,"color":"#FFFFFF","bold":true},
+                            "nodeParent":52,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":55,
                             "child":[
                                 ]
                         }]

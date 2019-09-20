@@ -672,7 +672,6 @@ declare module gamelib {
 }
 declare namespace gamelib.core {
     class GameNet {
-        m_domain: string;
         private _signal;
         private _listeners;
         constructor();
@@ -1191,6 +1190,7 @@ declare class GameVar {
      * @static
      */
     static appid: string;
+    static s_domain: string;
     /**
      * @property {number} urlParam
      * 登录相关的参数

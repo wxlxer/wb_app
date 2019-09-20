@@ -24,6 +24,7 @@ var Main = /** @class */ (function (_super) {
     }
     Main.prototype.onResloaded = function () {
         _super.prototype.onResloaded.call(this);
+        GameVar.s_domain = "http://show2.bodemo.vip";
         //加载IDE指定的场景
         //GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
         // var main:ui.HallUiUI = new ui.HallUiUI();
@@ -39,7 +40,7 @@ var Main = /** @class */ (function (_super) {
 //激活启动类
 new Main();
 
-},{"./com/Hall":4,"./ui/layaMaxUI":21}],2:[function(require,module,exports){
+},{"./com/Hall":4,"./ui/layaMaxUI":22}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy = /** @class */ (function (_super) {
@@ -112,6 +113,7 @@ var MailUi_1 = require("./mail/MailUi");
 var KeFu_1 = require("./KeFu");
 var TiXianUi_1 = require("./tixian/TiXianUi");
 var ChongZhi_1 = require("./chongzhi/ChongZhi");
+var Notice_1 = require("./Notice");
 var Hall = /** @class */ (function (_super) {
     __extends(Hall, _super);
     function Hall() {
@@ -156,6 +158,25 @@ var Hall = /** @class */ (function (_super) {
     };
     Hall.prototype.onShow = function () {
         _super.prototype.onShow.call(this);
+        g_net.request(gamelib.GameMsg.GongGao, {});
+        g_net.request(gamelib.GameMsg.Indexhot, {});
+        g_net.request(gamelib.GameMsg.Getapi, {});
+        // g_net.request(gamelib.GameMsg.Getapiassort,{});
+        // g_net.request(gamelib.GameMsg.Getapitypegame,{});
+        // g_net.request(gamelib.GameMsg.Getapigame,{});
+    };
+    Hall.prototype.reciveNetMsg = function (msg, data) {
+        console.log(msg, data);
+        switch (msg) {
+            case gamelib.GameMsg.Indexhot:
+                this._notice = this._notice || new Notice_1.default();
+                this._notice.setData(data.retData);
+                this._notice.show();
+                break;
+            case gamelib.GameMsg.Getapi:
+                g_net.request(gamelib.GameMsg.Getapigame, { game: "AG", gametype: 0 });
+                break;
+        }
     };
     Hall.prototype.onTabChange = function (index) {
         console.log(index);
@@ -209,7 +230,7 @@ var Hall = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = Hall;
 
-},{"./HuoDong":5,"./KeFu":6,"./SetUi":7,"./UserInfo":8,"./chongzhi/ChongZhi":9,"./mail/MailUi":12,"./tixian/TiXianUi":14,"./tuiguang/TuiGuang":18,"./xima/XiMa":19}],5:[function(require,module,exports){
+},{"./HuoDong":5,"./KeFu":6,"./Notice":7,"./SetUi":8,"./UserInfo":9,"./chongzhi/ChongZhi":10,"./mail/MailUi":13,"./tixian/TiXianUi":15,"./tuiguang/TuiGuang":19,"./xima/XiMa":20}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel_1 = require("./BasePanel");
@@ -266,6 +287,21 @@ exports.default = KeFu;
 },{"./BasePanel":3}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Notice = /** @class */ (function (_super) {
+    __extends(Notice, _super);
+    function Notice() {
+        return _super.call(this, "ui.NoticeUI") || this;
+    }
+    Notice.prototype.setData = function (data) {
+        this._res['img_gg'].skin = GameVar.s_domain + data.image;
+    };
+    return Notice;
+}(gamelib.core.Ui_NetHandle));
+exports.default = Notice;
+
+},{}],8:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var SetUi = /** @class */ (function (_super) {
     __extends(SetUi, _super);
     function SetUi() {
@@ -310,7 +346,7 @@ var SetUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = SetUi;
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel_1 = require("./BasePanel");
@@ -371,7 +407,7 @@ var UserInfo = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = UserInfo;
 
-},{"./BasePanel":3}],9:[function(require,module,exports){
+},{"./BasePanel":3}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChongZhiHistroy_1 = require("./ChongZhiHistroy");
@@ -468,7 +504,7 @@ var ChongZhi = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = ChongZhi;
 
-},{"../BasePanel":3,"./ChongZhiHistroy":10}],10:[function(require,module,exports){
+},{"../BasePanel":3,"./ChongZhiHistroy":11}],11:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -483,7 +519,7 @@ var ChongZhiHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = ChongZhiHistroy;
 
-},{"../BaseHistroy":2}],11:[function(require,module,exports){
+},{"../BaseHistroy":2}],12:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MailInfo = /** @class */ (function (_super) {
@@ -501,7 +537,7 @@ var MailInfo = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = MailInfo;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MailInfo_1 = require("./MailInfo");
@@ -530,7 +566,7 @@ var MailUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = MailUi;
 
-},{"./MailInfo":11}],13:[function(require,module,exports){
+},{"./MailInfo":12}],14:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -545,7 +581,7 @@ var TiXianHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = TiXianHistroy;
 
-},{"../BaseHistroy":2}],14:[function(require,module,exports){
+},{"../BaseHistroy":2}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var TiXianHistroy_1 = require("./TiXianHistroy");
@@ -626,7 +662,7 @@ var TiXianUi = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = TiXianUi;
 
-},{"../BasePanel":3,"./TiXianHistroy":13}],15:[function(require,module,exports){
+},{"../BasePanel":3,"./TiXianHistroy":14}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -641,7 +677,7 @@ var FanYongList = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = FanYongList;
 
-},{"../BaseHistroy":2}],16:[function(require,module,exports){
+},{"../BaseHistroy":2}],17:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GetYongJin = /** @class */ (function (_super) {
@@ -657,7 +693,7 @@ var GetYongJin = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = GetYongJin;
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -672,7 +708,7 @@ var LingQuHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = LingQuHistroy;
 
-},{"../BaseHistroy":2}],18:[function(require,module,exports){
+},{"../BaseHistroy":2}],19:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GetYongJin_1 = require("./GetYongJin");
@@ -771,7 +807,7 @@ var TuiGuang = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = TuiGuang;
 
-},{"../BasePanel":3,"./FanYongList":15,"./GetYongJin":16,"./LingQuHistroy":17}],19:[function(require,module,exports){
+},{"../BasePanel":3,"./FanYongList":16,"./GetYongJin":17,"./LingQuHistroy":18}],20:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XiMaHistroy_1 = require("./XiMaHistroy");
@@ -813,7 +849,7 @@ var XiMa = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = XiMa;
 
-},{"../BasePanel":3,"./XiMaHistroy":20}],20:[function(require,module,exports){
+},{"../BasePanel":3,"./XiMaHistroy":21}],21:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -828,7 +864,7 @@ var XiMaHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = XiMaHistroy;
 
-},{"../BaseHistroy":2}],21:[function(require,module,exports){
+},{"../BaseHistroy":2}],22:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**This class is automatically generated by LayaAirIDE, please do not make any modifications. */
@@ -888,7 +924,7 @@ var ui;
             _super.prototype.createChildren.call(this);
             this.createView(HallUiUI.uiView);
         };
-        HallUiUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "var": "img_bg", "top": 0, "skin": "comp/dindex_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 3 }, { "type": "Box", "props": { "var": "b_top", "top": 0, "right": 0, "left": 0 }, "compId": 5, "child": [{ "type": "Image", "props": { "skin": "comp/dindex_header.png", "right": 0, "left": 0 }, "compId": 6 }, { "type": "Label", "props": { "y": 39, "x": 113, "width": 220, "var": "txt_name", "text": "label", "height": 24, "fontSize": 24, "color": "#f9f9f9", "align": "center" }, "compId": 9 }, { "type": "Button", "props": { "y": 46.5, "var": "btn_set", "stateNum": 1, "skin": "comp/dindex_index_set.png", "right": 60, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 17 }, { "type": "Image", "props": { "y": 22, "var": "img_web", "skin": "comp/dindex_offiwww.png", "centerX": 300 }, "compId": 33 }, { "type": "Box", "props": { "y": 5, "var": "b_money", "centerX": -100 }, "compId": 41, "child": [{ "type": "Image", "props": { "y": 19, "x": 22, "width": 351, "skin": "comp/db7_room.png", "sizeGrid": "7,7,7,7", "scaleY": 0.8, "scaleX": 0.8, "height": 39 }, "compId": 10 }, { "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/dindex_capital.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 18 }, { "type": "Label", "props": { "y": 22, "x": 51, "width": 249, "var": "txt_money", "text": "0.00", "height": 24, "fontSize": 24, "color": "#f8f1f1", "align": "center" }, "compId": 12 }, { "type": "Button", "props": { "y": 35, "x": 315, "var": "btn_reload", "stateNum": 1, "skin": "comp/dindex_reload.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 14 }] }, { "type": "Box", "props": { "y": 17, "x": 44 }, "compId": 49, "child": [{ "type": "Image", "props": { "y": -11, "x": -1, "width": 98, "skin": "comp/img_touxiangMask.png", "sizeGrid": "45,48,51,52", "renderType": "mask", "height": 83 }, "compId": 50 }, { "type": "Image", "props": { "y": -4, "x": 12, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 7 }] }] }, { "type": "Box", "props": { "width": 315, "var": "b_left", "top": 114, "left": 15, "height": 492 }, "compId": 19, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/dindex_leftmenu.png" }, "compId": 20 }, { "type": "Panel", "props": { "y": 58, "x": 0, "width": 311, "var": "p_menu", "vScrollBarSkin": "comp/vscroll.png", "height": 432 }, "compId": 21, "child": [{ "type": "Tab", "props": { "width": 316, "var": "tab_1", "selectedIndex": 0, "height": 516, "direction": "vertical" }, "compId": 42, "child": [{ "type": "Button", "props": { "stateNum": 2, "skin": "comp/btn_game_rm.png", "name": "item0" }, "compId": 43 }, { "type": "Button", "props": { "y": 86, "x": 0, "stateNum": 2, "skin": "comp/btn_game_qp.png", "name": "item1" }, "compId": 44 }, { "type": "Button", "props": { "y": 172, "x": 0, "stateNum": 2, "skin": "comp/btn_game_by.png", "name": "item2" }, "compId": 45 }, { "type": "Button", "props": { "y": 258, "x": 0, "stateNum": 2, "skin": "comp/btn_game_dzyy.png", "name": "item3" }, "compId": 46 }, { "type": "Button", "props": { "y": 344, "x": 0, "stateNum": 2, "skin": "comp/btn_game_zr.png", "name": "item4" }, "compId": 47 }, { "type": "Button", "props": { "y": 430, "x": 0, "stateNum": 2, "skin": "comp/btn_game_ty.png", "name": "item5" }, "compId": 48 }] }] }] }, { "type": "Box", "props": { "y": 157, "var": "b_center", "centerX": 170 }, "compId": 25, "child": [{ "type": "Panel", "props": { "y": 0, "x": 0, "width": 909, "var": "p_game", "height": 444 }, "compId": 26 }] }, { "type": "Box", "props": { "y": 114, "x": 358, "var": "b_pmd" }, "compId": 27, "child": [{ "type": "Image", "props": { "skin": "comp/dindex_msg.png" }, "compId": 28 }, { "type": "Image", "props": { "y": 0, "x": 36, "width": 849, "var": "img_pmd", "skin": "comp/laba_bg.png", "height": 34 }, "compId": 29, "child": [{ "type": "Label", "props": { "y": 3, "text": "跑马灯信息", "overflow": "visible", "name": "txt_label", "fontSize": 24, "color": "#f4f4f4" }, "compId": 30 }] }] }, { "type": "Box", "props": { "y": 0, "var": "b_bottom", "right": 0, "left": 0, "bottom": 0 }, "compId": 31, "child": [{ "type": "Image", "props": { "skin": "comp/dindex_bottom.png", "right": 0, "left": 0 }, "compId": 32 }, { "type": "Button", "props": { "y": 22, "var": "btn_tg", "stateNum": 1, "skin": "comp/dindex_forward.png", "scaleY": 0.65, "scaleX": 0.65, "left": 30 }, "compId": 34 }, { "type": "Button", "props": { "y": 13, "var": "btn_huodong", "stateNum": 1, "skin": "comp/dindex_actvt.png", "centerX": -360 }, "compId": 35 }, { "type": "Button", "props": { "y": 13, "var": "btn_mail", "stateNum": 1, "skin": "comp/dindex_botmsg.png", "centerX": 0 }, "compId": 36 }, { "type": "Button", "props": { "y": 13, "var": "btn_kf", "stateNum": 1, "skin": "comp/dindex_gust.png", "centerX": 180 }, "compId": 37 }, { "type": "Button", "props": { "y": 13, "var": "btn_xm", "stateNum": 1, "skin": "comp/dindex_washcode.png", "centerX": -180 }, "compId": 38 }, { "type": "Button", "props": { "y": 14.5, "var": "btn_tixian", "stateNum": 1, "skin": "comp/dindex_getout.png", "scaleY": 0.65, "scaleX": 0.65, "right": 220 }, "compId": 39 }, { "type": "Button", "props": { "y": 9.5, "var": "btn_cz", "stateNum": 1, "skin": "comp/dindex_load.png", "scaleY": 0.65, "scaleX": 0.65, "right": 40 }, "compId": 40 }] }], "loadList": ["comp/dindex_bg.png", "comp/dindex_header.png", "comp/dindex_index_set.png", "comp/dindex_offiwww.png", "comp/db7_room.png", "comp/dindex_capital.png", "comp/dindex_reload.png", "comp/img_touxiangMask.png", "comp/dindex_index_icon.png", "comp/dindex_leftmenu.png", "comp/vscroll.png", "comp/btn_game_rm.png", "comp/btn_game_qp.png", "comp/btn_game_by.png", "comp/btn_game_dzyy.png", "comp/btn_game_zr.png", "comp/btn_game_ty.png", "comp/dindex_msg.png", "comp/laba_bg.png", "comp/dindex_bottom.png", "comp/dindex_forward.png", "comp/dindex_actvt.png", "comp/dindex_botmsg.png", "comp/dindex_gust.png", "comp/dindex_washcode.png", "comp/dindex_getout.png", "comp/dindex_load.png"], "loadList3D": [] };
+        HallUiUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "var": "img_bg", "top": 0, "skin": "comp/dindex_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 3 }, { "type": "Box", "props": { "var": "b_top", "top": 0, "right": 0, "left": 0 }, "compId": 5, "child": [{ "type": "Image", "props": { "skin": "comp/dindex_header.png", "right": 0, "left": 0 }, "compId": 6 }, { "type": "Label", "props": { "y": 39, "x": 113, "width": 220, "var": "txt_name", "text": "label", "height": 24, "fontSize": 24, "color": "#f9f9f9", "align": "center" }, "compId": 9 }, { "type": "Button", "props": { "y": 46.5, "var": "btn_set", "stateNum": 1, "skin": "comp/dindex_index_set.png", "right": 60, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 17 }, { "type": "Image", "props": { "y": 22, "var": "img_web", "skin": "comp/dindex_offiwww.png", "centerX": 300 }, "compId": 33 }, { "type": "Box", "props": { "y": 5, "var": "b_money", "centerX": -100 }, "compId": 41, "child": [{ "type": "Image", "props": { "y": 19, "x": 22, "width": 351, "skin": "comp/db7_room.png", "sizeGrid": "7,7,7,7", "scaleY": 0.8, "scaleX": 0.8, "height": 39 }, "compId": 10 }, { "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/dindex_capital.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 18 }, { "type": "Label", "props": { "y": 22, "x": 51, "width": 249, "var": "txt_money", "text": "0.00", "height": 24, "fontSize": 24, "color": "#f8f1f1", "align": "center" }, "compId": 12 }, { "type": "Button", "props": { "y": 35, "x": 315, "var": "btn_reload", "stateNum": 1, "skin": "comp/dindex_reload.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 14 }] }, { "type": "Box", "props": { "y": 17, "x": 44 }, "compId": 49, "child": [{ "type": "Image", "props": { "y": -11, "x": -1, "width": 98, "skin": "comp/img_touxiangMask.png", "sizeGrid": "45,48,51,52", "renderType": "mask", "height": 83 }, "compId": 50 }, { "type": "Image", "props": { "y": -4, "x": 12, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 7 }] }, { "type": "Box", "props": { "y": 2, "x": 135.5, "var": "b_unlogin" }, "compId": 52, "child": [{ "type": "Button", "props": { "y": 30, "x": 0.5, "stateNum": 1, "skin": "comp/dindex_login.png" }, "compId": 53 }, { "type": "Button", "props": { "y": 29, "x": 88, "stateNum": 1, "skin": "comp/dindex_register.png" }, "compId": 54 }, { "type": "Label", "props": { "y": 0, "x": 0, "text": "未登录", "fontSize": 26, "color": "#FFFFFF", "bold": true }, "compId": 55 }] }] }, { "type": "Box", "props": { "width": 315, "var": "b_left", "top": 114, "left": 15, "height": 492 }, "compId": 19, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/dindex_leftmenu.png" }, "compId": 20 }, { "type": "Panel", "props": { "y": 58, "x": 0, "width": 311, "var": "p_menu", "vScrollBarSkin": "comp/vscroll.png", "height": 432 }, "compId": 21, "child": [{ "type": "Tab", "props": { "width": 316, "var": "tab_1", "selectedIndex": 0, "height": 516, "direction": "vertical" }, "compId": 42, "child": [{ "type": "Button", "props": { "stateNum": 2, "skin": "comp/btn_game_rm.png", "name": "item0" }, "compId": 43 }, { "type": "Button", "props": { "y": 86, "x": 0, "stateNum": 2, "skin": "comp/btn_game_qp.png", "name": "item1" }, "compId": 44 }, { "type": "Button", "props": { "y": 172, "x": 0, "stateNum": 2, "skin": "comp/btn_game_by.png", "name": "item2" }, "compId": 45 }, { "type": "Button", "props": { "y": 258, "x": 0, "stateNum": 2, "skin": "comp/btn_game_dzyy.png", "name": "item3" }, "compId": 46 }, { "type": "Button", "props": { "y": 344, "x": 0, "stateNum": 2, "skin": "comp/btn_game_zr.png", "name": "item4" }, "compId": 47 }, { "type": "Button", "props": { "y": 430, "x": 0, "stateNum": 2, "skin": "comp/btn_game_ty.png", "name": "item5" }, "compId": 48 }] }] }] }, { "type": "Box", "props": { "y": 157, "var": "b_center", "centerX": 170 }, "compId": 25, "child": [{ "type": "Panel", "props": { "y": 0, "x": 0, "width": 909, "var": "p_game", "height": 444 }, "compId": 26 }] }, { "type": "Box", "props": { "y": 114, "x": 358, "var": "b_pmd" }, "compId": 27, "child": [{ "type": "Image", "props": { "skin": "comp/dindex_msg.png" }, "compId": 28 }, { "type": "Image", "props": { "y": 0, "x": 36, "width": 849, "var": "img_pmd", "skin": "comp/laba_bg.png", "height": 34 }, "compId": 29, "child": [{ "type": "Label", "props": { "y": 3, "text": "跑马灯信息", "overflow": "visible", "name": "txt_label", "fontSize": 24, "color": "#f4f4f4" }, "compId": 30 }] }] }, { "type": "Box", "props": { "y": 0, "var": "b_bottom", "right": 0, "left": 0, "bottom": 0 }, "compId": 31, "child": [{ "type": "Image", "props": { "skin": "comp/dindex_bottom.png", "right": 0, "left": 0 }, "compId": 32 }, { "type": "Button", "props": { "y": 22, "var": "btn_tg", "stateNum": 1, "skin": "comp/dindex_forward.png", "scaleY": 0.65, "scaleX": 0.65, "left": 30 }, "compId": 34 }, { "type": "Button", "props": { "y": 13, "var": "btn_huodong", "stateNum": 1, "skin": "comp/dindex_actvt.png", "centerX": -360 }, "compId": 35 }, { "type": "Button", "props": { "y": 13, "var": "btn_mail", "stateNum": 1, "skin": "comp/dindex_botmsg.png", "centerX": 0 }, "compId": 36 }, { "type": "Button", "props": { "y": 13, "var": "btn_kf", "stateNum": 1, "skin": "comp/dindex_gust.png", "centerX": 180 }, "compId": 37 }, { "type": "Button", "props": { "y": 13, "var": "btn_xm", "stateNum": 1, "skin": "comp/dindex_washcode.png", "centerX": -180 }, "compId": 38 }, { "type": "Button", "props": { "y": 14.5, "var": "btn_tixian", "stateNum": 1, "skin": "comp/dindex_getout.png", "scaleY": 0.65, "scaleX": 0.65, "right": 220 }, "compId": 39 }, { "type": "Button", "props": { "y": 9.5, "var": "btn_cz", "stateNum": 1, "skin": "comp/dindex_load.png", "scaleY": 0.65, "scaleX": 0.65, "right": 40 }, "compId": 40 }] }], "loadList": ["comp/dindex_bg.png", "comp/dindex_header.png", "comp/dindex_index_set.png", "comp/dindex_offiwww.png", "comp/db7_room.png", "comp/dindex_capital.png", "comp/dindex_reload.png", "comp/img_touxiangMask.png", "comp/dindex_index_icon.png", "comp/dindex_login.png", "comp/dindex_register.png", "comp/dindex_leftmenu.png", "comp/vscroll.png", "comp/btn_game_rm.png", "comp/btn_game_qp.png", "comp/btn_game_by.png", "comp/btn_game_dzyy.png", "comp/btn_game_zr.png", "comp/btn_game_ty.png", "comp/dindex_msg.png", "comp/laba_bg.png", "comp/dindex_bottom.png", "comp/dindex_forward.png", "comp/dindex_actvt.png", "comp/dindex_botmsg.png", "comp/dindex_gust.png", "comp/dindex_washcode.png", "comp/dindex_getout.png", "comp/dindex_load.png"], "loadList3D": [] };
         return HallUiUI;
     }(View));
     ui.HallUiUI = HallUiUI;
@@ -949,6 +985,20 @@ var ui;
     }(Dialog));
     ui.LingQuYongJinUI = LingQuYongJinUI;
     REG("ui.LingQuYongJinUI", LingQuYongJinUI);
+    var LoginUiUI = /** @class */ (function (_super) {
+        __extends(LoginUiUI, _super);
+        function LoginUiUI() {
+            return _super.call(this) || this;
+        }
+        LoginUiUI.prototype.createChildren = function () {
+            _super.prototype.createChildren.call(this);
+            this.createView(LoginUiUI.uiView);
+        };
+        LoginUiUI.uiView = { "type": "Dialog", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/dregister_pop.png" }, "compId": 3 }, { "type": "Button", "props": { "y": 0, "x": 1019, "stateNum": 1, "skin": "comp/dmessageset_guanbianniutc.png" }, "compId": 4 }, { "type": "Button", "props": { "y": 540, "x": 0, "stateNum": 1, "skin": "comp/dregister_btn.png", "centerX": 0 }, "compId": 5 }, { "type": "Label", "props": { "y": 178, "x": 210, "text": "账号", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 6 }, { "type": "Image", "props": { "y": 169, "x": 345, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 7, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "var": "txt_name", "type": "text", "prompt": "请输入您的账号", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 14 }] }, { "type": "Label", "props": { "y": 261, "x": 210, "text": "密码", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 8 }, { "type": "Image", "props": { "y": 252, "x": 345, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 9, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "type": "password", "prompt": "请输入您的密码", "name": "txt_pwd1", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 15 }] }, { "type": "Label", "props": { "y": 344, "x": 210, "text": "确认密码", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 10 }, { "type": "Image", "props": { "y": 335, "x": 344, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 11, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "type": "text", "prompt": "请输入持卡人姓名", "name": "txt_pwd2", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 16 }] }, { "type": "Label", "props": { "y": 427, "x": 210, "text": "提款密码", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 12 }, { "type": "Image", "props": { "y": 418, "x": 345, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 13, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "type": "number", "prompt": "请输入提款密码,6位纯数字", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 17 }] }], "loadList": ["comp/dregister_pop.png", "comp/dmessageset_guanbianniutc.png", "comp/dregister_btn.png", "comp/dsetting_pwd_input.png"], "loadList3D": [] };
+        return LoginUiUI;
+    }(Dialog));
+    ui.LoginUiUI = LoginUiUI;
+    REG("ui.LoginUiUI", LoginUiUI);
     var MailUI = /** @class */ (function (_super) {
         __extends(MailUI, _super);
         function MailUI() {
@@ -977,6 +1027,34 @@ var ui;
     }(Dialog));
     ui.MailInfoUI = MailInfoUI;
     REG("ui.MailInfoUI", MailInfoUI);
+    var NoticeUI = /** @class */ (function (_super) {
+        __extends(NoticeUI, _super);
+        function NoticeUI() {
+            return _super.call(this) || this;
+        }
+        NoticeUI.prototype.createChildren = function () {
+            _super.prototype.createChildren.call(this);
+            this.createView(NoticeUI.uiView);
+        };
+        NoticeUI.uiView = { "type": "Dialog", "props": { "width": 953, "height": 568 }, "compId": 2, "child": [{ "type": "Image", "props": { "skin": "comp/dindex_notice_modal.png" }, "compId": 3 }, { "type": "Button", "props": { "y": 0, "x": 876, "var": "btn_close", "stateNum": 1, "skin": "comp/dgetcharge_guanbianniutc.png" }, "compId": 4 }, { "type": "Image", "props": { "y": 88, "x": 0, "width": 952, "var": "img_gg", "height": 436 }, "compId": 5 }], "loadList": ["comp/dindex_notice_modal.png", "comp/dgetcharge_guanbianniutc.png"], "loadList3D": [] };
+        return NoticeUI;
+    }(Dialog));
+    ui.NoticeUI = NoticeUI;
+    REG("ui.NoticeUI", NoticeUI);
+    var RegisterUiUI = /** @class */ (function (_super) {
+        __extends(RegisterUiUI, _super);
+        function RegisterUiUI() {
+            return _super.call(this) || this;
+        }
+        RegisterUiUI.prototype.createChildren = function () {
+            _super.prototype.createChildren.call(this);
+            this.createView(RegisterUiUI.uiView);
+        };
+        RegisterUiUI.uiView = { "type": "Dialog", "props": { "width": 1096, "height": 660 }, "compId": 2, "child": [{ "type": "Image", "props": { "skin": "comp/dregister_pop.png" }, "compId": 3 }, { "type": "Button", "props": { "y": 0, "x": 1019, "stateNum": 1, "skin": "comp/dmessageset_guanbianniutc.png" }, "compId": 4 }, { "type": "Button", "props": { "y": 540, "stateNum": 1, "skin": "comp/dregister_btn.png", "centerX": 0 }, "compId": 5 }, { "type": "Label", "props": { "y": 178, "x": 210, "text": "账号", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 6 }, { "type": "Image", "props": { "y": 169, "x": 345, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 7, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "var": "txt_name", "type": "text", "prompt": "请输入您的账号", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 8 }] }, { "type": "Label", "props": { "y": 261, "x": 210, "text": "密码", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 9 }, { "type": "Image", "props": { "y": 252, "x": 345, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 10, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "type": "password", "prompt": "请输入您的密码", "name": "txt_pwd1", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 11 }] }, { "type": "Label", "props": { "y": 344, "x": 210, "text": "确认密码", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 12 }, { "type": "Image", "props": { "y": 335, "x": 344, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 13, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "type": "text", "prompt": "请输入持卡人姓名", "name": "txt_pwd2", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 14 }] }, { "type": "Label", "props": { "y": 427, "x": 210, "text": "提款密码", "fontSize": 30, "color": "#FFFFFF", "bold": true }, "compId": 15 }, { "type": "Image", "props": { "y": 418, "x": 345, "width": 545, "skin": "comp/dsetting_pwd_input.png", "sizeGrid": "14,32,11,23", "height": 48 }, "compId": 16, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 529, "type": "number", "prompt": "请输入提款密码,6位纯数字", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 17 }] }], "loadList": ["comp/dregister_pop.png", "comp/dmessageset_guanbianniutc.png", "comp/dregister_btn.png", "comp/dsetting_pwd_input.png"], "loadList3D": [] };
+        return RegisterUiUI;
+    }(Dialog));
+    ui.RegisterUiUI = RegisterUiUI;
+    REG("ui.RegisterUiUI", RegisterUiUI);
     var SetUiUI = /** @class */ (function (_super) {
         __extends(SetUiUI, _super);
         function SetUiUI() {
@@ -986,7 +1064,7 @@ var ui;
             _super.prototype.createChildren.call(this);
             this.createView(SetUiUI.uiView);
         };
-        SetUiUI.uiView = { "type": "Dialog", "props": { "width": 1084, "height": 635 }, "compId": 2, "child": [{ "type": "Image", "props": { "skin": "comp/dsetting_set_bg.png" }, "compId": 3 }, { "type": "Image", "props": { "y": 30, "skin": "comp/dsetting_header.png", "centerX": 0 }, "compId": 4 }, { "type": "Image", "props": { "y": 94, "x": 285, "width": 550, "skin": "comp/dpersonalcenter_gerenzhonxinline.png", "rotation": 90 }, "compId": 9 }, { "type": "Tab", "props": { "y": 136, "x": 0, "var": "tab_1" }, "compId": 5, "child": [{ "type": "Button", "props": { "y": 0, "stateNum": 2, "skin": "comp/btn_soundSz.png", "name": "item0" }, "compId": 6 }, { "type": "Button", "props": { "y": 86, "x": 0, "stateNum": 2, "skin": "comp/btn_xgmm.png", "name": "item1" }, "compId": 7 }, { "type": "Button", "props": { "y": 170, "x": 0, "stateNum": 2, "skin": "comp/btn_appgx.png", "name": "item2" }, "compId": 8 }] }, { "type": "Box", "props": { "y": 106, "x": 285, "width": 797, "var": "b_sound", "height": 522 }, "compId": 10, "child": [{ "type": "Label", "props": { "y": 36, "x": 22, "text": "基础信息:", "fontSize": 30, "color": "#d6c09a" }, "compId": 13 }, { "type": "Image", "props": { "y": 89, "x": 31, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 16 }, { "type": "Label", "props": { "y": 185, "x": 22, "text": "声音设置:", "fontSize": 30, "color": "#d6c09a" }, "compId": 17 }, { "type": "Label", "props": { "y": 113, "x": 123, "text": "账号:", "fontSize": 20, "color": "#b89068" }, "compId": 18 }, { "type": "Label", "props": { "y": 137, "x": 123, "width": 243, "var": "txt_id", "text": "wx123456", "height": 24, "fontSize": 24, "color": "#ffffff" }, "compId": 19 }, { "type": "Label", "props": { "y": 253, "x": 27, "text": "背景音乐:", "fontSize": 20, "color": "#b89068" }, "compId": 20 }, { "type": "Image", "props": { "y": 253, "x": 173, "width": 514, "var": "slider_bg", "skin": "comp/dsetting_yinyuebg.png", "sizeGrid": "2,13,2,12", "height": 17 }, "compId": 22 }, { "type": "Image", "props": { "y": 253, "x": 173, "width": 514, "skin": "comp/dsetting_yinyue.png", "sizeGrid": "2,13,2,12", "name": "slider", "height": 17 }, "compId": 23 }, { "type": "Image", "props": { "y": 264, "x": 181, "width": 38, "skin": "comp/dmessageset_xiaoxishezhiyinliangdian.png", "pivotY": 19, "pivotX": 19, "name": "slider_bar", "height": 37 }, "compId": 24 }, { "type": "Button", "props": { "y": 346, "var": "btn_logout", "stateNum": 1, "skin": "comp/dsetting_logout_btn.png", "centerX": 0 }, "compId": 25 }] }, { "type": "Box", "props": { "y": 106, "x": 285, "width": 790, "var": "b_pwd", "height": 507 }, "compId": 11, "child": [{ "type": "Label", "props": { "y": 79, "x": 83, "text": "现密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 26 }, { "type": "Label", "props": { "y": 160, "x": 83, "text": "新密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 27 }, { "type": "Label", "props": { "y": 240, "x": 83, "text": "确认密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 28 }, { "type": "Image", "props": { "y": 70, "x": 230, "skin": "comp/dsetting_pwd_input.png" }, "compId": 29, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 307, "var": "txt_oldPwd", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 30 }] }, { "type": "Image", "props": { "y": 151, "x": 230, "skin": "comp/dsetting_pwd_input.png" }, "compId": 31, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 307, "var": "txt_newPwd", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 32 }] }, { "type": "Image", "props": { "y": 232, "x": 230, "skin": "comp/dsetting_pwd_input.png" }, "compId": 35, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 307, "var": "txt_newPwd1", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 36 }] }, { "type": "Button", "props": { "y": 346, "x": 0, "var": "btn_ok", "stateNum": 1, "skin": "comp/dsetting_modify_btn.png", "centerX": 0 }, "compId": 37 }] }, { "type": "Box", "props": { "y": 106, "x": 285, "var": "b_app" }, "compId": 12, "child": [{ "type": "Button", "props": { "y": 359, "var": "btn_gx", "stateNum": 1, "skin": "comp/dsetting_update_btn.png", "centerX": 0 }, "compId": 38 }, { "type": "Text", "props": { "y": 78, "x": 8, "width": 763, "var": "txt_app_version", "valign": "middle", "text": "text", "height": 255, "fontSize": 30, "color": "#ffffff", "align": "center", "runtime": "laya.display.Text" }, "compId": 39 }] }, { "type": "Button", "props": { "y": -8, "x": 1017.5, "var": "btn_close", "stateNum": 1, "skin": "comp/dgetcharge_guanbianniutc.png" }, "compId": 40 }], "loadList": ["comp/dsetting_set_bg.png", "comp/dsetting_header.png", "comp/dpersonalcenter_gerenzhonxinline.png", "comp/btn_soundSz.png", "comp/btn_xgmm.png", "comp/btn_appgx.png", "comp/dindex_index_icon.png", "comp/dsetting_yinyuebg.png", "comp/dsetting_yinyue.png", "comp/dmessageset_xiaoxishezhiyinliangdian.png", "comp/dsetting_logout_btn.png", "comp/dsetting_pwd_input.png", "comp/dsetting_modify_btn.png", "comp/dsetting_update_btn.png", "comp/dgetcharge_guanbianniutc.png"], "loadList3D": [] };
+        SetUiUI.uiView = { "type": "Dialog", "props": { "width": 1084, "height": 635 }, "compId": 2, "child": [{ "type": "Image", "props": { "skin": "comp/dsetting_set_bg.png" }, "compId": 3 }, { "type": "Image", "props": { "y": 30, "skin": "comp/dsetting_header.png", "centerX": 0 }, "compId": 4 }, { "type": "Image", "props": { "y": 94, "x": 285, "width": 550, "skin": "comp/dpersonalcenter_gerenzhonxinline.png", "rotation": 90 }, "compId": 9 }, { "type": "Tab", "props": { "y": 136, "x": 0, "var": "tab_1" }, "compId": 5, "child": [{ "type": "Button", "props": { "y": 0, "stateNum": 2, "skin": "comp/btn_soundSz.png", "name": "item0" }, "compId": 6 }, { "type": "Button", "props": { "y": 86, "x": 0, "stateNum": 2, "skin": "comp/btn_xgmm.png", "name": "item1" }, "compId": 7 }, { "type": "Button", "props": { "y": 170, "x": 0, "stateNum": 2, "skin": "comp/btn_appgx.png", "name": "item2" }, "compId": 8 }] }, { "type": "Box", "props": { "y": 106, "x": 285, "width": 797, "var": "b_sound", "height": 522 }, "compId": 10, "child": [{ "type": "Label", "props": { "y": 36, "x": 22, "text": "基础信息:", "fontSize": 30, "color": "#d6c09a" }, "compId": 13 }, { "type": "Image", "props": { "y": 89, "x": 31, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 16 }, { "type": "Label", "props": { "y": 185, "x": 22, "text": "声音设置:", "fontSize": 30, "color": "#d6c09a" }, "compId": 17 }, { "type": "Label", "props": { "y": 113, "x": 123, "text": "账号:", "fontSize": 20, "color": "#b89068" }, "compId": 18 }, { "type": "Label", "props": { "y": 137, "x": 123, "width": 243, "var": "txt_id", "text": "wx123456", "height": 24, "fontSize": 24, "color": "#ffffff" }, "compId": 19 }, { "type": "Label", "props": { "y": 253, "x": 27, "text": "背景音乐:", "fontSize": 20, "color": "#b89068" }, "compId": 20 }, { "type": "Image", "props": { "y": 253, "x": 173, "width": 514, "var": "slider_bg", "skin": "comp/dsetting_yinyuebg.png", "sizeGrid": "2,13,2,12", "height": 17 }, "compId": 22 }, { "type": "Image", "props": { "y": 253, "x": 173, "width": 514, "skin": "comp/dsetting_yinyue.png", "sizeGrid": "2,13,2,12", "name": "slider", "height": 17 }, "compId": 23 }, { "type": "Image", "props": { "y": 264, "x": 181, "width": 38, "skin": "comp/dmessageset_xiaoxishezhiyinliangdian.png", "scaleY": 0.6, "scaleX": 0.6, "pivotY": 19, "pivotX": 19, "name": "slider_bar", "height": 37 }, "compId": 24 }, { "type": "Button", "props": { "y": 346, "var": "btn_logout", "stateNum": 1, "skin": "comp/dsetting_logout_btn.png", "centerX": 0 }, "compId": 25 }] }, { "type": "Box", "props": { "y": 106, "x": 285, "width": 790, "var": "b_pwd", "height": 507 }, "compId": 11, "child": [{ "type": "Label", "props": { "y": 79, "x": 83, "text": "现密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 26 }, { "type": "Label", "props": { "y": 160, "x": 83, "text": "新密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 27 }, { "type": "Label", "props": { "y": 240, "x": 83, "text": "确认密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 28 }, { "type": "Image", "props": { "y": 70, "x": 230, "skin": "comp/dsetting_pwd_input.png" }, "compId": 29, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 307, "var": "txt_oldPwd", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 30 }] }, { "type": "Image", "props": { "y": 151, "x": 230, "skin": "comp/dsetting_pwd_input.png" }, "compId": 31, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 307, "var": "txt_newPwd", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 32 }] }, { "type": "Image", "props": { "y": 232, "x": 230, "skin": "comp/dsetting_pwd_input.png" }, "compId": 35, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 307, "var": "txt_newPwd1", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 36 }] }, { "type": "Button", "props": { "y": 346, "x": 0, "var": "btn_ok", "stateNum": 1, "skin": "comp/dsetting_modify_btn.png", "centerX": 0 }, "compId": 37 }] }, { "type": "Box", "props": { "y": 106, "x": 285, "var": "b_app" }, "compId": 12, "child": [{ "type": "Button", "props": { "y": 359, "var": "btn_gx", "stateNum": 1, "skin": "comp/dsetting_update_btn.png", "centerX": 0 }, "compId": 38 }, { "type": "Text", "props": { "y": 78, "x": 8, "width": 763, "var": "txt_app_version", "valign": "middle", "text": "text", "height": 255, "fontSize": 30, "color": "#ffffff", "align": "center", "runtime": "laya.display.Text" }, "compId": 39 }] }, { "type": "Button", "props": { "y": -8, "x": 1017.5, "var": "btn_close", "stateNum": 1, "skin": "comp/dgetcharge_guanbianniutc.png" }, "compId": 40 }], "loadList": ["comp/dsetting_set_bg.png", "comp/dsetting_header.png", "comp/dpersonalcenter_gerenzhonxinline.png", "comp/btn_soundSz.png", "comp/btn_xgmm.png", "comp/btn_appgx.png", "comp/dindex_index_icon.png", "comp/dsetting_yinyuebg.png", "comp/dsetting_yinyue.png", "comp/dmessageset_xiaoxishezhiyinliangdian.png", "comp/dsetting_logout_btn.png", "comp/dsetting_pwd_input.png", "comp/dsetting_modify_btn.png", "comp/dsetting_update_btn.png", "comp/dgetcharge_guanbianniutc.png"], "loadList3D": [] };
         return SetUiUI;
     }(Dialog));
     ui.SetUiUI = SetUiUI;

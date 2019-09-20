@@ -7,11 +7,22 @@ import MailUi from "./mail/MailUi";
 import KeFu from "./KeFu";
 import TiXianUi from "./tixian/TiXianUi";
 import ChongZhi from "./chongzhi/ChongZhi";
+import Notice from "./Notice";
 
 export default class Hall extends gamelib.core.Ui_NetHandle
 {
     private _pmd:gamelib.alert.Pmd;
     private _tab:Laya.Tab;
+    private _notice:Notice;
+    private _info:UserInfo;
+    private _set:SetUi;
+    private _tuiGuang:TuiGuang;
+    private _huodong:HuoDong;
+    private _xima:XiMa;
+    private _mail:MailUi;
+    private _kefu:KeFu;
+    private _tixian:TiXianUi;
+    private _chongzhi:ChongZhi;
     public constructor()
     {
         super("ui.HallUiUI");
@@ -65,21 +76,34 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     protected onShow():void
     {
         super.onShow();
-        g_net.request(gamelib.GameMsg.GongGao,0);
+        g_net.request(gamelib.GameMsg.GongGao,{});
+        g_net.request(gamelib.GameMsg.Indexhot,{});
+        g_net.request(gamelib.GameMsg.Getapi,{});
+        // g_net.request(gamelib.GameMsg.Getapiassort,{});
+        // g_net.request(gamelib.GameMsg.Getapitypegame,{});
+        // g_net.request(gamelib.GameMsg.Getapigame,{});
+
+    }
+    public reciveNetMsg(msg:string,data:any)
+    {
+        console.log(msg,data);
+        switch(msg)
+        {
+            case gamelib.GameMsg.Indexhot:
+                this._notice = this._notice || new Notice();
+                this._notice.setData(data.retData);
+                this._notice.show();
+                break;
+            case gamelib.GameMsg.Getapi:
+                g_net.request(gamelib.GameMsg.Getapigame,{game:"AG",gametype:0});
+                break;
+        }
     }
     private onTabChange(index:number):void
     {
         console.log(index);
     }
-    private _info:UserInfo;
-    private _set:SetUi;
-    private _tuiGuang:TuiGuang;
-    private _huodong:HuoDong;
-    private _xima:XiMa;
-    private _mail:MailUi;
-    private _kefu:KeFu;
-    private _tixian:TiXianUi;
-    private _chongzhi:ChongZhi;
+    
     protected onClickObjects(evt:Laya.Event):void
     {
         switch(evt.currentTarget.name)

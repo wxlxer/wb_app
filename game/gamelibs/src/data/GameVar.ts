@@ -33,6 +33,8 @@ class GameVar {
      * @static
      */
     public static appid:string = "";
+
+    public static s_domain:string = "";
     /**
      * @property {number} urlParam
      * 登录相关的参数

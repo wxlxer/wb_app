@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Dialog",
-    "selectedBox":5,
-    "selecteID":8,
+    "selectedBox":10,
+    "selecteID":24,
     "searchKey":"Dialog",
     "props":{"width":1084,"sceneColor":"#000000","height":635},
     "nodeParent":-1,
-    "maxID":41,
+    "maxID":42,
     "label":"Dialog",
     "isOpen":true,
     "isDirectory":true,
@@ -242,7 +242,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image,slider_bar",
-                    "props":{"y":264,"x":181,"width":38,"skin":"comp/dmessageset_xiaoxishezhiyinliangdian.png","pivotY":19,"pivotX":19,"name":"slider_bar","height":37},
+                    "props":{"y":264,"x":181,"width":38,"skin":"comp/dmessageset_xiaoxishezhiyinliangdian.png","scaleY":0.6,"scaleX":0.6,"pivotY":19,"pivotX":19,"name":"slider_bar","height":37},
                     "nodeParent":10,
                     "label":"slider_bar",
                     "isDirectory":false,
@@ -250,7 +250,8 @@
                     "hasChild":false,
                     "compId":24,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 },
                 {
                     "x":30,

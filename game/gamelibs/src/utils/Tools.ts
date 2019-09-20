@@ -179,15 +179,8 @@ module utils.tools {
 
         function onLoaded(e):void
         {
-            var jsonObj;
-            try
-            {
-                jsonObj = JSON.parse(xhr.data);       
-            }
-            catch(e)
-            {
-                console.log(url + " 返回的数据不对是json格式")
-            }            
+            var jsonObj = xhr.data;      
+            
             close();
             if(callback)
                 callback.runWith(jsonObj);

@@ -1162,12 +1162,11 @@ var gamelib;
     (function (core) {
         var GameNet = /** @class */ (function () {
             function GameNet() {
-                this.m_domain = "";
                 this._listeners = [];
                 this._signal = new gamelib.core.Signal();
             }
             GameNet.prototype.request = function (url, data) {
-                utils.tools.http_request(this.m_domain + url, data, "post", Laya.Handler.create(this, this.onReciveNetMsg, [url]));
+                utils.tools.http_request(GameVar.s_domain + url, data, "post", Laya.Handler.create(this, this.onReciveNetMsg, [url]));
             };
             GameNet.prototype.onReciveNetMsg = function (api, data) {
                 if (this._listeners == null)
@@ -2191,6 +2190,7 @@ var GameVar = /** @class */ (function () {
      * @static
      */
     GameVar.appid = "";
+    GameVar.s_domain = "";
     return GameVar;
 }());
 window["GameVar"] = GameVar;
@@ -4185,13 +4185,7 @@ var utils;
                 xhr.send(url, postdata, "post", "json");
             }
             function onLoaded(e) {
-                var jsonObj;
-                try {
-                    jsonObj = JSON.parse(xhr.data);
-                }
-                catch (e) {
-                    console.log(url + " 返回的数据不对是json格式");
-                }
+                var jsonObj = xhr.data;
                 close();
                 if (callback)
                     callback.runWith(jsonObj);
