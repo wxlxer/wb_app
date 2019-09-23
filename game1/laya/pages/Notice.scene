@@ -6,7 +6,7 @@
     "searchKey":"Dialog",
     "props":{"width":953,"sceneColor":"#000000","height":568},
     "nodeParent":-1,
-    "maxID":6,
+    "maxID":9,
     "label":"Dialog",
     "isOpen":true,
     "isDirectory":true,
@@ -18,7 +18,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"skin":"comp/dindex_notice_modal.png"},
+            "props":{"top":0,"skin":"bgs/ic_news_dialog.png","right":0,"left":0,"bottom":0},
             "nodeParent":2,
             "label":"Image",
             "isDirectory":false,
@@ -30,29 +30,29 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "searchKey":"Button,btn_close",
-            "props":{"y":0,"x":876,"var":"btn_close","stateNum":"1","skin":"comp/dgetcharge_guanbianniutc.png"},
-            "nodeParent":2,
-            "label":"btn_close",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":4,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
             "type":"Image",
             "searchKey":"Image,img_gg",
-            "props":{"y":88,"x":0,"width":952,"var":"img_gg","height":436},
+            "props":{"y":96,"x":17,"width":917,"var":"img_gg","height":439},
             "nodeParent":2,
             "label":"img_gg",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":5,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button,btn_close",
+            "props":{"y":10,"x":867,"var":"btn_close","stateNum":"1","skin":"btns/ic_close.png"},
+            "nodeParent":2,
+            "label":"btn_close",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":8,
             "child":[
                 ]
         }],

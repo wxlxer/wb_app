@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":7,
+    "selecteID":19,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":130,
+    "maxID":182,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -18,7 +18,22 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":0,"x":0,"skin":"comp/dactivity_nav_left.png"},
+            "props":{"top":0,"skin":"bgs/ic_recharge_bg.png","right":0,"left":0,"bottom":0},
+            "nodeParent":2,
+            "label":"Image",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":179,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"top":0,"skin":"comp/dactivity_nav_left.png","left":0,"bottom":0},
             "nodeParent":2,
             "label":"Image",
             "isDirectory":false,
@@ -32,20 +47,19 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_title",
-            "props":{"y":0,"var":"b_title","right":0,"left":0},
+            "props":{"y":0,"var":"b_title","right":0,"left":0,"height":120},
             "nodeParent":2,
             "label":"b_title",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":4,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0},
+                    "props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},
                     "nodeParent":4,
                     "label":"Image",
                     "isDirectory":false,
@@ -53,13 +67,13 @@
                     "hasChild":false,
                     "compId":5,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_close",
-                    "props":{"var":"btn_close","top":0,"stateNum":"1","skin":"btns/back_btn.png","left":0},
+                    "props":{"y":4,"x":0,"var":"btn_close","stateNum":"1","skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},
                     "nodeParent":4,
                     "label":"btn_close",
                     "isDirectory":false,
@@ -70,10 +84,9 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":53.5,"x":359,"skin":"bgs/ic_recharge_title.png","scaleY":0.5,"scaleX":0.5},
+                    "props":{"x":329,"skin":"bgs/ic_recharge_title.png","scaleY":0.5,"scaleX":0.5,"centerY":0},
                     "nodeParent":4,
                     "label":"Image",
                     "isDirectory":false,
@@ -84,10 +97,9 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":18,"x":708,"skin":"bgs/ic_recharge_account.png"},
+                    "props":{"skin":"bgs/ic_recharge_account.png","scaleY":0.8,"scaleX":0.8,"centerY":2,"centerX":88},
                     "nodeParent":4,
                     "label":"Image",
                     "isDirectory":false,
@@ -98,12 +110,11 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Button",
-                    "searchKey":"Button,btn_sx",
-                    "props":{"y":30,"var":"btn_sx","stateNum":"1","skin":"comp/ddeposit_chonzhishuaxin.png","right":250},
+                    "searchKey":"Button,btn_refresh",
+                    "props":{"var":"btn_refresh","stateNum":"1","skin":"btns/btn_refresh.png","right":292,"centerY":0},
                     "nodeParent":4,
-                    "label":"btn_sx",
+                    "label":"btn_refresh",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -112,52 +123,23 @@
                         ]
                 },
                 {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":18,"x":1050,"width":224,"skin":"comp/ddeposit_chonzhidailibg.png","sizeGrid":"2,2,2,2","height":58},
+                    "type":"Button",
+                    "searchKey":"Button,btn_histroy",
+                    "props":{"y":27,"var":"btn_histroy","stateNum":"1","skin":"btns/ic_recharge_jilu.png","scaleY":0.8,"scaleX":0.8,"right":14},
                     "nodeParent":4,
-                    "label":"Image",
+                    "label":"btn_histroy",
+                    "isOpen":true,
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
-                    "compId":13,
+                    "compId":9,
                     "child":[
                         ]
                 },
                 {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_histroy",
-                    "props":{"y":30,"var":"btn_histroy","stateNum":"1","skin":"comp/ddeposit_chonzhichontijilu.png","right":200},
-                    "nodeParent":4,
-                    "label":"btn_histroy",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":9,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":5,"x":44,"width":160,"text":"充值记录","height":24,"fontSize":24,"color":"#736451"},
-                            "nodeParent":9,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":14,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_money",
-                    "props":{"y":53.5,"x":817,"width":191,"var":"txt_money","text":"0.0","height":28,"fontSize":28,"color":"#ffffff"},
+                    "props":{"y":46,"x":702,"width":191,"var":"txt_money","text":"0.0","height":28,"fontSize":28,"color":"#ffffff"},
                     "nodeParent":4,
                     "label":"txt_money",
                     "isDirectory":false,
@@ -170,78 +152,21 @@
         },
         {
             "x":15,
-            "type":"Tab",
-            "searchKey":"Tab,tab_1",
-            "props":{"y":136,"x":0,"var":"tab_1"},
-            "nodeParent":2,
-            "label":"tab_1",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":15,
-            "child":[
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,item0",
-                    "props":{"y":0,"stateNum":"2","skin":"comp/btn_yhcz.png","name":"item0"},
-                    "nodeParent":15,
-                    "label":"item0",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":16,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,item1",
-                    "props":{"y":86,"x":0,"stateNum":"2","skin":"comp/btn_zfbzz.png","name":"item1"},
-                    "nodeParent":15,
-                    "label":"item1",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":17,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,item2",
-                    "props":{"y":170,"x":0,"stateNum":"2","skin":"comp/btn_wxcz.png","name":"item2"},
-                    "nodeParent":15,
-                    "label":"item2",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":18,
-                    "child":[
-                        ]
-                }]
-        },
-        {
-            "x":15,
             "type":"Box",
             "searchKey":"Box,b_bank",
-            "props":{"y":92,"x":293,"width":982,"var":"b_bank","height":622},
+            "props":{"var":"b_bank","right":5,"left":298,"height":598,"bottom":0},
             "nodeParent":2,
             "label":"b_bank",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":19,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_tips",
-                    "props":{"var":"b_tips"},
+                    "props":{"var":"b_tips","top":0,"right":0,"left":0,"bottom":0},
                     "nodeParent":19,
                     "label":"b_tips",
                     "isOpen":false,
@@ -253,7 +178,7 @@
                         {
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":39,"x":60,"skin":"comp/dpersonalcenter_gerenzhonxindian.png"},
+                            "props":{"y":39,"x":60,"skin":"icons/ic_dot.png"},
                             "nodeParent":25,
                             "label":"Image",
                             "isDirectory":false,
@@ -277,51 +202,102 @@
                                 ]
                         },
                         {
-                            "type":"Image",
-                            "searchKey":"Image",
-                            "props":{"y":89,"x":42,"skin":"comp/ddeposit_chonzhichonzhijinebg.png","sizeGrid":"30,34,26,34"},
+                            "type":"List",
+                            "searchKey":"List,list_banklist",
+                            "props":{"y":83,"var":"list_banklist","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"right":5,"left":10,"height":446},
                             "nodeParent":25,
-                            "label":"Image",
-                            "isDirectory":false,
+                            "label":"list_banklist",
+                            "isOpen":false,
+                            "isDirectory":true,
                             "isAniNode":true,
-                            "hasChild":false,
-                            "compId":22,
+                            "hasChild":true,
+                            "compId":130,
                             "child":[
-                                ]
-                        },
-                        {
-                            "type":"Button",
-                            "searchKey":"Button,btn_goCz",
-                            "props":{"y":145,"x":767,"var":"btn_goCz","stateNum":"1","skin":"comp/ddeposit_chonzhiqianwangchonzhi.png","scaleY":0.6,"scaleX":0.6},
-                            "nodeParent":25,
-                            "label":"btn_goCz",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":23,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":121,"x":180,"text":"银行转账:成功率100%返1%","fontSize":24,"color":"#ffffff"},
-                            "nodeParent":25,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":24,
-                            "child":[
-                                ]
+                                {
+                                    "type":"Box",
+                                    "searchKey":"Box",
+                                    "props":{"right":0,"renderType":"render","left":0},
+                                    "nodeParent":130,
+                                    "label":"Box",
+                                    "isOpen":true,
+                                    "isDirectory":true,
+                                    "isAniNode":false,
+                                    "hasChild":true,
+                                    "compId":131,
+                                    "child":[
+                                        {
+                                            "type":"Image",
+                                            "searchKey":"Image",
+                                            "props":{"y":0,"skin":"bgs/ic_member_find_bg.png","sizeGrid":"16,24,13,24","right":0,"left":0,"height":144},
+                                            "nodeParent":131,
+                                            "label":"Image",
+                                            "isDirectory":false,
+                                            "isAniNode":false,
+                                            "hasChild":false,
+                                            "compId":132,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "type":"Image",
+                                            "searchKey":"Image,img_bank",
+                                            "props":{"y":25,"x":50,"skin":"icons/bankIcon.png","sizeGrid":"30,34,26,34","name":"img_bank"},
+                                            "nodeParent":131,
+                                            "label":"img_bank",
+                                            "isDirectory":false,
+                                            "isAniNode":false,
+                                            "hasChild":false,
+                                            "compId":22,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "type":"Label",
+                                            "searchKey":"Label,txt_info",
+                                            "props":{"y":25,"x":148,"text":"网银、手机网页庄站通道送2%","name":"txt_info","fontSize":30,"color":"#ffffff","bold":true},
+                                            "nodeParent":131,
+                                            "label":"txt_info",
+                                            "isDirectory":false,
+                                            "isAniNode":false,
+                                            "hasChild":false,
+                                            "compId":133,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "type":"Label",
+                                            "searchKey":"Label,txt_id",
+                                            "props":{"y":79,"x":148,"text":"2123156465464564.","name":"txt_id","fontSize":30,"color":"#ffffff","bold":true},
+                                            "nodeParent":131,
+                                            "label":"txt_id",
+                                            "isDirectory":false,
+                                            "isAniNode":false,
+                                            "hasChild":false,
+                                            "compId":134,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "type":"Button",
+                                            "searchKey":"Button",
+                                            "props":{"y":40,"x":766,"stateNum":"1","skin":"btns/ic_to_recharge.png","scaleY":0.5,"scaleX":0.5},
+                                            "nodeParent":131,
+                                            "label":"Button",
+                                            "isDirectory":false,
+                                            "isAniNode":false,
+                                            "hasChild":false,
+                                            "compId":135,
+                                            "child":[
+                                                ]
+                                        }]
+                                }]
                         }],
                     "$HIDDEN":true
                 },
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_input",
-                    "props":{"var":"b_input"},
+                    "props":{"var":"b_input","top":0,"right":0,"left":0,"bottom":0},
                     "nodeParent":19,
                     "label":"b_input",
                     "isOpen":false,
@@ -333,7 +309,7 @@
                         {
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":43,"x":16,"skin":"comp/ddeposit_chonzhishoukuanbg.png"},
+                            "props":{"y":20,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","left":16},
                             "nodeParent":26,
                             "label":"Image",
                             "isOpen":false,
@@ -360,10 +336,10 @@
                         {
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":43,"x":520,"skin":"comp/ddeposit_chonzhishoukuanbg.png"},
+                            "props":{"y":20,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","right":0},
                             "nodeParent":26,
                             "label":"Image",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
@@ -387,7 +363,7 @@
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":149,"x":45,"text":"收款银行","fontSize":24,"color":"#a0a0a0"},
+                            "props":{"y":133,"x":32,"text":"收款银行","fontSize":24,"color":"#a0a0a0"},
                             "nodeParent":26,
                             "label":"Label",
                             "isOpen":false,
@@ -438,7 +414,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,btn_copy1",
-                                    "props":{"y":-13,"x":364,"var":"btn_copy1","stateNum":"1","skin":"comp/ddeposit_chonzhifuzh.png"},
+                                    "props":{"y":-6,"x":358,"var":"btn_copy1","stateNum":"1","skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},
                                     "nodeParent":29,
                                     "label":"btn_copy1",
                                     "isDirectory":false,
@@ -452,7 +428,7 @@
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":225,"x":45,"width":98,"text":"收款人","height":24,"fontSize":24,"color":"#a0a0a0","align":"center"},
+                            "props":{"y":209,"x":32,"width":98,"text":"收款人","height":24,"fontSize":24,"color":"#a0a0a0","align":"center"},
                             "nodeParent":26,
                             "label":"Label",
                             "isOpen":false,
@@ -503,7 +479,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,btn_copy2",
-                                    "props":{"y":-14,"x":364,"var":"btn_copy2","stateNum":"1","skin":"comp/ddeposit_chonzhifuzh.png"},
+                                    "props":{"y":-3,"x":360,"var":"btn_copy2","stateNum":"1","skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},
                                     "nodeParent":52,
                                     "label":"btn_copy2",
                                     "isDirectory":false,
@@ -517,7 +493,7 @@
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":299,"x":45,"text":"收款账号","fontSize":24,"color":"#a0a0a0"},
+                            "props":{"y":283,"x":32,"text":"收款账号","fontSize":24,"color":"#a0a0a0"},
                             "nodeParent":26,
                             "label":"Label",
                             "isOpen":false,
@@ -568,7 +544,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,btn_copy3",
-                                    "props":{"y":-14,"x":364,"var":"btn_copy3","stateNum":"1","skin":"comp/ddeposit_chonzhifuzh.png"},
+                                    "props":{"y":0,"x":356,"var":"btn_copy3","stateNum":"1","skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},
                                     "nodeParent":57,
                                     "label":"btn_copy3",
                                     "isDirectory":false,
@@ -582,7 +558,7 @@
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":373,"x":45,"width":96,"text":"开户地","height":24,"fontSize":24,"color":"#a0a0a0","align":"center"},
+                            "props":{"y":357,"x":32,"width":96,"text":"开户地","height":24,"fontSize":24,"color":"#a0a0a0","align":"center"},
                             "nodeParent":26,
                             "label":"Label",
                             "isOpen":false,
@@ -633,9 +609,10 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,btn_copy4",
-                                    "props":{"y":-14,"x":364,"var":"btn_copy4","stateNum":"1","skin":"comp/ddeposit_chonzhifuzh.png"},
+                                    "props":{"y":0,"x":361,"var":"btn_copy4","stateNum":"1","skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},
                                     "nodeParent":62,
                                     "label":"btn_copy4",
+                                    "isOpen":false,
                                     "isDirectory":false,
                                     "isAniNode":true,
                                     "hasChild":false,
@@ -647,7 +624,7 @@
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":516,"x":26,"text":"第一步:复制收款银行前往充值","height":24,"fontSize":20,"color":"#a0a0a0","align":"center"},
+                            "props":{"y":493,"x":26,"text":"第一步:复制收款银行前往充值","height":24,"fontSize":20,"color":"#a0a0a0","align":"center"},
                             "nodeParent":26,
                             "label":"Label",
                             "isOpen":true,
@@ -661,7 +638,7 @@
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":137,"x":543,"text":"存款金额","fontSize":24,"color":"#a0a0a0"},
+                            "props":{"y":138,"x":543,"text":"存款金额","fontSize":24,"color":"#a0a0a0"},
                             "nodeParent":26,
                             "label":"Label",
                             "isOpen":true,
@@ -675,7 +652,7 @@
                         {
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":125,"x":654,"width":302,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"18,27,9,18","height":48},
+                            "props":{"y":126,"x":654,"width":302,"skin":"comp/ic_input_bg.png","sizeGrid":"18,27,9,18","height":48},
                             "nodeParent":26,
                             "label":"Image",
                             "isOpen":false,
@@ -715,7 +692,7 @@
                         {
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":212,"x":654,"width":302,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"18,27,9,18","height":48},
+                            "props":{"y":212,"x":654,"width":302,"skin":"comp/ic_input_bg.png","sizeGrid":"18,27,9,18","height":48},
                             "nodeParent":26,
                             "label":"Image",
                             "isOpen":false,
@@ -741,7 +718,7 @@
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"y":516,"x":530,"text":"第二步:充值完成，填写您的存款信息.最后提交充值","height":24,"fontSize":20,"color":"#a0a0a0","align":"center"},
+                            "props":{"y":487,"x":530,"text":"第二步:充值完成，填写您的存款信息.最后提交充值","height":24,"fontSize":20,"color":"#a0a0a0","align":"center"},
                             "nodeParent":26,
                             "label":"Label",
                             "isOpen":true,
@@ -755,7 +732,7 @@
                         {
                             "type":"Button",
                             "searchKey":"Button,btn_prev",
-                            "props":{"y":544,"x":158.7783203125,"var":"btn_prev","stateNum":"1","skin":"comp/ddeposit_chonzhifanhuishangyiye.png","scaleY":0.8,"scaleX":0.8},
+                            "props":{"y":520,"x":83.5,"var":"btn_prev","stateNum":"1","skin":"btns/ic_return_back.png","scaleY":0.6,"scaleX":0.6},
                             "nodeParent":26,
                             "label":"btn_prev",
                             "isDirectory":false,
@@ -768,7 +745,7 @@
                         {
                             "type":"Button",
                             "searchKey":"Button,btn_tjcz",
-                            "props":{"y":544,"x":675,"var":"btn_tjcz","stateNum":"1","skin":"comp/ddeposit_chonzhitijiaochonzhi.png","scaleY":0.8,"scaleX":0.8},
+                            "props":{"y":518,"x":675,"var":"btn_tjcz","stateNum":"1","skin":"btns/ic_go.png","scaleY":0.6,"scaleX":0.6},
                             "nodeParent":26,
                             "label":"btn_tjcz",
                             "isDirectory":false,
@@ -785,83 +762,27 @@
         {
             "x":15,
             "type":"Box",
-            "searchKey":"Box,b_zfb",
-            "props":{"y":92,"var":"b_zfb","right":0,"left":293,"height":623},
+            "searchKey":"Box,b_zf",
+            "props":{"var":"b_zf","right":5,"left":298,"height":598,"bottom":0},
             "nodeParent":2,
-            "label":"b_zfb",
+            "label":"b_zf",
             "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
-            "compId":87,
+            "compId":136,
             "child":[
                 {
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":46,"x":75,"text":"玩家常玩的充值金额","fontSize":24,"color":"#ffffff"},
-                    "nodeParent":87,
+                    "props":{"y":95,"x":32,"text":"玩家常玩的充值金额","fontSize":24,"color":"#ffffff"},
+                    "nodeParent":136,
                     "label":"Label",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
-                    "compId":88,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_1",
-                    "props":{"y":115,"x":42,"var":"btn_1","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_1",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":89,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"100元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":89,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":93,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":316,"width":926,"skin":"comp/ddeposit_chonzhichonzhijinebg.png","sizeGrid":"19,23,12,16","height":174,"centerX":0},
-                    "nodeParent":87,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":108,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "searchKey":"Label",
-                    "props":{"y":388,"x":85,"width":129,"text":"充值金额","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                    "nodeParent":87,
-                    "label":"Label",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":109,
+                    "compId":141,
                     "child":[
                         ]
                 },
@@ -869,256 +790,375 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":382,"x":224,"width":507,"skin":"comp/ddeposit_chonzhiweixinhao.png","sizeGrid":"0,13,0,16","mouseThrough":true,"height":42},
-                    "nodeParent":87,
+                    "props":{"y":70,"x":0,"width":966,"skin":"bgs/ic_online_bg.png","height":524},
+                    "nodeParent":136,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":142,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"List",
+                    "searchKey":"List,list_2",
+                    "props":{"y":0,"x":0,"width":964,"spaceX":10,"repeatY":1,"name":"list_2","height":61},
+                    "nodeParent":136,
+                    "label":"list_2",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":154,
+                    "child":[
+                        {
+                            "type":"Box",
+                            "searchKey":"Box",
+                            "props":{"renderType":"render"},
+                            "nodeParent":154,
+                            "label":"Box",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":false,
+                            "hasChild":true,
+                            "compId":156,
+                            "child":[
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image",
+                                    "props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao2.png"},
+                                    "nodeParent":156,
+                                    "label":"Image",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":158,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image,img_selected",
+                                    "props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao.png","name":"img_selected"},
+                                    "nodeParent":156,
+                                    "label":"img_selected",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":157,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label,txt_name",
+                                    "props":{"y":6,"x":0,"width":176,"text":"微信","name":"txt_name","height":28,"fontSize":24,"align":"center"},
+                                    "nodeParent":156,
+                                    "label":"txt_name",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":159,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image,img_yh",
+                                    "props":{"y":6,"x":123,"skin":"icons/ic_charge_discount.png","scaleY":0.5,"scaleX":0.5,"name":"img_yh"},
+                                    "nodeParent":156,
+                                    "label":"img_yh",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":164,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label,txt_info",
+                                    "props":{"y":36,"x":0,"width":176,"text":"微信","name":"txt_info","height":20,"fontSize":22,"align":"center"},
+                                    "nodeParent":156,
+                                    "label":"txt_info",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":165,
+                                    "child":[
+                                        ]
+                                }]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"List",
+                    "searchKey":"List,list_3",
+                    "props":{"y":138,"width":957,"spaceY":20,"spaceX":120,"right":10,"name":"list_3","left":10,"height":163},
+                    "nodeParent":136,
+                    "label":"list_3",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":166,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Box",
+                            "searchKey":"Box",
+                            "props":{"renderType":"render"},
+                            "nodeParent":166,
+                            "label":"Box",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":false,
+                            "hasChild":true,
+                            "compId":168,
+                            "child":[
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image",
+                                    "props":{"y":0,"x":0,"width":138,"skin":"comp/ic_pc_grbb_tab.png","sizeGrid":"15,15,15,15","height":55},
+                                    "nodeParent":168,
+                                    "label":"Image",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":169,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image,img_selected",
+                                    "props":{"width":138,"skin":"comp/ic_pc_grbb_tab_pressed.png","sizeGrid":"15,15,15,15","name":"img_selected","height":55},
+                                    "nodeParent":168,
+                                    "label":"img_selected",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":170,
+                                    "child":[
+                                        ],
+                                    "$HIDDEN":true
+                                },
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label,txt_value",
+                                    "props":{"y":13,"x":4,"width":131,"text":"10000元","name":"txt_value","height":26,"fontSize":26,"color":"#ffffff","bold":true,"align":"center"},
+                                    "nodeParent":168,
+                                    "label":"txt_value",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":171,
+                                    "child":[
+                                        ]
+                                }]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":309,"width":967,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":5,"height":164},
+                    "nodeParent":136,
                     "label":"Image",
                     "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":172,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":28,"x":32,"text":"充值金额","fontSize":36,"color":"#ffffff","bold":true},
+                            "nodeParent":172,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":173,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":20,"x":246,"width":399,"skin":"comp/big_input_box.png","sizeGrid":"20,20,20,20","height":60},
+                            "nodeParent":172,
+                            "label":"Image",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":174,
+                            "child":[
+                                {
+                                    "type":"TextInput",
+                                    "searchKey":"TextInput,txt_oldPwd",
+                                    "props":{"y":7,"x":11,"width":355,"var":"txt_oldPwd","type":"password","text":"111","height":36,"fontSize":30,"color":"#d6c09a"},
+                                    "nodeParent":174,
+                                    "label":"txt_oldPwd",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":175,
+                                    "child":[
+                                        ]
+                                }]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_clear",
+                            "props":{"y":20,"var":"btn_clear","stateNum":"1","skin":"btns/ic_clear_bg.png","scaleY":0.6,"scaleX":0.6,"right":50},
+                            "nodeParent":172,
+                            "label":"btn_clear",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":176,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button",
+                    "props":{"stateNum":"1","skin":"btns/ic_commit_charge.png","scaleY":0.6,"scaleX":0.6,"centerX":0,"bottom":10},
+                    "nodeParent":136,
+                    "label":"Button",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
-                    "compId":110,
+                    "compId":177,
                     "child":[
                         ]
-                },
-                {
-                    "x":30,
-                    "type":"TextInput",
-                    "searchKey":"TextInput,txt_input",
-                    "props":{"y":388,"x":234,"width":482,"var":"txt_input","prompt":"请输入充值金额","mouseEnabled":true,"height":30,"fontSize":26,"color":"#ffffff","align":"left"},
-                    "nodeParent":87,
-                    "label":"txt_input",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":111,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_clear",
-                    "props":{"y":377,"x":801,"var":"btn_clear","stateNum":"1","skin":"comp/ddeposit_qingchu.png","scaleY":0.8,"scaleX":0.8},
-                    "nodeParent":87,
-                    "label":"btn_clear",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":112,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_tjcz1",
-                    "props":{"y":538,"var":"btn_tjcz1","stateNum":"1","skin":"comp/ddeposit_chonzhitijiaochongzhi.png","scaleY":0.8,"scaleX":0.8,"centerX":0},
-                    "nodeParent":87,
-                    "label":"btn_tjcz1",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":114,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_2",
-                    "props":{"y":115,"x":272,"var":"btn_2","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_2",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":116,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"200元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":116,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":117,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_3",
-                    "props":{"y":115,"x":501,"var":"btn_3","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_3",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":118,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"500元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":118,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":119,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_4",
-                    "props":{"y":115,"x":731,"var":"btn_4","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_4",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":120,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"1000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":120,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":121,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_5",
-                    "props":{"y":210,"x":42,"var":"btn_5","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_5",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":122,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"2000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":122,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":126,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_6",
-                    "props":{"y":210,"x":272,"var":"btn_6","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_6",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":123,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"5000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":123,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":127,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_7",
-                    "props":{"y":210,"x":501,"var":"btn_7","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_7",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":124,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"10000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":124,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":128,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_8",
-                    "props":{"y":210,"x":731,"var":"btn_8","stateNum":"2","skin":"comp/btn_czgz.png","scaleY":1,"scaleX":1,"labelSize":30,"labelColors":"#ffffff"},
-                    "nodeParent":87,
-                    "label":"btn_8",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":125,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":15,"x":0,"width":180,"text":"20000元","mouseEnabled":false,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
-                            "nodeParent":125,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":129,
-                            "child":[
-                                ]
-                        }]
                 }],
-            "$HIDDEN":false
+            "$HIDDEN":true
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,b_left",
+            "props":{"width":283,"var":"b_left","top":120,"left":0,"height":600,"bottom":0},
+            "nodeParent":2,
+            "label":"b_left",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":144,
+            "child":[
+                {
+                    "x":30,
+                    "type":"List",
+                    "searchKey":"List,list_1",
+                    "props":{"vScrollBarSkin":"comp/vscroll.png","top":0,"spaceY":5,"right":0,"name":"list_1","left":0,"bottom":0},
+                    "nodeParent":144,
+                    "label":"list_1",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":146,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Box",
+                            "searchKey":"Box",
+                            "props":{"renderType":"render"},
+                            "nodeParent":146,
+                            "label":"Box",
+                            "isOpen":true,
+                            "isDirectory":true,
+                            "isAniNode":false,
+                            "hasChild":true,
+                            "compId":147,
+                            "child":[
+                                {
+                                    "x":60,
+                                    "type":"Image",
+                                    "searchKey":"Image,img_normal",
+                                    "props":{"x":0,"width":283,"skin":"bgs/ic_charge_unchose.png","name":"img_normal","height":86},
+                                    "nodeParent":147,
+                                    "label":"img_normal",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":148,
+                                    "child":[
+                                        ],
+                                    "$HIDDEN":false
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Image",
+                                    "searchKey":"Image,img_selected",
+                                    "props":{"width":283,"skin":"bgs/ic_charge_chose.png","name":"img_selected","height":86},
+                                    "nodeParent":147,
+                                    "label":"img_selected",
+                                    "isOpen":true,
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":149,
+                                    "child":[
+                                        ],
+                                    "$HIDDEN":false
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Image",
+                                    "searchKey":"Image,img_type",
+                                    "props":{"x":16,"width":50,"skin":"bgs/nfc_icon.png","name":"img_type","height":50,"centerY":0},
+                                    "nodeParent":147,
+                                    "label":"img_type",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":150,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Label",
+                                    "searchKey":"Label,txt_name",
+                                    "props":{"y":30,"x":89,"width":189,"text":"label","name":"txt_name","height":26,"fontSize":26},
+                                    "nodeParent":147,
+                                    "label":"txt_name",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":152,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Image",
+                                    "searchKey":"Image,img_yh",
+                                    "props":{"y":5.5,"x":223,"skin":"icons/ic_charge_discount.png","scaleY":0.5,"scaleX":0.5,"name":"img_yh"},
+                                    "nodeParent":147,
+                                    "label":"img_yh",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":153,
+                                    "child":[
+                                        ]
+                                }]
+                        }]
+                }]
         }],
     "animations":[
         {

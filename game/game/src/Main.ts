@@ -24,7 +24,6 @@ class Main  extends gamelib.core.GameMain
 		// main.height = Laya.stage.height;
 		// Laya.stage.addChild(main);
 		ui.ChongZhiHistroyUI;
-
 		var main:Hall = new Hall();
 		main.show();
 	}

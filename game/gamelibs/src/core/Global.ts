@@ -12,12 +12,7 @@ var g_loading:gamelib.loading.LoadingModule;
 var g_signal:gamelib.core.Signal;
 
 var g_net:gamelib.core.GameNet;
-/**
- * ui管理器
- * @global
- * @type {gamelib.core.UiMainager}
- */
-var g_uiMgr:gamelib.core.UiMainager;
+
 /**
  * 主游戏入口实例
  * @type {gamelib.core.GameMain}

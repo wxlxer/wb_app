@@ -4,13 +4,13 @@
 * 游戏初始化配置;
 */
 export default class GameConfig{
-    static width:number=1280;
-    static height:number=720;
+    static width:number=2000;
+    static height:number=1000;
     static scaleMode:string="fixedauto";
     static screenMode:string="horizontal";
-    static alignV:string="top";
-    static alignH:string="left";
-    static startScene:any="HallUi.scene";
+    static alignV:string="middle";
+    static alignH:string="center";
+    static startScene:any="LoginUi.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=false;

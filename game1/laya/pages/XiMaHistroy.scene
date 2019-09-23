@@ -2,11 +2,11 @@
     "x":0,
     "type":"Dialog",
     "selectedBox":2,
-    "selecteID":8,
+    "selecteID":3,
     "searchKey":"Dialog",
     "props":{"width":1096,"sceneColor":"#000000","height":660},
     "nodeParent":-1,
-    "maxID":21,
+    "maxID":23,
     "label":"Dialog",
     "isOpen":true,
     "isDirectory":true,
@@ -18,7 +18,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":0,"x":0,"skin":"comp/dwashcode_wc_bg_record.png"},
+            "props":{"top":0,"skin":"bgs/ic_xima_detail.png","right":0,"left":0,"bottom":0},
             "nodeParent":2,
             "label":"Image",
             "isDirectory":false,
@@ -207,7 +207,7 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,btn_close",
-            "props":{"y":0,"x":1025,"var":"btn_close","stateNum":"1","skin":"comp/dgetcharge_guanbianniutc.png"},
+            "props":{"y":0,"x":989,"var":"btn_close","stateNum":"1","skin":"btns/ic_close.png"},
             "nodeParent":2,
             "label":"btn_close",
             "isDirectory":false,
@@ -216,36 +216,6 @@
             "compId":9,
             "child":[
                 ]
-        },
-        {
-            "x":15,
-            "type":"Label",
-            "searchKey":"Label,txt_tips",
-            "props":{"y":0,"x":0,"var":"txt_tips","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":52,"centerX":-1},
-            "nodeParent":2,
-            "label":"txt_tips",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":10,
-            "child":[
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":-94,"x":-10,"skin":"comp/dactivity_no_data.png","scaleY":0.7,"scaleX":0.7},
-                    "nodeParent":10,
-                    "label":"Image",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":14,
-                    "child":[
-                        ]
-                }],
-            "$HIDDEN":false
         },
         {
             "x":15,
@@ -274,6 +244,36 @@
             "compId":18,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label,txt_tips1",
+            "props":{"y":0,"x":0,"var":"txt_tips1","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":101,"centerX":0},
+            "nodeParent":2,
+            "label":"txt_tips1",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":21,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-94,"x":-10,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5},
+                    "nodeParent":21,
+                    "label":"Image",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":22,
+                    "child":[
+                        ]
+                }],
+            "$HIDDEN":false
         }],
     "animations":[
         {

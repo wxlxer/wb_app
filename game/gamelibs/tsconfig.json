@@ -9,8 +9,7 @@
 	   "outFile":"bin/gamelib.js",
     "lib":[
       "es5",
-      "dom",
-      "es2015.promise"
+      "dom"
     ]
   },
   "exclude": [

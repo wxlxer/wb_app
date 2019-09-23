@@ -106,7 +106,6 @@ namespace gamelib.core
             if(this._isDialog)
             {
                 
-                g_uiMgr.m_temp_ui = this;
                 // this._res["popup"]();
                 this._closeByMaskBg = true;
                 if(this._noticeOther)

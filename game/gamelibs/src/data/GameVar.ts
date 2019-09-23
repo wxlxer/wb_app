@@ -16,6 +16,8 @@ class GameVar {
      */
     public static m_QRCodeUrl:string;
 
+    public static s_token:string = "";
+
     /**
      * 当前游戏包含vip信息的二维码地址
      * @type {string}

@@ -125,7 +125,6 @@ namespace gamelib.alert
         {
             super.onClose();
             Laya.timer.clear(this,this.timer);
-            g_uiMgr.onAlertUiClose(this);
         }
         protected onClickObjects(evt:laya.events.Event):void
         {

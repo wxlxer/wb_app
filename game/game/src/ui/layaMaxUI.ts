@@ -4,7 +4,7 @@ import Dialog=Laya.Dialog;
 import Scene=Laya.Scene;
 var REG: Function = Laya.ClassUtils.regClass;
 export module ui {
-    export class ChongZhiHistroyUI extends Dialog {
+    export class ChongZhiHistroyUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips:Laya.Label;
@@ -16,7 +16,7 @@ export module ui {
         }
     }
     REG("ui.ChongZhiHistroyUI",ChongZhiHistroyUI);
-    export class ChongZhiUiUI extends View {
+    export class ChongZhiUiUI extends Laya.View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public btn_sx:Laya.Button;
@@ -59,7 +59,7 @@ export module ui {
         }
     }
     REG("ui.ChongZhiUiUI",ChongZhiUiUI);
-    export class FanYongListUI extends Dialog {
+    export class FanYongListUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips:Laya.Label;
@@ -71,7 +71,7 @@ export module ui {
         }
     }
     REG("ui.FanYongListUI",FanYongListUI);
-    export class HallUiUI extends View {
+    export class HallUiUI extends Laya.View {
 		public img_bg:Laya.Image;
 		public b_top:Laya.Box;
 		public txt_name:Laya.Label;
@@ -105,7 +105,7 @@ export module ui {
         }
     }
     REG("ui.HallUiUI",HallUiUI);
-    export class HuoDongUiUI extends View {
+    export class HuoDongUiUI extends Laya.View {
 		public b_bg:Laya.Box;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
@@ -120,7 +120,7 @@ export module ui {
         }
     }
     REG("ui.HuoDongUiUI",HuoDongUiUI);
-    export class KeFuUiUI extends View {
+    export class KeFuUiUI extends Laya.View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public tab_1:Laya.Tab;
@@ -138,7 +138,7 @@ export module ui {
         }
     }
     REG("ui.KeFuUiUI",KeFuUiUI);
-    export class LingQuHistroyUI extends Dialog {
+    export class LingQuHistroyUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips:Laya.Label;
@@ -150,7 +150,7 @@ export module ui {
         }
     }
     REG("ui.LingQuHistroyUI",LingQuHistroyUI);
-    export class LingQuYongJinUI extends Dialog {
+    export class LingQuYongJinUI extends Laya.Dialog {
 		public txt_money1:Laya.Label;
 		public txt_money2:Laya.Label;
 		public btn_ok:Laya.Button;
@@ -165,7 +165,7 @@ export module ui {
         }
     }
     REG("ui.LingQuYongJinUI",LingQuYongJinUI);
-    export class LoginUiUI extends Dialog {
+    export class LoginUiUI extends Laya.Dialog {
 		public txt_name:Laya.TextInput;
         public static  uiView:any ={"type":"Dialog","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"comp/dregister_pop.png"},"compId":3},{"type":"Button","props":{"y":0,"x":1019,"stateNum":1,"skin":"comp/dmessageset_guanbianniutc.png"},"compId":4},{"type":"Button","props":{"y":540,"x":0,"stateNum":1,"skin":"comp/dregister_btn.png","centerX":0},"compId":5},{"type":"Label","props":{"y":178,"x":210,"text":"账号","fontSize":30,"color":"#FFFFFF","bold":true},"compId":6},{"type":"Image","props":{"y":169,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":7,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"var":"txt_name","type":"text","prompt":"请输入您的账号","height":36,"fontSize":30,"color":"#d6c09a"},"compId":14}]},{"type":"Label","props":{"y":261,"x":210,"text":"密码","fontSize":30,"color":"#FFFFFF","bold":true},"compId":8},{"type":"Image","props":{"y":252,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":9,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"type":"password","prompt":"请输入您的密码","name":"txt_pwd1","height":36,"fontSize":30,"color":"#d6c09a"},"compId":15}]},{"type":"Label","props":{"y":344,"x":210,"text":"确认密码","fontSize":30,"color":"#FFFFFF","bold":true},"compId":10},{"type":"Image","props":{"y":335,"x":344,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":11,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"type":"text","prompt":"请输入持卡人姓名","name":"txt_pwd2","height":36,"fontSize":30,"color":"#d6c09a"},"compId":16}]},{"type":"Label","props":{"y":427,"x":210,"text":"提款密码","fontSize":30,"color":"#FFFFFF","bold":true},"compId":12},{"type":"Image","props":{"y":418,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":13,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"type":"number","prompt":"请输入提款密码,6位纯数字","height":36,"fontSize":30,"color":"#d6c09a"},"compId":17}]}],"loadList":["comp/dregister_pop.png","comp/dmessageset_guanbianniutc.png","comp/dregister_btn.png","comp/dsetting_pwd_input.png"],"loadList3D":[]};
         constructor(){ super()}
@@ -175,7 +175,7 @@ export module ui {
         }
     }
     REG("ui.LoginUiUI",LoginUiUI);
-    export class MailUI extends Dialog {
+    export class MailUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
 		public btn_close:Laya.Button;
@@ -187,7 +187,7 @@ export module ui {
         }
     }
     REG("ui.MailUI",MailUI);
-    export class MailInfoUI extends Dialog {
+    export class MailInfoUI extends Laya.Dialog {
 		public txt_info:Laya.TextArea;
 		public btn_close:Laya.Button;
         public static  uiView:any ={"type":"Dialog","props":{"width":1096,"height":660},"compId":2,"child":[{"type":"Image","props":{"skin":"comp/message_detail.png","scaleY":0.67,"scaleX":0.67},"compId":3},{"type":"TextArea","props":{"y":129,"x":16,"width":1070,"var":"txt_info","text":"TextArea","height":510,"fontSize":24,"color":"#FFFFFF"},"compId":4},{"type":"Button","props":{"y":0,"x":1019,"var":"btn_close","stateNum":1,"skin":"comp/dgetcharge_guanbianniutc.png"},"compId":5}],"loadList":["comp/message_detail.png","comp/dgetcharge_guanbianniutc.png"],"loadList3D":[]};
@@ -198,7 +198,7 @@ export module ui {
         }
     }
     REG("ui.MailInfoUI",MailInfoUI);
-    export class NoticeUI extends Dialog {
+    export class NoticeUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public img_gg:Laya.Image;
         public static  uiView:any ={"type":"Dialog","props":{"width":953,"height":568},"compId":2,"child":[{"type":"Image","props":{"skin":"comp/dindex_notice_modal.png"},"compId":3},{"type":"Button","props":{"y":0,"x":876,"var":"btn_close","stateNum":1,"skin":"comp/dgetcharge_guanbianniutc.png"},"compId":4},{"type":"Image","props":{"y":88,"x":0,"width":952,"var":"img_gg","height":436},"compId":5}],"loadList":["comp/dindex_notice_modal.png","comp/dgetcharge_guanbianniutc.png"],"loadList3D":[]};
@@ -209,7 +209,7 @@ export module ui {
         }
     }
     REG("ui.NoticeUI",NoticeUI);
-    export class RegisterUiUI extends Dialog {
+    export class RegisterUiUI extends Laya.Dialog {
 		public txt_name:Laya.TextInput;
         public static  uiView:any ={"type":"Dialog","props":{"width":1096,"height":660},"compId":2,"child":[{"type":"Image","props":{"skin":"comp/dregister_pop.png"},"compId":3},{"type":"Button","props":{"y":0,"x":1019,"stateNum":1,"skin":"comp/dmessageset_guanbianniutc.png"},"compId":4},{"type":"Button","props":{"y":540,"stateNum":1,"skin":"comp/dregister_btn.png","centerX":0},"compId":5},{"type":"Label","props":{"y":178,"x":210,"text":"账号","fontSize":30,"color":"#FFFFFF","bold":true},"compId":6},{"type":"Image","props":{"y":169,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":7,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"var":"txt_name","type":"text","prompt":"请输入您的账号","height":36,"fontSize":30,"color":"#d6c09a"},"compId":8}]},{"type":"Label","props":{"y":261,"x":210,"text":"密码","fontSize":30,"color":"#FFFFFF","bold":true},"compId":9},{"type":"Image","props":{"y":252,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":10,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"type":"password","prompt":"请输入您的密码","name":"txt_pwd1","height":36,"fontSize":30,"color":"#d6c09a"},"compId":11}]},{"type":"Label","props":{"y":344,"x":210,"text":"确认密码","fontSize":30,"color":"#FFFFFF","bold":true},"compId":12},{"type":"Image","props":{"y":335,"x":344,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":13,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"type":"text","prompt":"请输入持卡人姓名","name":"txt_pwd2","height":36,"fontSize":30,"color":"#d6c09a"},"compId":14}]},{"type":"Label","props":{"y":427,"x":210,"text":"提款密码","fontSize":30,"color":"#FFFFFF","bold":true},"compId":15},{"type":"Image","props":{"y":418,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},"compId":16,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":529,"type":"number","prompt":"请输入提款密码,6位纯数字","height":36,"fontSize":30,"color":"#d6c09a"},"compId":17}]}],"loadList":["comp/dregister_pop.png","comp/dmessageset_guanbianniutc.png","comp/dregister_btn.png","comp/dsetting_pwd_input.png"],"loadList3D":[]};
         constructor(){ super()}
@@ -219,7 +219,7 @@ export module ui {
         }
     }
     REG("ui.RegisterUiUI",RegisterUiUI);
-    export class SetUiUI extends Dialog {
+    export class SetUiUI extends Laya.Dialog {
 		public tab_1:Laya.Tab;
 		public b_sound:Laya.Box;
 		public img_head:Laya.Image;
@@ -243,7 +243,7 @@ export module ui {
         }
     }
     REG("ui.SetUiUI",SetUiUI);
-    export class TiXianUI extends View {
+    export class TiXianUI extends Laya.View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public tab_1:Laya.Tab;
@@ -273,7 +273,7 @@ export module ui {
         }
     }
     REG("ui.TiXianUI",TiXianUI);
-    export class TiXianHistroyUI extends Dialog {
+    export class TiXianHistroyUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips:Laya.Label;
@@ -285,7 +285,7 @@ export module ui {
         }
     }
     REG("ui.TiXianHistroyUI",TiXianHistroyUI);
-    export class TuiGuangUI extends View {
+    export class TuiGuangUI extends Laya.View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public tab_1:Laya.Tab;
@@ -325,7 +325,7 @@ export module ui {
         }
     }
     REG("ui.TuiGuangUI",TuiGuangUI);
-    export class UserInfoUI extends View {
+    export class UserInfoUI extends Laya.View {
 		public tab_2:Laya.Tab;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
@@ -354,7 +354,7 @@ export module ui {
         }
     }
     REG("ui.UserInfoUI",UserInfoUI);
-    export class XiMaUI extends View {
+    export class XiMaUI extends Laya.View {
 		public b_bg:Laya.Box;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
@@ -371,7 +371,7 @@ export module ui {
         }
     }
     REG("ui.XiMaUI",XiMaUI);
-    export class XiMaHistroyUI extends Dialog {
+    export class XiMaHistroyUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips:Laya.Label;

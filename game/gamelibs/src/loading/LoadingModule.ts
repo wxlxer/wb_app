@@ -3,28 +3,8 @@ namespace gamelib.loading
 	export class LoadingModule
 	{
 		private _loadingUi:gamelib.loading.LoadingUi;
-		private _miniLoading:gamelib.loading.MiniLoading;
-        private _miniLoading_child:gamelib.loading.MiniLoading;
-        private _maskLoading:gamelib.loading.MaskLoading;
 		constructor() 
 		{
-			g_signal.add(this.onSignal,this);
-		}
-		private onSignal(msg:string,data:any):void
-		{
-			switch(msg)
-			{
-				
-                case "showEnterGameLoading":
-                    this.showEnterGameLoading(data);
-                    break;
-                case "showEnterGameLoadingMini":
-                    this.showMaskLoading();
-                    break;
-                case "closeEnterGameLoading":
-                    this.closeMaskLoading();                   
-                    break;
-			}
 		}
 		/**
 		 * 更新游戏资源的进度
@@ -160,63 +140,6 @@ namespace gamelib.loading
 		{
 			this.closeLoadingUi();
 		}
-		public showMaskLoading():loading.MaskLoading
-        {
-            this._maskLoading = this._maskLoading || new loading.MaskLoading();
-            this._maskLoading.show();
-            return this._maskLoading;
-        }
-        public closeMaskLoading():void
-        {
-            if(this._maskLoading)
-                this._maskLoading.close();
-        }
-
-        /**
-         * 关闭小loading
-         * @function closeMiniLoading
-         * @DateTime 2018-03-16T14:29:22+0800
-         */
-        public closeMiniLoading():void
-        {
-            if(this._miniLoading != null)
-                this._miniLoading.close();
-        }
-        /**
-         * 打开小转圈
-         * @function showMiniLoading
-         * @DateTime 2018-03-16T14:29:38+0800
-         * @param    {any}}    args [一个对象，msg:string,需要显示的文本
-         *                           delay:number自动关闭的时间，秒为单位
-         *                           alertMsg:string关闭时的提示文本，
-         *                           callBack：function关闭时的回掉]
-         */
-        public showMiniLoading(args?:{msg?:string,delay?:number,alertMsg?:string,callBack?:()=>void,thisObj?:any}):void
-        {
-            this._miniLoading = this._miniLoading || new gamelib.loading.MiniLoading();
-            this._miniLoading.setMsg(args);
-            this._miniLoading.show();
-        }
-
-        /**
-         * 进入子游戏显示的loading
-         * @function
-         * @DateTime 2018-11-16T14:51:52+0800
-         * @data 1:从游戏中返回大厅，0：从大厅中进入游戏
-         */
-        public showEnterGameLoading(data:any):void
-        {
-            this._miniLoading_child = this._miniLoading_child || new gamelib.loading.MiniLoading();
-            this._miniLoading_child.show();
-            if(data == 0)
-                this._miniLoading_child.setMsg({msg:"游戏加载中..."})
-            else
-                this._miniLoading_child.setMsg({msg:"游戏加载中"}) 
-        }
-        public closeEnterGameLoading():void
-        {
-            if(this._miniLoading_child)
-                this._miniLoading_child.close();
-        }
+		
 	}
 }

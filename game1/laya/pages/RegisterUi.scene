@@ -2,7 +2,7 @@
     "x":0,
     "type":"Dialog",
     "selectedBox":2,
-    "selecteID":16,
+    "selecteID":15,
     "searchKey":"Dialog",
     "props":{"width":1096,"sceneColor":"#000000","height":660},
     "nodeParent":-1,
@@ -18,7 +18,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"skin":"comp/dregister_pop.png"},
+            "props":{"top":0,"skin":"bgs/ic_register_bg.png","right":0,"left":0,"bottom":0},
             "nodeParent":2,
             "label":"Image",
             "isDirectory":false,
@@ -31,10 +31,10 @@
         {
             "x":15,
             "type":"Button",
-            "searchKey":"Button",
-            "props":{"y":0,"x":1019,"stateNum":"1","skin":"comp/dmessageset_guanbianniutc.png"},
+            "searchKey":"Button,btn_close",
+            "props":{"y":0,"x":998,"var":"btn_close","stateNum":"1","skin":"btns/ic_close.png"},
             "nodeParent":2,
-            "label":"Button",
+            "label":"btn_close",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -45,10 +45,10 @@
         {
             "x":15,
             "type":"Button",
-            "searchKey":"Button",
-            "props":{"y":540,"stateNum":"1","skin":"comp/dregister_btn.png","centerX":0},
+            "searchKey":"Button,btn_ok",
+            "props":{"y":540,"var":"btn_ok","stateNum":"1","skin":"btns/ic_register_dialog.png","scaleY":0.5,"scaleX":0.5,"centerX":0},
             "nodeParent":2,
-            "label":"Button",
+            "label":"btn_ok",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -74,7 +74,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":169,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},
+            "props":{"y":169,"x":345,"width":545,"skin":"comp/ic_input_bg.png","sizeGrid":"14,32,11,23","height":48},
             "nodeParent":2,
             "label":"Image",
             "isOpen":true,
@@ -116,7 +116,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":252,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},
+            "props":{"y":252,"x":345,"width":545,"skin":"comp/ic_input_bg.png","sizeGrid":"14,32,11,23","height":48},
             "nodeParent":2,
             "label":"Image",
             "isOpen":true,
@@ -129,7 +129,7 @@
                     "x":30,
                     "type":"TextInput",
                     "searchKey":"TextInput,txt_pwd1",
-                    "props":{"y":7,"x":11,"width":529,"type":"password","prompt":"请输入您的密码","name":"txt_pwd1","height":36,"fontSize":30,"color":"#d6c09a"},
+                    "props":{"y":7,"x":11,"width":529,"var":"txt_pwd1","type":"password","prompt":"请输入您的密码","height":36,"fontSize":30,"color":"#d6c09a"},
                     "nodeParent":10,
                     "label":"txt_pwd1",
                     "isDirectory":false,
@@ -158,7 +158,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":335,"x":344,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},
+            "props":{"y":335,"x":344,"width":545,"skin":"comp/ic_input_bg.png","sizeGrid":"14,32,11,23","height":48},
             "nodeParent":2,
             "label":"Image",
             "isOpen":true,
@@ -171,7 +171,7 @@
                     "x":30,
                     "type":"TextInput",
                     "searchKey":"TextInput,txt_pwd2",
-                    "props":{"y":7,"x":11,"width":529,"type":"text","prompt":"请输入持卡人姓名","name":"txt_pwd2","height":36,"fontSize":30,"color":"#d6c09a"},
+                    "props":{"y":7,"x":11,"width":529,"var":"txt_pwd2","type":"text","prompt":"请输入持卡人姓名","height":36,"fontSize":30,"color":"#d6c09a"},
                     "nodeParent":13,
                     "label":"txt_pwd2",
                     "isDirectory":false,
@@ -194,13 +194,14 @@
             "hasChild":false,
             "compId":15,
             "child":[
-                ]
+                ],
+            "$HIDDEN":true
         },
         {
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":418,"x":345,"width":545,"skin":"comp/dsetting_pwd_input.png","sizeGrid":"14,32,11,23","height":48},
+            "props":{"y":418,"x":345,"width":545,"skin":"comp/ic_input_bg.png","sizeGrid":"14,32,11,23","height":48},
             "nodeParent":2,
             "label":"Image",
             "isOpen":true,
@@ -222,7 +223,8 @@
                     "compId":17,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":true
         }],
     "animations":[
         {

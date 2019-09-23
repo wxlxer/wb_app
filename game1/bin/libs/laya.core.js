@@ -11659,7 +11659,8 @@ var SceneUtils=(function(){
 		};
 		var runtime=(json.props && json.props.runtime)|| json.type;
 		var compClass=ClassUtils.getClass(runtime);
-		if (!compClass)throw "Can not find class "+runtime;
+		if (!compClass)
+			throw "Can not find class "+runtime;
 		if (json.type==="Script" && compClass.prototype._doAwake){
 			var comp=Pool.createByClass(compClass);
 			comp._destroyed=false;

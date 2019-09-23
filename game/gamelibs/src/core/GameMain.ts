@@ -139,7 +139,6 @@ namespace gamelib.core
             g_signal = g_signal || new gamelib.core.Signal();
             g_loading = g_loading || new gamelib.loading.LoadingModule();
             g_soundMgr = g_soundMgr || new gamelib.core.SoundManager();
-            g_uiMgr = g_uiMgr || new gamelib.core.UiMainager();
             g_dialogMgr = g_dialogMgr || new gamelib.core.DialogManager();
             g_net = new gamelib.core.GameNet();
             laya.ui.Dialog.manager = g_dialogMgr;

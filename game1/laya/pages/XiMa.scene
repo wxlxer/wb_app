@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":46,
+    "selectedBox":46,
+    "selecteID":21,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":47,
+    "maxID":60,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -16,183 +16,23 @@
     "child":[
         {
             "x":15,
-            "type":"Box",
-            "searchKey":"Box,b_bg",
-            "props":{"y":0,"x":0,"var":"b_bg"},
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":0,"x":0,"skin":"comp/dactivity_nav_left.png"},
             "nodeParent":2,
-            "label":"b_bg",
-            "isOpen":true,
-            "isDirectory":true,
+            "label":"Image",
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
-            "compId":3,
+            "hasChild":false,
+            "compId":47,
             "child":[
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":0,"x":0,"skin":"comp/dgetcharge_leftgide.png","height":722},
-                    "nodeParent":3,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":5,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                }]
-        },
-        {
-            "x":15,
-            "type":"Box",
-            "searchKey":"Box,b_title",
-            "props":{"y":0,"x":0,"var":"b_title","right":0,"left":0},
-            "nodeParent":2,
-            "label":"b_title",
-            "isOpen":false,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":4,
-            "child":[
-                {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":0,"skin":"comp/dgetcharge_header.png","right":0,"left":0},
-                    "nodeParent":4,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":6,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Button",
-                    "searchKey":"Button,btn_close",
-                    "props":{"y":18,"x":43,"var":"btn_close","stateNum":"1","skin":"comp/dgetcharge_go_back.png"},
-                    "nodeParent":4,
-                    "label":"btn_close",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":7,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":18,"x":263,"skin":"comp/dwashcode_wc_title.png"},
-                    "nodeParent":4,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":8,
-                    "child":[
-                        ]
-                }]
-        },
-        {
-            "x":15,
-            "type":"Tab",
-            "searchKey":"Tab,tab_1",
-            "props":{"y":107,"x":0,"width":282,"var":"tab_1","height":484},
-            "nodeParent":2,
-            "label":"tab_1",
-            "isOpen":false,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":9,
-            "child":[
-                {
-                    "type":"Button",
-                    "searchKey":"Button,item0",
-                    "props":{"stateNum":"2","skin":"comp/btn_hd_zh.png","name":"item0","height":80},
-                    "nodeParent":9,
-                    "label":"item0",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":10,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Button",
-                    "searchKey":"Button,item1",
-                    "props":{"y":80,"x":0,"stateNum":"2","skin":"comp/btn_hd_qp.png","name":"item1","height":80},
-                    "nodeParent":9,
-                    "label":"item1",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":11,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Button",
-                    "searchKey":"Button,item2",
-                    "props":{"y":160,"x":0,"stateNum":"2","skin":"comp/btn_hd_fish.png","name":"item2","height":80},
-                    "nodeParent":9,
-                    "label":"item2",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":12,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Button",
-                    "searchKey":"Button,item3",
-                    "props":{"y":240,"x":0,"stateNum":"2","skin":"comp/btn_hd_dz.png","name":"item3","height":80},
-                    "nodeParent":9,
-                    "label":"item3",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":13,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Button",
-                    "searchKey":"Button,item4",
-                    "props":{"y":320,"x":0,"stateNum":"2","skin":"comp/btn_hd_sx.png","name":"item4","height":80},
-                    "nodeParent":9,
-                    "label":"item4",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":14,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Button",
-                    "searchKey":"Button,item5",
-                    "props":{"y":400,"x":0,"stateNum":"2","skin":"comp/btn_hd_ty.png","name":"item5","height":80},
-                    "nodeParent":9,
-                    "label":"item5",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":15,
-                    "child":[
-                        ]
-                }]
+                ]
         },
         {
             "x":15,
             "type":"Box",
             "searchKey":"Box",
-            "props":{"y":92,"width":982,"height":603,"centerX":145},
+            "props":{"y":119,"width":982,"height":603,"centerX":144},
             "nodeParent":2,
             "label":"Box",
             "isOpen":true,
@@ -205,7 +45,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":0,"skin":"comp/dpersonalcenter_vippro_bg.png","sizeGrid":"14,11,6,10","right":0,"left":0,"height":120},
+                    "props":{"y":123,"skin":"bgs/ic_mingxi_bottom.png","sizeGrid":"14,11,6,10","scaleY":-1,"right":0,"left":12,"height":120},
                     "nodeParent":46,
                     "label":"Image",
                     "isDirectory":false,
@@ -219,7 +59,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":7,"skin":"comp/dpersonalcenter_gerenzhonxinlan2.png","right":8,"left":8,"height":60},
+                    "props":{"y":73,"skin":"bgs/ic_mingxi_bottom.png","scaleY":-1,"right":8,"left":12,"height":60},
                     "nodeParent":46,
                     "label":"Image",
                     "isDirectory":false,
@@ -247,7 +87,7 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":21,"x":222,"text":"0.0","fontSize":24,"color":"#ffd784"},
+                    "props":{"y":22,"x":230.318359375,"text":"0.0","fontSize":24,"color":"#ffd784"},
                     "nodeParent":46,
                     "label":"Label",
                     "isDirectory":false,
@@ -261,7 +101,7 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_histroy",
-                    "props":{"y":18,"x":779,"var":"btn_histroy","stateNum":"1","skin":"comp/dwashcode_wc_icon_history.png"},
+                    "props":{"y":11.5,"x":782,"var":"btn_histroy","stateNum":"1","skin":"btns/ic_xima_history.png"},
                     "nodeParent":46,
                     "label":"btn_histroy",
                     "isOpen":false,
@@ -387,7 +227,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":518,"x":0,"width":978,"skin":"comp/dpersonalcenter_gerenzhonxinjilubg2.png","sizeGrid":"20,17,15,18","height":85},
+                    "props":{"y":538,"x":0,"width":978,"skin":"bgs/ic_mingxi_bottom.png","sizeGrid":"20,17,15,18","height":85},
                     "nodeParent":46,
                     "label":"Image",
                     "isDirectory":false,
@@ -401,7 +241,7 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":549,"x":21,"width":608,"text":"上次结算时间:2019/12/12 洗码金额：￥200","height":24,"fontSize":24,"color":"#c7c7c7"},
+                    "props":{"y":569,"x":21,"width":608,"text":"上次结算时间:2019/12/12 洗码金额：￥200","height":24,"fontSize":24,"color":"#c7c7c7"},
                     "nodeParent":46,
                     "label":"Label",
                     "isDirectory":false,
@@ -415,7 +255,7 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_sd",
-                    "props":{"y":526,"x":779,"var":"btn_sd","stateNum":"1","skin":"comp/dwashcode_wc_btn_wc.png"},
+                    "props":{"y":555,"x":813,"var":"btn_sd","stateNum":"1","skin":"btns/pc_sdxm_btn.png","scaleY":0.5,"scaleX":0.5},
                     "nodeParent":46,
                     "label":"btn_sd",
                     "isDirectory":false,
@@ -432,13 +272,14 @@
                     "props":{"y":123,"x":8,"width":959,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","height":391},
                     "nodeParent":46,
                     "label":"list_1",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":37,
                     "child":[
                         {
+                            "x":45,
                             "type":"Box",
                             "searchKey":"Box",
                             "props":{"renderType":"render"},
@@ -451,19 +292,21 @@
                             "compId":38,
                             "child":[
                                 {
+                                    "x":60,
                                     "type":"Image",
-                                    "searchKey":"Image",
-                                    "props":{"y":0,"x":0,"width":942,"skin":"comp/dpersonalcenter_gerenzhonxinlan2.png","sizeGrid":"1,1,1,1","height":40},
+                                    "searchKey":"Image,bg_2",
+                                    "props":{"y":0,"x":0,"width":942,"skin":"bgs/ic_message_list_bg.png","sizeGrid":"30,25,33,30","name":"bg_2","height":40},
                                     "nodeParent":38,
-                                    "label":"Image",
+                                    "label":"bg_2",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
-                                    "compId":39,
+                                    "compId":56,
                                     "child":[
                                         ]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_1",
                                     "props":{"y":8,"x":10,"width":218,"text":"FC棋牌","name":"txt_1","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
@@ -477,6 +320,7 @@
                                         ]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_2",
                                     "props":{"y":8,"x":247,"width":253,"text":"FC棋牌","name":"txt_2","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
@@ -490,6 +334,7 @@
                                         ]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_3",
                                     "props":{"y":8,"x":530,"width":189,"text":"FC棋牌","name":"txt_3","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
@@ -503,6 +348,7 @@
                                         ]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_4",
                                     "props":{"y":8,"x":734,"width":205,"text":"FC棋牌","name":"txt_4","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
@@ -520,32 +366,144 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "searchKey":"Label,txt_tips",
-                    "props":{"y":318,"x":473,"var":"txt_tips","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":89},
+                    "searchKey":"Label,txt_tips1",
+                    "props":{"y":0,"x":0,"var":"txt_tips1","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":101,"centerX":0},
                     "nodeParent":46,
-                    "label":"txt_tips",
-                    "isOpen":false,
+                    "label":"txt_tips1",
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":44,
+                    "compId":57,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":-94,"x":-10,"skin":"comp/dactivity_no_data.png","scaleY":0.7,"scaleX":0.7},
-                            "nodeParent":44,
+                            "props":{"y":-94,"x":-10,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5},
+                            "nodeParent":57,
                             "label":"Image",
                             "isOpen":true,
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":45,
+                            "compId":58,
                             "child":[
                                 ]
                         }],
                     "$HIDDEN":false
                 }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,b_title",
+            "props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},
+            "nodeParent":2,
+            "label":"b_title",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":48,
+            "child":[
+                {
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},
+                    "nodeParent":48,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":50,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                },
+                {
+                    "type":"Button",
+                    "searchKey":"Button,btn_close",
+                    "props":{"y":4,"x":0,"var":"btn_close","stateNum":"1","skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},
+                    "nodeParent":48,
+                    "label":"btn_close",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":51,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"x":329,"skin":"bgs/ic_xima_title.png","scaleY":0.5,"scaleX":0.5,"centerY":0},
+                    "nodeParent":48,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":52,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"List",
+            "searchKey":"List,list_tab",
+            "props":{"y":0,"x":0,"width":295,"var":"list_tab","top":125,"spaceY":5,"repeatX":1,"left":0,"height":578},
+            "nodeParent":2,
+            "label":"list_tab",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":49,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box",
+                    "props":{"renderType":"render"},
+                    "nodeParent":49,
+                    "label":"Box",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":false,
+                    "hasChild":true,
+                    "compId":53,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image,bg_normal",
+                            "props":{"y":0,"x":0,"width":287,"skin":"btns/ic_xima_qipai.png","name":"bg_normal","height":96},
+                            "nodeParent":53,
+                            "label":"bg_normal",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":54,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image,bg_selected",
+                            "props":{"y":0,"x":0,"width":287,"skin":"btns/ic_xima_qipai_pressed.png","name":"bg_selected","height":96},
+                            "nodeParent":53,
+                            "label":"bg_selected",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":55,
+                            "child":[
+                                ]
+                        }]
+                }],
+            "$HIDDEN":false
         }],
     "animations":[
         {
