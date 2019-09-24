@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":46,
-    "selecteID":21,
+    "selectedBox":2,
+    "selecteID":46,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":60,
+    "maxID":78,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -32,7 +32,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box",
-            "props":{"y":119,"width":982,"height":603,"centerX":144},
+            "props":{"y":125,"right":15,"left":300,"height":603},
             "nodeParent":2,
             "label":"Box",
             "isOpen":true,
@@ -45,7 +45,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":123,"skin":"bgs/ic_mingxi_bottom.png","sizeGrid":"14,11,6,10","scaleY":-1,"right":0,"left":12,"height":120},
+                    "props":{"y":123,"skin":"bgs/ic_mingxi_bottom.png","sizeGrid":"14,11,6,10","scaleY":-1,"right":8,"left":0,"height":120},
                     "nodeParent":46,
                     "label":"Image",
                     "isDirectory":false,
@@ -59,7 +59,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":73,"skin":"bgs/ic_mingxi_bottom.png","scaleY":-1,"right":8,"left":12,"height":60},
+                    "props":{"y":64,"width":957,"skin":"bgs/ic_mingxi_bottom.png","scaleY":-1,"right":8,"left":0,"height":60},
                     "nodeParent":46,
                     "label":"Image",
                     "isDirectory":false,
@@ -99,65 +99,9 @@
                 },
                 {
                     "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_histroy",
-                    "props":{"y":11.5,"x":782,"var":"btn_histroy","stateNum":"1","skin":"btns/ic_xima_history.png"},
-                    "nodeParent":46,
-                    "label":"btn_histroy",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":21,
-                    "child":[
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":3,"x":34,"text":"历史洗码记录","fontSize":24,"color":"#ffd784"},
-                            "nodeParent":21,
-                            "label":"Label",
-                            "isOpen":false,
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":20,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":82,"x":76,"text":"全部游戏","fontSize":24,"color":"#ffd784"},
-                    "nodeParent":46,
-                    "label":"Label",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":25,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "searchKey":"Label",
-                    "props":{"y":82,"x":330,"text":"游戏洗码量","fontSize":24,"color":"#ffd784"},
-                    "nodeParent":46,
-                    "label":"Label",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":26,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "searchKey":"Label",
-                    "props":{"y":82,"x":607,"text":"比例","fontSize":24,"color":"#ffd784"},
+                    "props":{"y":83,"x":607,"text":"比例","fontSize":24,"color":"#ffd784"},
                     "nodeParent":46,
                     "label":"Label",
                     "isDirectory":false,
@@ -171,55 +115,13 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":82,"x":813,"text":"洗码金额","fontSize":24,"color":"#ffd784"},
+                    "props":{"y":83,"x":813,"text":"洗码金额","fontSize":24,"color":"#ffd784"},
                     "nodeParent":46,
                     "label":"Label",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":28,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":73,"x":246,"width":2,"skin":"comp/dsafebox_fengex.png","height":50},
-                    "nodeParent":46,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":29,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":67,"x":527,"width":2,"skin":"comp/dsafebox_fengex.png","height":50},
-                    "nodeParent":46,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":30,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":67,"x":731,"width":2,"skin":"comp/dsafebox_fengex.png","height":50},
-                    "nodeParent":46,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":31,
                     "child":[
                         ]
                 },
@@ -269,7 +171,7 @@
                     "x":30,
                     "type":"List",
                     "searchKey":"List,list_1",
-                    "props":{"y":123,"x":8,"width":959,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","height":391},
+                    "props":{"y":123,"x":8,"width":959,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"height":391},
                     "nodeParent":46,
                     "label":"list_1",
                     "isOpen":true,
@@ -294,14 +196,28 @@
                                 {
                                     "x":60,
                                     "type":"Image",
+                                    "searchKey":"Image,bg_1",
+                                    "props":{"y":0,"x":0,"width":957,"skin":"bgs/dpersonalcenter_gerenzhonxinjilubg1.png","sizeGrid":"14,13,10,13","name":"bg_1","height":45},
+                                    "nodeParent":38,
+                                    "label":"bg_1",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":76,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Image",
                                     "searchKey":"Image,bg_2",
-                                    "props":{"y":0,"x":0,"width":942,"skin":"bgs/ic_message_list_bg.png","sizeGrid":"30,25,33,30","name":"bg_2","height":40},
+                                    "props":{"y":0,"x":0,"width":958,"skin":"bgs/dpersonalcenter_gerenzhonxinjilubg2.png","sizeGrid":"14,13,10,13","name":"bg_2","height":45},
                                     "nodeParent":38,
                                     "label":"bg_2",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
-                                    "compId":56,
+                                    "compId":77,
                                     "child":[
                                         ]
                                 },
@@ -323,7 +239,7 @@
                                     "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_2",
-                                    "props":{"y":8,"x":247,"width":253,"text":"FC棋牌","name":"txt_2","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
+                                    "props":{"y":8,"x":247,"width":223,"text":"FC棋牌","name":"txt_2","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
                                     "nodeParent":38,
                                     "label":"txt_2",
                                     "isDirectory":false,
@@ -337,7 +253,7 @@
                                     "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_3",
-                                    "props":{"y":8,"x":530,"width":189,"text":"FC棋牌","name":"txt_3","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
+                                    "props":{"y":8,"x":479,"width":227,"text":"FC棋牌","name":"txt_3","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
                                     "nodeParent":38,
                                     "label":"txt_3",
                                     "isDirectory":false,
@@ -351,7 +267,7 @@
                                     "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_4",
-                                    "props":{"y":8,"x":734,"width":205,"text":"FC棋牌","name":"txt_4","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
+                                    "props":{"y":8,"x":722,"width":217,"text":"FC棋牌","name":"txt_4","height":24,"fontSize":24,"color":"#FFFFFF","align":"center"},
                                     "nodeParent":38,
                                     "label":"txt_4",
                                     "isDirectory":false,
@@ -392,6 +308,176 @@
                                 ]
                         }],
                     "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box",
+                    "props":{"y":74,"width":962,"right":0,"left":3,"height":41},
+                    "nodeParent":46,
+                    "label":"Box",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":62,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":0,"width":237,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                            "nodeParent":62,
+                            "label":"Image",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":60,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"text":"全部游戏","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                                    "nodeParent":60,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":61,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":238.5,"width":237,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                            "nodeParent":62,
+                            "label":"Image",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":70,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"text":"游戏洗码量","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                                    "nodeParent":70,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":71,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":477,"width":237,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                            "nodeParent":62,
+                            "label":"Image",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":72,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"text":"比例","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                                    "nodeParent":72,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":73,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":716,"width":237,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                            "nodeParent":62,
+                            "label":"Image",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":74,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"text":"洗码金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                                    "nodeParent":74,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":75,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,btn_histroy",
+                    "props":{"y":11.5,"var":"btn_histroy","right":8},
+                    "nodeParent":46,
+                    "label":"btn_histroy",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":63,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":10.5,"x":47,"text":"历史洗码记录","fontSize":24,"color":"#ffd784"},
+                            "nodeParent":63,
+                            "label":"Label",
+                            "isOpen":false,
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":20,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button",
+                            "props":{"y":0,"x":0,"stateNum":"1","skin":"btns/ic_xima_history.png"},
+                            "nodeParent":63,
+                            "label":"Button",
+                            "isOpen":true,
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":21,
+                            "child":[
+                                ]
+                        }]
                 }]
         },
         {
@@ -455,14 +541,13 @@
             "props":{"y":0,"x":0,"width":295,"var":"list_tab","top":125,"spaceY":5,"repeatX":1,"left":0,"height":578},
             "nodeParent":2,
             "label":"list_tab",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":49,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"renderType":"render"},
@@ -475,7 +560,6 @@
                     "compId":53,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,bg_normal",
                             "props":{"y":0,"x":0,"width":287,"skin":"btns/ic_xima_qipai.png","name":"bg_normal","height":96},
@@ -489,7 +573,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,bg_selected",
                             "props":{"y":0,"x":0,"width":287,"skin":"btns/ic_xima_qipai_pressed.png","name":"bg_selected","height":96},

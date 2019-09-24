@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":5,
+    "selectedBox":31,
+    "selecteID":65,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":56,
+    "maxID":66,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -35,14 +35,13 @@
             "props":{"var":"b_top","top":0,"right":0,"left":0},
             "nodeParent":2,
             "label":"b_top",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":5,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"skin":"bgs/dindex_header.png","right":0,"left":0},
@@ -57,7 +56,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_name",
                     "props":{"y":39,"x":113,"width":220,"var":"txt_name","text":"label","height":24,"fontSize":24,"color":"#f9f9f9","align":"center"},
@@ -71,7 +69,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_set",
                     "props":{"y":32,"x":1120,"var":"btn_set","stateNum":"1","skin":"btns/dindex_index_set.png","right":60},
@@ -86,7 +83,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,img_web",
                     "props":{"y":24,"var":"img_web","skin":"bgs/ic_website_ky.png","scaleY":0.5,"scaleX":0.5,"centerX":243},
@@ -100,20 +96,18 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_money",
                     "props":{"y":5,"var":"b_money","centerX":-100},
                     "nodeParent":5,
                     "label":"b_money",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":41,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":19,"x":22,"width":351,"skin":"comp/db7_room.png","sizeGrid":"7,7,7,7","scaleY":0.8,"scaleX":0.8,"height":39},
@@ -128,7 +122,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":4.5,"x":0,"width":50,"skin":"icons/ic_golden.png","height":50},
@@ -144,7 +137,6 @@
                             "$HIDDEN":false
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,txt_money",
                             "props":{"y":22,"x":51,"width":249,"var":"txt_money","text":"0.00","height":24,"fontSize":24,"color":"#f8f1f1","align":"center"},
@@ -159,7 +151,6 @@
                             "$LOCKED":true
                         },
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_reload",
                             "props":{"y":35,"x":307,"width":50,"var":"btn_reload","stateNum":"1","skin":"btns/dindex_reload.png","pivotY":25,"pivotX":25,"height":50},
@@ -175,7 +166,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"y":17,"x":44},
@@ -215,7 +205,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_unlogin",
                     "props":{"y":2,"x":135.5,"var":"b_unlogin"},
@@ -228,7 +217,6 @@
                     "compId":52,
                     "child":[
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_login",
                             "props":{"y":30,"x":0.5,"var":"btn_login","stateNum":"1","skin":"btns/ic_login.png","scaleY":0.6,"scaleX":0.6},
@@ -242,7 +230,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_register",
                             "props":{"y":29,"x":88,"var":"btn_register","stateNum":"1","skin":"btns/ic_register.png","scaleY":0.6,"scaleX":0.6},
@@ -256,7 +243,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
                             "props":{"y":0,"x":0,"text":"未登录","fontSize":26,"color":"#FFFFFF","bold":true},
@@ -306,110 +292,70 @@
                     "nodeParent":19,
                     "label":"p_menu",
                     "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":21,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"List",
+                    "searchKey":"List,list_tab",
+                    "props":{"y":42,"x":0,"width":316,"var":"list_tab","vScrollBarSkin":"comp/vscroll.png","spaceY":2,"height":446},
+                    "nodeParent":19,
+                    "label":"list_tab",
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":21,
+                    "compId":56,
                     "child":[
                         {
                             "x":45,
-                            "type":"Tab",
-                            "searchKey":"Tab,tab_1",
-                            "props":{"y":0,"x":0,"width":318,"var":"tab_1","selectedIndex":0,"height":521,"direction":"vertical"},
-                            "nodeParent":21,
-                            "label":"tab_1",
+                            "type":"Box",
+                            "searchKey":"Box",
+                            "props":{"renderType":"render"},
+                            "nodeParent":56,
+                            "label":"Box",
                             "isOpen":true,
                             "isDirectory":true,
-                            "isAniNode":true,
+                            "isAniNode":false,
                             "hasChild":true,
-                            "compId":42,
+                            "compId":57,
                             "child":[
                                 {
                                     "x":60,
-                                    "type":"Button",
-                                    "searchKey":"Button,item0",
-                                    "props":{"width":316,"stateNum":"2","skin":"btns/btn_hot_game.png","name":"item0","height":86},
-                                    "nodeParent":42,
-                                    "label":"item0",
+                                    "type":"Image",
+                                    "searchKey":"Image,bg_normal",
+                                    "props":{"width":316,"skin":"btns/ic_hot_game.png","name":"bg_normal","height":86},
+                                    "nodeParent":57,
+                                    "label":"bg_normal",
                                     "isDirectory":false,
-                                    "isAniNode":true,
+                                    "isAniNode":false,
                                     "hasChild":false,
-                                    "compId":43,
+                                    "compId":58,
                                     "child":[
                                         ]
                                 },
                                 {
                                     "x":60,
-                                    "type":"Button",
-                                    "searchKey":"Button,item1",
-                                    "props":{"y":129,"x":0,"width":316,"stateNum":"2","skin":"btns/btn_qipai.png","name":"item1","height":86},
-                                    "nodeParent":42,
-                                    "label":"item1",
+                                    "type":"Image",
+                                    "searchKey":"Image,bg_selected",
+                                    "props":{"y":0,"x":0,"width":316,"skin":"btns/ic_hot_game_pressed.png","name":"bg_selected","height":86},
+                                    "nodeParent":57,
+                                    "label":"bg_selected",
                                     "isDirectory":false,
-                                    "isAniNode":true,
+                                    "isAniNode":false,
                                     "hasChild":false,
-                                    "compId":44,
+                                    "compId":59,
                                     "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Button",
-                                    "searchKey":"Button,item2",
-                                    "props":{"y":258,"x":0,"width":316,"stateNum":"2","skin":"btns/btn_buyu.png","name":"item2","height":86},
-                                    "nodeParent":42,
-                                    "label":"item2",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":45,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Button",
-                                    "searchKey":"Button,item3",
-                                    "props":{"y":387,"x":0,"width":316,"stateNum":"2","skin":"btns/btn_dianzi.png","name":"item3","height":86},
-                                    "nodeParent":42,
-                                    "label":"item3",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":46,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Button",
-                                    "searchKey":"Button,item4",
-                                    "props":{"y":516,"x":0,"width":316,"stateNum":"2","skin":"btns/btn_game_zr.png","name":"item4","height":86},
-                                    "nodeParent":42,
-                                    "label":"item4",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":47,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Button",
-                                    "searchKey":"Button,item5",
-                                    "props":{"y":645,"x":0,"width":316,"stateNum":"2","skin":"btns/btn_sport.png","name":"item5","height":86},
-                                    "nodeParent":42,
-                                    "label":"item5",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":48,
-                                    "child":[
-                                        ]
+                                        ],
+                                    "$HIDDEN":false
                                 }]
-                        }],
-                    "$HIDDEN":false
+                        }]
                 }]
         },
         {
@@ -525,64 +471,6 @@
                 {
                     "x":30,
                     "type":"Button",
-                    "searchKey":"Button,btn_huodong",
-                    "props":{"var":"btn_huodong","stateNum":"1","skin":"btns/ic_activity.png","scaleY":0.7,"scaleX":0.7,"left":261,"centerY":0},
-                    "nodeParent":31,
-                    "label":"btn_huodong",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":35,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_mail",
-                    "props":{"var":"btn_mail","stateNum":"1","skin":"btns/ic_customer_service.png","scaleY":0.7,"scaleX":0.7,"centerY":0,"centerX":0},
-                    "nodeParent":31,
-                    "label":"btn_mail",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":36,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_kf",
-                    "props":{"var":"btn_kf","stateNum":"1","skin":"btns/ic_safe_box.png","scaleY":0.7,"scaleX":0.7,"centerY":0,"centerX":184},
-                    "nodeParent":31,
-                    "label":"btn_kf",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":37,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_xm",
-                    "props":{"var":"btn_xm","stateNum":"1","skin":"btns/ic_shuffle.png","scaleY":0.7,"scaleX":0.7,"centerY":0,"centerX":-178},
-                    "nodeParent":31,
-                    "label":"btn_xm",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":38,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
                     "searchKey":"Button,btn_tixian",
                     "props":{"var":"btn_tixian","stateNum":"1","skin":"btns/ic_withdrawal.png","scaleY":0.5,"scaleX":0.5,"right":185,"centerY":1},
                     "nodeParent":31,
@@ -607,6 +495,92 @@
                     "compId":40,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"HBox",
+                    "searchKey":"HBox",
+                    "props":{"y":16,"right":370,"left":236,"align":"none"},
+                    "nodeParent":31,
+                    "label":"HBox",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":62,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_huodong",
+                            "props":{"var":"btn_huodong","stateNum":"1","skin":"btns/ic_activity.png","scaleY":0.7,"scaleX":0.7,"left":0},
+                            "nodeParent":62,
+                            "label":"btn_huodong",
+                            "isOpen":true,
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":35,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_xm",
+                            "props":{"var":"btn_xm","stateNum":"1","skin":"btns/ic_shuffle.png","scaleY":0.7,"scaleX":0.7,"centerY":0,"centerX":-147},
+                            "nodeParent":62,
+                            "label":"btn_xm",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":38,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_mail",
+                            "props":{"var":"btn_mail","stateNum":"1","skin":"btns/ic_message.png","scaleY":0.7,"scaleX":0.7,"centerY":0,"centerX":0},
+                            "nodeParent":62,
+                            "label":"btn_mail",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":36,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_kf",
+                            "props":{"y":0,"var":"btn_kf","stateNum":"1","skin":"btns/ic_customer_service.png","scaleY":0.7,"scaleX":0.7,"centerX":147},
+                            "nodeParent":62,
+                            "label":"btn_kf",
+                            "isOpen":true,
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":37,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_bank",
+                            "props":{"y":-1,"var":"btn_bank","stateNum":"1","skin":"btns/ic_safe_box.png","scaleY":0.7,"scaleX":0.7,"right":0},
+                            "nodeParent":62,
+                            "label":"btn_bank",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":61,
+                            "child":[
+                                ]
+                        }]
                 }]
         }],
     "animations":[

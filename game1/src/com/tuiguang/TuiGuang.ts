@@ -3,12 +3,13 @@ import LingQuHistroy from "./LingQuHistroy";
 import FanYongList from "./FanYongList";
 import BasePanel from "../BasePanel";
 import { g_uiMgr } from "../UiMainager";
+import TabList from "../control/TabList";
 
 export default class TuiGuang extends BasePanel
 {
     private _myInfo:Laya.Box;
     private _zsList:Laya.Box;
-    private _tab:Laya.Tab;
+    private _tab:TabList;
     private _list:Laya.List;
     private _qrc:gamelib.control.QRCodeImg;
 
@@ -16,6 +17,7 @@ export default class TuiGuang extends BasePanel
     private _lingQuHistroy:LingQuHistroy;
     private _fanYongList:FanYongList;
 
+    private _boxs:Array<Laya.Box>;
     public constructor()
     {
         super('ui.TuiGuangUI');
@@ -36,10 +38,19 @@ export default class TuiGuang extends BasePanel
         
         this._qrc = new gamelib.control.QRCodeImg(this._res['img_ewm']);
 
-        this._tab = this._res["tab_1"];
         this._list = this._res["list_1"];
+        this._tab = new TabList(this._res['list_tab']);
+        this._tab.tabChangeHander = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._tab.dataSource = [
+            {label:"我的推广",colors:["#f9d6ab","#faf7f2"]},{label:"直属查询",colors:["#f9d6ab","#faf7f2"]},
+            {label:"业绩查询",colors:["#f9d6ab","#faf7f2"]},{label:"推广教程",colors:["#f9d6ab","#faf7f2"]}];
 
-        this._tab.selectHandler = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._boxs = [];
+        for(var i:number = 1; i <= 4; i++)
+        {
+            this._boxs.push(this._res['b_' + i]);
+            this._res['b_' + i].visible = false;
+        }
         this._list.selectHandler = Laya.Handler.create(this,this.onItemRender,null,false);
 
         this._list.dataSource = [];
@@ -48,14 +59,19 @@ export default class TuiGuang extends BasePanel
     {
         super.onShow();
         this._tab.selectedIndex = 0 ;
-        this.onTabChange(0);
+        
     }
     private onTabChange(index:number):void
     {
         if(index == 0)
             this.showMyTuiGuang();
-        else
+        else if(index == 1)
             this.showZSCX();
+        else if(index == 2)
+            this.showYeJi();
+        else
+            this.showJiaoCheng();
+        this.showBox(index);
     }
     private onItemRender(box:Laya.Box,index:number):void
     {
@@ -66,21 +82,29 @@ export default class TuiGuang extends BasePanel
      */
     private showMyTuiGuang():void
     {
-        this._res['b_1'].visible = true;
-        this._res['b_2'].visible = false;
+        
     }
     /**
      * 显示直属查询
      */
     private showZSCX():void
     {
-        this._res['b_1'].visible = false;
-        this._res['b_2'].visible = true;
+    }
+    //业绩查询
+    private showYeJi():void
+    {
+    }
+    private showJiaoCheng():void
+    {
     }
 
-        // this.addBtnToListener(this._res['btn_refresh']);
-        // this.addBtnToListener(this._res['btn_search']);
-        // this.addBtnToListener(this._res['btn_reset']);
+    private showBox(index:number):void
+    {
+        for(var i:number = 0; i < this._boxs.length; i++)
+        {
+            this._boxs[i].visible = i == index;
+        }
+    }
     protected onClickObjects(evt:Laya.Event):void
     {
         switch(evt.currentTarget.name)

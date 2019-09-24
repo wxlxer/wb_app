@@ -1,9 +1,10 @@
 import XiMaHistroy from "./XiMaHistroy";
 import BasePanel from "../BasePanel";
+import TabList from "../control/TabList";
 
 export default class XiMa extends BasePanel
 {
-    private _tab:Laya.Tab;
+    private _tab:TabList;
     private _list:Laya.List;
 
     private _histroy:XiMaHistroy;
@@ -16,7 +17,7 @@ export default class XiMa extends BasePanel
     {
         this.addBtnToListener("btn_sd");
         this.addBtnToListener("btn_histroy");
-        this._tab = this._res["tab_1"];
+        this._tab = new TabList(this._res["list_tab"]);
         this._list = this._res["list_1"];
 
         this._tab.selectHandler = Laya.Handler.create(this,this.onTabChange,null,false);

@@ -9,6 +9,8 @@ export default class TabList
         this._list = list;
         this._list.selectEnable = true;
         this._list.renderHandler = Laya.Handler.create(this,this.onItemRender,null,false);
+        if(this._list.scrollBar)
+            this._list.scrollBar.visible = false;
         //this._list.selectHandler = Laya.Handler.create(this,this.onTabChanger,null,false)
     }
     public set selectedIndex(value:number)
@@ -48,11 +50,13 @@ export default class TabList
         }
 
         var colors:Array<string> = data.colors;
+        var label:Laya.Label = <Laya.Label> box.getChildByName('txt_label');
         if(colors)
         {
-            var label:Laya.Label = <Laya.Label> box.getChildByName('txt_label');
             label.color =  index == this._list.selectedIndex ? colors[1]:colors[0];
         }
+        if(label && data.label)
+            label.text = data.label;
         
         if(this._itemRender)
         {

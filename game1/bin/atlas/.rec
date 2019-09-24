@@ -1,5 +1,6 @@
 D .
 D bgs
+P F4F0CEE1 bg.png
 R 2920BF2A bg_get_history.png
 R 519248C8 bigbubble.png
 R 48B1517C catch_fish_bg.png
@@ -189,20 +190,12 @@ D btns
 P 308DF7A1 abc_textfield_activated_mtrl_alpha.9.png
 P 4164B6D3 abc_textfield_search_activated_mtrl_alpha.9.png
 P E3A3B1AF back_btn.png
-P B60D458D btn_act_buyu.png
-P E66AF818 btn_act_dianzi.png
-P A3ADCF5E btn_act_qipai.png
-P C5A47DA9 btn_act_shixun.png
-P 97733EE3 btn_act_sports.png
-P 052128F9 btn_act_zonghe.png
-P CB31D729 btn_buyu.png
 P 3AAB486C btn_cancel.png
 P F2A15A89 btn_charge.png
 P 3FCFB527 btn_cus_fqc.png
 P 402B41DE btn_cus_online.png
 P A6C4F605 btn_cus_qq.png
 P 8482E294 btn_cus_vx.png
-P 323B0EB5 btn_dianzi.png
 P A9509FB4 btn_dz_ag.png
 P D1BF84BA btn_dz_cq.png
 P 175A73BA btn_dz_fg.png
@@ -213,19 +206,10 @@ P 9A1670B1 btn_ex_my_yong.png
 P C8707252 btn_ex_team.png
 P 4B620E76 btn_ex_tui_guang.png
 P 26F00FAE btn_ex_yong_jilu.png
-P 31F15C93 btn_game_zr.png
-P FE4D0C95 btn_girl_online.png
-P 5FCC62E8 btn_hot_game.png
 P 57D97268 btn_instruction.png
 P 7596A090 btn_member.png
 P 39EE3564 btn_mypromotion.png
-P E71A50DD btn_pc_grbb.png
-P FED74E7F btn_pc_grxx.png
-P ABA9C6D4 btn_pc_tzjl.png
-P 1BC6156E btn_pc_vipxq.png
-P DC9F6375 btn_pc_zhmx.png
 P 3BA9B248 btn_performance.png
-P 209117D2 btn_qipai.png
 P 6EDEDB05 btn_qipai_fg.png
 P 432CAE54 btn_qipai_jdb.png
 P 69CFBCED btn_qipai_ky.png
@@ -238,7 +222,6 @@ P 2C37A01D btn_safe_zhuanchu.png
 P F089B64C btn_setting_app.png
 P E6465FA2 btn_setting_password.png
 P 3CE4156C btn_setting_sound.png
-P FCBE5F21 btn_sport.png
 P 46DA4EE0 btn_sure.png
 P AFA8AA6B btn_water_detail.png
 P 86AEE520 btn_withdraw_bank.png
@@ -295,6 +278,8 @@ P 1DB79798 ic_btn_confirm_out.png
 P 09D1DCC8 ic_btn_upper.png
 P 4B0D3899 ic_button_cancel.png
 P 43EDEA28 ic_button_sure.png
+P 3AA4A70E ic_buyu.png
+P 9924103B ic_buyu_pressed.png
 P E51BF947 ic_cb_account.png
 P BDF4CA5F ic_cb_account_true.png
 P A674CE81 ic_chosed.png
@@ -319,8 +304,14 @@ P A402CAAC ic_custom_vx_pressed.png
 P BE1156F6 ic_customer_lianxi.png
 P 3B498E01 ic_customer_service.png
 P AE895838 ic_detail.png
+P 7D995961 ic_dianzi.png
+P 6101C55B ic_dianzi_pressed.png
 P 42FC26D9 ic_edit.png
+P 1B32E397 ic_girl_online.png
+P BA8AB73B ic_girl_online_pressed.png
 P 27643DA0 ic_go.png
+P F1FCB94E ic_hot_game.png
+P ED1A95BD ic_hot_game_pressed.png
 P D8A88B60 ic_load_img.png
 P 9C70A632 ic_login.png
 P 9259C355 ic_login_button.png
@@ -343,6 +334,8 @@ P FB0E9E38 ic_pc_vipxq_pressed.png
 P 27458BC2 ic_pc_zhmx.png
 P DA8FFD2C ic_pc_zhmx_pressed.png
 P CB673D76 ic_promotion.png
+P 8F84651F ic_qipai.png
+P ED736C5E ic_qipai_pressed.png
 P AA8245AD ic_recharge.png
 P 23B77E35 ic_recharge_jilu.png
 P 7DF7FD90 ic_register.png
@@ -357,6 +350,8 @@ P C87259AC ic_save_qr.png
 P 28C2A750 ic_scan_qr.png
 P 10219A43 ic_seekbar_max.png
 P 487567A3 ic_shuffle.png
+P 8B5830F3 ic_sport.png
+P ACFF28BD ic_sport_pressed.png
 P F08A3EFA ic_to_recharge.png
 P 57B66C99 ic_tousu.png
 P A3455A51 ic_vx_customer.png

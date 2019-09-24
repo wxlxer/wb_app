@@ -12,11 +12,13 @@ import Notice from "./notice/Notice";
 import LoginUi from "./login/LoginUi";
 import { g_uiMgr } from "./UiMainager";
 import RegisterUi from "./login/RegisterUi";
+import TabList from "./control/TabList";
+import { g_gameData } from "./data/GameData";
 
 export default class Hall extends gamelib.core.Ui_NetHandle
 {
     private _pmd:gamelib.alert.Pmd;
-    private _tab:Laya.Tab;
+    private _tab:TabList;
     private _notice:Notice;
     private _noticeMsg:NoticeMsg;
     private _info:UserInfo;
@@ -45,6 +47,7 @@ export default class Hall extends gamelib.core.Ui_NetHandle
         this.addBtnToListener("btn_xm");
         this.addBtnToListener("btn_mail");
         this.addBtnToListener("btn_kf");
+        this.addBtnToListener("btn_bank");
         this.addBtnToListener("btn_tixian");
         this.addBtnToListener("btn_cz");
         this.addBtnToListener("btn_login");
@@ -53,7 +56,18 @@ export default class Hall extends gamelib.core.Ui_NetHandle
         this._pmd = new gamelib.alert.Pmd();
         this._pmd.setRes(this._res.img_pmd);
 
-        this._tab = this._res['tab_1'];
+        this._tab = new TabList(this._res['list_tab']);
+        this._tab.tabChangeHander = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._tab.dataSource = [
+            {skins:["btns/ic_hot_game.png","btns/ic_hot_game_pressed.png"]},
+            {skins:["btns/ic_qipai.png","btns/ic_qipai_pressed.png"]},
+            {skins:["btns/ic_buyu.png","btns/ic_buyu_pressed.png"]},
+            {skins:["btns/ic_dianzi.png","btns/ic_dianzi_pressed.png"]},
+            {skins:["btns/ic_girl_online.png","btns/ic_girl_online_pressed.png"]},
+            {skins:["btns/ic_sport.png","btns/ic_sport_pressed.png"]},
+        ];
+        this._tab.selectedIndex = 0;
+        
 
         g_signal.add(this.onLocalMsg,this);
 
@@ -88,10 +102,14 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     protected onShow():void
     {
         super.onShow();
-        g_net.request(gamelib.GameMsg.GongGao,{});
-        g_net.request(gamelib.GameMsg.Indexhot,{});
-        g_net.request(gamelib.GameMsg.Getapi,{});
-        g_net.request(gamelib.GameMsg.Systemseting,{});
+        // g_net.request(gamelib.GameMsg.GongGao,{});
+        // g_net.request(gamelib.GameMsg.Indexhot,{});
+
+        // g_net.request(gamelib.GameMsg.Getapi,{});
+        // g_net.request(gamelib.GameMsg.Systemseting,{});
+        //请求热门游戏
+        g_net.request(gamelib.GameMsg.Getapigame,{gametype:3});
+
         // g_net.request(gamelib.GameMsg.Getapiassort,{});
         // g_net.request(gamelib.GameMsg.Getapitypegame,{});
         // g_net.request(gamelib.GameMsg.Getapigame,{});
@@ -131,6 +149,7 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     private onTabChange(index:number):void
     {
         console.log(index);
+        // var arr:Array<any> = g_gameData.getSubTypes()
     }
     
     protected onClickObjects(evt:Laya.Event):void
@@ -183,6 +202,9 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._chongzhi = this._chongzhi || new ChongZhi();
                 this._chongzhi.show();
                 break;
+            case "btn_bank":
+                    
+                break;    
             case "btn_login":
                 this._login = this._login || new LoginUi();
                 this._login.show();
@@ -190,7 +212,6 @@ export default class Hall extends gamelib.core.Ui_NetHandle
             case "btn_register":
                 this._register = this._register  || new RegisterUi();
                 this._register.show();
-
                 break;
         }
     }

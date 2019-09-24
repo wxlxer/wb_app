@@ -10,6 +10,11 @@ export default class GameData
             this._allList[GameType[key]] = [];            
         }
     }
+    public getTypeData(type:number):Array<any>
+    {
+        return this._allList[type];
+    }
+    
     public parse(list:Array<any>):void
     {
         this.init();
