@@ -649,6 +649,38 @@ var gamelib;
     })(control = gamelib.control || (gamelib.control = {}));
 })(gamelib || (gamelib = {}));
 /**
+ * Created by wxlan on 2016/10/24.
+ */
+var gamelib;
+(function (gamelib) {
+    var Api;
+    (function (Api) {
+        //保存在app本地的数据
+        function getLocalStorage(key) {
+            var storage;
+            if (window['plus']) {
+                storage = window['plus'].storage;
+            }
+            else {
+                storage = window['localStorage'];
+            }
+            return storage.getItem(key);
+        }
+        Api.getLocalStorage = getLocalStorage;
+        function saveLocalStorage(key, value) {
+            var storage;
+            if (window['plus']) {
+                storage = window['plus'].storage;
+            }
+            else {
+                storage = window['localStorage'];
+            }
+            storage.setItem(key, value);
+        }
+        Api.saveLocalStorage = saveLocalStorage;
+    })(Api = gamelib.Api || (gamelib.Api = {}));
+})(gamelib || (gamelib = {}));
+/**
  * Created by wxlan on 2017/9/14.
  */
 var gamelib;

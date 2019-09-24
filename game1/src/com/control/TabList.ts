@@ -43,6 +43,7 @@ export default class TabList
         var img_normal:Laya.Image = <Laya.Image>box.getChildByName('bg_normal');
         var img_selected:Laya.Image = <Laya.Image>box.getChildByName('bg_selected');
         img_selected.visible = index == this._list.selectedIndex;
+        img_normal.visible = !img_selected.visible;
         if(skins)
         {
             img_normal.skin = skins[0];

@@ -102,6 +102,13 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     protected onShow():void
     {
         super.onShow();
+
+        var userName:string = gamelib.Api.getLocalStorage("userName");
+        var pwd:string = gamelib.Api.getLocalStorage("userName");
+        if(userName && pwd) 
+        {
+            g_net.request(gamelib.GameMsg.Login,{un:userName,pw:pwd);
+        }
         // g_net.request(gamelib.GameMsg.GongGao,{});
         // g_net.request(gamelib.GameMsg.Indexhot,{});
 
@@ -125,6 +132,8 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 if(data.retCode == 0)
                 {
                     GameVar.s_token = data.retMsg;
+                    //请求用户信息
+                    g_net.request(gamelib.GameMsg.MemberInfo + "/" + GameVar.s_token,{});
                 }
                 else
                 {

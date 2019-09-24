@@ -20,7 +20,15 @@ export default class XiMa extends BasePanel
         this._tab = new TabList(this._res["list_tab"]);
         this._list = this._res["list_1"];
 
-        this._tab.selectHandler = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._tab.tabChangeHander = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._tab.dataSource = [
+            {skins:["btns/ic_xima_qipai.png","btns/ic_xima_qipai_pressed.png"]},
+            {skins:["btns/ic_xima_zhenren.png","btns/ic_xima_zhenren_pressed.png"]},
+            {skins:["btns/ic_xima_sport.png","btns/ic_xima_sport_pressed.png"]},
+            {skins:["btns/ic_xima_dianzi.png","btns/ic_xima_dianzi_pressed.png"]},
+            {skins:["btns/ic_xima_buyu.png","btns/ic_xima_buyu_pressed.png"]}
+        ];
+
         this._list.selectHandler = Laya.Handler.create(this,this.onItemRender,null,false);
         this._list.dataSource = [];
     }

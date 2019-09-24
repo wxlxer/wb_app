@@ -299,6 +299,13 @@ declare module gamelib.control {
     }
 }
 /**
+ * Created by wxlan on 2016/10/24.
+ */
+declare module gamelib.Api {
+    function getLocalStorage(key: string): any;
+    function saveLocalStorage(key: string, value: string): void;
+}
+/**
  * Created by wxlan on 2017/9/14.
  */
 declare namespace gamelib.core {

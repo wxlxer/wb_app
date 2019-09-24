@@ -1,9 +1,10 @@
 import TiXianHistroy from "./TiXianHistroy";
 import BasePanel from "../BasePanel";
+import TabList from "../control/TabList";
 
 export default class TiXianUi extends BasePanel
 {
-    private _tab:Laya.Tab;
+    private _tab:TabList;
 
     private _list:Laya.List;
 
@@ -16,8 +17,13 @@ export default class TiXianUi extends BasePanel
     protected init():void
     {
         this._tab = this._res['tab_1'];
-        this._tab.selectHandler = Laya.Handler.create(this,this.onTabChange,null,false);
-        
+        this._tab = new TabList(this._res["list_tab"]);
+        this._tab.tabChangeHander = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._tab.dataSource = [
+            {skins:["btns/ic_withdraw_bank.png","btns/ic_withdraw_bank_pressed.png"]},
+            {skins:["btns/ic_withdraw_blance.png","btns/ic_withdraw_blance_pressed.png"]},
+            {skins:["btns/ic_withdraw_card.png","btns/ic_withdraw_card_pressed.png"]}
+        ];
         
         this.addBtnToListener("btn_tx");
         this.addBtnToListener("btn_clear");

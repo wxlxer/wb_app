@@ -1,16 +1,16 @@
 import ChongZhiHistroy from "./ChongZhiHistroy";
 import BasePanel from "../BasePanel";
+import TabList from "../control/TabList";
 
 
 export default class ChongZhi extends BasePanel
 {
-    private _tab:Laya.Tab;
-
-
+    private _tab:TabList;
     private _histroy:ChongZhiHistroy;
-
-
     private _btn:Laya.Button;
+
+    private _datas:Array<any>;
+     
     public constructor()
     {
         super("ui.ChongZhiUiUI");
@@ -18,8 +18,9 @@ export default class ChongZhi extends BasePanel
 
     protected init():void
     {
-        this._tab = this._res['tab_1'];
-        this._tab.selectHandler = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._tab = new TabList(this._res['list_1']);
+        this._tab.tabChangeHander = Laya.Handler.create(this,this.onTabChange,null,false);
+        this._tab.setItemRender(Laya.Handler.create(this,this.onTabItemRender,null,false));
         
 
         this.addBtnToListener("btn_sx");
@@ -28,18 +29,6 @@ export default class ChongZhi extends BasePanel
         this.addBtnToListener("btn_goCz");
         this.addBtnToListener("btn_prev");
         this.addBtnToListener("btn_tjcz");
-
-        // this._list = this._res['list_1'];
-        // this._list.dataSource = [];
-        // this._list.renderHandler = Laya.Handler.create(this,this.onItemRender,null,false);
-
-        for(var i:number = 1; i <= 8 ;i ++)
-        {
-            var btn:Laya.Button = this._res['btn_' + i];
-            btn.name = 'btn_' + i;
-            btn.on(Laya.Event.CLICK,this,this.onClickBtns);
-        }
-
         this._btn = null;
     }
 
@@ -50,12 +39,29 @@ export default class ChongZhi extends BasePanel
         this.onTabChange(0);
 
     }
+    private initTabData():void
+    {
+        var arr:Array<any> = [];
+        for(var i:number = 0; i < 3; i++)
+        {
+            arr.push({"label":"",icon:"",isHot:false});
+        }
+        this._tab.dataSource = arr;
+    }
+  
+    private onTabItemRender(box:Laya.Box,index:number,data:any):void
+    {
+
+    }
 
     private onTabChange(index:number):void
     {
-        if(index == 0)
+        if(this._datas == null)
+            return
+        var data:any = this._datas[index];        
+        if(data.type == 0)
             this.showBank();
-        else if(index == 1)
+        else if(data.type == 1)
             this.showChongZhi("zfb");
         else
             this.showChongZhi("wx");

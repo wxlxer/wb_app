@@ -157,13 +157,14 @@
             "props":{"var":"b_bank","right":5,"left":298,"height":598,"bottom":0},
             "nodeParent":2,
             "label":"b_bank",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":19,
             "child":[
                 {
+                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_tips",
                     "props":{"var":"b_tips","top":0,"right":0,"left":0,"bottom":0},
@@ -292,9 +293,10 @@
                                         }]
                                 }]
                         }],
-                    "$HIDDEN":true
+                    "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_input",
                     "props":{"var":"b_input","top":0,"right":0,"left":0,"bottom":0},
@@ -755,9 +757,9 @@
                             "child":[
                                 ]
                         }],
-                    "$HIDDEN":false
+                    "$HIDDEN":true
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -766,14 +768,13 @@
             "props":{"var":"b_zf","right":5,"left":298,"height":598,"bottom":0},
             "nodeParent":2,
             "label":"b_zf",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":136,
             "child":[
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":95,"x":32,"text":"玩家常玩的充值金额","fontSize":24,"color":"#ffffff"},
@@ -787,7 +788,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":70,"x":0,"width":966,"skin":"bgs/ic_online_bg.png","height":524},
@@ -801,7 +801,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"List",
                     "searchKey":"List,list_2",
                     "props":{"y":0,"x":0,"width":964,"spaceX":10,"repeatY":1,"name":"list_2","height":61},
@@ -893,7 +892,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"List",
                     "searchKey":"List,list_3",
                     "props":{"y":138,"width":957,"spaceY":20,"spaceX":120,"right":10,"name":"list_3","left":10,"height":163},
@@ -906,7 +904,6 @@
                     "compId":166,
                     "child":[
                         {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box",
                             "props":{"renderType":"render"},
@@ -961,7 +958,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":309,"width":967,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":5,"height":164},
@@ -974,7 +970,6 @@
                     "compId":172,
                     "child":[
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
                             "props":{"y":28,"x":32,"text":"充值金额","fontSize":36,"color":"#ffffff","bold":true},
@@ -988,7 +983,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":20,"x":246,"width":399,"skin":"comp/big_input_box.png","sizeGrid":"20,20,20,20","height":60},
@@ -1015,7 +1009,6 @@
                                 }]
                         },
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_clear",
                             "props":{"y":20,"var":"btn_clear","stateNum":"1","skin":"btns/ic_clear_bg.png","scaleY":0.6,"scaleX":0.6,"right":50},
@@ -1030,7 +1023,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button",
                     "props":{"stateNum":"1","skin":"btns/ic_commit_charge.png","scaleY":0.6,"scaleX":0.6,"centerX":0,"bottom":10},
@@ -1062,7 +1054,7 @@
                     "x":30,
                     "type":"List",
                     "searchKey":"List,list_1",
-                    "props":{"vScrollBarSkin":"comp/vscroll.png","top":0,"spaceY":5,"right":0,"name":"list_1","left":0,"bottom":0},
+                    "props":{"var":"list_1","vScrollBarSkin":"comp/vscroll.png","top":0,"spaceY":5,"right":0,"left":0,"bottom":0},
                     "nodeParent":144,
                     "label":"list_1",
                     "isOpen":true,
@@ -1158,7 +1150,8 @@
                                         ]
                                 }]
                         }]
-                }]
+                }],
+            "$HIDDEN":true
         }],
     "animations":[
         {
