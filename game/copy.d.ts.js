@@ -10,9 +10,9 @@ var fileName = "";
 
 fileName = "gamelib.d.ts";
 src = path.join(__dirname,"./gamelibs/bin/",fileName);
-fs.copyFileSync(src,path.join(__dirname,"game/libs/",fileName));
+fs.copyFileSync(src,path.join(__dirname,"game1/libs/",fileName));
 
 fileName = "gamelib.js";
 src = path.join(__dirname,"./gamelibs/bin/",fileName);
-fs.copyFileSync(src,path.join(__dirname,"game/bin/libs/",fileName));
-console.log(path.join(__dirname,"game/bin/libs/",fileName));
+fs.copyFileSync(src,path.join(__dirname,"game1/bin/libs/",fileName));
+console.log(path.join(__dirname,"game1/bin/libs/",fileName));

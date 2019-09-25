@@ -12,10 +12,13 @@ namespace gamelib.core
 
         public request(url:string,data:any):void
         {
-            utils.tools.http_request(GameVar.s_domain + url,data,"post",Laya.Handler.create(this,this.onReciveNetMsg,[url]))
-
-        }
-        private onReciveNetMsg(api:string,data:any):void
+            utils.tools.http_request(GameVar.s_domain + url,data,"post",Laya.Handler.create(this,this.onReciveNetMsg,[url,data]))
+		}
+		public requestWithToken(url:string,data:any):void
+		{
+			utils.tools.http_request(GameVar.s_domain + url+ "/" + GameVar.s_token,data,"post",Laya.Handler.create(this,this.onReciveNetMsg,[url,data]))
+		}
+        private onReciveNetMsg(api:string,requestData:any,data:any):void
         {
             if(this._listeners == null)			
 				return;
@@ -24,7 +27,7 @@ namespace gamelib.core
 			{
 				if(this._listeners == null || this._listeners[i] == null)
 					continue;
-				this._listeners[i].reciveNetMsg(api,data);
+				this._listeners[i].reciveNetMsg(api,requestData,data);
 			}
         }
         public addListener(target:INet):void
@@ -59,7 +62,7 @@ namespace gamelib.core
     export interface  INet
     {
         priority:number;
-        reciveNetMsg(api:string,data:any):void;
+        reciveNetMsg(api:string,requestData:any,data:any):void;
     }
 
 }

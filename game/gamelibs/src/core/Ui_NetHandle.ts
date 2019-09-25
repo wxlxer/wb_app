@@ -34,7 +34,7 @@ module gamelib.core
          * @param    {number}                 msgId 协议号，例如0x0001
          * @param    {any}                    data  [description]
          */
-        public reciveNetMsg(api:string,data:any):void
+        public reciveNetMsg(api:string,requestData:any,data:any):void
         {
 
         }
