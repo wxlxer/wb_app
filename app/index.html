@@ -1,29 +1,68 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title></title>
-	
-    <script type="text/javascript">
-    	/**
-    	 * 载入JS库1
-    	 */
-    	function loadLib(url) {
-    		var script = document.createElement("script");
-    		script.async = false;
-    		script.src = url;
-    		document.body.appendChild(script);
-    	}
-   		document.addEventListener('plusready', function(){
-   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-   			loadLib("js/app.js");
-			console.log(plus.webview.currentWebview().id);
-   		});
-   		
-    </script>
-</head>
-<body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			mui.init({
+				statusBarBackground: '#f7f7f7'
+			});
+			mui.plusReady(function() {
+				console.log("dddd");
+			});
+			/**
+			 * 载入JS库1
+			 */
+			function loadLib(url) {
+				var script = document.createElement("script");
+				script.async = false;
+				script.src = url;
+				document.body.appendChild(script);
+			}
+			document.addEventListener('plusready', function(){
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+				loadLib("js/app.js");
+				console.log(plus.webview.currentWebview().id);
+			});
+			
+			var picker = null;
+			function showDatePicker(callBack)
+			{
+				_self = this;
+				var optionsJson = '{"type":"date"}';
+				var options = JSON.parse(optionsJson);
+				/*
+				 * 首次显示时实例化组件
+				 * 示例为了简洁，将 options 放在了按钮的 dom 上
+				 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+				 */
+				_self.picker = new mui.DtPicker(options);
+				_self.picker.show(function(rs) {
+					/*
+					 * rs.value 拼合后的 value
+					 * rs.text 拼合后的 text
+					 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+					 * rs.m 月，用法同年
+					 * rs.d 日，用法同年
+					 * rs.h 时，用法同年
+					 * rs.i 分（minutes 的第二个字母），用法同年
+					 */
+					callBack(rs.text);
+					_self.picker.dispose();
+					_self.picker = null;
+				});
+			}
+		</script>
+	</body>
 	<a>mainView</a>
-</body>
 </html>

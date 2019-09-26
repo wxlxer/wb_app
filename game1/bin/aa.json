@@ -1,1 +1,0 @@
-{"type":"Scene","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"width":500,"skin":"bgs/ic_huodong_bg.png","height":500},"compId":3}],"loadList":["bgs/ic_huodong_bg.png"],"loadList3D":[]}

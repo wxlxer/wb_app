@@ -41,3 +41,5 @@ function exitGame(args){
 	g_game.close();
 }
 
+
+	
