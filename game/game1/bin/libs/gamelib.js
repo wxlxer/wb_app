@@ -1181,6 +1181,10 @@ var gamelib;
         * 44.	验证取款密码
         */
         GameMsg.Getqkpwd = "/AppApi/CashOperationApi/getqkpwd";
+        /**
+         * 获得进入游戏的地址
+         */
+        GameMsg.GetApilogin = "/AppApi/GameLoginApi/GetApilogin";
         return GameMsg;
     }());
     gamelib.GameMsg = GameMsg;
@@ -1195,9 +1199,11 @@ var gamelib;
                 this._signal = new gamelib.core.Signal();
             }
             GameNet.prototype.request = function (url, data) {
+                data.devices = data.devices || "HTML5";
                 utils.tools.http_request(GameVar.s_domain + url, data, "post", Laya.Handler.create(this, this.onReciveNetMsg, [url, data]));
             };
             GameNet.prototype.requestWithToken = function (url, data) {
+                data.devices = data.devices || "HTML5";
                 utils.tools.http_request(GameVar.s_domain + url + "/" + GameVar.s_token, data, "post", Laya.Handler.create(this, this.onReciveNetMsg, [url, data]));
             };
             GameNet.prototype.onReciveNetMsg = function (api, requestData, data) {

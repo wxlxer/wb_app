@@ -409,10 +409,10 @@ P 84E749D8 dindex_index_icon.png
 R 5C1F91AF dpersonalcenter_gerenzhonxinlan1.png
 P D566AE8B fontClip.png
 P 38AB8F3F fontClip_num.png
-P 6EF336AE hscroll$bar.png
-P 7FF47AC5 hscroll$down.png
-P 3D7B147A hscroll$up.png
-P 750BD445 hscroll.png
+P 7C98B1EF hscroll$bar.png
+P 13E29736 hscroll$down.png
+P 70FD9714 hscroll$up.png
+P B2F654C6 hscroll.png
 P 9A5EF899 hslider$bar.png
 P 9CED7132 hslider.png
 P BA2A0579 html.png
@@ -498,6 +498,7 @@ P 2998C5C2 ic_vip_6.png
 P 1F831FA6 ic_vip_7.png
 P FC2207B1 ic_vip_8.png
 P 9A7E6F8C ic_vip_9.png
+P CB2947BD placeholder.png
 P 090853BB read_message.png
 P FD955265 rights_1.png
 P 128348B7 rights_2.png

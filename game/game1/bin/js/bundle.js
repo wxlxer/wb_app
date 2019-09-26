@@ -43,7 +43,7 @@ var Main = /** @class */ (function (_super) {
 //激活启动类
 new Main();
 
-},{"./com/Hall":5,"./ui/layaMaxUI":30}],2:[function(require,module,exports){
+},{"./com/Hall":5,"./ui/layaMaxUI":32}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy = /** @class */ (function (_super) {
@@ -132,12 +132,16 @@ var LoginUi_1 = require("./login/LoginUi");
 var UiMainager_1 = require("./UiMainager");
 var RegisterUi_1 = require("./login/RegisterUi");
 var TabList_1 = require("./control/TabList");
+var GameData_1 = require("./data/GameData");
 var PlayerData_1 = require("./data/PlayerData");
 var Global_1 = require("./Global");
+var GameList_1 = require("./gameList/GameList");
 var Hall = /** @class */ (function (_super) {
     __extends(Hall, _super);
     function Hall() {
-        return _super.call(this, "ui.HallUiUI") || this;
+        var _this = _super.call(this, "ui.HallUiUI") || this;
+        _this._isFirst = true;
+        return _this;
     }
     Hall.prototype.init = function () {
         this.addBtnToListener("img_head");
@@ -166,10 +170,10 @@ var Hall = /** @class */ (function (_super) {
             { skins: ["btns/ic_girl_online.png", "btns/ic_girl_online_pressed.png"] },
             { skins: ["btns/ic_sport.png", "btns/ic_sport_pressed.png"] },
         ];
-        this._tab.selectedIndex = 0;
         g_signal.add(this.onLocalMsg, this);
         var p = this._res['p_menu'];
         p.vScrollBar.autoHide = true;
+        this._gameList = new GameList_1.GameListMgr(this._res['p_game']);
     };
     Hall.prototype.aniOut = function () {
         var temp = { x: -this._res.width };
@@ -204,10 +208,11 @@ var Hall = /** @class */ (function (_super) {
         // g_net.request(gamelib.GameMsg.Getapi,{});
         // g_net.request(gamelib.GameMsg.Systemseting,{});
         //请求热门游戏
-        g_net.request(gamelib.GameMsg.Getapigame, { gametype: 3 });
+        g_net.request(gamelib.GameMsg.Getapigame, { gametype: -3, pageSize: 100, pageIndex: 1 });
         // g_net.request(gamelib.GameMsg.Getapiassort,{});
         // g_net.request(gamelib.GameMsg.Getapitypegame,{});
         // g_net.request(gamelib.GameMsg.Getapigame,{});
+        this._tab.selectedIndex = 0;
     };
     Hall.prototype.reciveNetMsg = function (msg, requestData, data) {
         console.log(msg, requestData, data);
@@ -246,14 +251,23 @@ var Hall = /** @class */ (function (_super) {
                 this._notice.setData(data.retData);
                 this._notice.show();
                 break;
-            case gamelib.GameMsg.Getapi:
-                g_net.request(gamelib.GameMsg.Getapigame, { game: "AG", gametype: 0 });
+            // case gamelib.GameMsg.Getapi:
+            //     g_net.request(gamelib.GameMsg.Getapigame,{game:"AG",gametype:0});
+            //     break;
+            case gamelib.GameMsg.Getapigame:
+                if (data.retCode != 0)
+                    return;
+                if (requestData.gametype == -3) //热门
+                 {
+                    GameData_1.g_gameData.addTypeData(GameData_1.GameType.Hot, data.retData);
+                    this.onTabChange(this._tab.selectedIndex);
+                }
                 break;
         }
     };
     Hall.prototype.onTabChange = function (index) {
-        console.log(index);
-        // var arr:Array<any> = g_gameData.getSubTypes()
+        this._gameList.updateList(index, this._isFirst);
+        this._isFirst = false;
     };
     Hall.prototype.onClickObjects = function (evt) {
         this.handBtn(evt.currentTarget['name'], null);
@@ -317,7 +331,7 @@ var Hall = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = Hall;
 
-},{"./Global":4,"./HuoDong":6,"./KeFu":7,"./SetUi":9,"./UiMainager":10,"./UserInfo":11,"./chongzhi/ChongZhi":12,"./control/TabList":14,"./data/PlayerData":15,"./login/LoginUi":16,"./login/RegisterUi":17,"./mail/MailUi":19,"./notice/Notice":20,"./notice/NoticeMsg":21,"./tixian/TiXianUi":23,"./tuiguang/TuiGuang":27,"./xima/XiMa":28}],6:[function(require,module,exports){
+},{"./Global":4,"./HuoDong":6,"./KeFu":7,"./SetUi":9,"./UiMainager":10,"./UserInfo":11,"./chongzhi/ChongZhi":12,"./control/TabList":14,"./data/GameData":15,"./data/PlayerData":16,"./gameList/GameList":17,"./login/LoginUi":18,"./login/RegisterUi":19,"./mail/MailUi":21,"./notice/Notice":22,"./notice/NoticeMsg":23,"./tixian/TiXianUi":25,"./tuiguang/TuiGuang":29,"./xima/XiMa":30}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel_1 = require("./BasePanel");
@@ -1100,6 +1114,121 @@ exports.default = TabList;
 },{}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var GameData = /** @class */ (function () {
+    function GameData() {
+        window['g_gameData'] = this;
+        this._allList = {};
+    }
+    GameData.prototype.init = function () {
+        this._allList = {};
+        for (var key in GameType) {
+            this._allList[GameType[key]] = [];
+        }
+    };
+    GameData.prototype.getTypeData = function (type) {
+        return this._allList[type];
+    };
+    GameData.prototype.addTypeData = function (type, data) {
+        var arr = this._allList[type];
+        if (arr == null) {
+            arr = [];
+            this._allList[type] = arr;
+        }
+        for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
+            var obj = data_1[_i];
+            var item = new GameItemData();
+            item.parse(obj);
+            arr.push(item);
+        }
+    };
+    GameData.prototype.parse = function (list) {
+        this.init();
+        for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
+            var obj = list_1[_i];
+            if (!obj.is_open)
+                continue;
+            var item = new GameItemData();
+            item.res = this.getIconUrl(obj.onlyImg);
+            item.name = obj.name;
+            var plattypes = obj.plattype.split(",");
+            var type;
+            for (var _a = 0, plattypes_1 = plattypes; _a < plattypes_1.length; _a++) {
+                var str = plattypes_1[_a];
+                switch (str) //类型(game:电子,live:真人,sport:体育,lottery:彩票,fish:捕鱼,chess:棋牌,liuhecai:六合彩)
+                 {
+                    case "game":
+                        type = GameType.DianZi;
+                        break;
+                    case "live":
+                        type = GameType.ZhenRen;
+                        break;
+                    case "sport":
+                        type = GameType.Sport;
+                        break;
+                    case "fish":
+                        type = GameType.Fish;
+                        break;
+                    case "chess":
+                        type = GameType.QiPai;
+                        break;
+                    default:
+                        var str1 = str.split("|")[0];
+                        if (str1 == "sport") {
+                            type = GameType.Sport;
+                        }
+                        break;
+                }
+                this._allList[type].push(item);
+            }
+            if (obj.ifhot) {
+                this._allList[GameType.Hot].push(item);
+            }
+        }
+    };
+    GameData.prototype.getSubTypes = function (type) {
+        var result = {
+            titles: { key: "", value: "" },
+            list: []
+        };
+        var arr = this._allList[type];
+        return result;
+    };
+    GameData.prototype.getIconUrl = function (onlyImg) {
+        var platform = "";
+        var url = GameVar.s_domain + "/img/imgPC/" + platform + "/" + onlyImg + ".png";
+        return url;
+    };
+    return GameData;
+}());
+exports.default = GameData;
+exports.g_gameData = new GameData();
+var GameItemData = /** @class */ (function () {
+    function GameItemData() {
+    }
+    GameItemData.prototype.parse = function (data) {
+        for (var key in data) {
+            this[key] = data[key];
+        }
+        this.res = GameVar.s_domain + "/img/imgPC/" + data.api_Name + "/" + data.onlyImg + ".png";
+        this.name = data.chineseName;
+        return true;
+    };
+    return GameItemData;
+}());
+exports.GameItemData = GameItemData;
+var GameType;
+(function (GameType) {
+    GameType[GameType["Hot"] = 0] = "Hot";
+    GameType[GameType["QiPai"] = 1] = "QiPai";
+    GameType[GameType["Fish"] = 2] = "Fish";
+    GameType[GameType["DianZi"] = 3] = "DianZi";
+    GameType[GameType["ZhenRen"] = 4] = "ZhenRen";
+    GameType[GameType["Sport"] = 5] = "Sport";
+})(GameType = exports.GameType || (exports.GameType = {}));
+
+},{}],16:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var PlayerData = /** @class */ (function () {
     function PlayerData() {
     }
@@ -1108,7 +1237,100 @@ var PlayerData = /** @class */ (function () {
 exports.default = PlayerData;
 exports.g_playerData = new PlayerData();
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var GameData_1 = require("../data/GameData");
+var UiMainager_1 = require("../UiMainager");
+var GameList = /** @class */ (function (_super) {
+    __extends(GameList, _super);
+    function GameList(type) {
+        var _this = _super.call(this) || this;
+        _this._list = [];
+        _this._type = type;
+        return _this;
+        //var arr:Array<GameItem> = g_gameData
+    }
+    return GameList;
+}(Laya.Sprite));
+exports.default = GameList;
+var GameListMgr = /** @class */ (function (_super) {
+    __extends(GameListMgr, _super);
+    function GameListMgr(panel) {
+        var _this = _super.call(this) || this;
+        _this._num = 5; //一行最少个数
+        _this._panel = panel;
+        _this._tweens = [];
+        return _this;
+    }
+    GameListMgr.prototype.updateList = function (type, isAnimation) {
+        var content = this._panel.content;
+        for (var _i = 0, _a = this._tweens; _i < _a.length; _i++) {
+            var tw = _a[_i];
+            Laya.Tween.clear(tw);
+        }
+        this._tweens.length = 0;
+        content.removeChildren();
+        var arr = GameData_1.g_gameData.getTypeData(type);
+        if (arr == null) {
+            UiMainager_1.g_uiMgr.showMiniLoading();
+            return;
+        }
+        UiMainager_1.g_uiMgr.closeMiniLoading();
+        var num = Math.floor(arr.length / 2);
+        var size = Math.max(num, this._num);
+        var len = arr.length;
+        for (var i = 0; i < len; i++) {
+            var icon = new GameIcon();
+            content.addChild(icon);
+            icon.setData(arr[i]);
+            var col = i % size;
+            var row = Math.floor(i / size);
+            icon.y = row * (icon.height + 10);
+            var tx = col * (icon.width + 50);
+            if (!isAnimation) {
+                icon.x = tx;
+            }
+            else {
+                icon.x = Laya.stage.width - this._panel.left;
+                this._tweens.push(Laya.Tween.to(icon, { x: tx }, 100));
+            }
+        }
+    };
+    return GameListMgr;
+}(Laya.Sprite));
+exports.GameListMgr = GameListMgr;
+var GameIcon = /** @class */ (function (_super) {
+    __extends(GameIcon, _super);
+    function GameIcon() {
+        var _this = _super.call(this) || this;
+        _this.width = _this.height = 140;
+        return _this;
+    }
+    GameIcon.prototype.setData = function (gameData) {
+        this._gameData = gameData;
+        var source = Laya.Loader.getRes(gameData.res);
+        if (source != null) {
+            this.source = source;
+        }
+        else {
+            this.skin = "icons/placeholder.png";
+            Laya.loader.load(gameData.res, Laya.Handler.create(this, this.onResLoaded));
+        }
+        this.mouseEnabled = true;
+        this.on(Laya.Event.CLICK, this, this.onClickGame);
+    };
+    GameIcon.prototype.onResLoaded = function () {
+        this.skin = this._gameData.res;
+    };
+    GameIcon.prototype.onClickGame = function (evt) {
+        console.log("enterGame" + this._gameData.name);
+    };
+    return GameIcon;
+}(Laya.Image));
+exports.GameIcon = GameIcon;
+
+},{"../UiMainager":10,"../data/GameData":15}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UiMainager_1 = require("../UiMainager");
@@ -1142,7 +1364,7 @@ var LoginUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = LoginUi;
 
-},{"../Global":4,"../UiMainager":10}],17:[function(require,module,exports){
+},{"../Global":4,"../UiMainager":10}],19:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UiMainager_1 = require("../UiMainager");
@@ -1156,7 +1378,7 @@ var RegisterUi = /** @class */ (function (_super) {
         _super.prototype.init.call(this);
         this.addBtnToListener('btn_ok');
     };
-    RegisterUi.prototype.reciveNetMsg = function (msg, data) {
+    RegisterUi.prototype.reciveNetMsg = function (msg, requestData, data) {
         if (msg == gamelib.GameMsg.Register) {
             UiMainager_1.g_uiMgr.showMiniLoading();
             if (data.retCode == 0) {
@@ -1194,7 +1416,7 @@ var RegisterUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = RegisterUi;
 
-},{"../Global":4,"../UiMainager":10}],18:[function(require,module,exports){
+},{"../Global":4,"../UiMainager":10}],20:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MailInfo = /** @class */ (function (_super) {
@@ -1212,7 +1434,7 @@ var MailInfo = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = MailInfo;
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MailInfo_1 = require("./MailInfo");
@@ -1241,7 +1463,7 @@ var MailUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = MailUi;
 
-},{"./MailInfo":18}],20:[function(require,module,exports){
+},{"./MailInfo":20}],22:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Notice = /** @class */ (function (_super) {
@@ -1256,7 +1478,7 @@ var Notice = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = Notice;
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var NoticeMsg = /** @class */ (function (_super) {
@@ -1289,7 +1511,7 @@ var NoticeMsg = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = NoticeMsg;
 
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -1304,7 +1526,7 @@ var TiXianHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = TiXianHistroy;
 
-},{"../BaseHistroy":2}],23:[function(require,module,exports){
+},{"../BaseHistroy":2}],25:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var TiXianHistroy_1 = require("./TiXianHistroy");
@@ -1392,7 +1614,7 @@ var TiXianUi = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = TiXianUi;
 
-},{"../BasePanel":3,"../control/TabList":14,"./TiXianHistroy":22}],24:[function(require,module,exports){
+},{"../BasePanel":3,"../control/TabList":14,"./TiXianHistroy":24}],26:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -1407,7 +1629,7 @@ var FanYongList = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = FanYongList;
 
-},{"../BaseHistroy":2}],25:[function(require,module,exports){
+},{"../BaseHistroy":2}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GetYongJin = /** @class */ (function (_super) {
@@ -1423,7 +1645,7 @@ var GetYongJin = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = GetYongJin;
 
-},{}],26:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -1438,7 +1660,7 @@ var LingQuHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = LingQuHistroy;
 
-},{"../BaseHistroy":2}],27:[function(require,module,exports){
+},{"../BaseHistroy":2}],29:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GetYongJin_1 = require("./GetYongJin");
@@ -1555,7 +1777,7 @@ var TuiGuang = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = TuiGuang;
 
-},{"../BasePanel":3,"../UiMainager":10,"../control/TabList":14,"./FanYongList":24,"./GetYongJin":25,"./LingQuHistroy":26}],28:[function(require,module,exports){
+},{"../BasePanel":3,"../UiMainager":10,"../control/TabList":14,"./FanYongList":26,"./GetYongJin":27,"./LingQuHistroy":28}],30:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XiMaHistroy_1 = require("./XiMaHistroy");
@@ -1605,7 +1827,7 @@ var XiMa = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = XiMa;
 
-},{"../BasePanel":3,"../control/TabList":14,"./XiMaHistroy":29}],29:[function(require,module,exports){
+},{"../BasePanel":3,"../control/TabList":14,"./XiMaHistroy":31}],31:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -1620,7 +1842,7 @@ var XiMaHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = XiMaHistroy;
 
-},{"../BaseHistroy":2}],30:[function(require,module,exports){
+},{"../BaseHistroy":2}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**This class is automatically generated by LayaAirIDE, please do not make any modifications. */
@@ -1694,7 +1916,7 @@ var ui;
             _super.prototype.createChildren.call(this);
             this.createView(HallUiUI.uiView);
         };
-        HallUiUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "var": "img_bg", "top": 0, "skin": "bgs/catch_fish_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 3 }, { "type": "Box", "props": { "var": "b_top", "top": 0, "right": 0, "left": 0 }, "compId": 5, "child": [{ "type": "Image", "props": { "skin": "bgs/dindex_header.png", "right": 0, "left": 0 }, "compId": 6 }, { "type": "Label", "props": { "y": 39, "x": 113, "width": 220, "var": "txt_name", "text": "label", "height": 24, "fontSize": 24, "color": "#f9f9f9", "align": "center" }, "compId": 9 }, { "type": "Button", "props": { "y": 32, "x": 1120, "var": "btn_set", "stateNum": 1, "skin": "btns/dindex_index_set.png", "right": 60 }, "compId": 17 }, { "type": "Image", "props": { "y": 24, "var": "img_web", "skin": "bgs/ic_website_ky.png", "scaleY": 0.5, "scaleX": 0.5, "centerX": 243 }, "compId": 33 }, { "type": "Box", "props": { "y": 5, "var": "b_money", "centerX": -100 }, "compId": 41, "child": [{ "type": "Image", "props": { "y": 19, "x": 22, "width": 351, "skin": "comp/db7_room.png", "sizeGrid": "7,7,7,7", "scaleY": 0.8, "scaleX": 0.8, "height": 39 }, "compId": 10 }, { "type": "Image", "props": { "y": 4.5, "x": 0, "width": 50, "skin": "icons/ic_golden.png", "height": 50 }, "compId": 18 }, { "type": "Label", "props": { "y": 22, "x": 51, "width": 249, "var": "txt_money", "text": "0.00", "height": 24, "fontSize": 24, "color": "#f8f1f1", "align": "center" }, "compId": 12 }, { "type": "Button", "props": { "y": 35, "x": 307, "width": 50, "var": "btn_reload", "stateNum": 1, "skin": "btns/dindex_reload.png", "pivotY": 25, "pivotX": 25, "height": 50 }, "compId": 14 }] }, { "type": "Box", "props": { "y": 17, "x": 44 }, "compId": 49, "child": [{ "type": "Image", "props": { "y": -11, "x": -1, "width": 98, "skin": "comp/img_touxiangMask.png", "sizeGrid": "45,48,51,52", "renderType": "mask", "height": 83 }, "compId": 50 }, { "type": "Image", "props": { "y": -4, "x": 12, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 7 }] }, { "type": "Box", "props": { "y": 2, "x": 135.5, "var": "b_unlogin" }, "compId": 52, "child": [{ "type": "Button", "props": { "y": 30, "x": 0.5, "var": "btn_login", "stateNum": 1, "skin": "btns/ic_login.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 53 }, { "type": "Button", "props": { "y": 29, "x": 88, "var": "btn_register", "stateNum": 1, "skin": "btns/ic_register.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 54 }, { "type": "Label", "props": { "y": 0, "x": 0, "text": "未登录", "fontSize": 26, "color": "#FFFFFF", "bold": true }, "compId": 55 }] }] }, { "type": "Box", "props": { "width": 315, "var": "b_left", "left": 15, "height": 492, "centerY": 0 }, "compId": 19, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_left.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 20 }, { "type": "Panel", "props": { "var": "p_menu", "vScrollBarSkin": "comp/vscroll.png", "top": 0, "right": 0, "left": 0, "bottom": 0 }, "compId": 21 }, { "type": "List", "props": { "y": 42, "x": 0, "width": 316, "var": "list_tab", "vScrollBarSkin": "comp/vscroll.png", "spaceY": 2, "height": 446 }, "compId": 56, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 57, "child": [{ "type": "Image", "props": { "width": 316, "skin": "btns/ic_hot_game.png", "name": "bg_normal", "height": 86 }, "compId": 58 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 316, "skin": "btns/ic_hot_game_pressed.png", "name": "bg_selected", "height": 86 }, "compId": 59 }] }] }] }, { "type": "Box", "props": { "y": 157, "var": "b_center", "centerX": 170 }, "compId": 25, "child": [{ "type": "Panel", "props": { "y": 0, "x": 0, "width": 909, "var": "p_game", "height": 444 }, "compId": 26 }] }, { "type": "Box", "props": { "y": 114, "x": 523, "var": "b_pmd" }, "compId": 27, "child": [{ "type": "Image", "props": { "y": 0, "x": 36, "width": 849, "var": "img_pmd", "skin": "comp/laba_bg.png", "height": 34 }, "compId": 29, "child": [{ "type": "Label", "props": { "y": 3, "text": "跑马灯信息", "overflow": "visible", "name": "txt_label", "fontSize": 24, "color": "#f4f4f4" }, "compId": 30 }] }] }, { "type": "Box", "props": { "var": "b_bottom", "right": 0, "left": 0, "height": 107, "bottom": 0 }, "compId": 31, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_bottom.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 32 }, { "type": "Button", "props": { "var": "btn_tg", "stateNum": 1, "skin": "btns/ic_promotion.png", "scaleY": 0.5, "scaleX": 0.5, "left": 15, "centerY": 0 }, "compId": 34 }, { "type": "Button", "props": { "var": "btn_tixian", "stateNum": 1, "skin": "btns/ic_withdrawal.png", "scaleY": 0.5, "scaleX": 0.5, "right": 185, "centerY": 1 }, "compId": 39 }, { "type": "Button", "props": { "var": "btn_cz", "stateNum": 1, "skin": "btns/ic_recharge.png", "scaleY": 0.5, "scaleX": 0.5, "right": 10, "centerY": 0 }, "compId": 40 }, { "type": "HBox", "props": { "y": 16, "right": 370, "left": 236, "align": "none" }, "compId": 62, "child": [{ "type": "Button", "props": { "var": "btn_huodong", "stateNum": 1, "skin": "btns/ic_activity.png", "scaleY": 0.7, "scaleX": 0.7, "left": 0 }, "compId": 35 }, { "type": "Button", "props": { "var": "btn_xm", "stateNum": 1, "skin": "btns/ic_shuffle.png", "scaleY": 0.7, "scaleX": 0.7, "centerY": 1, "centerX": -98 }, "compId": 38 }, { "type": "Button", "props": { "var": "btn_mail", "stateNum": 1, "skin": "btns/ic_message.png", "scaleY": 0.7, "scaleX": 0.7, "centerY": 1, "centerX": 102 }, "compId": 36 }, { "type": "Button", "props": { "y": 0, "var": "btn_kf", "stateNum": 1, "skin": "btns/ic_customer_service.png", "scaleY": 0.7, "scaleX": 0.7, "right": 0 }, "compId": 37 }] }] }], "loadList": ["bgs/catch_fish_bg.png", "bgs/dindex_header.png", "btns/dindex_index_set.png", "bgs/ic_website_ky.png", "comp/db7_room.png", "icons/ic_golden.png", "btns/dindex_reload.png", "comp/img_touxiangMask.png", "comp/dindex_index_icon.png", "btns/ic_login.png", "btns/ic_register.png", "bgs/ic_home_left.png", "comp/vscroll.png", "btns/ic_hot_game.png", "btns/ic_hot_game_pressed.png", "comp/laba_bg.png", "bgs/ic_home_bottom.png", "btns/ic_promotion.png", "btns/ic_withdrawal.png", "btns/ic_recharge.png", "btns/ic_activity.png", "btns/ic_shuffle.png", "btns/ic_message.png", "btns/ic_customer_service.png"], "loadList3D": [] };
+        HallUiUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "var": "img_bg", "top": 0, "skin": "bgs/catch_fish_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 3 }, { "type": "Box", "props": { "var": "b_top", "top": 0, "right": 0, "left": 0 }, "compId": 5, "child": [{ "type": "Image", "props": { "skin": "bgs/dindex_header.png", "right": 0, "left": 0 }, "compId": 6 }, { "type": "Label", "props": { "y": 39, "x": 113, "width": 220, "var": "txt_name", "text": "label", "height": 24, "fontSize": 24, "color": "#f9f9f9", "align": "center" }, "compId": 9 }, { "type": "Button", "props": { "y": 32, "x": 1120, "var": "btn_set", "stateNum": 1, "skin": "btns/dindex_index_set.png", "right": 60 }, "compId": 17 }, { "type": "Image", "props": { "y": 24, "var": "img_web", "skin": "bgs/ic_website_ky.png", "scaleY": 0.5, "scaleX": 0.5, "centerX": 243 }, "compId": 33 }, { "type": "Box", "props": { "y": 5, "var": "b_money", "centerX": -100 }, "compId": 41, "child": [{ "type": "Image", "props": { "y": 19, "x": 22, "width": 351, "skin": "comp/db7_room.png", "sizeGrid": "7,7,7,7", "scaleY": 0.8, "scaleX": 0.8, "height": 39 }, "compId": 10 }, { "type": "Image", "props": { "y": 4.5, "x": 0, "width": 50, "skin": "icons/ic_golden.png", "height": 50 }, "compId": 18 }, { "type": "Label", "props": { "y": 22, "x": 51, "width": 249, "var": "txt_money", "text": "0.00", "height": 24, "fontSize": 24, "color": "#f8f1f1", "align": "center" }, "compId": 12 }, { "type": "Button", "props": { "y": 35, "x": 307, "width": 50, "var": "btn_reload", "stateNum": 1, "skin": "btns/dindex_reload.png", "pivotY": 25, "pivotX": 25, "height": 50 }, "compId": 14 }] }, { "type": "Box", "props": { "y": 17, "x": 44 }, "compId": 49, "child": [{ "type": "Image", "props": { "y": -11, "x": -1, "width": 98, "skin": "comp/img_touxiangMask.png", "sizeGrid": "45,48,51,52", "renderType": "mask", "height": 83 }, "compId": 50 }, { "type": "Image", "props": { "y": -4, "x": 12, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 7 }] }, { "type": "Box", "props": { "y": 2, "x": 135.5, "var": "b_unlogin" }, "compId": 52, "child": [{ "type": "Button", "props": { "y": 30, "x": 0.5, "var": "btn_login", "stateNum": 1, "skin": "btns/ic_login.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 53 }, { "type": "Button", "props": { "y": 29, "x": 88, "var": "btn_register", "stateNum": 1, "skin": "btns/ic_register.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 54 }, { "type": "Label", "props": { "y": 0, "x": 0, "text": "未登录", "fontSize": 26, "color": "#FFFFFF", "bold": true }, "compId": 55 }] }] }, { "type": "Panel", "props": { "var": "p_game", "right": 30, "left": 350, "height": 444, "hScrollBarSkin": "comp/hscroll.png", "centerY": 10 }, "compId": 26, "child": [{ "type": "Box", "props": {}, "compId": 66 }] }, { "type": "Box", "props": { "width": 315, "var": "b_left", "left": 15, "height": 492, "centerY": 0 }, "compId": 19, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_left.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 20 }, { "type": "Panel", "props": { "var": "p_menu", "vScrollBarSkin": "comp/vscroll.png", "top": 0, "right": 0, "left": 0, "bottom": 0 }, "compId": 21 }, { "type": "List", "props": { "y": 42, "x": 0, "width": 316, "var": "list_tab", "vScrollBarSkin": "comp/vscroll.png", "spaceY": 2, "height": 446 }, "compId": 56, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 57, "child": [{ "type": "Image", "props": { "width": 316, "skin": "btns/ic_hot_game.png", "name": "bg_normal", "height": 86 }, "compId": 58 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 316, "skin": "btns/ic_hot_game_pressed.png", "name": "bg_selected", "height": 86 }, "compId": 59 }] }] }] }, { "type": "Box", "props": { "y": 114, "x": 357.5, "var": "b_pmd" }, "compId": 27, "child": [{ "type": "Image", "props": { "y": 0, "x": 36, "width": 849, "var": "img_pmd", "skin": "comp/laba_bg.png", "height": 34 }, "compId": 29, "child": [{ "type": "Label", "props": { "y": 3, "text": "跑马灯信息", "overflow": "visible", "name": "txt_label", "fontSize": 24, "color": "#f4f4f4" }, "compId": 30 }] }] }, { "type": "Box", "props": { "var": "b_bottom", "right": 0, "left": 0, "height": 107, "bottom": 0 }, "compId": 31, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_bottom.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 32 }, { "type": "Button", "props": { "var": "btn_tg", "stateNum": 1, "skin": "btns/ic_promotion.png", "scaleY": 0.5, "scaleX": 0.5, "left": 15, "centerY": 0 }, "compId": 34 }, { "type": "Button", "props": { "var": "btn_tixian", "stateNum": 1, "skin": "btns/ic_withdrawal.png", "scaleY": 0.5, "scaleX": 0.5, "right": 185, "centerY": 1 }, "compId": 39 }, { "type": "Button", "props": { "var": "btn_cz", "stateNum": 1, "skin": "btns/ic_recharge.png", "scaleY": 0.5, "scaleX": 0.5, "right": 10, "centerY": 0 }, "compId": 40 }, { "type": "HBox", "props": { "y": 16, "right": 370, "left": 236, "align": "none" }, "compId": 62, "child": [{ "type": "Button", "props": { "var": "btn_huodong", "stateNum": 1, "skin": "btns/ic_activity.png", "scaleY": 0.7, "scaleX": 0.7, "left": 0 }, "compId": 35 }, { "type": "Button", "props": { "var": "btn_xm", "stateNum": 1, "skin": "btns/ic_shuffle.png", "scaleY": 0.7, "scaleX": 0.7, "centerY": 1, "centerX": -98 }, "compId": 38 }, { "type": "Button", "props": { "var": "btn_mail", "stateNum": 1, "skin": "btns/ic_message.png", "scaleY": 0.7, "scaleX": 0.7, "centerY": 1, "centerX": 102 }, "compId": 36 }, { "type": "Button", "props": { "y": 0, "var": "btn_kf", "stateNum": 1, "skin": "btns/ic_customer_service.png", "scaleY": 0.7, "scaleX": 0.7, "right": 0 }, "compId": 37 }] }] }], "loadList": ["bgs/catch_fish_bg.png", "bgs/dindex_header.png", "btns/dindex_index_set.png", "bgs/ic_website_ky.png", "comp/db7_room.png", "icons/ic_golden.png", "btns/dindex_reload.png", "comp/img_touxiangMask.png", "comp/dindex_index_icon.png", "btns/ic_login.png", "btns/ic_register.png", "comp/hscroll.png", "bgs/ic_home_left.png", "comp/vscroll.png", "btns/ic_hot_game.png", "btns/ic_hot_game_pressed.png", "comp/laba_bg.png", "bgs/ic_home_bottom.png", "btns/ic_promotion.png", "btns/ic_withdrawal.png", "btns/ic_recharge.png", "btns/ic_activity.png", "btns/ic_shuffle.png", "btns/ic_message.png", "btns/ic_customer_service.png"], "loadList3D": [] };
         return HallUiUI;
     }(View));
     ui.HallUiUI = HallUiUI;
@@ -1918,11 +2140,25 @@ var ui;
             _super.prototype.createChildren.call(this);
             this.createView(UserInfoUI.uiView);
         };
-        UserInfoUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "top": 0, "skin": "bgs/ic_qipai_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 115 }, { "type": "Image", "props": { "y": 10, "x": 10, "skin": "comp/dactivity_nav_left.png" }, "compId": 99 }, { "type": "Box", "props": { "var": "b_info", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 16, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 969, "skin": "bgs/ic_pc_title.png", "right": 0, "left": 0, "height": 48 }, "compId": 176, "child": [{ "type": "Image", "props": { "x": 23, "skin": "icons/ic_dot.png", "centerY": 0 }, "compId": 177 }, { "type": "Label", "props": { "x": 76, "text": "基础信息", "fontSize": 24, "color": "#eaa65a", "centerY": 0 }, "compId": 178 }, { "type": "Box", "props": { "y": 0, "width": 133, "var": "btn_xg1", "right": 0, "height": 41 }, "compId": 257, "child": [{ "type": "Image", "props": { "y": 4, "x": 0, "stateNum": 1, "skin": "btns/ic_edit.png", "scaleY": 0.7, "scaleX": 0.7, "centerY": 0 }, "compId": 187 }, { "type": "Label", "props": { "y": 8.5, "x": 66, "text": "编辑", "fontSize": 24, "color": "#eaa65a" }, "compId": 259 }] }] }, { "type": "Label", "props": { "y": 82, "x": 64, "text": "账号：", "fontSize": 22, "color": "#eaa65a" }, "compId": 183 }, { "type": "Label", "props": { "y": 82, "x": 129, "text": "玩家账号", "name": "txt_account", "fontSize": 22, "color": "#FFFFFF" }, "compId": 184 }, { "type": "Label", "props": { "y": 135, "x": 184, "width": 267, "text": "玩家账号", "styleSkin": "comp/ic_input_bg.png", "name": "txt_level", "height": 27, "fontSize": 22, "color": "#FFFFFF" }, "compId": 186 }, { "type": "Label", "props": { "y": 137, "x": 69, "width": 44, "text": "会员等级:", "height": 22, "fontSize": 22, "color": "#eaa65a" }, "compId": 185 }, { "type": "Label", "props": { "y": 199, "x": 69, "text": "姓名：", "fontSize": 22, "color": "#eaa65a" }, "compId": 188 }, { "type": "TextInput", "props": { "y": 195, "x": 135, "width": 245, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_name", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 189 }, { "type": "Label", "props": { "y": 264, "x": 69, "text": "邮箱：", "fontSize": 22, "color": "#eaa65a" }, "compId": 198 }, { "type": "TextInput", "props": { "y": 260, "x": 135, "width": 245, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_mail", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 199 }, { "type": "Label", "props": { "y": 332, "x": 69, "text": "电话：", "fontSize": 22, "color": "#eaa65a" }, "compId": 200 }, { "type": "TextInput", "props": { "y": 329, "x": 138, "width": 241, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_tel", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 201 }, { "type": "Label", "props": { "y": 403, "x": 69, "text": "微信：", "fontSize": 22, "color": "#eaa65a" }, "compId": 204 }, { "type": "TextInput", "props": { "y": 399, "x": 136, "width": 249, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_wx", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 205 }] }, { "type": "Box", "props": { "var": "b_touZhu", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 17, "child": [{ "type": "Image", "props": { "y": 0, "width": 967, "skin": "bgs/ic_gathering_bg.png", "right": 0, "left": 0, "height": 584 }, "compId": 212 }, { "type": "List", "props": { "y": 153, "width": 967, "var": "list_1", "vScrollBarSkin": "comp/vscroll.png", "right": 0, "left": 0, "height": 429 }, "compId": 46, "child": [{ "type": "Box", "props": { "name": "render" }, "compId": 47, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 957, "skin": "bgs/dpersonalcenter_gerenzhonxinjilubg1.png", "sizeGrid": "14,13,10,13", "name": "bg_1", "height": 77 }, "compId": 48 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 958, "skin": "bgs/dpersonalcenter_gerenzhonxinjilubg2.png", "sizeGrid": "14,13,10,13", "name": "bg_2", "height": 77 }, "compId": 49 }, { "type": "Label", "props": { "y": 26, "x": 0, "width": 188, "text": "#f4ce7f", "name": "txt_1", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 50 }, { "type": "Label", "props": { "y": 26, "x": 200, "width": 188, "text": "#f4ce7f", "name": "txt_2", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 51 }, { "type": "Label", "props": { "y": 26, "x": 387, "width": 191, "text": "#f4ce7f", "name": "txt_3", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 52 }, { "type": "Label", "props": { "y": 26, "x": 585, "width": 192, "text": "#f4ce7f", "name": "txt_4", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 53 }, { "type": "Label", "props": { "y": 26, "x": 777, "width": 139, "text": "#f4ce7f", "name": "txt_5", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "left" }, "compId": 54 }] }] }, { "type": "List", "props": { "y": 0, "x": 0, "width": 926, "var": "list_tab1", "spaceX": 5, "repeatY": 1, "height": 58 }, "compId": 206, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 208, "child": [{ "type": "Image", "props": { "skin": "btns/ic_pc_grbb_tab.png", "scaleY": 0.5, "scaleX": 0.5, "name": "bg_normal" }, "compId": 209 }, { "type": "Image", "props": { "y": 0, "x": 0, "skin": "btns/ic_pc_grbb_tab_pressed.png", "scaleY": 0.5, "scaleX": 0.5, "name": "bg_selected" }, "compId": 210 }, { "type": "Label", "props": { "y": 15, "x": 18.75, "text": "棋牌投注记录", "name": "txt_label", "fontSize": 24 }, "compId": 211 }] }] }, { "type": "Label", "props": { "y": 72, "x": 12, "text": "派彩时间", "fontSize": 24, "color": "#ffffff" }, "compId": 213 }, { "type": "Image", "props": { "y": 68.5, "x": 125.5, "var": "btn_time", "skin": "bgs/ic_pc_edit.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 214 }, { "type": "Label", "props": { "y": 72, "x": 147, "var": "txt_time1", "text": "派彩时间", "fontSize": 24, "color": "#ffffff" }, "compId": 215 }, { "type": "Label", "props": { "y": 72, "x": 671, "text": "游戏平台", "fontSize": 24, "color": "#ffffff" }, "compId": 216 }, { "type": "Image", "props": { "y": 67, "x": 783, "var": "btn_platfrom", "skin": "bgs/ic_pc_edit.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 217 }, { "type": "Label", "props": { "y": 71, "x": 805, "var": "txt_platfrom", "text": "全部平台", "fontSize": 24, "color": "#ffffff" }, "compId": 218 }, { "type": "Image", "props": { "y": 113.5, "x": 0, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 219, "child": [{ "type": "Label", "props": { "text": "派彩时间", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 220 }] }, { "type": "Image", "props": { "y": 113.5, "x": 194, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 221, "child": [{ "type": "Label", "props": { "text": "注单号", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 222 }] }, { "type": "Image", "props": { "y": 113, "x": 388, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 223, "child": [{ "type": "Label", "props": { "text": "游戏名称", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 224 }] }, { "type": "Image", "props": { "y": 113, "x": 582, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 225, "child": [{ "type": "Label", "props": { "text": "投注金额", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 226 }] }, { "type": "Image", "props": { "y": 113.5, "x": 776, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 227, "child": [{ "type": "Label", "props": { "text": "已派奖", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 228 }] }, { "type": "Label", "props": { "y": 0, "x": 0, "var": "txt_tips1", "text": "暂无数据", "fontSize": 28, "color": "#ffffff", "centerY": 101, "centerX": 0 }, "compId": 229, "child": [{ "type": "Image", "props": { "y": -94, "x": -10, "skin": "comp/bg_data_null.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 230 }] }] }, { "type": "Box", "props": { "var": "b_baoBiao", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 18, "child": [{ "type": "Image", "props": { "y": 0, "x": -303, "width": 967, "skin": "bgs/ic_gathering_bg.png", "right": 0, "left": 0, "height": 584 }, "compId": 238 }, { "type": "List", "props": { "y": 0, "x": 0, "width": 894, "var": "list_tab2", "spaceX": 5, "repeatY": 1, "repeatX": 5, "left": 0, "height": 57 }, "compId": 232, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 233, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 250, "skin": "bgs/chart_noselect.png", "scaleY": 0.7, "scaleX": 0.7, "name": "bg_normal", "height": 80 }, "compId": 234 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 250, "skin": "bgs/chart_select.png", "scaleY": 0.7, "scaleX": 0.7, "name": "bg_selected", "height": 80 }, "compId": 235 }, { "type": "Label", "props": { "y": 12, "x": 31.5, "text": "我的推广", "name": "txt_label", "fontSize": 28 }, "compId": 236 }] }] }, { "type": "Image", "props": { "y": 61, "width": 969, "skin": "bgs/ic_pc_title.png", "right": 0, "left": 0, "height": 48 }, "compId": 239, "child": [{ "type": "Label", "props": { "x": 46, "text": "开始时间", "fontSize": 24, "color": "#eaa65a", "centerY": 0 }, "compId": 241 }, { "type": "Label", "props": { "x": 529, "text": "结束时间", "fontSize": 24, "color": "#eaa65a", "centerY": 0 }, "compId": 243 }] }, { "type": "Image", "props": { "y": 113, "x": 0, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 244, "child": [{ "type": "Label", "props": { "text": "派彩时间", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 248 }] }, { "type": "Image", "props": { "y": 113, "x": 238, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 245, "child": [{ "type": "Label", "props": { "text": "注单号", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 249 }] }, { "type": "Image", "props": { "y": 113, "x": 483.5, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 246, "child": [{ "type": "Label", "props": { "text": "游戏名称", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 250 }] }, { "type": "Image", "props": { "y": 113, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "right": 10, "height": 40 }, "compId": 247, "child": [{ "type": "Label", "props": { "text": "投注金额", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 251 }] }, { "type": "Image", "props": { "y": 65, "x": 185, "width": 229, "skin": "comp/ic_input_bg.png", "sizeGrid": "22,22,22,22", "height": 44 }, "compId": 253 }, { "type": "Image", "props": { "y": 63, "x": 665, "width": 229, "skin": "comp/ic_input_bg.png", "sizeGrid": "22,22,22,22", "height": 44 }, "compId": 254 }, { "type": "List", "props": { "y": 161, "x": 0, "width": 965, "height": 416 }, "compId": 255, "child": [{ "type": "Box", "props": {}, "compId": 256 }] }] }, { "type": "Box", "props": { "y": 0, "x": 0, "var": "b_title", "right": 0, "left": 0, "height": 120 }, "compId": 104, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_top_bg.png", "right": 0, "left": 0, "height": 120 }, "compId": 106 }, { "type": "Button", "props": { "y": 4, "x": 0, "var": "btn_close", "stateNum": 1, "skin": "btns/back_btn.png", "scaleY": 0.85, "scaleX": 0.85 }, "compId": 107 }, { "type": "Image", "props": { "x": 329, "skin": "bgs/ic_user_info.png", "scaleY": 0.5, "scaleX": 0.5, "centerY": 0 }, "compId": 108 }] }, { "type": "List", "props": { "y": 0, "x": 0, "width": 295, "var": "list_tab", "top": 125, "spaceY": 5, "repeatY": 5, "repeatX": 1, "left": 0, "height": 578 }, "compId": 105, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 109, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 287, "skin": "btns/ic_pc_grxx.png", "name": "bg_normal", "height": 96 }, "compId": 110 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 287, "skin": "btns/ic_pc_grxx_pressed.png", "name": "bg_selected", "height": 96 }, "compId": 111 }] }] }, { "type": "Box", "props": { "var": "b_vipInfo" }, "compId": 231 }], "loadList": ["bgs/ic_qipai_bg.png", "comp/dactivity_nav_left.png", "bgs/ic_pc_title.png", "icons/ic_dot.png", "btns/ic_edit.png", "comp/ic_input_bg.png", "bgs/ic_gathering_bg.png", "comp/vscroll.png", "bgs/dpersonalcenter_gerenzhonxinjilubg1.png", "bgs/dpersonalcenter_gerenzhonxinjilubg2.png", "btns/ic_pc_grbb_tab.png", "btns/ic_pc_grbb_tab_pressed.png", "bgs/ic_pc_edit.png", "bgs/ic_pc_pop_wind.png", "comp/bg_data_null.png", "bgs/chart_noselect.png", "bgs/chart_select.png", "bgs/ic_home_top_bg.png", "btns/back_btn.png", "bgs/ic_user_info.png", "btns/ic_pc_grxx.png", "btns/ic_pc_grxx_pressed.png"], "loadList3D": [] };
+        UserInfoUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "top": 0, "skin": "bgs/ic_qipai_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 115 }, { "type": "Image", "props": { "y": 10, "x": 10, "skin": "comp/dactivity_nav_left.png" }, "compId": 99 }, { "type": "Box", "props": { "var": "b_info", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 16, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 969, "skin": "bgs/ic_pc_title.png", "right": 0, "left": 0, "height": 48 }, "compId": 176, "child": [{ "type": "Image", "props": { "x": 23, "skin": "icons/ic_dot.png", "centerY": 0 }, "compId": 177 }, { "type": "Label", "props": { "x": 76, "text": "基础信息", "fontSize": 24, "color": "#eaa65a", "centerY": 0 }, "compId": 178 }, { "type": "Box", "props": { "y": 0, "width": 133, "var": "btn_xg1", "right": 0, "height": 41 }, "compId": 257, "child": [{ "type": "Image", "props": { "y": 4, "x": 0, "stateNum": 1, "skin": "btns/ic_edit.png", "scaleY": 0.7, "scaleX": 0.7, "centerY": 0 }, "compId": 187 }, { "type": "Label", "props": { "y": 8.5, "x": 66, "text": "编辑", "fontSize": 24, "color": "#eaa65a" }, "compId": 259 }] }] }, { "type": "Label", "props": { "y": 82, "x": 64, "text": "账号：", "fontSize": 22, "color": "#eaa65a" }, "compId": 183 }, { "type": "Label", "props": { "y": 82, "x": 129, "text": "玩家账号", "name": "txt_account", "fontSize": 22, "color": "#FFFFFF" }, "compId": 184 }, { "type": "Label", "props": { "y": 135, "x": 184, "width": 267, "text": "玩家账号", "styleSkin": "comp/ic_input_bg.png", "name": "txt_level", "height": 27, "fontSize": 22, "color": "#FFFFFF" }, "compId": 186 }, { "type": "Label", "props": { "y": 137, "x": 69, "width": 44, "text": "会员等级:", "height": 22, "fontSize": 22, "color": "#eaa65a" }, "compId": 185 }, { "type": "Label", "props": { "y": 199, "x": 69, "text": "姓名：", "fontSize": 22, "color": "#eaa65a" }, "compId": 188 }, { "type": "TextInput", "props": { "y": 195, "x": 135, "width": 245, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_name", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 189 }, { "type": "Label", "props": { "y": 264, "x": 69, "text": "邮箱：", "fontSize": 22, "color": "#eaa65a" }, "compId": 198 }, { "type": "TextInput", "props": { "y": 260, "x": 135, "width": 245, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_mail", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 199 }, { "type": "Label", "props": { "y": 332, "x": 69, "text": "电话：", "fontSize": 22, "color": "#eaa65a" }, "compId": 200 }, { "type": "TextInput", "props": { "y": 329, "x": 138, "width": 241, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_tel", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 201 }, { "type": "Label", "props": { "y": 403, "x": 69, "text": "微信：", "fontSize": 22, "color": "#eaa65a" }, "compId": 204 }, { "type": "TextInput", "props": { "y": 399, "x": 136, "width": 249, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_wx", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 205 }] }, { "type": "Box", "props": { "var": "b_touZhu", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 17, "child": [{ "type": "Image", "props": { "y": 0, "width": 967, "skin": "bgs/ic_gathering_bg.png", "right": 0, "left": 0, "height": 584 }, "compId": 212 }, { "type": "List", "props": { "y": 153, "width": 967, "var": "list_1", "vScrollBarSkin": "comp/vscroll.png", "right": 0, "left": 0, "height": 429 }, "compId": 46, "child": [{ "type": "Box", "props": { "name": "render" }, "compId": 47, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 957, "skin": "bgs/dpersonalcenter_gerenzhonxinjilubg1.png", "sizeGrid": "14,13,10,13", "name": "bg_1", "height": 77 }, "compId": 48 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 958, "skin": "bgs/dpersonalcenter_gerenzhonxinjilubg2.png", "sizeGrid": "14,13,10,13", "name": "bg_2", "height": 77 }, "compId": 49 }, { "type": "Label", "props": { "y": 26, "x": 0, "width": 188, "text": "#f4ce7f", "name": "txt_1", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 50 }, { "type": "Label", "props": { "y": 26, "x": 200, "width": 188, "text": "#f4ce7f", "name": "txt_2", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 51 }, { "type": "Label", "props": { "y": 26, "x": 387, "width": 191, "text": "#f4ce7f", "name": "txt_3", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 52 }, { "type": "Label", "props": { "y": 26, "x": 585, "width": 192, "text": "#f4ce7f", "name": "txt_4", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 53 }, { "type": "Label", "props": { "y": 26, "x": 777, "width": 139, "text": "#f4ce7f", "name": "txt_5", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "left" }, "compId": 54 }] }] }, { "type": "List", "props": { "y": 0, "x": 0, "width": 926, "var": "list_tab1", "spaceX": 5, "repeatY": 1, "height": 58 }, "compId": 206, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 208, "child": [{ "type": "Image", "props": { "skin": "btns/ic_pc_grbb_tab.png", "scaleY": 0.5, "scaleX": 0.5, "name": "bg_normal" }, "compId": 209 }, { "type": "Image", "props": { "y": 0, "x": 0, "skin": "btns/ic_pc_grbb_tab_pressed.png", "scaleY": 0.5, "scaleX": 0.5, "name": "bg_selected" }, "compId": 210 }, { "type": "Label", "props": { "y": 15, "x": 18.75, "text": "棋牌投注记录", "name": "txt_label", "fontSize": 24 }, "compId": 211 }] }] }, { "type": "Label", "props": { "y": 72, "x": 12, "text": "派彩时间", "fontSize": 24, "color": "#ffffff" }, "compId": 213 }, { "type": "Image", "props": { "y": 68.5, "x": 125.5, "var": "btn_time", "skin": "bgs/ic_pc_edit.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 214 }, { "type": "Label", "props": { "y": 72, "x": 147, "var": "txt_time1", "text": "派彩时间", "fontSize": 24, "color": "#ffffff" }, "compId": 215 }, { "type": "Label", "props": { "y": 72, "x": 671, "text": "游戏平台", "fontSize": 24, "color": "#ffffff" }, "compId": 216 }, { "type": "Image", "props": { "y": 67, "x": 783, "var": "btn_platfrom", "skin": "bgs/ic_pc_edit.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 217 }, { "type": "Label", "props": { "y": 71, "x": 805, "var": "txt_platfrom", "text": "全部平台", "fontSize": 24, "color": "#ffffff" }, "compId": 218 }, { "type": "Image", "props": { "y": 113.5, "x": 0, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 219, "child": [{ "type": "Label", "props": { "text": "派彩时间", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 220 }] }, { "type": "Image", "props": { "y": 113.5, "x": 194, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 221, "child": [{ "type": "Label", "props": { "text": "注单号", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 222 }] }, { "type": "Image", "props": { "y": 113, "x": 388, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 223, "child": [{ "type": "Label", "props": { "text": "游戏名称", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 224 }] }, { "type": "Image", "props": { "y": 113, "x": 582, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 225, "child": [{ "type": "Label", "props": { "text": "投注金额", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 226 }] }, { "type": "Image", "props": { "y": 113.5, "x": 776, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 227, "child": [{ "type": "Label", "props": { "text": "已派奖", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 228 }] }, { "type": "Label", "props": { "y": 0, "x": 0, "var": "txt_tips1", "text": "暂无数据", "fontSize": 28, "color": "#ffffff", "centerY": 101, "centerX": 0 }, "compId": 229, "child": [{ "type": "Image", "props": { "y": -94, "x": -10, "skin": "comp/bg_data_null.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 230 }] }] }, { "type": "Box", "props": { "y": 112, "var": "b_baoBiao", "right": 10, "left": 347, "height": 590 }, "compId": 18, "child": [{ "type": "Image", "props": { "width": 923, "skin": "comp/dpersonalcenter_gerenzhonxinbaobiaobg.png", "sizeGrid": "86,29,29,29", "right": 0, "left": 0, "height": 513, "bottom": 0 }, "compId": 56 }, { "type": "Tab", "props": { "y": 7, "x": 1.1000000000000227, "var": "tab_1" }, "compId": 72, "child": [{ "type": "Button", "props": { "y": 0, "x": 0, "width": 214, "stateNum": 2, "skin": "comp/btn_1.png", "sizeGrid": "13,20,13,16", "scaleY": 0.85, "scaleX": 0.85, "name": "item0", "labelSize": 30, "labelColors": "#666666,#666666", "label": "棋牌平台报表", "height": 77 }, "compId": 61 }, { "type": "Button", "props": { "y": 0, "x": 185, "width": 214, "stateNum": 2, "skin": "comp/btn_1.png", "sizeGrid": "13,20,13,16", "scaleY": 0.85, "scaleX": 0.85, "name": "item1", "labelSize": 30, "labelColors": "#666666,#666666", "label": "真人视讯报表", "height": 77 }, "compId": 73 }, { "type": "Button", "props": { "y": 0, "x": 370, "width": 214, "stateNum": 2, "skin": "comp/btn_1.png", "sizeGrid": "13,20,13,16", "scaleY": 0.85, "scaleX": 0.85, "name": "item2", "labelSize": 30, "labelColors": "#666666,#666666", "label": "电子游艺报表", "height": 77 }, "compId": 75 }, { "type": "Button", "props": { "y": 0, "x": 555, "width": 214, "stateNum": 2, "skin": "comp/btn_1.png", "sizeGrid": "13,20,13,16", "scaleY": 0.85, "scaleX": 0.85, "name": "item3", "labelSize": 30, "labelColors": "#666666,#666666", "label": "体育平台报表", "height": 77 }, "compId": 76 }, { "type": "Button", "props": { "y": 0, "x": 740, "width": 214, "stateNum": 2, "skin": "comp/btn_1.png", "sizeGrid": "13,20,13,16", "scaleY": 0.85, "scaleX": 0.85, "name": "item4", "labelSize": 30, "labelColors": "#666666,#666666", "label": "捕鱼平台报表", "height": 77 }, "compId": 77 }] }, { "type": "Label", "props": { "y": 105, "x": 40, "text": "时间设置:", "fontSize": 30, "color": "#666666" }, "compId": 78 }, { "type": "Image", "props": { "y": 98.5, "x": 231, "skin": "comp/dpersonalcenter_gerenzhonxinpingtai.png" }, "compId": 79 }, { "type": "Label", "props": { "y": 104, "x": 259, "width": 130, "var": "txt_time", "text": "今天", "height": 30, "fontSize": 30, "color": "#666666", "align": "center" }, "compId": 80 }, { "type": "Label", "props": { "y": 213, "width": 128, "text": "盈利总额:", "pivotY": 15, "pivotX": 64, "height": 30, "fontSize": 30, "color": "#3d342b", "centerX": -70 }, "compId": 82 }, { "type": "Image", "props": { "y": 268, "x": 0, "skin": "comp/dpersonalcenter_gerenzhonxinline.png" }, "compId": 83 }, { "type": "Label", "props": { "y": 193, "width": 288, "var": "txt_ylze", "text": "0", "height": 35, "fontSize": 36, "color": "#008000", "centerX": 152, "bold": true, "align": "left" }, "compId": 84 }, { "type": "Image", "props": { "y": 412, "x": 0, "width": 307, "skin": "comp/dpersonalcenter_gerenzhonxinyouxiaotouzhubg.png" }, "compId": 85 }, { "type": "Image", "props": { "y": 412, "x": 309, "width": 307, "skin": "comp/dpersonalcenter_gerenzhonxinyouxiaotouzhubg.png" }, "compId": 86 }, { "type": "Image", "props": { "y": 412, "x": 617, "width": 307, "skin": "comp/dpersonalcenter_gerenzhonxinyouxiaotouzhubg.png" }, "compId": 88 }, { "type": "Image", "props": { "y": 273, "x": 307, "width": 2, "skin": "comp/dpersonalcenter_gerenzhonxinline2.png", "height": 198 }, "compId": 90 }, { "type": "Image", "props": { "y": 273, "x": 615, "width": 2, "skin": "comp/dpersonalcenter_gerenzhonxinline2.png", "height": 198 }, "compId": 92 }, { "type": "Label", "props": { "y": 426.5, "x": 78.3349609375, "text": "有效投注总额", "fontSize": 28, "color": "#ffffff" }, "compId": 93 }, { "type": "Label", "props": { "y": 426.5, "x": 378.05, "text": "有效投注总额", "fontSize": 28, "color": "#ffffff" }, "compId": 94 }, { "type": "Label", "props": { "y": 427.5, "x": 686.5, "text": "有效投注总额", "fontSize": 28, "color": "#ffffff" }, "compId": 95 }, { "type": "Label", "props": { "y": 333.5, "x": 151.650390625, "var": "txt_yxtz", "text": "0", "fontSize": 30, "color": "#ffff00", "bold": true }, "compId": 96 }, { "type": "Label", "props": { "y": 333.5, "x": 444.8154296875, "text": "0", "fontSize": 30, "color": "#ffff00", "bold": true }, "compId": 97 }, { "type": "Label", "props": { "y": 333.5, "x": 753.8154296875, "text": "0", "fontSize": 30, "color": "#ffff00", "bold": true }, "compId": 98 }] }, { "type": "Box", "props": { "y": 0, "x": 0, "var": "b_title", "right": 0, "left": 0, "height": 120 }, "compId": 104, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_top_bg.png", "right": 0, "left": 0, "height": 120 }, "compId": 106 }, { "type": "Button", "props": { "y": 4, "x": 0, "var": "btn_close", "stateNum": 1, "skin": "btns/back_btn.png", "scaleY": 0.85, "scaleX": 0.85 }, "compId": 107 }, { "type": "Image", "props": { "x": 329, "skin": "bgs/ic_cus_title.png", "scaleY": 0.5, "scaleX": 0.5, "centerY": 0 }, "compId": 108 }] }, { "type": "List", "props": { "y": 0, "x": 0, "width": 295, "var": "list_tab", "top": 125, "spaceY": 5, "repeatY": 5, "repeatX": 1, "left": 0, "height": 578 }, "compId": 105, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 109, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 287, "skin": "btns/ic_pc_grxx.png", "name": "bg_normal", "height": 96 }, "compId": 110 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 287, "skin": "btns/ic_pc_grxx_pressed.png", "name": "bg_selected", "height": 96 }, "compId": 111 }] }] }, { "type": "Box", "props": { "var": "b_vipInfo" }, "compId": 231 }], "loadList": ["bgs/ic_qipai_bg.png", "comp/dactivity_nav_left.png", "bgs/ic_pc_title.png", "icons/ic_dot.png", "btns/ic_edit.png", "comp/ic_input_bg.png", "bgs/ic_gathering_bg.png", "comp/vscroll.png", "bgs/dpersonalcenter_gerenzhonxinjilubg1.png", "bgs/dpersonalcenter_gerenzhonxinjilubg2.png", "btns/ic_pc_grbb_tab.png", "btns/ic_pc_grbb_tab_pressed.png", "bgs/ic_pc_edit.png", "bgs/ic_pc_pop_wind.png", "comp/bg_data_null.png", "comp/dpersonalcenter_gerenzhonxinbaobiaobg.png", "comp/btn_1.png", "comp/dpersonalcenter_gerenzhonxinpingtai.png", "comp/dpersonalcenter_gerenzhonxinline.png", "comp/dpersonalcenter_gerenzhonxinyouxiaotouzhubg.png", "comp/dpersonalcenter_gerenzhonxinline2.png", "bgs/ic_home_top_bg.png", "btns/back_btn.png", "bgs/ic_cus_title.png", "btns/ic_pc_grxx.png", "btns/ic_pc_grxx_pressed.png"], "loadList3D": [] };
         return UserInfoUI;
     }(View));
     ui.UserInfoUI = UserInfoUI;
     REG("ui.UserInfoUI", UserInfoUI);
+    var UserInfo1UI = /** @class */ (function (_super) {
+        __extends(UserInfo1UI, _super);
+        function UserInfo1UI() {
+            return _super.call(this) || this;
+        }
+        UserInfo1UI.prototype.createChildren = function () {
+            _super.prototype.createChildren.call(this);
+            this.createView(UserInfo1UI.uiView);
+        };
+        UserInfo1UI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "top": 0, "skin": "bgs/ic_qipai_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 115 }, { "type": "Image", "props": { "y": 10, "x": 10, "skin": "comp/dactivity_nav_left.png" }, "compId": 99 }, { "type": "Box", "props": { "var": "b_info", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 16, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 969, "skin": "bgs/ic_pc_title.png", "right": 0, "left": 0, "height": 48 }, "compId": 176, "child": [{ "type": "Image", "props": { "x": 23, "skin": "icons/ic_dot.png", "centerY": 0 }, "compId": 177 }, { "type": "Label", "props": { "x": 76, "text": "基础信息", "fontSize": 24, "color": "#eaa65a", "centerY": 0 }, "compId": 178 }, { "type": "Box", "props": { "y": 0, "width": 133, "var": "btn_xg1", "right": 0, "height": 41 }, "compId": 257, "child": [{ "type": "Image", "props": { "y": 4, "x": 0, "stateNum": 1, "skin": "btns/ic_edit.png", "scaleY": 0.7, "scaleX": 0.7, "centerY": 0 }, "compId": 187 }, { "type": "Label", "props": { "y": 8.5, "x": 66, "text": "编辑", "fontSize": 24, "color": "#eaa65a" }, "compId": 259 }] }] }, { "type": "Label", "props": { "y": 82, "x": 64, "text": "账号：", "fontSize": 22, "color": "#eaa65a" }, "compId": 183 }, { "type": "Label", "props": { "y": 82, "x": 129, "text": "玩家账号", "name": "txt_account", "fontSize": 22, "color": "#FFFFFF" }, "compId": 184 }, { "type": "Label", "props": { "y": 135, "x": 184, "width": 267, "text": "玩家账号", "styleSkin": "comp/ic_input_bg.png", "name": "txt_level", "height": 27, "fontSize": 22, "color": "#FFFFFF" }, "compId": 186 }, { "type": "Label", "props": { "y": 137, "x": 69, "width": 44, "text": "会员等级:", "height": 22, "fontSize": 22, "color": "#eaa65a" }, "compId": 185 }, { "type": "Label", "props": { "y": 199, "x": 69, "text": "姓名：", "fontSize": 22, "color": "#eaa65a" }, "compId": 188 }, { "type": "TextInput", "props": { "y": 195, "x": 135, "width": 245, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_name", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 189 }, { "type": "Label", "props": { "y": 264, "x": 69, "text": "邮箱：", "fontSize": 22, "color": "#eaa65a" }, "compId": 198 }, { "type": "TextInput", "props": { "y": 260, "x": 135, "width": 245, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_mail", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 199 }, { "type": "Label", "props": { "y": 332, "x": 69, "text": "电话：", "fontSize": 22, "color": "#eaa65a" }, "compId": 200 }, { "type": "TextInput", "props": { "y": 329, "x": 138, "width": 241, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_tel", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 201 }, { "type": "Label", "props": { "y": 403, "x": 69, "text": "微信：", "fontSize": 22, "color": "#eaa65a" }, "compId": 204 }, { "type": "TextInput", "props": { "y": 399, "x": 136, "width": 249, "text": "玩家账号", "skin": "comp/ic_input_bg.png", "name": "txt_wx", "height": 31, "fontSize": 22, "color": "#FFFFFF" }, "compId": 205 }] }, { "type": "Box", "props": { "var": "b_touZhu", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 17, "child": [{ "type": "Image", "props": { "y": 0, "width": 967, "skin": "bgs/ic_gathering_bg.png", "right": 0, "left": 0, "height": 584 }, "compId": 212 }, { "type": "List", "props": { "y": 153, "width": 967, "var": "list_1", "vScrollBarSkin": "comp/vscroll.png", "right": 0, "left": 0, "height": 429 }, "compId": 46, "child": [{ "type": "Box", "props": { "name": "render" }, "compId": 47, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 957, "skin": "bgs/dpersonalcenter_gerenzhonxinjilubg1.png", "sizeGrid": "14,13,10,13", "name": "bg_1", "height": 77 }, "compId": 48 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 958, "skin": "bgs/dpersonalcenter_gerenzhonxinjilubg2.png", "sizeGrid": "14,13,10,13", "name": "bg_2", "height": 77 }, "compId": 49 }, { "type": "Label", "props": { "y": 26, "x": 0, "width": 188, "text": "#f4ce7f", "name": "txt_1", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 50 }, { "type": "Label", "props": { "y": 26, "x": 200, "width": 188, "text": "#f4ce7f", "name": "txt_2", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 51 }, { "type": "Label", "props": { "y": 26, "x": 387, "width": 191, "text": "#f4ce7f", "name": "txt_3", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 52 }, { "type": "Label", "props": { "y": 26, "x": 585, "width": 192, "text": "#f4ce7f", "name": "txt_4", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "center" }, "compId": 53 }, { "type": "Label", "props": { "y": 26, "x": 777, "width": 139, "text": "#f4ce7f", "name": "txt_5", "height": 26, "fontSize": 26, "color": "#f4ce7f", "align": "left" }, "compId": 54 }] }] }, { "type": "List", "props": { "y": 0, "x": 0, "width": 926, "var": "list_tab1", "spaceX": 5, "repeatY": 1, "height": 58 }, "compId": 206, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 208, "child": [{ "type": "Image", "props": { "skin": "btns/ic_pc_grbb_tab.png", "scaleY": 0.5, "scaleX": 0.5, "name": "bg_normal" }, "compId": 209 }, { "type": "Image", "props": { "y": 0, "x": 0, "skin": "btns/ic_pc_grbb_tab_pressed.png", "scaleY": 0.5, "scaleX": 0.5, "name": "bg_selected" }, "compId": 210 }, { "type": "Label", "props": { "y": 15, "x": 18.75, "text": "棋牌投注记录", "name": "txt_label", "fontSize": 24 }, "compId": 211 }] }] }, { "type": "Label", "props": { "y": 72, "x": 12, "text": "派彩时间", "fontSize": 24, "color": "#ffffff" }, "compId": 213 }, { "type": "Image", "props": { "y": 68.5, "x": 125.5, "var": "btn_time", "skin": "bgs/ic_pc_edit.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 214 }, { "type": "Label", "props": { "y": 72, "x": 147, "var": "txt_time1", "text": "派彩时间", "fontSize": 24, "color": "#ffffff" }, "compId": 215 }, { "type": "Label", "props": { "y": 72, "x": 671, "text": "游戏平台", "fontSize": 24, "color": "#ffffff" }, "compId": 216 }, { "type": "Image", "props": { "y": 67, "x": 783, "var": "btn_platfrom", "skin": "bgs/ic_pc_edit.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 217 }, { "type": "Label", "props": { "y": 71, "x": 805, "var": "txt_platfrom", "text": "全部平台", "fontSize": 24, "color": "#ffffff" }, "compId": 218 }, { "type": "Image", "props": { "y": 113.5, "x": 0, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 219, "child": [{ "type": "Label", "props": { "text": "派彩时间", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 220 }] }, { "type": "Image", "props": { "y": 113.5, "x": 194, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 221, "child": [{ "type": "Label", "props": { "text": "注单号", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 222 }] }, { "type": "Image", "props": { "y": 113, "x": 388, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 223, "child": [{ "type": "Label", "props": { "text": "游戏名称", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 224 }] }, { "type": "Image", "props": { "y": 113, "x": 582, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 225, "child": [{ "type": "Label", "props": { "text": "投注金额", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 226 }] }, { "type": "Image", "props": { "y": 113.5, "x": 776, "width": 191, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 227, "child": [{ "type": "Label", "props": { "text": "已派奖", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 228 }] }, { "type": "Label", "props": { "y": 0, "x": 0, "var": "txt_tips1", "text": "暂无数据", "fontSize": 28, "color": "#ffffff", "centerY": 101, "centerX": 0 }, "compId": 229, "child": [{ "type": "Image", "props": { "y": -94, "x": -10, "skin": "comp/bg_data_null.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 230 }] }] }, { "type": "Box", "props": { "var": "b_baoBiao", "top": 130, "right": 10, "left": 303, "height": 590 }, "compId": 18, "child": [{ "type": "Image", "props": { "y": 0, "x": -303, "width": 967, "skin": "bgs/ic_gathering_bg.png", "right": 0, "left": 0, "height": 584 }, "compId": 238 }, { "type": "List", "props": { "y": 0, "x": 0, "width": 894, "var": "list_tab2", "spaceX": 5, "repeatY": 1, "repeatX": 5, "left": 0, "height": 57 }, "compId": 232, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 233, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 250, "skin": "bgs/chart_noselect.png", "scaleY": 0.7, "scaleX": 0.7, "name": "bg_normal", "height": 80 }, "compId": 234 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 250, "skin": "bgs/chart_select.png", "scaleY": 0.7, "scaleX": 0.7, "name": "bg_selected", "height": 80 }, "compId": 235 }, { "type": "Label", "props": { "y": 12, "x": 31.5, "text": "我的推广", "name": "txt_label", "fontSize": 28 }, "compId": 236 }] }] }, { "type": "Image", "props": { "y": 61, "width": 969, "skin": "bgs/ic_pc_title.png", "right": 0, "left": 0, "height": 48 }, "compId": 239, "child": [{ "type": "Label", "props": { "x": 46, "text": "开始时间", "fontSize": 24, "color": "#eaa65a", "centerY": 0 }, "compId": 241 }, { "type": "Label", "props": { "x": 529, "text": "结束时间", "fontSize": 24, "color": "#eaa65a", "centerY": 0 }, "compId": 243 }] }, { "type": "Image", "props": { "y": 113, "x": 0, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 244, "child": [{ "type": "Label", "props": { "text": "派彩时间", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 248 }] }, { "type": "Image", "props": { "y": 113, "x": 238, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 245, "child": [{ "type": "Label", "props": { "text": "注单号", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 249 }] }, { "type": "Image", "props": { "y": 113, "x": 483.5, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "height": 40 }, "compId": 246, "child": [{ "type": "Label", "props": { "text": "游戏名称", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 250 }] }, { "type": "Image", "props": { "y": 113, "width": 230, "skin": "bgs/ic_pc_pop_wind.png", "sizeGrid": "2,2,2,2", "right": 10, "height": 40 }, "compId": 247, "child": [{ "type": "Label", "props": { "text": "投注金额", "right": 0, "left": 0, "height": 26, "fontSize": 26, "color": "#f3d667", "centerY": 0, "align": "center" }, "compId": 251 }] }, { "type": "Image", "props": { "y": 65, "x": 185, "width": 229, "skin": "comp/ic_input_bg.png", "sizeGrid": "22,22,22,22", "height": 44 }, "compId": 253 }, { "type": "Image", "props": { "y": 63, "x": 665, "width": 229, "skin": "comp/ic_input_bg.png", "sizeGrid": "22,22,22,22", "height": 44 }, "compId": 254 }, { "type": "List", "props": { "y": 161, "x": 0, "width": 965, "height": 416 }, "compId": 255, "child": [{ "type": "Box", "props": {}, "compId": 256 }] }] }, { "type": "Box", "props": { "y": 0, "x": 0, "var": "b_title", "right": 0, "left": 0, "height": 120 }, "compId": 104, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_top_bg.png", "right": 0, "left": 0, "height": 120 }, "compId": 106 }, { "type": "Button", "props": { "y": 4, "x": 0, "var": "btn_close", "stateNum": 1, "skin": "btns/back_btn.png", "scaleY": 0.85, "scaleX": 0.85 }, "compId": 107 }, { "type": "Image", "props": { "x": 329, "skin": "bgs/ic_user_info.png", "scaleY": 0.5, "scaleX": 0.5, "centerY": 0 }, "compId": 108 }] }, { "type": "List", "props": { "y": 0, "x": 0, "width": 295, "var": "list_tab", "top": 125, "spaceY": 5, "repeatY": 5, "repeatX": 1, "left": 0, "height": 578 }, "compId": 105, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 109, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 287, "skin": "btns/ic_pc_grxx.png", "name": "bg_normal", "height": 96 }, "compId": 110 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 287, "skin": "btns/ic_pc_grxx_pressed.png", "name": "bg_selected", "height": 96 }, "compId": 111 }] }] }, { "type": "Box", "props": { "var": "b_vipInfo" }, "compId": 231 }], "loadList": ["bgs/ic_qipai_bg.png", "comp/dactivity_nav_left.png", "bgs/ic_pc_title.png", "icons/ic_dot.png", "btns/ic_edit.png", "comp/ic_input_bg.png", "bgs/ic_gathering_bg.png", "comp/vscroll.png", "bgs/dpersonalcenter_gerenzhonxinjilubg1.png", "bgs/dpersonalcenter_gerenzhonxinjilubg2.png", "btns/ic_pc_grbb_tab.png", "btns/ic_pc_grbb_tab_pressed.png", "bgs/ic_pc_edit.png", "bgs/ic_pc_pop_wind.png", "comp/bg_data_null.png", "bgs/chart_noselect.png", "bgs/chart_select.png", "bgs/ic_home_top_bg.png", "btns/back_btn.png", "bgs/ic_user_info.png", "btns/ic_pc_grxx.png", "btns/ic_pc_grxx_pressed.png"], "loadList3D": [] };
+        return UserInfo1UI;
+    }(View));
+    ui.UserInfo1UI = UserInfo1UI;
+    REG("ui.UserInfo1UI", UserInfo1UI);
     var XiMaUI = /** @class */ (function (_super) {
         __extends(XiMaUI, _super);
         function XiMaUI() {

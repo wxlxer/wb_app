@@ -675,6 +675,10 @@ declare module gamelib {
         * 44.	验证取款密码
         */
         static Getqkpwd: string;
+        /**
+         * 获得进入游戏的地址
+         */
+        static GetApilogin: string;
     }
 }
 declare namespace gamelib.core {

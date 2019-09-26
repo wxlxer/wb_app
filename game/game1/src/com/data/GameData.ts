@@ -2,6 +2,11 @@ export default class GameData
 {
     private _allList:any;
 
+    public constructor()
+    {
+        window['g_gameData'] = this;
+        this._allList = {};
+    }
     private init():void
     {
         this._allList = {};
@@ -10,11 +15,25 @@ export default class GameData
             this._allList[GameType[key]] = [];            
         }
     }
-    public getTypeData(type:number):Array<any>
+    public getTypeData(type:GameType):Array<any>
     {
         return this._allList[type];
     }
-    
+    public addTypeData(type:GameType,data:Array<any>):void
+    {
+        var arr:Array<GameItemData> = this._allList[type];
+        if(arr == null)
+        {
+            arr = [];
+            this._allList[type] = arr;
+        }
+        for(var obj of data)
+        {
+            var item:GameItemData = new GameItemData();
+            item.parse(obj);
+            arr.push(item);
+        }
+    }
     public parse(list:Array<any>):void
     {
         this.init();
@@ -22,7 +41,7 @@ export default class GameData
         {
             if(!obj.is_open)
                 continue;
-            var item:GameItem = new GameItem();
+            var item:GameItemData = new GameItemData();
             item.res = this.getIconUrl(obj.onlyImg);
             item.name = obj.name;
 
@@ -65,13 +84,13 @@ export default class GameData
             
         }
     }   
-    public getSubTypes(type:GameType):{titles:{key:string,value:string},list:Array<GameItem>}
+    public getSubTypes(type:GameType):{titles:{key:string,value:string},list:Array<GameItemData>}
     {
-        var result:{titles:{key:string,value:string},list:Array<GameItem>} = {
+        var result:{titles:{key:string,value:string},list:Array<GameItemData>} = {
             titles : {key: "",value:""},
             list :[]
         }
-        var arr:Array<GameItem> = this._allList[type];
+        var arr:Array<GameItemData> = this._allList[type];
         
 
         return result;
@@ -79,26 +98,37 @@ export default class GameData
     private getIconUrl(onlyImg:string) :string
     {
         var platform:string = "";
-        var url:string = GameVar.s_domain + "img/imgPC/" + platform +"/" + onlyImg +".png";
+        var url:string = GameVar.s_domain + "/img/imgPC/" + platform +"/" + onlyImg +".png";
         return url;
     }
     
 }
 export var g_gameData:GameData = new GameData();
 
-export class GameItem
+export class GameItemData
 {
     public res:string;
     public gameUrl:string;
     public name:string;
+
+    public parse(data:any):boolean
+    {
+        for(var key in data)
+        {
+            this[key] = data[key];
+        }
+        this.res =  GameVar.s_domain + "/img/imgPC/" + data.api_Name +"/" + data.onlyImg +".png";
+        this.name = data.chineseName;
+        return true;
+    }
 }
 
 export enum GameType
 {
-    Hot = "hot",
-    QiPai = "qipai",
-    Fish = "fish",
-    DianZi = "dianzi",
-    ZhenRen = "zhenren",
-    Sport = "sport"
+    Hot = 0,
+    QiPai = 1,
+    Fish = 2,
+    DianZi = 3,
+    ZhenRen = 4,
+    Sport = 5
 }

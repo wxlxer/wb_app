@@ -8,6 +8,7 @@ export default class MiniLoadingUi extends gamelib.core.BaseUi
     protected init():void
     {
         this._ani = this._res['ani1'];
+        this.m_closeUiOnSide = false;
     }
     protected onShow():void
     {

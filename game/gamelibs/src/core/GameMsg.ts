@@ -247,5 +247,10 @@ module gamelib
          * 44.	验证取款密码   
          */
         public static Getqkpwd:string = "/AppApi/CashOperationApi/getqkpwd";
+
+        /**
+         * 获得进入游戏的地址
+         */
+        public static GetApilogin:string = "/AppApi/GameLoginApi/GetApilogin"
     }
 }

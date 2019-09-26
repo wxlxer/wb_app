@@ -12,10 +12,13 @@ namespace gamelib.core
 
         public request(url:string,data:any):void
         {
+			data.devices = data.devices || "HTML5";
+			
             utils.tools.http_request(GameVar.s_domain + url,data,"post",Laya.Handler.create(this,this.onReciveNetMsg,[url,data]))
 		}
 		public requestWithToken(url:string,data:any):void
 		{
+			data.devices = data.devices || "HTML5";
 			utils.tools.http_request(GameVar.s_domain + url+ "/" + GameVar.s_token,data,"post",Laya.Handler.create(this,this.onReciveNetMsg,[url,data]))
 		}
         private onReciveNetMsg(api:string,requestData:any,data:any):void

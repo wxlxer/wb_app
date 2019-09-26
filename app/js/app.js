@@ -7,7 +7,7 @@ console.log("进来了");
 
 //登录模块
 //调整游戏模块
-let g_hall = plus.webview.create('hall.html', 'hall', {
+let g_hall = plus.webview.create('hall1.html', 'hall', {
 		scrollIndicator: 'none',
 		scalable: false,
 		popGesture: 'close',

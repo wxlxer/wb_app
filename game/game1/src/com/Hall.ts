@@ -13,9 +13,10 @@ import LoginUi from "./login/LoginUi";
 import { g_uiMgr } from "./UiMainager";
 import RegisterUi from "./login/RegisterUi";
 import TabList from "./control/TabList";
-import { g_gameData } from "./data/GameData";
+import { g_gameData, GameType } from "./data/GameData";
 import { g_playerData } from "./data/PlayerData";
 import login from "./Global";
+import { GameListMgr } from "./gameList/GameList";
 
 export default class Hall extends gamelib.core.Ui_NetHandle
 {
@@ -34,6 +35,8 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     private _chongzhi:ChongZhi;
     private _login:LoginUi;
     private _register:RegisterUi;
+
+    private _gameList:GameListMgr;
     public constructor()
     {
         super("ui.HallUiUI");
@@ -68,13 +71,16 @@ export default class Hall extends gamelib.core.Ui_NetHandle
             {skins:["btns/ic_girl_online.png","btns/ic_girl_online_pressed.png"]},
             {skins:["btns/ic_sport.png","btns/ic_sport_pressed.png"]},
         ];
-        this._tab.selectedIndex = 0;
+        
         
 
         g_signal.add(this.onLocalMsg,this);
 
         var p:Laya.Panel = this._res['p_menu'];
         p.vScrollBar.autoHide = true;
+
+        this._gameList = new GameListMgr(this._res['p_game']);
+
     }
     public aniOut():void
     {
@@ -99,6 +105,9 @@ export default class Hall extends gamelib.core.Ui_NetHandle
             case "openUi":
                 this.handBtn(data[0],data[1]);
                 break;    
+            case "enterGame":
+                // g_net.requestWithToken(gamelib.GameMsg.GetApilogin,{"platformCode":data.api_Name,"gameType":data.gameType,})
+                break;
         }
     }
     protected onShow():void
@@ -117,12 +126,12 @@ export default class Hall extends gamelib.core.Ui_NetHandle
         // g_net.request(gamelib.GameMsg.Getapi,{});
         // g_net.request(gamelib.GameMsg.Systemseting,{});
         //请求热门游戏
-        g_net.request(gamelib.GameMsg.Getapigame,{gametype:3});
+        g_net.request(gamelib.GameMsg.Getapigame,{gametype:-3,pageSize:100,pageIndex:1});
 
         // g_net.request(gamelib.GameMsg.Getapiassort,{});
         // g_net.request(gamelib.GameMsg.Getapitypegame,{});
         // g_net.request(gamelib.GameMsg.Getapigame,{});
-
+        this._tab.selectedIndex = 0;
     }
     public reciveNetMsg(msg:string,requestData:any,data:any)
     {
@@ -169,15 +178,26 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._notice.setData(data.retData);
                 this._notice.show();
                 break;
-            case gamelib.GameMsg.Getapi:
-                g_net.request(gamelib.GameMsg.Getapigame,{game:"AG",gametype:0});
+            // case gamelib.GameMsg.Getapi:
+            //     g_net.request(gamelib.GameMsg.Getapigame,{game:"AG",gametype:0});
+            //     break;
+            case gamelib.GameMsg.Getapigame:
+                if(data.retCode != 0)
+                    return;
+                if(requestData.gametype == -3)   //热门
+                {
+                    g_gameData.addTypeData(GameType.Hot,data.retData);
+                    
+                    this.onTabChange(this._tab.selectedIndex);
+                }
                 break;
         }
     }
+    private _isFirst:boolean = true;
     private onTabChange(index:number):void
     {
-        console.log(index);
-        // var arr:Array<any> = g_gameData.getSubTypes()
+        this._gameList.updateList(index,this._isFirst);
+        this._isFirst = false;
     }
     
     protected onClickObjects(evt:Laya.Event):void

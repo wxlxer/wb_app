@@ -24,8 +24,10 @@ export default class UserInfo extends BasePanel
         this._tab.tabChangeHander = Laya.Handler.create(this,this.onTabChange,null,false);
         this._tab.dataSource = [
                                     {skins:["btns/ic_pc_grxx.png","btns/ic_pc_grxx_pressed.png"]},      //个人信息
-                                    {skins:["btns/ic_pc_grbb.png","btns/ic_pc_grbb_pressed.png"]},      //交易记录
-                                    {skins:["btns/ic_pc_tzjl.png","btns/ic_pc_tzjl_pressed.png"]}       //投注记录               
+                                    {skins:["btns/ic_pc_tzjl.png","btns/ic_pc_tzjl_pressed.png"]},       //投注记录 
+                                    {skins:["btns/ic_pc_zhmx.png","btns/ic_pc_zhmx_pressed.png"]},       //投注记录 
+                                    {skins:["btns/ic_pc_grbb.png","btns/ic_pc_grbb_pressed.png"]},      //个人报表
+                                                  
                                 ];
         this._info = new Info(this._res);
         this._touzu = new TouZuHistroy(this._res);
