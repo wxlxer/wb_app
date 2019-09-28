@@ -13,10 +13,11 @@ import LoginUi from "./login/LoginUi";
 import { g_uiMgr } from "./UiMainager";
 import RegisterUi from "./login/RegisterUi";
 import TabList from "./control/TabList";
-import { g_gameData, GameType } from "./data/GameData";
+import { g_gameData, GameType, checkLogin } from "./data/GameData";
 import { g_playerData } from "./data/PlayerData";
 import login from "./Global";
 import { GameListMgr } from "./gameList/GameList";
+import PlatfromList from "./gameList/PlatfromList";
 
 export default class Hall extends gamelib.core.Ui_NetHandle
 {
@@ -35,7 +36,7 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     private _chongzhi:ChongZhi;
     private _login:LoginUi;
     private _register:RegisterUi;
-
+    private _platformList:PlatfromList;
     private _gameList:GameListMgr;
     public constructor()
     {
@@ -71,9 +72,6 @@ export default class Hall extends gamelib.core.Ui_NetHandle
             {skins:["btns/ic_girl_online.png","btns/ic_girl_online_pressed.png"]},
             {skins:["btns/ic_sport.png","btns/ic_sport_pressed.png"]},
         ];
-        
-        
-
         g_signal.add(this.onLocalMsg,this);
 
         var p:Laya.Panel = this._res['p_menu'];
@@ -106,7 +104,34 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this.handBtn(data[0],data[1]);
                 break;    
             case "enterGame":
-                // g_net.requestWithToken(gamelib.GameMsg.GetApilogin,{"platformCode":data.api_Name,"gameType":data.gameType,})
+                if(!checkLogin())
+                {
+                    return;
+                }
+                g_uiMgr.showMiniLoading();
+                g_net.requestWithToken(gamelib.GameMsg.GetApilogin,{"platformCode":data.api_Name,"gameType":data.gameType,"gameId":data.gameId,"gameName":data.gameName,devices:1});
+                break;
+            case "enterPlatform":
+                if(!checkLogin())
+                {
+                    return;
+                }
+                switch(this._tab.selectedIndex)
+                {
+                    case GameType.DianZi:   //只有电子会打开子平台列表
+                        this._platformList = this._platformList || new PlatfromList();
+                        this._platformList.setData({type:GameType.DianZi,pd:data});
+                        this._platformList.show();
+                        break;
+                    default:
+                        g_uiMgr.showMiniLoading();
+                        g_net.requestWithToken(gamelib.GameMsg.GetApilogin,{"platformCode":data.api_name,"gameType":data.gameType,"gameId":data.gameId,"gameName":data.gameName,devices:1});    
+                }
+                break;
+            case "showLoginUi":
+
+                this._login = this._login || new LoginUi();
+                this._login.show();
                 break;
         }
     }
@@ -125,8 +150,9 @@ export default class Hall extends gamelib.core.Ui_NetHandle
 
         // g_net.request(gamelib.GameMsg.Getapi,{});
         // g_net.request(gamelib.GameMsg.Systemseting,{});
+        
         //请求热门游戏
-        g_net.request(gamelib.GameMsg.Getapigame,{gametype:-3,pageSize:100,pageIndex:1});
+        // g_net.request(gamelib.GameMsg.Getapigame,{gametype:-3,pageSize:100,pageIndex:1});
 
         // g_net.request(gamelib.GameMsg.Getapiassort,{});
         // g_net.request(gamelib.GameMsg.Getapitypegame,{});
@@ -136,37 +162,39 @@ export default class Hall extends gamelib.core.Ui_NetHandle
     public reciveNetMsg(msg:string,requestData:any,data:any)
     {
         console.log(msg,requestData,data);
+        if(data.retCode != 0)
+        {
+            g_uiMgr.showTip(data.retMsg);
+            return;
+        }                
         switch(msg)
         {
             case gamelib.GameMsg.Login:
                 g_uiMgr.closeMiniLoading();
-                if(data.retCode == 0)
-                {
-                    GameVar.s_token = data.retMsg;
-                    //请求用户信息
-                    g_net.requestWithToken(gamelib.GameMsg.MemberInfo,{});
+                GameVar.s_token = data.retMsg;
+                //请求用户信息
+                g_net.requestWithToken(gamelib.GameMsg.MemberInfo,{});
 
-                    this._res['b_unlogin'].visible = false;
-
-                }
-                else
-                {
-                    g_uiMgr.showTip(data.retMsg);
-                }
+                this._res['b_unlogin'].visible = false;
                 break;
+            case gamelib.GameMsg.Basicxingxi:
+                g_playerData.m_phone = requestData.gmyphone;
+                g_playerData.m_nickName = requestData.gmyname;
+                g_playerData.m_wx = requestData.WeChat;
+                g_playerData.m_mail = requestData.mailbox;
+                break;    
             case gamelib.GameMsg.MemberInfo:
-                if(data.retCode == 0)
-                {
-                    var temp:any = JSON.parse(data.retMsg);
-                    g_playerData.m_name = temp.Username;
-                    g_playerData.m_isOldWithNew = temp.is_oldwithnew;
-                    g_playerData.m_money = temp.Mymoney;
-                    g_playerData.m_phone = temp.Myphone;
-                    g_playerData.m_nickName = temp.Myname;
+                var temp:any = JSON.parse(data.retMsg);
+                g_playerData.m_name = temp.Username;
+                g_playerData.m_isOldWithNew = temp.is_oldwithnew;
+                g_playerData.m_money = temp.Mymoney;
+                g_playerData.m_phone = temp.Myphone;
+                g_playerData.m_nickName = temp.Myname;
+                g_playerData.m_wx = temp.WeChat;
+                g_playerData.m_mail = temp.mailbox;
 
-                    this._res['txt_name'].text = g_playerData.m_name;
-                    this._res['txt_money'].text = g_playerData.m_money;
-                }
+                this._res['txt_name'].text = g_playerData.m_name;
+                this._res['txt_money'].text = g_playerData.m_money;
                 break;
             case gamelib.GameMsg.GongGao:
                 this._noticeMsg = this._noticeMsg || new NoticeMsg();
@@ -182,15 +210,35 @@ export default class Hall extends gamelib.core.Ui_NetHandle
             //     g_net.request(gamelib.GameMsg.Getapigame,{game:"AG",gametype:0});
             //     break;
             case gamelib.GameMsg.Getapigame:
-                if(data.retCode != 0)
-                    return;
+               
                 if(requestData.gametype == -3)   //热门
                 {
-                    g_gameData.addTypeData(GameType.Hot,data.retData);
+                    g_gameData.parseHotGame(data.retData);
                     
                     this.onTabChange(this._tab.selectedIndex);
                 }
+                else if(requestData.gametype == 0)
+                {
+                    g_gameData.parseDianZiGame(data.retData,requestData.game);
+                    
+                }
                 break;
+            case gamelib.GameMsg.Getapifish:
+                g_gameData.parseFishGame(data.retData);
+                this.onTabChange(this._tab.selectedIndex);
+                break;    
+            case gamelib.GameMsg.Getapi:
+                g_gameData.parseGetAip(data.retData);
+                this.onTabChange(this._tab.selectedIndex);
+                break;    
+            case gamelib.GameMsg.GetApilogin:
+                g_uiMgr.closeMiniLoading();
+                if(window['enterGame'])
+                {
+                    window['enterGame'].call(window,{url:data.retmsg})
+                }
+                break;
+
         }
     }
     private _isFirst:boolean = true;
@@ -209,6 +257,10 @@ export default class Hall extends gamelib.core.Ui_NetHandle
         switch(btnName)
         {
             case "img_head":
+                if(!checkLogin())
+                {
+                    return;
+                }
                 this._info = this._info || new UserInfo();
                 this._info.show();
                 break;
@@ -223,6 +275,10 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._set.show();
                 break;
             case "btn_tg":
+                if(!checkLogin())
+                {
+                    return;
+                }
                 this._tuiGuang = this._tuiGuang || new TuiGuang();
                 this._tuiGuang.show();
                 break;
@@ -231,10 +287,18 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._huodong.show();
                 break;
             case "btn_xm":
+                if(!checkLogin())
+                {
+                    return;
+                }
                 this._xima = this._xima || new XiMa();
                 this._xima.show();
                 break;
             case "btn_mail":
+                if(!checkLogin())
+                {
+                    return;
+                }
                 this._mail = this._mail || new MailUi();
                 this._mail.show();
                 break;
@@ -243,10 +307,18 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._kefu.show();
                 break;
             case "btn_tixian":
+                if(!checkLogin())
+                {
+                    return;
+                }
                 this._tixian = this._tixian || new TiXianUi();
                 this._tixian.show();
                 break;                
             case "btn_cz":
+                if(!checkLogin())
+                {
+                    return;
+                }
                 this._chongzhi = this._chongzhi || new ChongZhi();
                 this._chongzhi.show();
                 break;

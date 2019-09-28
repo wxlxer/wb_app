@@ -679,6 +679,10 @@ declare module gamelib {
          * 获得进入游戏的地址
          */
         static GetApilogin: string;
+        /**
+         * 修改绑定信息
+         */
+        static Basicxingxi: string;
     }
 }
 declare namespace gamelib.core {

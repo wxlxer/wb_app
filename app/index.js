@@ -6,10 +6,10 @@
  * sensor_portrait     竖屏(双方向)
  */
 window.screenOrientation = "sensor_landscape";
-
 //-----libs-begin-----
 loadLib("libs/laya.core.js")
 loadLib("libs/laya.ui.js")
 loadLib("libs/laya.physics.js")
+loadLib("libs/gamelib.js")
 //-----libs-end-------
 loadLib("js/bundle.js");

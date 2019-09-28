@@ -252,5 +252,10 @@ module gamelib
          * 获得进入游戏的地址
          */
         public static GetApilogin:string = "/AppApi/GameLoginApi/GetApilogin"
+
+        /**
+         * 修改绑定信息
+         */
+        public static Basicxingxi:string = "/AppApi/MemberApi/basicxingxi";
     }
 }

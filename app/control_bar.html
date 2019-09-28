@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+		<style>
+			html,
+			body {
+				background-color: #333333;
+				background: transparent;
+			}
+			
+			.flex-container {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-flow: row wrap;
+				justify-content: space-between;
+				text-align: center;
+				margin: 1px;
+				width: 40px;
+				height: 40px;
+				display: inline-block;
+				text-align: center;
+				background-color: #333333;
+				border: 1px solid #ddd;
+				border-radius: 20px;
+				background-clip: padding-box;
+				padding: 10px;
+			}
+			.mui-icon {
+			    font-size: 22px;
+			    line-height: 1.42;
+			    margin: -6px -2px;
+			}
+			
+			.flex-container a {
+				 color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<button id="control_game" type="button" class="mui-btn mui-icon-extra mui-icon-extra-class"></button>-->
+		<div class="mui-content flex-container">
+			<a id="control_game" class="mui-icon mui-icon-extra mui-icon-extra-class"></a>
+		</div>
+
+		
+		<script src="js/mui.min.js"></script>
+		
+		<script type="text/javascript" charset="utf-8">
+			function is_iPhoneX()
+			{
+				return false;
+			}
+			mui.init({
+				swipeBack:false,  //启用右滑关闭功能
+				keyEventBind: {
+					backbutton: false,  //Boolean(默认true)关闭back按键监听
+					menubutton: false   //Boolean(默认true)关闭menu按键监听
+				},
+				gestureConfig: {
+					tap: true, //默认为true
+					doubletap: false, //默认为false
+					longtap: false, //默认为false
+					drag: false, //默认为true
+					hold: false, //默认为false，不监听
+					release: false //默认为false，不监听
+				}
+			});
+			
+			
+			mui.plusReady(function(){
+				if(mui.os.ios)
+				{
+					document.body.style.background = "";
+					document.body.style.backgroundColor = "#272759";
+				}
+			});
+			
+			function change_control_localtion()
+			{
+				var control = plus.webview.currentWebview();
+				var sty = control.getStyle();
+				
+				var opacity = 1;
+				var width = 42;
+				var height = 42;
+				var top = '70%';
+	
+				if(is_iPhoneX())
+					top = '80%';
+					
+				var sw;
+				var sh;
+				
+				if(plus.display.resolutionWidth > plus.display.resolutionHeight)
+				{
+					sw = Math.round(plus.display.resolutionWidth) - width;
+					sh = Math.round(plus.display.resolutionHeight) - height;
+				}
+				else
+				{
+					sw = Math.round(plus.display.resolutionHeight) - width;
+					sh = Math.round(plus.display.resolutionWidth) - height;
+				}
+				
+				console.log("resolutionWidth:" + plus.display.resolutionWidth　+ " resolutionHeight:" +　plus.display.resolutionHeight);
+				console.log("style:" + JSON.stringify(sty));
+				/*
+				if(plus.os.name == 'iOS')
+				{
+					opacity = 0.4;
+					width = 26;
+				}
+				*/
+
+				//("control style1:" + JSON.stringify(control.getStyle()));
+
+				//if(sty.dock == 'right' || sty.dock == 'top')
+				if(sty.dock == 'right')
+				{
+
+					var s={
+						top:top,
+						right:'',
+						left:0,
+						width:width,
+						height:height,
+						opacity:opacity,
+						popGesture:'none',
+						scrollIndicator:'none',
+						bounce:'none',
+						dock:'left',
+						zindex:game_control_zindex,
+						transition: {
+							duration: 150
+						}
+					};
+					
+					control.setStyle(s);
+				}
+				else if(sty.dock == 'left')
+				{
+					var s={
+						top:0,
+						left:'50%',
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						popGesture:'none',
+						scrollIndicator:'none',
+						bounce:'none',
+						dock:'top',
+						zindex:game_control_zindex,
+						transition: {
+							duration: 150
+						}
+					};
+					
+					control.setStyle(s);
+				}
+				else if(sty.dock == 'top')
+				{
+					var s={
+						top:sh,
+						left:'50%',
+						right:"",
+						width:width,
+						height:height,
+						opacity:opacity,
+						popGesture:'none',
+						scrollIndicator:'none',
+						bounce:'none',
+						dock:'bottom',
+						zindex:game_control_zindex,
+						transition: {
+							duration: 150
+						}
+					};
+					
+					control.setStyle(s);
+				}
+				else if(sty.dock == 'bottom')
+				{
+					var s={
+						top:top,
+						left:sw,
+						right:"",
+						width:width,
+						height:height,
+						opacity:opacity,
+						popGesture:'none',
+						scrollIndicator:'none',
+						bounce:'none',
+						dock:'right',
+						zindex:game_control_zindex,
+						transition: {
+							duration: 150
+						}
+					};
+					
+					control.setStyle(s);
+				}
+				
+				console.log("style 2:" + JSON.stringify(control.getStyle()));
+			}
+			
+			function shrink_control_bar()
+			{
+				var control = plus.webview.currentWebview();
+				var sty = control.getStyle();
+				
+				var opacity = 1;
+				var width = 42;
+				var height = 42;
+				var top = '70%';
+	
+				if(is_iPhoneX())
+					top = '80%';
+					
+				var sw;
+				var sh;
+				
+				if(plus.display.resolutionWidth > plus.display.resolutionHeight)
+				{
+					sw = Math.round(plus.display.resolutionWidth) - width + 10;
+					sh = Math.round(plus.display.resolutionHeight) - height + 15;
+				}
+				else
+				{
+					sw = Math.round(plus.display.resolutionHeight) - width + 10;
+					sh = Math.round(plus.display.resolutionWidth) - height + 15;
+				}
+				
+				if(sty.dock == 'right')
+				{
+					if(plus.os.name == 'iOS')
+					{
+						opacity = 0.4;
+						//width = 26;
+					}
+					var cs={
+						top:top,
+						left:sw,
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				else if(sty.dock == 'left')
+				{
+					if(plus.os.name == 'iOS')
+					{
+						opacity = 0.4;
+						//width = 26;
+					}
+					var cs={
+						top:top,
+						left:-10,
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				else if(sty.dock == 'top')
+				{
+					if(plus.os.name == 'iOS')
+					{
+						opacity = 0.4;
+						//width = 26;
+					}
+					var cs={
+						top:-15,
+						left:'50%',
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				else if(sty.dock == 'bottom')
+				{
+					if(plus.os.name == 'iOS')
+					{
+						opacity = 0.4;
+						//width = 26;
+					}
+					var cs={
+						top:sh,
+						left:'50%',
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				
+			}
+			
+			function stick_control_bar()
+			{
+				var control = plus.webview.currentWebview();
+				var sty = control.getStyle();
+				
+				var opacity = 1;
+				var width = 42;
+				var height = 42;
+				var top = '70%';
+	
+				if(is_iPhoneX())
+					top = '80%';
+					
+				var sw;
+				var sh;
+				
+				if(plus.display.resolutionWidth > plus.display.resolutionHeight)
+				{
+					sw = Math.round(plus.display.resolutionWidth) - width;
+					sh = Math.round(plus.display.resolutionHeight) - height;
+				}
+				else
+				{
+					sw = Math.round(plus.display.resolutionHeight) - width;
+					sh = Math.round(plus.display.resolutionWidth) - height;
+				}
+				
+				if(sty.dock == 'right')
+				{
+					var cs={
+						top:top,
+						left:sw,
+						right:"",
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				else if(sty.dock == 'left')
+				{
+					var cs={
+						top:top,
+						left:0,
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				else if(sty.dock == 'top')
+				{
+					if(plus.os.name == 'iOS')
+					{
+						opacity = 0.4;
+						//width = 26;
+					}
+					var cs={
+						top:0,
+						left:'50%',
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				else if(sty.dock == 'bottom')
+				{
+					if(plus.os.name == 'iOS')
+					{
+						opacity = 0.4;
+						//width = 26;
+					}
+					var cs={
+						top:sh,
+						left:'50%',
+						right:'',
+						width:width,
+						height:height,
+						opacity:opacity,
+						transition: {
+							duration: 150
+						}
+					};
+					control.setStyle(cs);
+				}
+				
+			}			
+		//	mui(".flex-container").on("tap", "a", function() {
+			document.getElementById("control_game").addEventListener('tap', function(e) {
+				
+				stick_control_bar();
+				//var game = plus.webview.getWebviewById(game_play_id);
+				var game = plus.webview.getLaunchWebview();
+				if(game)
+					game.evalJS('open_control_tools();');
+	
+
+			});
+
+		</script>
+	</body>
+</html>

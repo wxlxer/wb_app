@@ -80,6 +80,7 @@ R 2535DF24 ic_pc_title.png
 R 89073F5D ic_qipai_bg.png
 R F2391321 ic_qipai_left.png
 P 88B2A3B0 ic_qipai_search_bg.png
+R B7BED920 ic_qipai_title.png
 R 2B013361 ic_qipai_top_bg.png
 P 88B2A3B0 ic_qr_bg.png
 P 88B2A3B0 ic_recharge_1.png
@@ -400,7 +401,8 @@ P 27E0F905 checkbox_0.png
 P 6B7AB858 clip_num.png
 P 63A22FAC clip_tree_arrow.png
 P D749C312 clip_tree_folder.png
-P 704C5D70 combobox.png
+P 26BEA153 combobox.png
+P 704C5D70 combobox1.png
 R 7E1FCC2E dactivity_nav_left.png
 P A53BA587 db7_room.png
 P 0EC1FBBC ddeposit_chonzhizhifubaotongdao.png
@@ -420,6 +422,8 @@ R B3D5A272 ic_input_bg.png
 P 26BEA153 ic_pc_edit.png
 P 75E3E1A4 ic_pc_grbb_tab.png
 P E840E65A ic_pc_grbb_tab_pressed.png
+R D4CE9D1A ic_search_bg.png
+P AC08D643 ic_search_btn.png
 P 4ACB7AEF img_bg.png
 P FCD04607 img_bg2.png
 P 23FB4D29 img_bg3.png
@@ -431,6 +435,9 @@ R C17848C4 img_progress_load_select.9.png
 P 996DC142 img_touxiangMask.png
 P E3BE4759 laba_bg.png
 P BA2A0579 label.png
+P 9FB4E708 list_item_bg1.png
+P B5E259B4 list_item_bg2.png
+P D5EA3105 list_title.png
 P B017E53E progress$bar.png
 P C05839CD progress.png
 R 307A5A95 progress_load_bg_select.png

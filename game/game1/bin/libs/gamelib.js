@@ -1185,6 +1185,10 @@ var gamelib;
          * 获得进入游戏的地址
          */
         GameMsg.GetApilogin = "/AppApi/GameLoginApi/GetApilogin";
+        /**
+         * 修改绑定信息
+         */
+        GameMsg.Basicxingxi = "/AppApi/MemberApi/basicxingxi";
         return GameMsg;
     }());
     gamelib.GameMsg = GameMsg;

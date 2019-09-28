@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		
+		    #touch {
+		        width: 60px;
+		        height: 60px;
+		        position: absolute;
+		        right: 25px;
+		        bottom: 20px;
+		        margin-left: -30px;
+		        margin-bottom: -30px;
+		        z-index: 99999;
+		    }
+		</style>
+	</head>
+	<body>
+			
+			<div id="touch_id" style="width: 60px; height: 60px; position: absolute;">
+			    <img src="./img/ic_back_home.png" style="width: 80px; height: 80px;" />
+			</div>
+			<script>
+				let temp = document.getElementById("touch_id");
+				let itemWidth = 80;
+				let itemHeight = 80;
+				let gapWidth = 10;
+				let clientWidth = document.documentElement.clientWidth;     
+				let clientHeight = document.documentElement.clientHeight;      
+				let _left = clientWidth - itemWidth - gapWidth;      
+				let _top = clientHeight*0.8; 		
+							
+				let startTime = 0;
+				temp.addEventListener('touchstart',onTouchStart);
+				temp.addEventListener('touchend',onTouchEnd);
+				temp.addEventListener('touchmove',onTouchMove);
+				//temp.addEventListener('tap',onClick);
+				function onTouchStart(evt){
+					 evt.preventDefault();	
+					 temp.style.transition = 'none';
+					 startTime = new Date().getTime();
+				}
+				function onTouchEnd(evt){
+					 evt.preventDefault();	
+					 temp.style.transition = 'all 0.3s';
+					 if(new Date().getTime() - startTime >= 200)
+					 {
+						if (_left > clientWidth/2) {
+							 _left = clientWidth - itemWidth - gapWidth;
+						 } else {          
+							 _left = gapWidth;        
+						 }  					
+						temp.style.left = _left + 'px';
+						temp.style.top = _top + 'px';
+					 }
+					 else
+					 {
+						 onClick(evt);
+					 }
+					 
+				}
+				function onTouchMove(evt){
+					 evt.preventDefault();	
+					 if (evt.targetTouches.length === 1) {          
+						 let touch = evt.targetTouches[0];          
+						 _left = touch.clientX - itemWidth/2;              
+						 _top = touch.clientY - itemHeight/2;        
+						 if(_left < 0)
+							_left = 0;
+						if(_top < 0)
+							_top = 0;
+						else if(_top > clientHeight -itemHeight)
+							_top = clientHeight -itemHeight
+						 temp.style.left = _left + 'px';
+						 temp.style.top = _top + 'px';
+					 } 
+						 
+				}
+				function onClick(evt){
+					console.log("点击");
+					evt.preventDefault();
+					let app = plus.webview.getWebviewById(plus.runtime.appid);
+					app.evalJS("exitGame();")
+				}
+			</script>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>NativeObj Example</title>
+		<script type="text/javascript">
+			// H5 plus事件处理
+			function plusReady(){
+			}
+			if(window.plus){
+				plusReady();
+			}else{
+				document.addEventListener("plusready",plusReady,false);
+			}
+			var view = null;
+			let itemWidth = 80;
+			let itemHeight = 80;
+			let gapWidth = 10;
+			let clientWidth = document.documentElement.clientWidth;     
+			let clientHeight = document.documentElement.clientHeight;      
+			let _left = clientWidth - itemWidth - gapWidth;      
+			let _top = clientHeight*0.8; 		
+			
+			
+			// 创建原生View控件
+			function createView(){
+				view = new plus.nativeObj.View('test',{top:'10px',left:'10px',height:'80px',width:'80px'});
+				// 绘制文本
+				view.drawBitmap('img/ic_back_home.png');
+				view.show();
+				plus.nativeUI.toast('创建成功');
+			}
+			// 监听原生View控件click事件
+			function addEventView(){
+				view.addEventListener("click", onClick, false);
+				view.addEventListener("touchstart", onTouchStart, false);
+				view.addEventListener("touchend", onTouchEnd, false);
+				view.addEventListener("touchmove", onTouchMove, false);
+			}
+			// 监听事件函数
+			function onClick(e){
+				console.log("点击原生控件："+JSON.stringify(e));
+				var clientX = e.clientX;	// 在View控件中的X坐标
+				var clientY = e.clientY;	// 在View控件中的Y坐标
+				var pageX = e.pageX;		// 在当前Webview窗口（运行此脚本的窗口）中的X坐标
+				var pageY = e.pageY;		// 在当前Webview窗口（运行此脚本的窗口）中的Y坐标
+				var screenX = e.screenX;	// 在屏幕中的X坐标
+				var screenY = e.screenY;	// 在屏幕中的Y坐标
+				var target = e.target;		// View控件对象
+			}
+			function onTouchStart(evt){
+				console.log("onTouchStart："+JSON.stringify(evt));
+			}
+			function onTouchEnd(evt){
+				console.log("onTouchEnd："+JSON.stringify(evt));
+				
+				if (_left > clientWidth/2) {
+					 _left = clientWidth - itemWidth - gapWidth;
+				 } else {          
+					 _left = gapWidth;        
+				 }  					
+				view.setStyle({top: _top + 'px',left:_left + 'px'});
+			}
+			function onTouchMove(evt){
+				console.log("onTouchMove："+JSON.stringify(evt));
+				_left = evt.screenX - itemWidth / 2;
+				_top = evt.screenY - itemHeight / 2;
+				if(_left < 0)
+					_left = 0;
+				else if(_left > clientWidth - itemWidth)
+					_left = clientWidth - itemWidth;
+				if(_top < 0)
+					_top = 0;
+				else if(_top > clientHeight - itemHeight)
+					_top = clientHeight - itemHeight;
+				view.setStyle({top: _top + 'px',left:_left + 'px'});
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="createView()">创建View控件</button><br/>
+		<button onclick="addEventView()">监听原生View控件click事件</button><br/>
+	</body>
+</html>
