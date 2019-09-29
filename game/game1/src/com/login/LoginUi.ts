@@ -12,7 +12,11 @@ export default class LoginUi extends gamelib.core.Ui_NetHandle
         this.addBtnToListener('btn_login');
         this.addBtnToListener('btn_zc');
     }
-
+    protected onShow():void
+    {
+        super.onShow();
+        this._res['txt_name'].text = gamelib.Api.getLocalStorage("username") || "";
+    }
     protected onClickObjects(evt:laya.events.Event):void
     {
         switch(evt.currentTarget.name)

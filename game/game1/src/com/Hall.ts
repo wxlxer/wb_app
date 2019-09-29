@@ -157,6 +157,9 @@ export default class Hall extends gamelib.core.Ui_NetHandle
         // g_net.request(gamelib.GameMsg.Getapiassort,{});
         // g_net.request(gamelib.GameMsg.Getapitypegame,{});
         // g_net.request(gamelib.GameMsg.Getapigame,{});
+        
+        
+
         this._tab.selectedIndex = 0;
     }
     public reciveNetMsg(msg:string,requestData:any,data:any)
@@ -174,9 +177,30 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 GameVar.s_token = data.retMsg;
                 //请求用户信息
                 g_net.requestWithToken(gamelib.GameMsg.MemberInfo,{});
-
+                gamelib.Api.saveLocalStorage('username',requestData.un);
+                gamelib.Api.saveLocalStorage('password',requestData.pw);
                 this._res['b_unlogin'].visible = false;
+
+
+                g_net.requestWithToken(gamelib.GameMsg.Bankinfo,{payType:"bank"});
+                g_net.requestWithToken(gamelib.GameMsg.Bankinfo,{payType:""});
+                g_net.requestWithToken(gamelib.GameMsg.Payinfolist,{payType:"PHONE"});
+
+
                 break;
+            case gamelib.GameMsg.Logout:
+                g_uiMgr.closeMiniLoading();
+                gamelib.Api.saveLocalStorage("password","");
+                GameVar.s_token = "";
+
+                this._res['txt_name'].text = ""
+                this._res['txt_money'].text = "0.0";
+                this._res['b_unlogin'].visible = true;
+                break;
+            case gamelib.GameMsg.Updatepwd:
+                g_uiMgr.closeMiniLoading();
+                g_uiMgr.showTip("修改成功");
+                break;    
             case gamelib.GameMsg.Basicxingxi:
                 g_playerData.m_phone = requestData.gmyphone;
                 g_playerData.m_nickName = requestData.gmyname;
@@ -185,7 +209,7 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 break;    
             case gamelib.GameMsg.MemberInfo:
                 var temp:any = JSON.parse(data.retMsg);
-                g_playerData.m_name = temp.Username;
+                g_playerData.m_userName = temp.Username;
                 g_playerData.m_isOldWithNew = temp.is_oldwithnew;
                 g_playerData.m_money = temp.Mymoney;
                 g_playerData.m_phone = temp.Myphone;
@@ -193,9 +217,10 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 g_playerData.m_wx = temp.WeChat;
                 g_playerData.m_mail = temp.mailbox;
 
-                this._res['txt_name'].text = g_playerData.m_name;
+                this._res['txt_name'].text = g_playerData.m_userName;
                 this._res['txt_money'].text = g_playerData.m_money;
                 break;
+            
             case gamelib.GameMsg.GongGao:
                 this._noticeMsg = this._noticeMsg || new NoticeMsg();
                 if(this._noticeMsg.setData(data))

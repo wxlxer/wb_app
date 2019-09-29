@@ -458,6 +458,7 @@ P 01BAE7F5 vslider.png
 D icons
 P E6166DB5 bankIcon.png
 P B97AEF92 dgetcharge_tixianyinliankatubiao.png
+P 503D900A ic_alert_error.png
 P 34D183DE ic_charge_discount.png
 P 26753881 ic_dot.png
 P 08778E8B ic_golden.png
@@ -485,6 +486,7 @@ P 475D2C5D ic_pc_vip7.png
 P F047EC10 ic_pc_vip8.png
 P 27C76601 ic_pc_vip9.png
 P 52CF62E4 ic_tixiam_record.png
+P 0DDA51D6 ic_toast_success.png
 P 7DE2C421 ic_up_vip1.png
 P 4E0C7469 ic_up_vip10.png
 P F72EA0AC ic_up_vip2.png

@@ -43,7 +43,111 @@ var Main = /** @class */ (function (_super) {
 //激活启动类
 new Main();
 
-},{"./com/Hall":5,"./ui/layaMaxUI":34}],2:[function(require,module,exports){
+},{"./com/Hall":6,"./ui/layaMaxUI":35}],2:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @class AlertUi
+ * 游戏通用提示框。资源是用的ui.common.Art_CustomTipsUI如果游戏没有，则使用的是qpq中资源
+ * @author wx
+ * @extends gamelib.core.BaseUi
+ * @uses TipManager
+ */
+var AlertUi = /** @class */ (function (_super) {
+    __extends(AlertUi, _super);
+    function AlertUi() {
+        return _super.call(this, "ui.AlertUI") || this;
+    }
+    AlertUi.prototype.init = function () {
+        _super.prototype.init.call(this);
+        this.btn_ok = this._res["btn_ok"];
+        this.btn_cancel = this._res["btn_cancel"];
+        this.txt_tips = this._res["txt_txt"];
+        this.width = this._res.width;
+        this._oldAtts = {};
+        this._oldAtts.okPos = this.btn_ok.x;
+        this._oldAtts.cancelPos = this.btn_cancel.x;
+        this._clickEventObjects.push(this.btn_ok);
+        this._clickEventObjects.push(this.btn_cancel);
+        this._noticeOther = false;
+        this.m_closeUiOnSide = false;
+        this.m_layer = 10;
+        this._isModal = true;
+    };
+    /**
+     * @function setData
+     * @author wx
+     * @DateTime 2018-03-15
+     * @param  {any}  params 一个对象。包含
+     * msg：提示文本
+     * type : 0：只有确定按钮，1：确定和取消按钮,2:确定，取消，关闭按钮都有 3，三个按钮都没有 4:确定按钮和关闭按钮
+     * callBack : 回掉方法 callback(type:number); ,0:确定，1:关闭按钮，2：取消按钮
+     * autoCall:自动关闭的时间（秒），0：不自动关闭,否则会在确定按钮上显示倒计时
+     * okLabel:确定按钮文本
+     * cancelLabel：取消按钮的文本
+     */
+    AlertUi.prototype.setData = function (params) {
+        this.txt_tips.text = params.msg;
+        this.txt_tips.align = "center";
+        this.txt_tips.valign = "middle";
+        this.txt_tips.editable = false;
+        this.txt_tips.mouseEnabled = false;
+        //this.txt_title.text = "";
+        this._callBack = params.callBack;
+        this._thisObj = params.thisObj;
+        var autoCall = params.autoCall;
+        if (params.type == 0) {
+            this.btn_ok.visible = true;
+            this.btn_ok.x = (this.width - this.btn_ok.width) / 2;
+            this.btn_cancel.visible = this.btn_close.visible = false;
+        }
+        else if (params.type == 1) {
+            this.btn_cancel.visible = this.btn_ok.visible = true;
+            this.btn_ok.x = this._oldAtts.okPos;
+            this.btn_cancel.x = this._oldAtts.cancelPos;
+            this.btn_close.visible = false;
+        }
+        else if (params.type == 2) {
+            this.btn_cancel.visible = this.btn_close.visible = this.btn_ok.visible = true;
+            this.btn_ok.x = this._oldAtts.okPos;
+            this.btn_cancel.x = this._oldAtts.cancelPos;
+        }
+        else if (params.type == 3) {
+            this.btn_cancel.visible = this.btn_ok.visible = this.btn_close.visible = false;
+        }
+        else if (params.type == 4) {
+            this.btn_cancel.visible = false;
+            this.btn_ok.x = (this.width - this.btn_ok.width) / 2;
+        }
+        this.btn_ok.mouseEnabled = this.btn_ok.visible;
+    };
+    AlertUi.prototype.onClose = function () {
+        _super.prototype.onClose.call(this);
+    };
+    AlertUi.prototype.onClickObjects = function (evt) {
+        playButtonSound();
+        if (evt.currentTarget == this.btn_ok) {
+            if (this._callBack) {
+                this._callBack.call(this._thisObj, 0);
+            }
+        }
+        else if (evt.currentTarget == this.btn_cancel) {
+            if (this._callBack)
+                this._callBack.call(this._thisObj, 2);
+        }
+        this.close();
+    };
+    AlertUi.prototype.onClickCloseBtn = function (evt) {
+        _super.prototype.onClickCloseBtn.call(this, evt);
+        if (this._callBack) {
+            this._callBack.call(this._thisObj, 1);
+        }
+    };
+    return AlertUi;
+}(gamelib.core.BaseUi));
+exports.default = AlertUi;
+
+},{}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy = /** @class */ (function (_super) {
@@ -67,7 +171,7 @@ var BaseHistroy = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = BaseHistroy;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel = /** @class */ (function (_super) {
@@ -104,17 +208,15 @@ var BasePanel = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = BasePanel;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function login(username, pwd) {
     g_net.request(gamelib.GameMsg.Login, { un: username, pw: pwd });
-    gamelib.Api.saveLocalStorage('username', username);
-    gamelib.Api.saveLocalStorage('password', pwd);
 }
 exports.default = login;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UserInfo_1 = require("./UserInfo");
@@ -253,7 +355,24 @@ var Hall = /** @class */ (function (_super) {
                 GameVar.s_token = data.retMsg;
                 //请求用户信息
                 g_net.requestWithToken(gamelib.GameMsg.MemberInfo, {});
+                gamelib.Api.saveLocalStorage('username', requestData.un);
+                gamelib.Api.saveLocalStorage('password', requestData.pw);
                 this._res['b_unlogin'].visible = false;
+                g_net.requestWithToken(gamelib.GameMsg.Bankinfo, { payType: "bank" });
+                g_net.requestWithToken(gamelib.GameMsg.Bankinfo, { payType: "" });
+                g_net.requestWithToken(gamelib.GameMsg.Payinfolist, { payType: "PHONE" });
+                break;
+            case gamelib.GameMsg.Logout:
+                UiMainager_1.g_uiMgr.closeMiniLoading();
+                gamelib.Api.saveLocalStorage("password", "");
+                GameVar.s_token = "";
+                this._res['txt_name'].text = "";
+                this._res['txt_money'].text = "0.0";
+                this._res['b_unlogin'].visible = true;
+                break;
+            case gamelib.GameMsg.Updatepwd:
+                UiMainager_1.g_uiMgr.closeMiniLoading();
+                UiMainager_1.g_uiMgr.showTip("修改成功");
                 break;
             case gamelib.GameMsg.Basicxingxi:
                 PlayerData_1.g_playerData.m_phone = requestData.gmyphone;
@@ -263,14 +382,14 @@ var Hall = /** @class */ (function (_super) {
                 break;
             case gamelib.GameMsg.MemberInfo:
                 var temp = JSON.parse(data.retMsg);
-                PlayerData_1.g_playerData.m_name = temp.Username;
+                PlayerData_1.g_playerData.m_userName = temp.Username;
                 PlayerData_1.g_playerData.m_isOldWithNew = temp.is_oldwithnew;
                 PlayerData_1.g_playerData.m_money = temp.Mymoney;
                 PlayerData_1.g_playerData.m_phone = temp.Myphone;
                 PlayerData_1.g_playerData.m_nickName = temp.Myname;
                 PlayerData_1.g_playerData.m_wx = temp.WeChat;
                 PlayerData_1.g_playerData.m_mail = temp.mailbox;
-                this._res['txt_name'].text = PlayerData_1.g_playerData.m_name;
+                this._res['txt_name'].text = PlayerData_1.g_playerData.m_userName;
                 this._res['txt_money'].text = PlayerData_1.g_playerData.m_money;
                 break;
             case gamelib.GameMsg.GongGao:
@@ -396,7 +515,7 @@ var Hall = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = Hall;
 
-},{"./Global":4,"./HuoDong":6,"./KeFu":7,"./SetUi":10,"./UiMainager":11,"./UserInfo":12,"./chongzhi/ChongZhi":13,"./control/TabList":15,"./data/GameData":16,"./data/PlayerData":17,"./gameList/GameList":18,"./gameList/PlatfromList":19,"./login/LoginUi":20,"./login/RegisterUi":21,"./mail/MailUi":23,"./notice/Notice":24,"./notice/NoticeMsg":25,"./tixian/TiXianUi":27,"./tuiguang/TuiGuang":31,"./xima/XiMa":32}],6:[function(require,module,exports){
+},{"./Global":5,"./HuoDong":7,"./KeFu":8,"./SetUi":11,"./UiMainager":12,"./UserInfo":13,"./chongzhi/ChongZhi":14,"./control/TabList":16,"./data/GameData":17,"./data/PlayerData":18,"./gameList/GameList":19,"./gameList/PlatfromList":20,"./login/LoginUi":21,"./login/RegisterUi":22,"./mail/MailUi":24,"./notice/Notice":25,"./notice/NoticeMsg":26,"./tixian/TiXianUi":28,"./tuiguang/TuiGuang":32,"./xima/XiMa":33}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel_1 = require("./BasePanel");
@@ -435,7 +554,7 @@ var HuoDong = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = HuoDong;
 
-},{"./BasePanel":3,"./control/TabList":15}],7:[function(require,module,exports){
+},{"./BasePanel":4,"./control/TabList":16}],8:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel_1 = require("./BasePanel");
@@ -467,7 +586,7 @@ var KeFu = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = KeFu;
 
-},{"./BasePanel":3,"./control/TabList":15}],8:[function(require,module,exports){
+},{"./BasePanel":4,"./control/TabList":16}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MiniLoadingUi = /** @class */ (function (_super) {
@@ -489,7 +608,7 @@ var MiniLoadingUi = /** @class */ (function (_super) {
 }(gamelib.core.BaseUi));
 exports.default = MiniLoadingUi;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Plug = /** @class */ (function () {
@@ -527,9 +646,11 @@ var Plug = /** @class */ (function () {
 }());
 exports.default = Plug;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var PlayerData_1 = require("./data/PlayerData");
+var UiMainager_1 = require("./UiMainager");
 var SetUi = /** @class */ (function (_super) {
     __extends(SetUi, _super);
     function SetUi() {
@@ -540,20 +661,85 @@ var SetUi = /** @class */ (function (_super) {
         this.addBtnToListener("btn_logout");
         this.addBtnToListener("btn_gx");
         this._tab = this._res['tab_1'];
+        this._items = this._tab.items.concat();
         this._tab.selectHandler = Laya.Handler.create(this, this.onTabChange, null, false);
     };
     SetUi.prototype.onShow = function () {
         _super.prototype.onShow.call(this);
+        var temp = this._tab.items.concat();
+        for (var _i = 0, temp_1 = temp; _i < temp_1.length; _i++) {
+            var item = temp_1[_i];
+            this._tab.delItem(item);
+        }
+        if (!GameVar.s_token) //未登录
+         {
+            this._tab.addItem(this._items[0], true);
+            this._tab.addItem(this._items[2], true);
+        }
+        else {
+            this._tab.addItem(this._items[0], true);
+            this._tab.addItem(this._items[1], true);
+            this._tab.addItem(this._items[2], true);
+        }
+        this._res['b_info'].visible = GameVar.s_token;
         this._tab.selectedIndex = 0;
         this.onTabChange(0);
+    };
+    SetUi.prototype.onClickObjects = function (evt) {
+        switch (evt.currentTarget.name) {
+            case "btn_ok": //修改
+                this.onModify();
+                break;
+            case "btn_logout": //退出登录
+                var _self = this;
+                UiMainager_1.g_uiMgr.showAlertUiByArgs({
+                    msg: "确定要退出登录吗?",
+                    callBack: function (type) {
+                        if (type == 0) {
+                            UiMainager_1.g_uiMgr.showMiniLoading();
+                            g_net.requestWithToken(gamelib.GameMsg.Logout, { username: PlayerData_1.g_playerData.m_userName });
+                            _self.close();
+                        }
+                    },
+                    type: 1
+                });
+                break;
+            case "btn_gx": //更新
+                break;
+        }
+    };
+    SetUi.prototype.onModify = function () {
+        var old = this._res['txt_oldPwd'].text;
+        var new1 = this._res['txt_newPwd'].text;
+        var new2 = this._res['txt_newPwd1'].text;
+        if (old == "") {
+            UiMainager_1.g_uiMgr.showTip("请输入旧密码", true);
+            return;
+        }
+        if (new1 == "") {
+            UiMainager_1.g_uiMgr.showTip("请输入您的新密码", true);
+            return;
+        }
+        if (new1 != new2) {
+            UiMainager_1.g_uiMgr.showTip("您两次输入的密码不一样", true);
+            return;
+        }
+        UiMainager_1.g_uiMgr.showMiniLoading();
+        g_net.requestWithToken(gamelib.GameMsg.Updatepwd, { pass: old, npass: new1, par: "login" });
+        this._res['txt_oldPwd'].text = this._res['txt_newPwd'].text = this._res['txt_newPwd1'].text = "";
     };
     SetUi.prototype.onTabChange = function (index) {
         if (index == 0)
             this.showSound();
-        else if (index == 1)
-            this.showPWD();
-        else
+        else if (index == 1) {
+            if (GameVar.s_token)
+                this.showPWD();
+            else
+                this.showAPP();
+        }
+        else {
             this.showAPP();
+        }
     };
     SetUi.prototype.showSound = function () {
         this._res['b_sound'].visible = true;
@@ -569,15 +755,17 @@ var SetUi = /** @class */ (function (_super) {
         this._res['b_sound'].visible = false;
         this._res['b_pwd'].visible = false;
         this._res['b_app'].visible = true;
+        this._res['txt_app_version'].text = "当前已经是最新版本";
     };
     return SetUi;
 }(gamelib.core.Ui_NetHandle));
 exports.default = SetUi;
 
-},{}],11:[function(require,module,exports){
+},{"./UiMainager":12,"./data/PlayerData":18}],12:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MiniLoadingUi_1 = require("./MiniLoadingUi");
+var AlertUi_1 = require("./AlertUi");
 /**
  * ui管理器。管理 pmd,邮件，设置，商城，miniloading，聊天界面，提示框，提示文本等界面
  * 要打开这些界面,可以调用g_singnal.dispatch("msgName",data)或者直接调用对应的方法
@@ -707,124 +895,6 @@ var UiMainager = /** @class */ (function () {
         // this.showTipsEffect(msg,effectType,isWarning);
     };
     /**
-     * 显示提示文本。通常是在屏幕中浮起一个文本，几秒后自动消失，可以指定要显示的位置，文本的颜色，尺寸
-     * @function showTip_ex
-     * @DateTime 2018-03-16T14:36:30+0800
-     * @param    {number} arg msg:提示文本
-     *                        x，y:左边
-     *                        color:文本的颜色
-     *                        size:文本的尺寸
-     *                        time:文本的显示时间
-     */
-    UiMainager.prototype.showTip_ex = function (arg) {
-        arg.color = arg.color || "#09ff88";
-        arg.size = arg.size || 24;
-        arg.time = arg.time || 1000;
-        arg.x = isNaN(arg.x) ? (g_gameMain.m_gameWidth) / 2 : arg.x;
-        arg.y = isNaN(arg.y) ? (g_gameMain.m_gameHeight) / 2 : arg.y;
-        var txt = new laya.ui.Label();
-        txt.fontSize = arg.size;
-        txt.color = arg.color;
-        txt.align = "center";
-        txt.name = "_txt";
-        txt.text = arg.msg;
-        Laya.stage.addChild(txt);
-        var timeLine = new Laya.TimeLine();
-        txt.x = arg.x;
-        txt.y = arg.y + 100;
-        timeLine.addLabel("toShow", 0).to(txt, { y: arg.y, alpha: 1 }, 300, Laya.Ease.backIn);
-        timeLine.addLabel("toHide", 0).to(txt, { y: arg.y - 100, alpha: 0.3 }, 300, Laya.Ease.backIn, arg.time);
-        timeLine.play(0, false);
-        timeLine.on(laya.events.Event.COMPLETE, this, function (evt) {
-            timeLine.offAll(laya.events.Event.COMPLETE);
-            txt.removeSelf();
-        });
-    };
-    UiMainager.prototype.getEffectTip = function (isWarning, create) {
-        var list = isWarning ? this._waring_tip_list : this._tip_list;
-        if (!create) {
-            if (list.length > 0)
-                return list.shift();
-        }
-        var spr = new laya.ui.Image();
-        spr.skin = "qpq/comp/tips_bg_1.png";
-        spr.sizeGrid = "16,50,16,50";
-        spr.sizeGrid = "24,255,25,256";
-        var txt = new laya.ui.Label();
-        txt.fontSize = 24;
-        if (isWarning) {
-            txt.color = "#ff2323";
-        }
-        else {
-            txt.color = "#09ff88";
-        }
-        txt.align = "center";
-        txt.name = "_txt";
-        spr.width = txt.width < 512 ? 512 : txt.width + 100;
-        spr.height = 50;
-        spr.pivotX = spr.width / 2;
-        spr.pivotY = spr.height / 2;
-        spr.addChild(txt);
-        spr.zOrder = 100;
-        if (create) {
-            list.push(spr);
-        }
-        return spr;
-    };
-    UiMainager.prototype.showTipsEffect = function (str, effectType, isWarning) {
-        var spr = this.getEffectTip(isWarning);
-        var txt = spr.getChildByName("_txt");
-        txt.text = str;
-        spr.zOrder = 2000;
-        spr.width = txt.width < 512 ? 512 : txt.width + 100;
-        spr.height = 50;
-        txt.x = (spr.width - txt.width) / 2;
-        txt.y = (spr.height - txt.height) / 2;
-        spr.pivotX = spr.width / 2;
-        spr.pivotY = spr.height / 2;
-        spr.pivotX = spr.width / 2;
-        spr.pivotY = spr.height / 2;
-        Laya.stage.addChild(spr);
-        var tx = (g_gameMain.m_gameWidth) / 2;
-        var ty = (g_gameMain.m_gameHeight) / 2;
-        var timeLine = new Laya.TimeLine();
-        spr.alpha = 0.3;
-        switch (effectType) {
-            case 1:
-                spr.x = (Laya.stage.width) / 2;
-                spr.y = ty + 100;
-                timeLine.addLabel("toShow", 0).to(spr, { y: ty, alpha: 1 }, 300, Laya.Ease.backIn);
-                timeLine.addLabel("toHide", 0).to(spr, { y: ty - 100, alpha: 0.3 }, 300, Laya.Ease.backIn, 3000);
-                break;
-            case 2:
-                spr.x = -spr.width - 50;
-                spr.y = ty;
-                timeLine.addLabel("toShow", 0).to(spr, { x: tx, alpha: 1 }, 300, Laya.Ease.backIn);
-                timeLine.addLabel("toHide", 0).to(spr, { x: g_gameMain.m_gameWidth + spr.pivotX, alpha: 0.3 }, 300, Laya.Ease.backIn, 3000);
-                break;
-            case 3:
-                spr.x = Laya.stage.width;
-                spr.y = ty;
-                timeLine.addLabel("toShow", 0).to(spr, { x: tx, alpha: 1 }, 300, Laya.Ease.backIn);
-                timeLine.addLabel("toHide", 0).to(spr, { x: -spr.width - spr.pivotX, alpha: 0.3 }, 300, Laya.Ease.backIn, 3000);
-                break;
-            case 4:
-                spr.x = tx;
-                spr.y = ty;
-                spr.scaleX = spr.scaleY = 0.1;
-                timeLine.addLabel("toShow", 0).to(spr, { scaleX: 1, alpha: 1 }, 300, Laya.Ease.backIn);
-                timeLine.addLabel("toHide", 0).to(spr, { scaleX: 0.1, alpha: 0.3 }, 300, Laya.Ease.backIn, 3000);
-                break;
-        }
-        timeLine.play(0, false);
-        var list = isWarning ? this._waring_tip_list : this._tip_list;
-        timeLine.on(laya.events.Event.COMPLETE, this, function (evt) {
-            timeLine.offAll(laya.events.Event.COMPLETE);
-            spr.removeSelf();
-            list.push(spr);
-        });
-    };
-    /**
      * function showPMD
      * @param msg
      */
@@ -838,10 +908,11 @@ var UiMainager = /** @class */ (function () {
         this.m_pmd.add(msg);
     };
     UiMainager.prototype.getAlertUi = function () {
-        var temp = this._alertList.shift();
-        if (temp == null)
-            temp = new gamelib.alert.AlertUi();
-        return temp;
+        // var temp = this._alertList.shift();
+        // if(temp == null)
+        //     temp = new gamelib.alert.AlertUi();
+        // return temp;
+        return new AlertUi_1.default();
     };
     return UiMainager;
 }());
@@ -849,32 +920,34 @@ exports.default = UiMainager;
 var TipEffect = /** @class */ (function () {
     function TipEffect() {
         this._bg = new Laya.Image();
-        this._bg.skin = "qpq/comp/tips_bg_1.png";
-        this._bg.sizeGrid = "16,50,16,50";
-        this._bg.sizeGrid = "24,255,25,256";
+        this._bg.skin = "bgs/ic_alert_long_bg.png";
+        this._bg.height = 100;
+        this._icon = new Laya.Image();
+        this._icon.width = this._icon.height = 60;
+        this._bg.addChild(this._icon);
+        this._icon.centerY = 0;
+        this._icon.x = 60;
         this._label = new laya.ui.Label();
-        this._label.fontSize = 24;
+        this._label.fontSize = 28;
+        this._label.color = "#FFFFFF";
         this._label.align = "center";
         this._label.name = "_txt";
+        this._label.centerY = 0;
+        this._bg.addChild(this._label);
         this._bg.x = Laya.stage.width / 2;
         this._bg.y = Laya.stage.height / 2;
-        // spr.width = txt.width < 512 ? 512 : txt.width + 100;
-        // spr.height = 50;
-        // spr.pivotX = spr.width / 2;
-        // spr.pivotY = spr.height / 2;
-        // spr.addChild(txt);
-        // spr.zOrder = 100;
     }
     TipEffect.prototype.setMsg = function (msg, isWarning) {
         this._label.text = msg;
-        this._label.color = isWarning ? "#ff2323" : "#09ff88";
         this._bg.width = this._label.width < 512 ? 512 : this._label.width + 100;
-        this._bg.height = 50;
         this._bg.pivotX = this._bg.width / 2;
         this._bg.pivotY = this._bg.height / 2;
-        this._label.x = (this._bg.width - this._label.width) / 2;
-        this._label.y = (this._bg.height - this._label.height) / 2;
-        this._bg.addChild(this._label);
+        this._label.x = this._icon.x + this._icon.width + 20; //(this._bg.width - this._label.width) / 2;
+        // this._label.y = (this._bg.height - this._label.height) / 2;
+        if (isWarning)
+            this._icon.skin = "icons/ic_alert_error.png";
+        else
+            this._icon.skin = "icons/ic_toast_success.png";
         this._bg.zOrder = 1100;
         Laya.stage.addChild(this._bg);
         this._bg.scaleY = 0;
@@ -891,7 +964,7 @@ var TipEffect = /** @class */ (function () {
 exports.TipEffect = TipEffect;
 exports.g_uiMgr = new UiMainager();
 
-},{"./MiniLoadingUi":8}],12:[function(require,module,exports){
+},{"./AlertUi":2,"./MiniLoadingUi":9}],13:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel_1 = require("./BasePanel");
@@ -978,7 +1051,7 @@ var Info = /** @class */ (function (_super) {
         this._edt1.on(Laya.Event.CLICK, this, this.onClick);
         // this._edt1['__status'] = 0;
         // this.setStatue(this._edt1,0);
-        this._res['txt_account'].text = PlayerData_1.g_playerData.m_name;
+        this._res['txt_account'].text = PlayerData_1.g_playerData.m_userName;
         this._res['txt_level'].text = PlayerData_1.g_playerData.m_isOldWithNew ? "推广账号" : "普通会员";
         this._res['txt_name'].text = PlayerData_1.g_playerData.m_nickName;
         this._res['txt_mail'].text = PlayerData_1.g_playerData.m_mail;
@@ -1117,7 +1190,7 @@ var ZhangHuMingXi = /** @class */ (function (_super) {
 }(Plug_1.default));
 exports.ZhangHuMingXi = ZhangHuMingXi;
 
-},{"./BasePanel":3,"./Plug":9,"./control/TabList":15,"./data/PlayerData":17}],13:[function(require,module,exports){
+},{"./BasePanel":4,"./Plug":10,"./control/TabList":16,"./data/PlayerData":18}],14:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChongZhiHistroy_1 = require("./ChongZhiHistroy");
@@ -1220,7 +1293,7 @@ var ChongZhi = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = ChongZhi;
 
-},{"../BasePanel":3,"../control/TabList":15,"./ChongZhiHistroy":14}],14:[function(require,module,exports){
+},{"../BasePanel":4,"../control/TabList":16,"./ChongZhiHistroy":15}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -1235,7 +1308,7 @@ var ChongZhiHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = ChongZhiHistroy;
 
-},{"../BaseHistroy":2}],15:[function(require,module,exports){
+},{"../BaseHistroy":3}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var TabList = /** @class */ (function () {
@@ -1300,7 +1373,7 @@ var TabList = /** @class */ (function () {
 }());
 exports.default = TabList;
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GameData = /** @class */ (function () {
@@ -1514,12 +1587,12 @@ function checkLogin() {
 }
 exports.checkLogin = checkLogin;
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var PlayerData = /** @class */ (function () {
     function PlayerData() {
-        this.m_name = "";
+        this.m_userName = "";
         this.m_nickName = "";
         this.m_phone = "";
         this.m_money = 0;
@@ -1532,7 +1605,7 @@ var PlayerData = /** @class */ (function () {
 exports.default = PlayerData;
 exports.g_playerData = new PlayerData();
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GameData_1 = require("../data/GameData");
@@ -1701,7 +1774,7 @@ var PlatformIcon = /** @class */ (function (_super) {
 }(GameIcon));
 exports.PlatformIcon = PlatformIcon;
 
-},{"../UiMainager":11,"../data/GameData":16}],19:[function(require,module,exports){
+},{"../UiMainager":12,"../data/GameData":17}],20:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePanel_1 = require("../BasePanel");
@@ -1797,7 +1870,7 @@ var PlatfromList = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = PlatfromList;
 
-},{"../BasePanel":3,"../UiMainager":11,"../control/TabList":15,"../data/GameData":16,"./GameList":18}],20:[function(require,module,exports){
+},{"../BasePanel":4,"../UiMainager":12,"../control/TabList":16,"../data/GameData":17,"./GameList":19}],21:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UiMainager_1 = require("../UiMainager");
@@ -1810,6 +1883,10 @@ var LoginUi = /** @class */ (function (_super) {
     LoginUi.prototype.init = function () {
         this.addBtnToListener('btn_login');
         this.addBtnToListener('btn_zc');
+    };
+    LoginUi.prototype.onShow = function () {
+        _super.prototype.onShow.call(this);
+        this._res['txt_name'].text = gamelib.Api.getLocalStorage("username") || "";
     };
     LoginUi.prototype.onClickObjects = function (evt) {
         switch (evt.currentTarget.name) {
@@ -1831,7 +1908,7 @@ var LoginUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = LoginUi;
 
-},{"../Global":4,"../UiMainager":11}],21:[function(require,module,exports){
+},{"../Global":5,"../UiMainager":12}],22:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UiMainager_1 = require("../UiMainager");
@@ -1883,7 +1960,7 @@ var RegisterUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = RegisterUi;
 
-},{"../Global":4,"../UiMainager":11}],22:[function(require,module,exports){
+},{"../Global":5,"../UiMainager":12}],23:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MailInfo = /** @class */ (function (_super) {
@@ -1901,7 +1978,7 @@ var MailInfo = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = MailInfo;
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MailInfo_1 = require("./MailInfo");
@@ -1930,7 +2007,7 @@ var MailUi = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = MailUi;
 
-},{"./MailInfo":22}],24:[function(require,module,exports){
+},{"./MailInfo":23}],25:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Notice = /** @class */ (function (_super) {
@@ -1945,7 +2022,7 @@ var Notice = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = Notice;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var NoticeMsg = /** @class */ (function (_super) {
@@ -1978,7 +2055,7 @@ var NoticeMsg = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = NoticeMsg;
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -1993,7 +2070,7 @@ var TiXianHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = TiXianHistroy;
 
-},{"../BaseHistroy":2}],27:[function(require,module,exports){
+},{"../BaseHistroy":3}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var TiXianHistroy_1 = require("./TiXianHistroy");
@@ -2081,7 +2158,7 @@ var TiXianUi = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = TiXianUi;
 
-},{"../BasePanel":3,"../control/TabList":15,"./TiXianHistroy":26}],28:[function(require,module,exports){
+},{"../BasePanel":4,"../control/TabList":16,"./TiXianHistroy":27}],29:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -2096,7 +2173,7 @@ var FanYongList = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = FanYongList;
 
-},{"../BaseHistroy":2}],29:[function(require,module,exports){
+},{"../BaseHistroy":3}],30:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GetYongJin = /** @class */ (function (_super) {
@@ -2112,7 +2189,7 @@ var GetYongJin = /** @class */ (function (_super) {
 }(gamelib.core.Ui_NetHandle));
 exports.default = GetYongJin;
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -2127,7 +2204,7 @@ var LingQuHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = LingQuHistroy;
 
-},{"../BaseHistroy":2}],31:[function(require,module,exports){
+},{"../BaseHistroy":3}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var GetYongJin_1 = require("./GetYongJin");
@@ -2244,7 +2321,7 @@ var TuiGuang = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = TuiGuang;
 
-},{"../BasePanel":3,"../UiMainager":11,"../control/TabList":15,"./FanYongList":28,"./GetYongJin":29,"./LingQuHistroy":30}],32:[function(require,module,exports){
+},{"../BasePanel":4,"../UiMainager":12,"../control/TabList":16,"./FanYongList":29,"./GetYongJin":30,"./LingQuHistroy":31}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XiMaHistroy_1 = require("./XiMaHistroy");
@@ -2294,7 +2371,7 @@ var XiMa = /** @class */ (function (_super) {
 }(BasePanel_1.default));
 exports.default = XiMa;
 
-},{"../BasePanel":3,"../control/TabList":15,"./XiMaHistroy":33}],33:[function(require,module,exports){
+},{"../BasePanel":4,"../control/TabList":16,"./XiMaHistroy":34}],34:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseHistroy_1 = require("../BaseHistroy");
@@ -2309,7 +2386,7 @@ var XiMaHistroy = /** @class */ (function (_super) {
 }(BaseHistroy_1.default));
 exports.default = XiMaHistroy;
 
-},{"../BaseHistroy":2}],34:[function(require,module,exports){
+},{"../BaseHistroy":3}],35:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**This class is automatically generated by LayaAirIDE, please do not make any modifications. */
@@ -2318,6 +2395,20 @@ var Dialog = Laya.Dialog;
 var REG = Laya.ClassUtils.regClass;
 var ui;
 (function (ui) {
+    var AlertUI = /** @class */ (function (_super) {
+        __extends(AlertUI, _super);
+        function AlertUI() {
+            return _super.call(this) || this;
+        }
+        AlertUI.prototype.createChildren = function () {
+            _super.prototype.createChildren.call(this);
+            this.createView(AlertUI.uiView);
+        };
+        AlertUI.uiView = { "type": "Dialog", "props": { "width": 1000, "height": 650 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 1000, "var": "img_bg", "skin": "bgs/ic_dialog_tip.png", "height": 650 }, "compId": 3 }, { "type": "Button", "props": { "y": 0, "x": 929, "var": "btn_close", "stateNum": 1, "skin": "btns/ic_close.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 4 }, { "type": "Button", "props": { "y": 495, "x": 570, "var": "btn_ok", "stateNum": 1, "skin": "btns/ic_button_sure.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 5 }, { "type": "Button", "props": { "y": 495, "x": 215, "var": "btn_cancel", "stateNum": 1, "skin": "btns/ic_button_cancel.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 8 }, { "type": "TextArea", "props": { "y": 203, "x": 145, "wordWrap": true, "width": 717, "var": "txt_txt", "valign": "middle", "text": "TextArea", "height": 150, "fontSize": 30, "editable": false, "color": "#DFA562", "align": "center" }, "compId": 10 }], "loadList": ["bgs/ic_dialog_tip.png", "btns/ic_close.png", "btns/ic_button_sure.png", "btns/ic_button_cancel.png"], "loadList3D": [] };
+        return AlertUI;
+    }(Dialog));
+    ui.AlertUI = AlertUI;
+    REG("ui.AlertUI", AlertUI);
     var BankUI = /** @class */ (function (_super) {
         __extends(BankUI, _super);
         function BankUI() {
@@ -2355,7 +2446,7 @@ var ui;
             _super.prototype.createChildren.call(this);
             this.createView(ChongZhiUiUI.uiView);
         };
-        ChongZhiUiUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_recharge_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 179 }, { "type": "Image", "props": { "top": 0, "skin": "comp/dactivity_nav_left.png", "left": 0, "bottom": 0 }, "compId": 3 }, { "type": "Box", "props": { "y": 0, "var": "b_title", "right": 0, "left": 0, "height": 120 }, "compId": 4, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_top_bg.png", "right": 0, "left": 0, "height": 120 }, "compId": 5 }, { "type": "Button", "props": { "y": 4, "x": 0, "var": "btn_close", "stateNum": 1, "skin": "btns/back_btn.png", "scaleY": 0.85, "scaleX": 0.85 }, "compId": 6 }, { "type": "Image", "props": { "x": 329, "skin": "bgs/ic_recharge_title.png", "scaleY": 0.5, "scaleX": 0.5, "centerY": 0 }, "compId": 7 }, { "type": "Image", "props": { "skin": "bgs/ic_recharge_account.png", "scaleY": 0.8, "scaleX": 0.8, "centerY": 2, "centerX": 88 }, "compId": 8 }, { "type": "Button", "props": { "var": "btn_refresh", "stateNum": 1, "skin": "btns/btn_refresh.png", "right": 292, "centerY": 0 }, "compId": 10 }, { "type": "Button", "props": { "y": 27, "var": "btn_histroy", "stateNum": 1, "skin": "btns/ic_recharge_jilu.png", "scaleY": 0.8, "scaleX": 0.8, "right": 14 }, "compId": 9 }, { "type": "Label", "props": { "y": 46, "x": 702, "width": 191, "var": "txt_money", "text": "0.0", "height": 28, "fontSize": 28, "color": "#ffffff" }, "compId": 11 }] }, { "type": "Box", "props": { "var": "b_bank", "right": 5, "left": 298, "height": 598, "bottom": 0 }, "compId": 19, "child": [{ "type": "Box", "props": { "var": "b_tips", "top": 0, "right": 0, "left": 0, "bottom": 0 }, "compId": 25, "child": [{ "type": "Image", "props": { "y": 39, "x": 60, "skin": "icons/ic_dot.png" }, "compId": 20 }, { "type": "Label", "props": { "y": 38, "x": 92, "text": "充值收款银行选择", "fontSize": 22, "color": "#d6c09a" }, "compId": 21 }, { "type": "List", "props": { "y": 83, "var": "list_banklist", "vScrollBarSkin": "comp/vscroll.png", "spaceY": 5, "right": 5, "left": 10, "height": 446 }, "compId": 130, "child": [{ "type": "Box", "props": { "right": 0, "renderType": "render", "left": 0 }, "compId": 131, "child": [{ "type": "Image", "props": { "y": 0, "skin": "bgs/ic_member_find_bg.png", "sizeGrid": "16,24,13,24", "right": 0, "left": 0, "height": 144 }, "compId": 132 }, { "type": "Image", "props": { "y": 25, "x": 50, "skin": "icons/bankIcon.png", "sizeGrid": "30,34,26,34", "name": "img_bank" }, "compId": 22 }, { "type": "Label", "props": { "y": 25, "x": 148, "text": "网银、手机网页庄站通道送2%", "name": "txt_info", "fontSize": 30, "color": "#ffffff", "bold": true }, "compId": 133 }, { "type": "Label", "props": { "y": 79, "x": 148, "text": "2123156465464564.", "name": "txt_id", "fontSize": 30, "color": "#ffffff", "bold": true }, "compId": 134 }, { "type": "Button", "props": { "y": 40, "x": 766, "stateNum": 1, "skin": "btns/ic_to_recharge.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 135 }] }] }] }, { "type": "Box", "props": { "var": "b_input", "top": 0, "right": 0, "left": 0, "bottom": 0 }, "compId": 26, "child": [{ "type": "Image", "props": { "y": 20, "skin": "bgs/ddeposit_chonzhishoukuanbg.png", "left": 16 }, "compId": 27, "child": [{ "type": "Label", "props": { "y": 16, "x": 174, "text": "收款银行", "fontSize": 28, "color": "#3e2412", "bold": true }, "compId": 67 }] }, { "type": "Image", "props": { "y": 20, "skin": "bgs/ddeposit_chonzhishoukuanbg.png", "right": 0 }, "compId": 28, "child": [{ "type": "Label", "props": { "y": 16, "x": 174, "text": "收款银行", "fontSize": 28, "color": "#3e2412", "bold": true }, "compId": 68 }] }, { "type": "Label", "props": { "y": 133, "x": 32, "text": "收款银行", "fontSize": 24, "color": "#a0a0a0" }, "compId": 29, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_bankName", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 30 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 36, "child": [{ "type": "Line", "props": { "y": 1, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 38 }] }, { "type": "Button", "props": { "y": -6, "x": 358, "var": "btn_copy1", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 39 }] }, { "type": "Label", "props": { "y": 209, "x": 32, "width": 98, "text": "收款人", "height": 24, "fontSize": 24, "color": "#a0a0a0", "align": "center" }, "compId": 52, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_name", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 53 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 54, "child": [{ "type": "Line", "props": { "y": 0, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 55 }] }, { "type": "Button", "props": { "y": -3, "x": 360, "var": "btn_copy2", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 56 }] }, { "type": "Label", "props": { "y": 283, "x": 32, "text": "收款账号", "fontSize": 24, "color": "#a0a0a0" }, "compId": 57, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_zh", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 58 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 59, "child": [{ "type": "Line", "props": { "y": 0, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 60 }] }, { "type": "Button", "props": { "y": 0, "x": 356, "var": "btn_copy3", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 61 }] }, { "type": "Label", "props": { "y": 357, "x": 32, "width": 96, "text": "开户地", "height": 24, "fontSize": 24, "color": "#a0a0a0", "align": "center" }, "compId": 62, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_khd", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 63 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 64, "child": [{ "type": "Line", "props": { "y": 0, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 65 }] }, { "type": "Button", "props": { "y": 0, "x": 361, "var": "btn_copy4", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 66 }] }, { "type": "Label", "props": { "y": 493, "x": 26, "text": "第一步:复制收款银行前往充值", "height": 24, "fontSize": 20, "color": "#a0a0a0", "align": "center" }, "compId": 69 }, { "type": "Label", "props": { "y": 138, "x": 543, "text": "存款金额", "fontSize": 24, "color": "#a0a0a0" }, "compId": 74 }, { "type": "Image", "props": { "y": 126, "x": 654, "width": 302, "skin": "comp/ic_input_bg.png", "sizeGrid": "18,27,9,18", "height": 48 }, "compId": 79, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 279, "var": "txt_ckje", "type": "number", "prompt": "支付限额100-100000", "height": 36, "fontSize": 24, "color": "#d6c09a" }, "compId": 80 }] }, { "type": "Label", "props": { "y": 224, "x": 543, "text": "存款信息", "fontSize": 24, "color": "#a0a0a0" }, "compId": 81 }, { "type": "Image", "props": { "y": 212, "x": 654, "width": 302, "skin": "comp/ic_input_bg.png", "sizeGrid": "18,27,9,18", "height": 48 }, "compId": 82, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 279, "var": "txt_ckrxm", "type": "text", "prompt": "填写存款人姓名", "height": 36, "fontSize": 24, "color": "#d6c09a" }, "compId": 83 }] }, { "type": "Label", "props": { "y": 487, "x": 530, "text": "第二步:充值完成，填写您的存款信息.最后提交充值", "height": 24, "fontSize": 20, "color": "#a0a0a0", "align": "center" }, "compId": 84 }, { "type": "Button", "props": { "y": 520, "x": 83.5, "var": "btn_prev", "stateNum": 1, "skin": "btns/ic_return_back.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 85 }, { "type": "Button", "props": { "y": 518, "x": 675, "var": "btn_tjcz", "stateNum": 1, "skin": "btns/ic_go.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 86 }] }] }, { "type": "Box", "props": { "var": "b_zf", "right": 5, "left": 298, "height": 598, "bottom": 0 }, "compId": 136, "child": [{ "type": "Label", "props": { "y": 95, "x": 32, "text": "玩家常玩的充值金额", "fontSize": 24, "color": "#ffffff" }, "compId": 141 }, { "type": "Image", "props": { "y": 70, "x": 0, "width": 966, "skin": "bgs/ic_online_bg.png", "height": 524 }, "compId": 142 }, { "type": "List", "props": { "y": 0, "x": 0, "width": 964, "spaceX": 10, "repeatY": 1, "name": "list_2", "height": 61 }, "compId": 154, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 156, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/ddeposit_chonzhizhifubaotongdao2.png" }, "compId": 158 }, { "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/ddeposit_chonzhizhifubaotongdao.png", "name": "img_selected" }, "compId": 157 }, { "type": "Label", "props": { "y": 6, "x": 0, "width": 176, "text": "微信", "name": "txt_name", "height": 28, "fontSize": 24, "align": "center" }, "compId": 159 }, { "type": "Image", "props": { "y": 6, "x": 123, "skin": "icons/ic_charge_discount.png", "scaleY": 0.5, "scaleX": 0.5, "name": "img_yh" }, "compId": 164 }, { "type": "Label", "props": { "y": 36, "x": 0, "width": 176, "text": "微信", "name": "txt_info", "height": 20, "fontSize": 22, "align": "center" }, "compId": 165 }] }] }, { "type": "List", "props": { "y": 138, "width": 957, "spaceY": 20, "spaceX": 120, "right": 10, "name": "list_3", "left": 10, "height": 163 }, "compId": 166, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 168, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 138, "skin": "comp/ic_pc_grbb_tab.png", "sizeGrid": "15,15,15,15", "height": 55 }, "compId": 169 }, { "type": "Image", "props": { "width": 138, "skin": "comp/ic_pc_grbb_tab_pressed.png", "sizeGrid": "15,15,15,15", "name": "img_selected", "height": 55 }, "compId": 170 }, { "type": "Label", "props": { "y": 13, "x": 4, "width": 131, "text": "10000元", "name": "txt_value", "height": 26, "fontSize": 26, "color": "#ffffff", "bold": true, "align": "center" }, "compId": 171 }] }] }, { "type": "Image", "props": { "y": 309, "width": 967, "skin": "bgs/ic_safe_yue_bg.png", "sizeGrid": "19,15,36,13", "right": 5, "left": 5, "height": 164 }, "compId": 172, "child": [{ "type": "Label", "props": { "y": 28, "x": 32, "text": "充值金额", "fontSize": 36, "color": "#ffffff", "bold": true }, "compId": 173 }, { "type": "Image", "props": { "y": 20, "x": 246, "width": 399, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 60 }, "compId": 174, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 355, "var": "txt_oldPwd", "type": "password", "text": "111", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 175 }] }, { "type": "Button", "props": { "y": 20, "var": "btn_clear", "stateNum": 1, "skin": "btns/ic_clear_bg.png", "scaleY": 0.6, "scaleX": 0.6, "right": 50 }, "compId": 176 }] }, { "type": "Button", "props": { "stateNum": 1, "skin": "btns/ic_commit_charge.png", "scaleY": 0.6, "scaleX": 0.6, "centerX": 0, "bottom": 10 }, "compId": 177 }] }, { "type": "Box", "props": { "width": 283, "var": "b_left", "top": 120, "left": 0, "height": 600, "bottom": 0 }, "compId": 144, "child": [{ "type": "List", "props": { "var": "list_1", "vScrollBarSkin": "comp/vscroll.png", "top": 0, "spaceY": 5, "right": 0, "left": 0, "bottom": 0 }, "compId": 146, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 147, "child": [{ "type": "Image", "props": { "x": 0, "width": 283, "skin": "bgs/ic_charge_unchose.png", "name": "img_normal", "height": 86 }, "compId": 148 }, { "type": "Image", "props": { "width": 283, "skin": "bgs/ic_charge_chose.png", "name": "img_selected", "height": 86 }, "compId": 149 }, { "type": "Image", "props": { "x": 16, "width": 50, "skin": "bgs/nfc_icon.png", "name": "img_type", "height": 50, "centerY": 0 }, "compId": 150 }, { "type": "Label", "props": { "y": 30, "x": 89, "width": 189, "text": "label", "name": "txt_name", "height": 26, "fontSize": 26 }, "compId": 152 }, { "type": "Image", "props": { "y": 5.5, "x": 223, "skin": "icons/ic_charge_discount.png", "scaleY": 0.5, "scaleX": 0.5, "name": "img_yh" }, "compId": 153 }] }] }] }], "loadList": ["bgs/ic_recharge_bg.png", "comp/dactivity_nav_left.png", "bgs/ic_home_top_bg.png", "btns/back_btn.png", "bgs/ic_recharge_title.png", "bgs/ic_recharge_account.png", "btns/btn_refresh.png", "btns/ic_recharge_jilu.png", "icons/ic_dot.png", "comp/vscroll.png", "bgs/ic_member_find_bg.png", "icons/bankIcon.png", "btns/ic_to_recharge.png", "bgs/ddeposit_chonzhishoukuanbg.png", "btns/ic_copy2.png", "comp/ic_input_bg.png", "btns/ic_return_back.png", "btns/ic_go.png", "bgs/ic_online_bg.png", "comp/ddeposit_chonzhizhifubaotongdao2.png", "comp/ddeposit_chonzhizhifubaotongdao.png", "icons/ic_charge_discount.png", "comp/ic_pc_grbb_tab.png", "comp/ic_pc_grbb_tab_pressed.png", "bgs/ic_safe_yue_bg.png", "comp/big_input_box.png", "btns/ic_clear_bg.png", "btns/ic_commit_charge.png", "bgs/ic_charge_unchose.png", "bgs/ic_charge_chose.png", "bgs/nfc_icon.png"], "loadList3D": [] };
+        ChongZhiUiUI.uiView = { "type": "View", "props": { "width": 1280, "height": 720 }, "compId": 2, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_recharge_bg.png", "right": 0, "left": 0, "bottom": 0 }, "compId": 179 }, { "type": "Image", "props": { "top": 0, "skin": "comp/dactivity_nav_left.png", "left": 0, "bottom": 0 }, "compId": 3 }, { "type": "Box", "props": { "y": 0, "var": "b_title", "right": 0, "left": 0, "height": 120 }, "compId": 4, "child": [{ "type": "Image", "props": { "top": 0, "skin": "bgs/ic_home_top_bg.png", "right": 0, "left": 0, "height": 120 }, "compId": 5 }, { "type": "Button", "props": { "y": 4, "x": 0, "var": "btn_close", "stateNum": 1, "skin": "btns/back_btn.png", "scaleY": 0.85, "scaleX": 0.85 }, "compId": 6 }, { "type": "Image", "props": { "x": 329, "skin": "bgs/ic_recharge_title.png", "scaleY": 0.5, "scaleX": 0.5, "centerY": 0 }, "compId": 7 }, { "type": "Image", "props": { "skin": "bgs/ic_recharge_account.png", "scaleY": 0.8, "scaleX": 0.8, "centerY": 2, "centerX": 88 }, "compId": 8 }, { "type": "Button", "props": { "var": "btn_refresh", "stateNum": 1, "skin": "btns/btn_refresh.png", "right": 292, "centerY": 0 }, "compId": 10 }, { "type": "Button", "props": { "y": 27, "var": "btn_histroy", "stateNum": 1, "skin": "btns/ic_recharge_jilu.png", "scaleY": 0.8, "scaleX": 0.8, "right": 14 }, "compId": 9 }, { "type": "Label", "props": { "y": 46, "x": 702, "width": 191, "var": "txt_money", "text": "0.0", "height": 28, "fontSize": 28, "color": "#ffffff" }, "compId": 11 }] }, { "type": "Box", "props": { "var": "b_bank", "right": 5, "left": 298, "height": 598, "bottom": 0 }, "compId": 19, "child": [{ "type": "Box", "props": { "var": "b_tips", "top": 0, "right": 0, "left": 0, "bottom": 0 }, "compId": 25, "child": [{ "type": "Image", "props": { "y": 39, "x": 60, "skin": "icons/ic_dot.png" }, "compId": 20 }, { "type": "Label", "props": { "y": 38, "x": 92, "text": "充值收款银行选择", "fontSize": 22, "color": "#d6c09a" }, "compId": 21 }, { "type": "List", "props": { "y": 83, "var": "list_banklist", "vScrollBarSkin": "comp/vscroll.png", "spaceY": 5, "right": 5, "left": 10, "height": 446 }, "compId": 130, "child": [{ "type": "Box", "props": { "right": 0, "renderType": "render", "left": 0 }, "compId": 131, "child": [{ "type": "Image", "props": { "y": 0, "skin": "bgs/ic_member_find_bg.png", "sizeGrid": "16,24,13,24", "right": 0, "left": 0, "height": 144 }, "compId": 132 }, { "type": "Image", "props": { "y": 25, "x": 50, "skin": "icons/bankIcon.png", "sizeGrid": "30,34,26,34", "name": "img_bank" }, "compId": 22 }, { "type": "Label", "props": { "y": 25, "x": 148, "text": "网银、手机网页庄站通道送2%", "name": "txt_info", "fontSize": 30, "color": "#ffffff", "bold": true }, "compId": 133 }, { "type": "Label", "props": { "y": 79, "x": 148, "text": "2123156465464564.", "name": "txt_id", "fontSize": 30, "color": "#ffffff", "bold": true }, "compId": 134 }, { "type": "Button", "props": { "y": 40, "x": 766, "stateNum": 1, "skin": "btns/ic_to_recharge.png", "scaleY": 0.5, "scaleX": 0.5 }, "compId": 135 }] }] }] }, { "type": "Box", "props": { "var": "b_input", "top": 0, "right": 0, "left": 0, "bottom": 0 }, "compId": 26, "child": [{ "type": "Image", "props": { "y": 20, "skin": "bgs/ddeposit_chonzhishoukuanbg.png", "left": 16 }, "compId": 27, "child": [{ "type": "Label", "props": { "y": 16, "x": 174, "text": "收款银行", "fontSize": 28, "color": "#3e2412", "bold": true }, "compId": 67 }] }, { "type": "Image", "props": { "y": 20, "skin": "bgs/ddeposit_chonzhishoukuanbg.png", "right": 0 }, "compId": 28, "child": [{ "type": "Label", "props": { "y": 16, "x": 174, "text": "收款银行", "fontSize": 28, "color": "#3e2412", "bold": true }, "compId": 68 }] }, { "type": "Label", "props": { "y": 133, "x": 32, "text": "收款银行", "fontSize": 24, "color": "#a0a0a0" }, "compId": 29, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_bankName", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 30 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 36, "child": [{ "type": "Line", "props": { "y": 1, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 38 }] }, { "type": "Button", "props": { "y": -6, "x": 358, "var": "btn_copy1", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 39 }] }, { "type": "Label", "props": { "y": 209, "x": 32, "width": 98, "text": "收款人", "height": 24, "fontSize": 24, "color": "#a0a0a0", "align": "center" }, "compId": 52, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_name", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 53 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 54, "child": [{ "type": "Line", "props": { "y": 0, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 55 }] }, { "type": "Button", "props": { "y": -3, "x": 360, "var": "btn_copy2", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 56 }] }, { "type": "Label", "props": { "y": 283, "x": 32, "text": "收款账号", "fontSize": 24, "color": "#a0a0a0" }, "compId": 57, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_zh", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 58 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 59, "child": [{ "type": "Line", "props": { "y": 0, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 60 }] }, { "type": "Button", "props": { "y": 0, "x": 356, "var": "btn_copy3", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 61 }] }, { "type": "Label", "props": { "y": 357, "x": 32, "width": 96, "text": "开户地", "height": 24, "fontSize": 24, "color": "#a0a0a0", "align": "center" }, "compId": 62, "child": [{ "type": "Label", "props": { "y": 0, "x": 96, "width": 334, "var": "txt_khd", "text": "1111", "height": 24, "fontSize": 24, "color": "#a0a0a0" }, "compId": 63 }, { "type": "Image", "props": { "y": 45, "x": 96, "width": 202, "height": 2 }, "compId": 64, "child": [{ "type": "Line", "props": { "y": 0, "x": 0, "toY": 0, "toX": 336, "lineWidth": 2, "lineColor": "#b7b7b7" }, "compId": 65 }] }, { "type": "Button", "props": { "y": 0, "x": 361, "var": "btn_copy4", "stateNum": 1, "skin": "btns/ic_copy2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 66 }] }, { "type": "Label", "props": { "y": 493, "x": 26, "text": "第一步:复制收款银行前往充值", "height": 24, "fontSize": 20, "color": "#a0a0a0", "align": "center" }, "compId": 69 }, { "type": "Label", "props": { "y": 138, "x": 543, "text": "存款金额", "fontSize": 24, "color": "#a0a0a0" }, "compId": 74 }, { "type": "Image", "props": { "y": 126, "x": 654, "width": 302, "skin": "comp/ic_input_bg.png", "sizeGrid": "18,27,9,18", "height": 48 }, "compId": 79, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 279, "var": "txt_ckje", "type": "number", "prompt": "支付限额100-100000", "height": 36, "fontSize": 24, "color": "#d6c09a" }, "compId": 80 }] }, { "type": "Label", "props": { "y": 224, "x": 543, "text": "存款信息", "fontSize": 24, "color": "#a0a0a0" }, "compId": 81 }, { "type": "Image", "props": { "y": 212, "x": 654, "width": 302, "skin": "comp/ic_input_bg.png", "sizeGrid": "18,27,9,18", "height": 48 }, "compId": 82, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 279, "var": "txt_ckrxm", "type": "text", "prompt": "填写存款人姓名", "height": 36, "fontSize": 24, "color": "#d6c09a" }, "compId": 83 }] }, { "type": "Label", "props": { "y": 487, "x": 530, "text": "第二步:充值完成，填写您的存款信息.最后提交充值", "height": 24, "fontSize": 20, "color": "#a0a0a0", "align": "center" }, "compId": 84 }, { "type": "Button", "props": { "y": 520, "x": 83.5, "var": "btn_prev", "stateNum": 1, "skin": "btns/ic_return_back.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 85 }, { "type": "Button", "props": { "y": 518, "x": 675, "var": "btn_tjcz", "stateNum": 1, "skin": "btns/ic_go.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 86 }] }] }, { "type": "Box", "props": { "var": "b_zf", "right": 5, "left": 298, "height": 598, "bottom": 0 }, "compId": 136, "child": [{ "type": "Label", "props": { "y": 95, "x": 32, "text": "玩家常玩的充值金额", "fontSize": 24, "color": "#ffffff" }, "compId": 141 }, { "type": "Image", "props": { "y": 70, "x": 0, "width": 966, "skin": "bgs/ic_online_bg.png", "height": 524 }, "compId": 142 }, { "type": "List", "props": { "y": 0, "x": 0, "width": 964, "spaceX": 10, "repeatY": 1, "name": "list_2", "height": 61 }, "compId": 154, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 156, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/ddeposit_chonzhizhifubaotongdao2.png" }, "compId": 158 }, { "type": "Image", "props": { "y": 0, "x": 0, "skin": "comp/ddeposit_chonzhizhifubaotongdao.png", "name": "img_selected" }, "compId": 157 }, { "type": "Label", "props": { "y": 6, "x": 0, "width": 176, "text": "微信", "name": "txt_name", "height": 28, "fontSize": 24, "align": "center" }, "compId": 159 }, { "type": "Image", "props": { "y": 6, "x": 123, "skin": "icons/ic_charge_discount.png", "scaleY": 0.5, "scaleX": 0.5, "name": "img_yh" }, "compId": 164 }, { "type": "Label", "props": { "y": 36, "x": 0, "width": 176, "text": "微信", "name": "txt_info", "height": 20, "fontSize": 22, "align": "center" }, "compId": 165 }] }] }, { "type": "List", "props": { "y": 138, "width": 957, "spaceY": 20, "spaceX": 120, "right": 10, "name": "list_3", "left": 10, "height": 163 }, "compId": 166, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 168, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 138, "skin": "comp/ic_pc_grbb_tab.png", "sizeGrid": "15,15,15,15", "height": 55 }, "compId": 169 }, { "type": "Image", "props": { "width": 138, "skin": "comp/ic_pc_grbb_tab_pressed.png", "sizeGrid": "15,15,15,15", "name": "img_selected", "height": 55 }, "compId": 170 }, { "type": "Label", "props": { "y": 13, "x": 4, "width": 131, "text": "10000元", "name": "txt_value", "height": 26, "fontSize": 26, "color": "#ffffff", "bold": true, "align": "center" }, "compId": 171 }] }] }, { "type": "Image", "props": { "y": 309, "width": 967, "skin": "bgs/ic_safe_yue_bg.png", "sizeGrid": "19,15,36,13", "right": 5, "left": 5, "height": 164 }, "compId": 172, "child": [{ "type": "Label", "props": { "y": 28, "x": 32, "text": "充值金额", "fontSize": 36, "color": "#ffffff", "bold": true }, "compId": 173 }, { "type": "Image", "props": { "y": 20, "x": 246, "width": 399, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 60 }, "compId": 174, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 355, "var": "txt_oldPwd", "type": "password", "text": "111", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 175 }] }, { "type": "Button", "props": { "y": 20, "var": "btn_clear", "stateNum": 1, "skin": "btns/ic_clear_bg.png", "scaleY": 0.6, "scaleX": 0.6, "right": 50 }, "compId": 176 }] }, { "type": "Button", "props": { "stateNum": 1, "skin": "btns/ic_commit_charge.png", "scaleY": 0.6, "scaleX": 0.6, "centerX": 0, "bottom": 10 }, "compId": 177 }] }, { "type": "Box", "props": { "width": 283, "var": "b_left", "top": 120, "left": 0, "height": 600 }, "compId": 144, "child": [{ "type": "List", "props": { "var": "list_1", "vScrollBarSkin": "comp/vscroll.png", "top": 0, "spaceY": 5, "right": 0, "left": 0, "bottom": 0 }, "compId": 146, "child": [{ "type": "Box", "props": { "renderType": "render" }, "compId": 147, "child": [{ "type": "Image", "props": { "x": 0, "width": 283, "skin": "bgs/ic_charge_unchose.png", "name": "img_normal", "height": 86 }, "compId": 148 }, { "type": "Image", "props": { "width": 283, "skin": "bgs/ic_charge_chose.png", "name": "img_selected", "height": 86 }, "compId": 149 }, { "type": "Image", "props": { "x": 16, "width": 50, "skin": "bgs/nfc_icon.png", "name": "img_type", "height": 50, "centerY": 0 }, "compId": 150 }, { "type": "Label", "props": { "y": 30, "x": 89, "width": 189, "text": "label", "name": "txt_name", "height": 26, "fontSize": 26 }, "compId": 152 }, { "type": "Image", "props": { "y": 5.5, "x": 223, "skin": "icons/ic_charge_discount.png", "scaleY": 0.5, "scaleX": 0.5, "name": "img_yh" }, "compId": 153 }] }] }] }], "loadList": ["bgs/ic_recharge_bg.png", "comp/dactivity_nav_left.png", "bgs/ic_home_top_bg.png", "btns/back_btn.png", "bgs/ic_recharge_title.png", "bgs/ic_recharge_account.png", "btns/btn_refresh.png", "btns/ic_recharge_jilu.png", "icons/ic_dot.png", "comp/vscroll.png", "bgs/ic_member_find_bg.png", "icons/bankIcon.png", "btns/ic_to_recharge.png", "bgs/ddeposit_chonzhishoukuanbg.png", "btns/ic_copy2.png", "comp/ic_input_bg.png", "btns/ic_return_back.png", "btns/ic_go.png", "bgs/ic_online_bg.png", "comp/ddeposit_chonzhizhifubaotongdao2.png", "comp/ddeposit_chonzhizhifubaotongdao.png", "icons/ic_charge_discount.png", "comp/ic_pc_grbb_tab.png", "comp/ic_pc_grbb_tab_pressed.png", "bgs/ic_safe_yue_bg.png", "comp/big_input_box.png", "btns/ic_clear_bg.png", "btns/ic_commit_charge.png", "bgs/ic_charge_unchose.png", "bgs/ic_charge_chose.png", "bgs/nfc_icon.png"], "loadList3D": [] };
         return ChongZhiUiUI;
     }(View));
     ui.ChongZhiUiUI = ChongZhiUiUI;
@@ -2551,7 +2642,7 @@ var ui;
             _super.prototype.createChildren.call(this);
             this.createView(SetUiUI.uiView);
         };
-        SetUiUI.uiView = { "type": "Dialog", "props": { "width": 1084, "height": 635 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0 }, "compId": 50, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "skin": "bgs/ic_dialog_bj.png" }, "compId": 3 }, { "type": "Image", "props": { "y": 33, "x": 485, "skin": "bgs/ic_setting_title.png", "scaleY": 0.6, "scaleX": 0.6, "centerX": 10 }, "compId": 4 }, { "type": "Button", "props": { "y": 0, "x": 1008, "var": "btn_close", "stateNum": 1, "skin": "btns/ic_close.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 40 }] }, { "type": "Tab", "props": { "y": 116.5, "x": 27, "var": "tab_1" }, "compId": 5, "child": [{ "type": "Button", "props": { "y": 0, "stateNum": 2, "skin": "btns/btn_setting_sound.png", "name": "item0" }, "compId": 6 }, { "type": "Button", "props": { "y": 86, "x": 0, "stateNum": 2, "skin": "btns/btn_setting_password.png", "name": "item1" }, "compId": 7 }, { "type": "Button", "props": { "y": 170, "x": 0, "stateNum": 2, "skin": "btns/btn_setting_app.png", "name": "item2" }, "compId": 8 }] }, { "type": "Box", "props": { "y": 122, "x": 282, "width": 781, "var": "b_sound", "height": 485 }, "compId": 10, "child": [{ "type": "Label", "props": { "y": 36, "x": 22, "text": "基础信息:", "fontSize": 30, "color": "#d6c09a" }, "compId": 13 }, { "type": "Image", "props": { "y": 89, "x": 31, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 16 }, { "type": "Label", "props": { "y": 185, "x": 22, "text": "声音设置:", "fontSize": 30, "color": "#d6c09a" }, "compId": 17 }, { "type": "Label", "props": { "y": 113, "x": 123, "text": "账号:", "fontSize": 20, "color": "#b89068" }, "compId": 18 }, { "type": "Image", "props": { "y": 137, "x": 114, "width": 178, "skin": "bgs/money_get_out_box.png", "sizeGrid": "12,25,16,21", "height": 29 }, "compId": 42, "child": [{ "type": "Label", "props": { "y": 2, "x": 9, "width": 161, "var": "txt_id", "text": "wx123456", "height": 24, "fontSize": 24, "color": "#ffffff", "align": "center" }, "compId": 19 }] }, { "type": "Label", "props": { "y": 255, "x": 27, "text": "背景音乐:", "fontSize": 20, "color": "#b89068" }, "compId": 20 }, { "type": "Button", "props": { "y": 367, "width": 235, "var": "btn_logout", "stateNum": 1, "skin": "btns/ic_logout.png", "height": 70, "centerX": 0 }, "compId": 25 }, { "type": "Label", "props": { "y": 113, "x": 384.443359375, "text": "等级:", "fontSize": 20, "color": "#b89068" }, "compId": 43 }, { "type": "Image", "props": { "y": 137, "x": 382, "width": 124, "skin": "bgs/money_get_out_box.png", "sizeGrid": "12,22,16,16", "height": 29 }, "compId": 44, "child": [{ "type": "Label", "props": { "y": 2, "x": 9, "width": 102, "var": "txt_level", "text": "VIP1", "height": 24, "fontSize": 24, "color": "#ffffff", "align": "center" }, "compId": 45 }] }, { "type": "CheckBox", "props": { "y": 230.5, "x": 145.7783203125, "stateNum": 2, "skin": "comp/checkbox_0.png" }, "compId": 46 }, { "type": "Label", "props": { "y": 252.5, "x": 407.2216796875, "text": "音效:", "fontSize": 20, "color": "#b89068" }, "compId": 47 }, { "type": "CheckBox", "props": { "y": 230, "x": 482, "stateNum": 2, "skin": "comp/checkbox_0.png" }, "compId": 48 }] }, { "type": "Box", "props": { "y": 122, "x": 282, "width": 781, "var": "b_pwd", "height": 485 }, "compId": 11, "child": [{ "type": "Label", "props": { "y": 81, "x": 143, "text": "现密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 26 }, { "type": "Label", "props": { "y": 162, "x": 143, "text": "新密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 27 }, { "type": "Label", "props": { "y": 240, "x": 113, "text": "确认密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 28 }, { "type": "Image", "props": { "y": 70, "x": 260, "width": 381, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 52 }, "compId": 29, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 355, "var": "txt_oldPwd", "type": "password", "text": "111", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 30 }] }, { "type": "Image", "props": { "y": 151, "x": 260, "width": 381, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 52 }, "compId": 31, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 365, "var": "txt_newPwd", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 32 }] }, { "type": "Image", "props": { "y": 232, "x": 260, "width": 381, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 52 }, "compId": 35, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 361, "var": "txt_newPwd1", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 36 }] }, { "type": "Button", "props": { "y": 365, "width": 235, "var": "btn_ok", "stateNum": 1, "skin": "btns/ic_replace_password.png", "scaleY": 1, "scaleX": 1, "height": 70, "centerX": 0 }, "compId": 37 }] }, { "type": "Box", "props": { "y": 124, "x": 282, "width": 781, "var": "b_app", "height": 485 }, "compId": 12, "child": [{ "type": "Text", "props": { "y": 79, "x": 8, "width": 763, "var": "txt_app_version", "valign": "middle", "text": "text", "height": 255, "fontSize": 30, "color": "#ffffff", "align": "center", "runtime": "laya.display.Text" }, "compId": 39 }] }, { "type": "Label", "props": { "y": 535, "x": 974.63818359375, "var": "txt_version", "text": "1.0.0", "fontSize": 30, "color": "#b89068" }, "compId": 49 }], "loadList": ["bgs/ic_dialog_bj.png", "bgs/ic_setting_title.png", "btns/ic_close.png", "btns/btn_setting_sound.png", "btns/btn_setting_password.png", "btns/btn_setting_app.png", "comp/dindex_index_icon.png", "bgs/money_get_out_box.png", "btns/ic_logout.png", "comp/checkbox_0.png", "comp/big_input_box.png", "btns/ic_replace_password.png"], "loadList3D": [] };
+        SetUiUI.uiView = { "type": "Dialog", "props": { "width": 1084, "height": 635 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0 }, "compId": 50, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "skin": "bgs/ic_dialog_bj.png" }, "compId": 3 }, { "type": "Image", "props": { "y": 33, "x": 485, "skin": "bgs/ic_setting_title.png", "scaleY": 0.6, "scaleX": 0.6, "centerX": 10 }, "compId": 4 }, { "type": "Button", "props": { "y": 0, "x": 1008, "var": "btn_close", "stateNum": 1, "skin": "btns/ic_close.png", "scaleY": 0.6, "scaleX": 0.6 }, "compId": 40 }] }, { "type": "Tab", "props": { "y": 116.5, "x": 27, "var": "tab_1", "direction": "vertical" }, "compId": 5, "child": [{ "type": "Button", "props": { "y": 0, "stateNum": 2, "skin": "btns/btn_setting_sound.png", "name": "item0" }, "compId": 6 }, { "type": "Button", "props": { "y": 86, "x": 0, "stateNum": 2, "skin": "btns/btn_setting_password.png", "name": "item1" }, "compId": 7 }, { "type": "Button", "props": { "y": 170, "x": 0, "stateNum": 2, "skin": "btns/btn_setting_app.png", "name": "item2" }, "compId": 8 }] }, { "type": "Box", "props": { "var": "b_sound", "top": 122, "right": 20, "left": 282, "height": 485 }, "compId": 10, "child": [{ "type": "Box", "props": { "y": 0, "var": "b_info", "right": 0, "left": 0, "height": 437 }, "compId": 51, "child": [{ "type": "Label", "props": { "y": 36, "x": 22, "text": "基础信息:", "fontSize": 30, "color": "#d6c09a" }, "compId": 13 }, { "type": "Image", "props": { "y": 89, "x": 31, "var": "img_head", "skin": "comp/dindex_index_icon.png" }, "compId": 16 }, { "type": "Image", "props": { "y": 137, "x": 114, "width": 178, "skin": "bgs/money_get_out_box.png", "sizeGrid": "12,25,16,21", "height": 29 }, "compId": 42, "child": [{ "type": "Label", "props": { "y": 2, "x": 9, "width": 161, "var": "txt_id", "text": "wx123456", "height": 24, "fontSize": 24, "color": "#ffffff", "align": "center" }, "compId": 19 }] }, { "type": "Label", "props": { "y": 113, "x": 123, "text": "账号:", "fontSize": 20, "color": "#b89068" }, "compId": 18 }, { "type": "Label", "props": { "y": 113, "x": 384, "text": "等级:", "fontSize": 20, "color": "#b89068" }, "compId": 43 }, { "type": "Image", "props": { "y": 137, "x": 382, "width": 124, "skin": "bgs/money_get_out_box.png", "sizeGrid": "12,22,16,16", "height": 29 }, "compId": 44, "child": [{ "type": "Label", "props": { "y": 2, "x": 9, "width": 102, "var": "txt_level", "text": "VIP1", "height": 24, "fontSize": 24, "color": "#ffffff", "align": "center" }, "compId": 45 }] }, { "type": "Button", "props": { "y": 367, "x": 274, "width": 235, "var": "btn_logout", "stateNum": 1, "skin": "btns/ic_logout.png", "height": 70, "centerX": 0 }, "compId": 25 }] }, { "type": "Label", "props": { "y": 185, "x": 22, "text": "声音设置:", "fontSize": 30, "color": "#d6c09a" }, "compId": 17 }, { "type": "Label", "props": { "y": 255, "x": 27, "text": "背景音乐:", "fontSize": 20, "color": "#b89068" }, "compId": 20 }, { "type": "CheckBox", "props": { "y": 230.5, "x": 145.7783203125, "var": "cb_music", "stateNum": 2, "skin": "comp/checkbox_0.png" }, "compId": 46 }, { "type": "Label", "props": { "y": 252.5, "x": 407.2216796875, "text": "音效:", "fontSize": 20, "color": "#b89068" }, "compId": 47 }, { "type": "CheckBox", "props": { "y": 230, "x": 482, "var": "cb_sound", "stateNum": 2, "skin": "comp/checkbox_0.png" }, "compId": 48 }] }, { "type": "Box", "props": { "var": "b_pwd", "top": 122, "right": 20, "left": 282, "height": 485 }, "compId": 11, "child": [{ "type": "Label", "props": { "y": 81, "x": 143, "text": "现密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 26 }, { "type": "Label", "props": { "y": 162, "x": 143, "text": "新密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 27 }, { "type": "Label", "props": { "y": 240, "x": 113, "text": "确认密码:", "fontSize": 30, "color": "#d6c09a" }, "compId": 28 }, { "type": "Image", "props": { "y": 70, "x": 260, "width": 381, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 52 }, "compId": 29, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 355, "var": "txt_oldPwd", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 30 }] }, { "type": "Image", "props": { "y": 151, "x": 260, "width": 381, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 52 }, "compId": 31, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 365, "var": "txt_newPwd", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 32 }] }, { "type": "Image", "props": { "y": 232, "x": 260, "width": 381, "skin": "comp/big_input_box.png", "sizeGrid": "20,20,20,20", "height": 52 }, "compId": 35, "child": [{ "type": "TextInput", "props": { "y": 7, "x": 11, "width": 361, "var": "txt_newPwd1", "type": "password", "height": 36, "fontSize": 30, "color": "#d6c09a" }, "compId": 36 }] }, { "type": "Button", "props": { "y": 365, "width": 235, "var": "btn_ok", "stateNum": 1, "skin": "btns/ic_replace_password.png", "scaleY": 1, "scaleX": 1, "height": 70, "centerX": 0 }, "compId": 37 }] }, { "type": "Box", "props": { "var": "b_app", "top": 122, "right": 20, "left": 282, "height": 485 }, "compId": 12, "child": [{ "type": "Text", "props": { "y": 79, "x": 8, "width": 763, "var": "txt_app_version", "valign": "middle", "text": "text", "height": 255, "fontSize": 30, "color": "#ffffff", "align": "center", "runtime": "laya.display.Text" }, "compId": 39 }] }, { "type": "Label", "props": { "y": 535, "x": 974.63818359375, "var": "txt_version", "text": "1.0.0", "fontSize": 30, "color": "#b89068" }, "compId": 49 }], "loadList": ["bgs/ic_dialog_bj.png", "bgs/ic_setting_title.png", "btns/ic_close.png", "btns/btn_setting_sound.png", "btns/btn_setting_password.png", "btns/btn_setting_app.png", "comp/dindex_index_icon.png", "bgs/money_get_out_box.png", "btns/ic_logout.png", "comp/checkbox_0.png", "comp/big_input_box.png", "btns/ic_replace_password.png"], "loadList3D": [] };
         return SetUiUI;
     }(Dialog));
     ui.SetUiUI = SetUiUI;

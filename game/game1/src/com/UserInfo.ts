@@ -113,7 +113,7 @@ export class Info extends Plug
         // this._edt1['__status'] = 0;
         // this.setStatue(this._edt1,0);
 
-        this._res['txt_account'].text = g_playerData.m_name;
+        this._res['txt_account'].text = g_playerData.m_userName;
         this._res['txt_level'].text = g_playerData.m_isOldWithNew ? "推广账号":"普通会员";
         this._res['txt_name'].text = g_playerData.m_nickName;
         this._res['txt_mail'].text = g_playerData.m_mail;

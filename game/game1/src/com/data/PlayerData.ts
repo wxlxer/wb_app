@@ -5,7 +5,7 @@ export default class PlayerData
 
     }
     public m_id:number;
-    public m_name:string = "";
+    public m_userName:string = "";
     public m_nickName:string = "";
     public m_phone:string = "";
     public m_money:number = 0;

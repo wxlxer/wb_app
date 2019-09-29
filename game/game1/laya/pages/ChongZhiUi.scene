@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":19,
+    "selecteID":144,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
@@ -157,14 +157,13 @@
             "props":{"var":"b_bank","right":5,"left":298,"height":598,"bottom":0},
             "nodeParent":2,
             "label":"b_bank",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":19,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_tips",
                     "props":{"var":"b_tips","top":0,"right":0,"left":0,"bottom":0},
@@ -296,7 +295,6 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,b_input",
                     "props":{"var":"b_input","top":0,"right":0,"left":0,"bottom":0},
@@ -1041,7 +1039,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_left",
-            "props":{"width":283,"var":"b_left","top":120,"left":0,"height":600,"bottom":0},
+            "props":{"width":283,"var":"b_left","top":120,"left":0,"height":600},
             "nodeParent":2,
             "label":"b_left",
             "isOpen":true,
@@ -1151,7 +1149,7 @@
                                 }]
                         }]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         }],
     "animations":[
         {
