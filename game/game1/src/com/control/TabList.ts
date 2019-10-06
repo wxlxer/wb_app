@@ -34,6 +34,10 @@ export default class TabList
     {
         this._list.dataSource = dataSource;
     }
+    public get dataSource():Array<any>
+    {
+        return this._list.dataSource;
+    }
 
     private onItemRender(box:Laya.Box,index:number):void
     {

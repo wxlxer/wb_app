@@ -16,9 +16,10 @@
         "email" : "", /*开发者邮箱地址*/
         "url" : "" /*开发者个人主页地址*/
     },
-	"screenOrientation": [ //应用支持的屏幕方向  
-	        "landscape-primary"  //横屏，Home键在右侧  
-	    ],  
+    "screenOrientation" : [
+        //应用支持的屏幕方向  
+        "landscape-primary" //横屏，Home键在右侧  
+    ],
     "permissions" : {
         "Accelerometer" : {
             "description" : "访问加速度感应器"

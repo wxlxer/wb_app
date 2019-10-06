@@ -24,7 +24,7 @@ var g_game = null;
 	
 document.addEventListener('plusready', function(){
 	start();
-	
+	plus.navigator.setFullscreen(true);  
 });
 
 function start(){
@@ -57,5 +57,71 @@ function exitGame(args){
 	g_game = null;
 }
 
+function application_set_clipboard(str,callBack)
+{
+	if(plus.os.name == "Android")
+	{
+		var Context = plus.android.importClass("android.content.Context");
+		var main = plus.android.runtimeMainActivity();  
+		var clip = main.getSystemService(Context.CLIPBOARD_SERVICE);  
+		plus.android.invoke(clip,"setText",str);  
+		callBack({result:0});
+		// return plus.android.invoke(clip,"getText");  
+	}
+	else if(plus.os.name == "iOS")
+	{
+		var UIPasteboard  = plus.ios.importClass("UIPasteboard");  
+		var generalPasteboard = UIPasteboard.generalPasteboard();  
+		// 设置/获取文本内容:  
+		generalPasteboard.setValueforPasteboardType(str, "public.utf8-plain-text");  
+		callBack({result:0});
+		// var value = generalPasteboard.valueForPasteboardType("public.utf8-plain-text");  
+	}
+}
+
+/**
+ * 打开支付宝
+ */
+function application_open_alpay()
+{
+	// 判断平台  
+	if (plus.os.name == 'Android') {  
+		plus.runtime.launchApplication(  
+			{  
+				pname: 'com.taobao.taobao'  
+			},  
+			function(e) {  
+				console.log('Open system default browser failed: ' + e.message);  
+			}  
+		);  
+	} else if (plus.os.name == 'iOS') {  
+		plus.runtime.launchApplication({ action: 'taobao://' }, function(e) {  
+			console.log('Open system default browser failed: ' + e.message);  
+		});  
+	}  
+
+}
+/**
+ * 打开支付宝
+ */
+function application_open_wx()
+{
+	// 判断平台  
+	if (plus.os.name == 'Android') {  
+		plus.runtime.launchApplication(  
+			{  
+				pname: 'com.tencent.mm'  
+			},  
+			function(e) {  
+				console.log('Open system default browser failed: ' + e.message);  
+			}  
+		);  
+	} else if (plus.os.name == 'iOS') {  
+		plus.runtime.launchApplication({ action: 'weixin://' }, function(e) {  
+			console.log('Open system default browser failed: ' + e.message);  
+		});  
+	}  
+
+}
 
 	

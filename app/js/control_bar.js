@@ -3,7 +3,7 @@ let g_control_bar_data = {
 	id:"control_bar_id",
 	itemWidth : 80,
 	itemHeight : 80,
-	gapWidth : 80,
+	gapWidth : 10,
 	clientWidth : document.documentElement.clientWidth,     
 	clientHeight : document.documentElement.clientHeight,  
 	_left : 10,
@@ -42,9 +42,10 @@ function onClick(e){
 	// var target = e.target;		// View控件对象
 	let app = plus.webview.getWebviewById(plus.runtime.appid);
 	plus.nativeUI.confirm("返回游戏大厅?",function(e){
-		g_control_bar.hide();
+		
 		if(e.index == 0)
 		{
+			g_control_bar.hide();
 			app.evalJS("exitGame();");	
 		}
 	},{
@@ -60,7 +61,8 @@ function onTouchEnd(evt){
 		 g_control_bar_data._left = g_control_bar_data.clientWidth - g_control_bar_data.itemWidth - g_control_bar_data.gapWidth;
 	 } else {          
 		 g_control_bar_data._left = g_control_bar_data.gapWidth;        
-	 }  					
+	 }  			
+	 console.log(" 位置:" + g_control_bar_data._left + "   " +g_control_bar_data._top);
 	g_control_bar.setStyle({top: g_control_bar_data._top + 'px',left:g_control_bar_data._left + 'px'});
 }
 function onTouchMove(evt){

@@ -4,7 +4,7 @@ import Dialog=Laya.Dialog;
 import Scene=Laya.Scene;
 var REG: Function = Laya.ClassUtils.regClass;
 export module ui {
-    export class AlertUI extends Dialog {
+    export class AlertUI extends Laya.Dialog {
 		public img_bg:Laya.Image;
 		public btn_close:Laya.Button;
 		public btn_ok:Laya.Button;
@@ -18,7 +18,7 @@ export module ui {
         }
     }
     REG("ui.AlertUI",AlertUI);
-    export class BankUI extends View {
+    export class BankUI extends Laya.View {
         public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"loadList":[],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
@@ -27,11 +27,11 @@ export module ui {
         }
     }
     REG("ui.BankUI",BankUI);
-    export class ChongZhiHistroyUI extends Dialog {
+    export class ChongZhiHistroyUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
-        public static  uiView:any ={"type":"Dialog","props":{"width":1097,"height":664},"compId":2,"child":[{"type":"Box","props":{"y":10,"x":10},"compId":18,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"bgs/ic_dialog_bj.png"},"compId":19},{"type":"Image","props":{"y":33,"x":485,"skin":"bgs/ic_deposit_record_title.png","scaleY":0.6,"scaleX":0.6,"centerX":10},"compId":20},{"type":"Button","props":{"y":0,"x":1008,"var":"btn_close","stateNum":1,"skin":"btns/ic_close.png","scaleY":0.6,"scaleX":0.6},"compId":21}]},{"type":"List","props":{"y":170,"x":39,"width":1034,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","spaceY":15,"repeatX":1,"height":449},"compId":9,"child":[{"type":"Box","props":{"name":"render"},"compId":13,"child":[{"type":"Label","props":{"y":5,"x":0,"width":206,"text":"20171212","name":"txt_1","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":14},{"type":"Label","props":{"y":5,"x":213,"width":206,"text":"123456","name":"txt_2","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":15},{"type":"Label","props":{"y":5,"x":421,"width":203,"text":"123456","name":"txt_3","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":16},{"type":"Label","props":{"y":5,"x":630,"width":203,"text":"123456","name":"txt_3","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":35},{"type":"Label","props":{"y":5,"x":842,"width":178,"text":"123456","name":"txt_3","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":36}]}]},{"type":"Label","props":{"var":"txt_tips","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":101,"centerX":0},"compId":12,"child":[{"type":"Image","props":{"y":-94,"x":-10,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5},"compId":17}]},{"type":"Box","props":{"y":130,"x":35,"width":1043,"height":500},"compId":22,"child":[{"type":"Image","props":{"y":0,"x":4,"width":207,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":4,"child":[{"type":"Label","props":{"y":7,"text":"全部时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":7}]},{"type":"Image","props":{"y":0,"x":213,"width":207,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":25,"child":[{"type":"Label","props":{"y":7,"text":"全部类型","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":26}]},{"type":"Image","props":{"y":0,"x":422,"width":207,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":29,"child":[{"type":"Label","props":{"y":7,"text":"全部状态","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":30}]},{"type":"Image","props":{"y":0,"x":631,"width":207,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":31,"child":[{"type":"Label","props":{"y":7,"text":"金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":32}]},{"type":"Image","props":{"y":0,"x":840,"width":208,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":33,"child":[{"type":"Label","props":{"y":7,"text":"详情","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":34}]}]}],"loadList":["bgs/ic_dialog_bj.png","bgs/ic_deposit_record_title.png","btns/ic_close.png","comp/vscroll.png","comp/bg_data_null.png","bgs/ic_pc_pop_wind.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"Dialog","props":{"width":1097,"height":664},"compId":2,"child":[{"type":"Box","props":{"y":10,"x":10},"compId":18,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"bgs/ic_dialog_bj.png"},"compId":19},{"type":"Image","props":{"y":33,"x":485,"skin":"bgs/ic_deposit_record_title.png","scaleY":0.6,"scaleX":0.6,"centerX":10},"compId":20},{"type":"Button","props":{"y":0,"x":1008,"var":"btn_close","stateNum":1,"skin":"btns/ic_close.png","scaleY":0.6,"scaleX":0.6},"compId":21}]},{"type":"List","props":{"y":170,"x":39,"width":1034,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","spaceY":15,"repeatX":1,"height":449},"compId":9,"child":[{"type":"Box","props":{"name":"render"},"compId":13,"child":[{"type":"Label","props":{"y":5,"x":0,"width":255,"text":"20171212","name":"txt_1","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":14},{"type":"Label","props":{"y":5,"x":259,"width":258,"text":"123456","name":"txt_2","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":15},{"type":"Label","props":{"y":5,"x":523,"width":257,"text":"123456","name":"txt_3","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":16},{"type":"Label","props":{"y":7,"x":786,"width":235,"text":"123456","name":"txt_4","height":26,"fontSize":26,"color":"#ffdc8c","align":"center"},"compId":35}]}]},{"type":"Label","props":{"var":"txt_tips","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":101,"centerX":0},"compId":12,"child":[{"type":"Image","props":{"y":-94,"x":-10,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5},"compId":17}]},{"type":"Box","props":{"y":130,"x":35,"width":1043,"height":500},"compId":22,"child":[{"type":"Image","props":{"y":0,"x":4,"width":258,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":4,"child":[{"type":"Label","props":{"y":7,"text":"全部时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":7}]},{"type":"Image","props":{"y":0,"x":264,"width":258,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":25,"child":[{"type":"Label","props":{"y":7,"text":"全部类型","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":26}]},{"type":"Image","props":{"y":0,"x":525,"width":258,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":29,"child":[{"type":"Label","props":{"y":7,"text":"全部状态","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":30}]},{"type":"Image","props":{"y":0,"x":785,"width":258,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":31,"child":[{"type":"Label","props":{"y":7,"text":"金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#e2dc84","align":"center"},"compId":32}]}]}],"loadList":["bgs/ic_dialog_bj.png","bgs/ic_deposit_record_title.png","btns/ic_close.png","comp/vscroll.png","comp/bg_data_null.png","comp/list_title.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -39,34 +39,20 @@ export module ui {
         }
     }
     REG("ui.ChongZhiHistroyUI",ChongZhiHistroyUI);
-    export class ChongZhiUiUI extends View {
+    export class ChongZhiUiUI extends Laya.View {
+		public b_left:Laya.Box;
+		public list_1:Laya.List;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public btn_refresh:Laya.Button;
 		public btn_histroy:Laya.Button;
 		public txt_money:Laya.Label;
-		public b_bank:Laya.Box;
-		public b_tips:Laya.Box;
+		public b_zf:Laya.Box;
+		public b_erweima:Laya.Box;
+		public b_banklist:Laya.Box;
 		public list_banklist:Laya.List;
 		public b_input:Laya.Box;
-		public txt_bankName:Laya.Label;
-		public btn_copy1:Laya.Button;
-		public txt_name:Laya.Label;
-		public btn_copy2:Laya.Button;
-		public txt_zh:Laya.Label;
-		public btn_copy3:Laya.Button;
-		public txt_khd:Laya.Label;
-		public btn_copy4:Laya.Button;
-		public txt_ckje:Laya.TextInput;
-		public txt_ckrxm:Laya.TextInput;
-		public btn_prev:Laya.Button;
-		public btn_tjcz:Laya.Button;
-		public b_zf:Laya.Box;
-		public txt_oldPwd:Laya.TextInput;
-		public btn_clear:Laya.Button;
-		public b_left:Laya.Box;
-		public list_1:Laya.List;
-        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_recharge_bg.png","right":0,"left":0,"bottom":0},"compId":179},{"type":"Image","props":{"top":0,"skin":"comp/dactivity_nav_left.png","left":0,"bottom":0},"compId":3},{"type":"Box","props":{"y":0,"var":"b_title","right":0,"left":0,"height":120},"compId":4,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":5},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":6},{"type":"Image","props":{"x":329,"skin":"bgs/ic_recharge_title.png","scaleY":0.5,"scaleX":0.5,"centerY":0},"compId":7},{"type":"Image","props":{"skin":"bgs/ic_recharge_account.png","scaleY":0.8,"scaleX":0.8,"centerY":2,"centerX":88},"compId":8},{"type":"Button","props":{"var":"btn_refresh","stateNum":1,"skin":"btns/btn_refresh.png","right":292,"centerY":0},"compId":10},{"type":"Button","props":{"y":27,"var":"btn_histroy","stateNum":1,"skin":"btns/ic_recharge_jilu.png","scaleY":0.8,"scaleX":0.8,"right":14},"compId":9},{"type":"Label","props":{"y":46,"x":702,"width":191,"var":"txt_money","text":"0.0","height":28,"fontSize":28,"color":"#ffffff"},"compId":11}]},{"type":"Box","props":{"var":"b_bank","right":5,"left":298,"height":598,"bottom":0},"compId":19,"child":[{"type":"Box","props":{"var":"b_tips","top":0,"right":0,"left":0,"bottom":0},"compId":25,"child":[{"type":"Image","props":{"y":39,"x":60,"skin":"icons/ic_dot.png"},"compId":20},{"type":"Label","props":{"y":38,"x":92,"text":"充值收款银行选择","fontSize":22,"color":"#d6c09a"},"compId":21},{"type":"List","props":{"y":83,"var":"list_banklist","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"right":5,"left":10,"height":446},"compId":130,"child":[{"type":"Box","props":{"right":0,"renderType":"render","left":0},"compId":131,"child":[{"type":"Image","props":{"y":0,"skin":"bgs/ic_member_find_bg.png","sizeGrid":"16,24,13,24","right":0,"left":0,"height":144},"compId":132},{"type":"Image","props":{"y":25,"x":50,"skin":"icons/bankIcon.png","sizeGrid":"30,34,26,34","name":"img_bank"},"compId":22},{"type":"Label","props":{"y":25,"x":148,"text":"网银、手机网页庄站通道送2%","name":"txt_info","fontSize":30,"color":"#ffffff","bold":true},"compId":133},{"type":"Label","props":{"y":79,"x":148,"text":"2123156465464564.","name":"txt_id","fontSize":30,"color":"#ffffff","bold":true},"compId":134},{"type":"Button","props":{"y":40,"x":766,"stateNum":1,"skin":"btns/ic_to_recharge.png","scaleY":0.5,"scaleX":0.5},"compId":135}]}]}]},{"type":"Box","props":{"var":"b_input","top":0,"right":0,"left":0,"bottom":0},"compId":26,"child":[{"type":"Image","props":{"y":20,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","left":16},"compId":27,"child":[{"type":"Label","props":{"y":16,"x":174,"text":"收款银行","fontSize":28,"color":"#3e2412","bold":true},"compId":67}]},{"type":"Image","props":{"y":20,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","right":0},"compId":28,"child":[{"type":"Label","props":{"y":16,"x":174,"text":"收款银行","fontSize":28,"color":"#3e2412","bold":true},"compId":68}]},{"type":"Label","props":{"y":133,"x":32,"text":"收款银行","fontSize":24,"color":"#a0a0a0"},"compId":29,"child":[{"type":"Label","props":{"y":0,"x":96,"width":334,"var":"txt_bankName","text":"1111","height":24,"fontSize":24,"color":"#a0a0a0"},"compId":30},{"type":"Image","props":{"y":45,"x":96,"width":202,"height":2},"compId":36,"child":[{"type":"Line","props":{"y":1,"x":0,"toY":0,"toX":336,"lineWidth":2,"lineColor":"#b7b7b7"},"compId":38}]},{"type":"Button","props":{"y":-6,"x":358,"var":"btn_copy1","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},"compId":39}]},{"type":"Label","props":{"y":209,"x":32,"width":98,"text":"收款人","height":24,"fontSize":24,"color":"#a0a0a0","align":"center"},"compId":52,"child":[{"type":"Label","props":{"y":0,"x":96,"width":334,"var":"txt_name","text":"1111","height":24,"fontSize":24,"color":"#a0a0a0"},"compId":53},{"type":"Image","props":{"y":45,"x":96,"width":202,"height":2},"compId":54,"child":[{"type":"Line","props":{"y":0,"x":0,"toY":0,"toX":336,"lineWidth":2,"lineColor":"#b7b7b7"},"compId":55}]},{"type":"Button","props":{"y":-3,"x":360,"var":"btn_copy2","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},"compId":56}]},{"type":"Label","props":{"y":283,"x":32,"text":"收款账号","fontSize":24,"color":"#a0a0a0"},"compId":57,"child":[{"type":"Label","props":{"y":0,"x":96,"width":334,"var":"txt_zh","text":"1111","height":24,"fontSize":24,"color":"#a0a0a0"},"compId":58},{"type":"Image","props":{"y":45,"x":96,"width":202,"height":2},"compId":59,"child":[{"type":"Line","props":{"y":0,"x":0,"toY":0,"toX":336,"lineWidth":2,"lineColor":"#b7b7b7"},"compId":60}]},{"type":"Button","props":{"y":0,"x":356,"var":"btn_copy3","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},"compId":61}]},{"type":"Label","props":{"y":357,"x":32,"width":96,"text":"开户地","height":24,"fontSize":24,"color":"#a0a0a0","align":"center"},"compId":62,"child":[{"type":"Label","props":{"y":0,"x":96,"width":334,"var":"txt_khd","text":"1111","height":24,"fontSize":24,"color":"#a0a0a0"},"compId":63},{"type":"Image","props":{"y":45,"x":96,"width":202,"height":2},"compId":64,"child":[{"type":"Line","props":{"y":0,"x":0,"toY":0,"toX":336,"lineWidth":2,"lineColor":"#b7b7b7"},"compId":65}]},{"type":"Button","props":{"y":0,"x":361,"var":"btn_copy4","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},"compId":66}]},{"type":"Label","props":{"y":493,"x":26,"text":"第一步:复制收款银行前往充值","height":24,"fontSize":20,"color":"#a0a0a0","align":"center"},"compId":69},{"type":"Label","props":{"y":138,"x":543,"text":"存款金额","fontSize":24,"color":"#a0a0a0"},"compId":74},{"type":"Image","props":{"y":126,"x":654,"width":302,"skin":"comp/ic_input_bg.png","sizeGrid":"18,27,9,18","height":48},"compId":79,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":279,"var":"txt_ckje","type":"number","prompt":"支付限额100-100000","height":36,"fontSize":24,"color":"#d6c09a"},"compId":80}]},{"type":"Label","props":{"y":224,"x":543,"text":"存款信息","fontSize":24,"color":"#a0a0a0"},"compId":81},{"type":"Image","props":{"y":212,"x":654,"width":302,"skin":"comp/ic_input_bg.png","sizeGrid":"18,27,9,18","height":48},"compId":82,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":279,"var":"txt_ckrxm","type":"text","prompt":"填写存款人姓名","height":36,"fontSize":24,"color":"#d6c09a"},"compId":83}]},{"type":"Label","props":{"y":487,"x":530,"text":"第二步:充值完成，填写您的存款信息.最后提交充值","height":24,"fontSize":20,"color":"#a0a0a0","align":"center"},"compId":84},{"type":"Button","props":{"y":520,"x":83.5,"var":"btn_prev","stateNum":1,"skin":"btns/ic_return_back.png","scaleY":0.6,"scaleX":0.6},"compId":85},{"type":"Button","props":{"y":518,"x":675,"var":"btn_tjcz","stateNum":1,"skin":"btns/ic_go.png","scaleY":0.6,"scaleX":0.6},"compId":86}]}]},{"type":"Box","props":{"var":"b_zf","right":5,"left":298,"height":598,"bottom":0},"compId":136,"child":[{"type":"Label","props":{"y":95,"x":32,"text":"玩家常玩的充值金额","fontSize":24,"color":"#ffffff"},"compId":141},{"type":"Image","props":{"y":70,"x":0,"width":966,"skin":"bgs/ic_online_bg.png","height":524},"compId":142},{"type":"List","props":{"y":0,"x":0,"width":964,"spaceX":10,"repeatY":1,"name":"list_2","height":61},"compId":154,"child":[{"type":"Box","props":{"renderType":"render"},"compId":156,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao2.png"},"compId":158},{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao.png","name":"img_selected"},"compId":157},{"type":"Label","props":{"y":6,"x":0,"width":176,"text":"微信","name":"txt_name","height":28,"fontSize":24,"align":"center"},"compId":159},{"type":"Image","props":{"y":6,"x":123,"skin":"icons/ic_charge_discount.png","scaleY":0.5,"scaleX":0.5,"name":"img_yh"},"compId":164},{"type":"Label","props":{"y":36,"x":0,"width":176,"text":"微信","name":"txt_info","height":20,"fontSize":22,"align":"center"},"compId":165}]}]},{"type":"List","props":{"y":138,"width":957,"spaceY":20,"spaceX":120,"right":10,"name":"list_3","left":10,"height":163},"compId":166,"child":[{"type":"Box","props":{"renderType":"render"},"compId":168,"child":[{"type":"Image","props":{"y":0,"x":0,"width":138,"skin":"comp/ic_pc_grbb_tab.png","sizeGrid":"15,15,15,15","height":55},"compId":169},{"type":"Image","props":{"width":138,"skin":"comp/ic_pc_grbb_tab_pressed.png","sizeGrid":"15,15,15,15","name":"img_selected","height":55},"compId":170},{"type":"Label","props":{"y":13,"x":4,"width":131,"text":"10000元","name":"txt_value","height":26,"fontSize":26,"color":"#ffffff","bold":true,"align":"center"},"compId":171}]}]},{"type":"Image","props":{"y":309,"width":967,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":5,"height":164},"compId":172,"child":[{"type":"Label","props":{"y":28,"x":32,"text":"充值金额","fontSize":36,"color":"#ffffff","bold":true},"compId":173},{"type":"Image","props":{"y":20,"x":246,"width":399,"skin":"comp/big_input_box.png","sizeGrid":"20,20,20,20","height":60},"compId":174,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":355,"var":"txt_oldPwd","type":"password","text":"111","height":36,"fontSize":30,"color":"#d6c09a"},"compId":175}]},{"type":"Button","props":{"y":20,"var":"btn_clear","stateNum":1,"skin":"btns/ic_clear_bg.png","scaleY":0.6,"scaleX":0.6,"right":50},"compId":176}]},{"type":"Button","props":{"stateNum":1,"skin":"btns/ic_commit_charge.png","scaleY":0.6,"scaleX":0.6,"centerX":0,"bottom":10},"compId":177}]},{"type":"Box","props":{"width":283,"var":"b_left","top":120,"left":0,"height":600},"compId":144,"child":[{"type":"List","props":{"var":"list_1","vScrollBarSkin":"comp/vscroll.png","top":0,"spaceY":5,"right":0,"left":0,"bottom":0},"compId":146,"child":[{"type":"Box","props":{"renderType":"render"},"compId":147,"child":[{"type":"Image","props":{"x":0,"width":283,"skin":"bgs/ic_charge_unchose.png","name":"img_normal","height":86},"compId":148},{"type":"Image","props":{"width":283,"skin":"bgs/ic_charge_chose.png","name":"img_selected","height":86},"compId":149},{"type":"Image","props":{"x":16,"width":50,"skin":"bgs/nfc_icon.png","name":"img_type","height":50,"centerY":0},"compId":150},{"type":"Label","props":{"y":30,"x":89,"width":189,"text":"label","name":"txt_name","height":26,"fontSize":26},"compId":152},{"type":"Image","props":{"y":5.5,"x":223,"skin":"icons/ic_charge_discount.png","scaleY":0.5,"scaleX":0.5,"name":"img_yh"},"compId":153}]}]}]}],"loadList":["bgs/ic_recharge_bg.png","comp/dactivity_nav_left.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_recharge_title.png","bgs/ic_recharge_account.png","btns/btn_refresh.png","btns/ic_recharge_jilu.png","icons/ic_dot.png","comp/vscroll.png","bgs/ic_member_find_bg.png","icons/bankIcon.png","btns/ic_to_recharge.png","bgs/ddeposit_chonzhishoukuanbg.png","btns/ic_copy2.png","comp/ic_input_bg.png","btns/ic_return_back.png","btns/ic_go.png","bgs/ic_online_bg.png","comp/ddeposit_chonzhizhifubaotongdao2.png","comp/ddeposit_chonzhizhifubaotongdao.png","icons/ic_charge_discount.png","comp/ic_pc_grbb_tab.png","comp/ic_pc_grbb_tab_pressed.png","bgs/ic_safe_yue_bg.png","comp/big_input_box.png","btns/ic_clear_bg.png","btns/ic_commit_charge.png","bgs/ic_charge_unchose.png","bgs/ic_charge_chose.png","bgs/nfc_icon.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_recharge_bg.png","right":0,"left":0,"bottom":0},"compId":179},{"type":"Image","props":{"top":0,"skin":"comp/dactivity_nav_left.png","left":0,"bottom":0},"compId":3},{"type":"Box","props":{"y":120,"x":0,"width":283,"var":"b_left","top":120,"left":0,"height":600},"compId":144,"child":[{"type":"List","props":{"var":"list_1","vScrollBarSkin":"comp/vscroll.png","top":0,"spaceY":5,"right":0,"left":0,"bottom":0},"compId":146,"child":[{"type":"Box","props":{"renderType":"render"},"compId":147,"child":[{"type":"Image","props":{"x":0,"width":283,"skin":"bgs/ic_charge_unchose.png","name":"bg_normal","height":86},"compId":148},{"type":"Image","props":{"width":283,"skin":"bgs/ic_charge_chose.png","name":"bg_selected","height":86},"compId":149},{"type":"Image","props":{"x":16,"width":50,"skin":"icons/nfc_icon.png","name":"img_type","height":50,"centerY":0},"compId":150},{"type":"Label","props":{"y":30,"x":89,"width":189,"text":"label","name":"txt_label","height":26,"fontSize":26},"compId":152},{"type":"Image","props":{"y":5.5,"x":223,"skin":"icons/ic_charge_discount.png","scaleY":0.5,"scaleX":0.5,"name":"img_yh"},"compId":153}]}]}]},{"type":"Box","props":{"y":0,"var":"b_title","right":0,"left":0,"height":120},"compId":4,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":5},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":6},{"type":"Image","props":{"x":329,"skin":"bgs/ic_recharge_title.png","scaleY":0.5,"scaleX":0.5,"centerY":0},"compId":7},{"type":"Image","props":{"skin":"bgs/ic_recharge_account.png","scaleY":0.8,"scaleX":0.8,"centerY":2,"centerX":88},"compId":8},{"type":"Button","props":{"var":"btn_refresh","stateNum":1,"skin":"btns/btn_refresh.png","right":292,"centerY":0},"compId":10},{"type":"Button","props":{"y":27,"var":"btn_histroy","stateNum":1,"skin":"btns/ic_recharge_jilu.png","scaleY":0.8,"scaleX":0.8,"right":14},"compId":9},{"type":"Label","props":{"y":46,"x":655,"width":238,"var":"txt_money","text":"0.0","height":28,"fontSize":28,"color":"#ffffff"},"compId":11}]},{"type":"Box","props":{"y":122,"var":"b_zf","right":5,"left":298,"height":598},"compId":136,"child":[{"type":"Cz_xx_chooseMoney","props":{"runtime":"ui.Cz_xx_chooseMoneyUI"},"compId":190}]},{"type":"Box","props":{"var":"b_erweima","top":120,"right":5,"left":293,"bottom":0},"compId":182,"child":[{"type":"Cz_xx_ewm","props":{"centerX":0,"runtime":"ui.Cz_xx_ewmUI"},"compId":188}]},{"type":"Box","props":{"var":"b_banklist","top":120,"right":5,"left":293,"bottom":0},"compId":25,"child":[{"type":"Image","props":{"y":39,"x":60,"skin":"icons/ic_dot.png"},"compId":20},{"type":"Label","props":{"y":38,"x":92,"text":"充值收款银行选择","fontSize":22,"color":"#d6c09a"},"compId":21},{"type":"List","props":{"y":83,"var":"list_banklist","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"right":5,"left":10,"height":446},"compId":130,"child":[{"type":"Box","props":{"right":0,"renderType":"render","left":0},"compId":131,"child":[{"type":"Image","props":{"y":0,"skin":"bgs/ic_member_find_bg.png","sizeGrid":"16,24,13,24","right":0,"left":0,"height":144},"compId":132},{"type":"Image","props":{"y":25,"x":50,"width":70,"skin":"icons/bankIcon.png","sizeGrid":"30,34,26,34","name":"img_bank","height":70},"compId":22},{"type":"Label","props":{"y":25,"x":148,"text":"网银、手机网页庄站通道送2%","name":"txt_info","fontSize":30,"color":"#ffffff","bold":true},"compId":133},{"type":"Label","props":{"y":79,"x":148,"text":"2123156465464564.","name":"txt_id","fontSize":30,"color":"#ffffff","bold":true},"compId":134},{"type":"Button","props":{"y":40,"x":766,"stateNum":1,"skin":"btns/ic_to_recharge.png","scaleY":0.5,"scaleX":0.5,"name":"btn_ok"},"compId":135}]}]}]},{"type":"Box","props":{"var":"b_input","top":120,"right":5,"left":293,"bottom":0},"compId":26,"child":[{"type":"Cz_xx_Bank","props":{"centerX":0,"runtime":"ui.Cz_xx_BankUI"},"compId":189}]}],"loadList":["bgs/ic_recharge_bg.png","comp/dactivity_nav_left.png","comp/vscroll.png","bgs/ic_charge_unchose.png","bgs/ic_charge_chose.png","icons/nfc_icon.png","icons/ic_charge_discount.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_recharge_title.png","bgs/ic_recharge_account.png","btns/btn_refresh.png","btns/ic_recharge_jilu.png","icons/ic_dot.png","bgs/ic_member_find_bg.png","icons/bankIcon.png","btns/ic_to_recharge.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -74,7 +60,65 @@ export module ui {
         }
     }
     REG("ui.ChongZhiUiUI",ChongZhiUiUI);
-    export class FanYongListUI extends Dialog {
+    export class Cz_xx_BankUI extends Laya.View {
+		public txt_bankName:Laya.Label;
+		public btn_copy1:Laya.Button;
+		public txt_name:Laya.Label;
+		public btn_copy2:Laya.Button;
+		public txt_zh:Laya.Label;
+		public btn_copy3:Laya.Button;
+		public txt_ckje:Laya.TextInput;
+		public txt_ckrxm:Laya.TextInput;
+		public btn_prev:Laya.Button;
+		public btn_tjcz:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":980,"height":600},"compId":2,"child":[{"type":"Image","props":{"y":20,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","left":10},"compId":3,"child":[{"type":"Label","props":{"y":16,"x":174,"text":"收款银行","fontSize":28,"color":"#3e2412","bold":true},"compId":17}]},{"type":"Image","props":{"y":20,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","right":10},"compId":4,"child":[{"type":"Label","props":{"y":16,"x":174,"text":"收款信息","fontSize":28,"color":"#3e2412","bold":true},"compId":18}]},{"type":"Label","props":{"y":133,"x":32,"text":"收款银行","fontSize":24,"color":"#a0a0a0"},"compId":5,"child":[{"type":"Label","props":{"y":0,"x":102,"width":212,"var":"txt_bankName","text":"1111","height":24,"fontSize":24,"color":"#a0a0a0"},"compId":19},{"type":"Image","props":{"y":45,"x":96,"width":202,"height":2},"compId":20,"child":[{"type":"Line","props":{"y":1,"x":0,"toY":0,"toX":336,"lineWidth":2,"lineColor":"#b7b7b7"},"compId":21}]},{"type":"Button","props":{"y":-6,"x":358,"var":"btn_copy1","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},"compId":22}]},{"type":"Label","props":{"y":209,"x":32,"width":98,"text":"收款人","height":24,"fontSize":24,"color":"#a0a0a0","align":"center"},"compId":6,"child":[{"type":"Label","props":{"y":0,"x":96,"width":334,"var":"txt_name","text":"1111","height":24,"fontSize":24,"color":"#a0a0a0"},"compId":23},{"type":"Image","props":{"y":45,"x":96,"width":202,"height":2},"compId":24,"child":[{"type":"Line","props":{"y":0,"x":0,"toY":0,"toX":336,"lineWidth":2,"lineColor":"#b7b7b7"},"compId":25}]},{"type":"Button","props":{"y":-3,"x":360,"var":"btn_copy2","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},"compId":26}]},{"type":"Label","props":{"y":283,"x":32,"text":"收款账号","fontSize":24,"color":"#a0a0a0"},"compId":7,"child":[{"type":"Label","props":{"y":0,"x":96,"width":334,"var":"txt_zh","text":"1111","height":24,"fontSize":24,"color":"#a0a0a0"},"compId":27},{"type":"Image","props":{"y":45,"x":96,"width":202,"height":2},"compId":28,"child":[{"type":"Line","props":{"y":0,"x":0,"toY":0,"toX":336,"lineWidth":2,"lineColor":"#b7b7b7"},"compId":29}]},{"type":"Button","props":{"y":0,"x":356,"var":"btn_copy3","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.8,"scaleX":0.8},"compId":30}]},{"type":"Label","props":{"y":493,"x":26,"text":"第一步:复制收款银行前往充值","height":24,"fontSize":20,"color":"#919196","align":"center"},"compId":9},{"type":"Label","props":{"y":138,"x":543,"text":"存款金额","fontSize":24,"color":"#a0a0a0"},"compId":10},{"type":"Image","props":{"y":126,"x":654,"width":302,"skin":"comp/ic_input_bg.png","sizeGrid":"18,27,9,18","height":48},"compId":11,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":279,"var":"txt_ckje","type":"number","prompt":"支付限额10-100000元","height":36,"fontSize":24,"color":"#d6c09a"},"compId":35}]},{"type":"Label","props":{"y":224,"x":543,"text":"存款信息","fontSize":24,"color":"#a0a0a0"},"compId":12},{"type":"Image","props":{"y":212,"x":654,"width":302,"skin":"comp/ic_input_bg.png","sizeGrid":"18,27,9,18","height":48},"compId":13,"child":[{"type":"TextInput","props":{"y":6,"x":8,"width":294,"var":"txt_ckrxm","type":"text","prompt":"请输入存款人姓名或卡号后四位","height":36,"fontSize":20,"color":"#d6c09a"},"compId":36}]},{"type":"Label","props":{"y":487,"x":530,"text":"第二步:充值完成，填写您的存款信息.最后提交充值","height":24,"fontSize":20,"color":"#919196","align":"center"},"compId":14},{"type":"Button","props":{"y":520,"x":83,"var":"btn_prev","stateNum":1,"skin":"btns/ic_return_back.png","scaleY":0.6,"scaleX":0.6},"compId":15},{"type":"Button","props":{"y":518,"x":675,"var":"btn_tjcz","stateNum":1,"skin":"btns/ic_go.png","scaleY":0.6,"scaleX":0.6},"compId":16},{"type":"Label","props":{"y":288,"x":685,"text":"--提示--","fontSize":24,"color":"#919196"},"compId":38},{"type":"Label","props":{"y":324.5,"x":519,"wordWrap":true,"width":440,"text":"以上银行账户限本次存款使用,账户不定期更换每次存款前请依照本页面所显示的银行账户入款,如入款至已过期账户,无法查收，本公司恕不负责","height":113,"fontSize":22,"color":"#919196"},"compId":39}],"loadList":["bgs/ddeposit_chonzhishoukuanbg.png","btns/ic_copy2.png","comp/ic_input_bg.png","btns/ic_return_back.png","btns/ic_go.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(Cz_xx_BankUI.uiView);
+        }
+    }
+    REG("ui.Cz_xx_BankUI",Cz_xx_BankUI);
+    export class Cz_xx_chooseMoneyUI extends Laya.View {
+		public list_2:Laya.List;
+		public list_3:Laya.List;
+		public txt_oldPwd:Laya.TextInput;
+		public btn_clear:Laya.Button;
+		public btn_ok:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":980,"height":600},"compId":2,"child":[{"type":"Label","props":{"y":95,"x":32,"text":"玩家常玩的充值金额","fontSize":24,"color":"#ffffff"},"compId":3},{"type":"Image","props":{"y":70,"x":0,"width":966,"skin":"bgs/ic_online_bg.png","height":524},"compId":4},{"type":"List","props":{"y":0,"x":0,"width":964,"var":"list_2","spaceX":10,"repeatY":1,"height":61},"compId":5,"child":[{"type":"Box","props":{"renderType":"render"},"compId":10,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao2.png","name":"bg_normal"},"compId":11},{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao.png","name":"bg_selected"},"compId":12},{"type":"Label","props":{"y":6,"x":0,"width":176,"text":"微信","name":"txt_label","height":28,"fontSize":24,"align":"center"},"compId":13},{"type":"Label","props":{"y":36,"x":0,"width":176,"text":"微信","name":"txt_info","height":20,"fontSize":22,"align":"center"},"compId":15}]}]},{"type":"List","props":{"y":138,"x":0,"width":957,"var":"list_3","vScrollBarSkin":"comp/vscroll.png","spaceY":20,"spaceX":120,"right":10,"left":10,"height":163},"compId":6,"child":[{"type":"Box","props":{"renderType":"render"},"compId":16,"child":[{"type":"Image","props":{"y":0,"x":0,"width":138,"skin":"comp/ic_pc_grbb_tab.png","sizeGrid":"15,15,15,15","name":"bg_normal","height":55},"compId":17},{"type":"Image","props":{"width":138,"skin":"comp/ic_pc_grbb_tab_pressed.png","sizeGrid":"15,15,15,15","name":"img_selected","height":55},"compId":18},{"type":"Label","props":{"y":13,"x":4,"width":131,"text":"10000元","name":"txt_value","height":26,"fontSize":26,"color":"#ffffff","bold":true,"align":"center"},"compId":19}]}]},{"type":"Image","props":{"y":309,"x":0,"width":967,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":5,"height":164},"compId":7,"child":[{"type":"Label","props":{"y":28,"x":32,"text":"充值金额","fontSize":36,"color":"#ffffff","bold":true},"compId":20},{"type":"Image","props":{"y":20,"x":246,"width":399,"skin":"comp/big_input_box.png","sizeGrid":"20,20,20,20","height":60},"compId":21,"child":[{"type":"TextInput","props":{"y":7,"x":11,"width":355,"var":"txt_oldPwd","type":"number","height":36,"fontSize":30,"color":"#d6c09a"},"compId":22}]},{"type":"Button","props":{"y":20,"var":"btn_clear","stateNum":1,"skin":"btns/ic_clear_bg.png","scaleY":0.6,"scaleX":0.6,"right":50},"compId":23}]},{"type":"Button","props":{"y":0,"x":0,"var":"btn_ok","stateNum":1,"skin":"btns/ic_commit_charge.png","scaleY":0.6,"scaleX":0.6,"centerX":0,"bottom":10},"compId":8},{"type":"Label","props":{"y":408,"x":32,"text":"温馨提示:冲只成功到账备注真实姓名","fontSize":24,"color":"#B88C5B"},"compId":9}],"loadList":["bgs/ic_online_bg.png","comp/ddeposit_chonzhizhifubaotongdao2.png","comp/ddeposit_chonzhizhifubaotongdao.png","comp/vscroll.png","comp/ic_pc_grbb_tab.png","comp/ic_pc_grbb_tab_pressed.png","bgs/ic_safe_yue_bg.png","comp/big_input_box.png","btns/ic_clear_bg.png","btns/ic_commit_charge.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(Cz_xx_chooseMoneyUI.uiView);
+        }
+    }
+    REG("ui.Cz_xx_chooseMoneyUI",Cz_xx_chooseMoneyUI);
+    export class Cz_xx_ewmUI extends Laya.View {
+		public s_bg:Laya.Box;
+		public txt_type:Laya.Label;
+		public txt_tips0:Laya.Label;
+		public txt_tip2:Laya.Label;
+		public txt_cx:Laya.Label;
+		public txt_info:Laya.TextInput;
+		public txt_bankName:Laya.Label;
+		public btn_copy1:Laya.Button;
+		public btn_prev:Laya.Button;
+		public btn_tjcz:Laya.Button;
+		public txt_zh:Laya.Label;
+		public txt_name:Laya.Label;
+		public btn_copy2:Laya.Button;
+		public btn_save:Laya.Button;
+		public txt_tips1:Laya.Label;
+		public img_ewm:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":980,"height":600},"compId":2,"child":[{"type":"Box","props":{"var":"s_bg","top":0,"right":0,"left":0,"bottom":0},"compId":41,"child":[{"type":"Image","props":{"y":20,"x":10,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","left":10},"compId":3,"child":[{"type":"Label","props":{"y":16,"x":174,"text":"收款信息","fontSize":28,"color":"#3e2412","bold":true},"compId":18}]},{"type":"Image","props":{"y":20,"x":508,"skin":"bgs/ddeposit_chonzhishoukuanbg.png","right":10},"compId":4,"child":[{"type":"Label","props":{"y":16,"x":122,"width":210,"text":"扫描二维码","height":28,"fontSize":28,"color":"#3e2412","bold":true,"align":"center"},"compId":19}]},{"type":"Label","props":{"y":137,"x":15,"width":115,"text":"个人信息","height":22,"fontSize":22,"color":"#a0a0a0","align":"right"},"compId":5},{"type":"Image","props":{"y":164,"x":150,"width":285,"height":2},"compId":46,"child":[{"type":"Line","props":{"toY":0,"toX":295,"lineWidth":3,"lineColor":"#b7b7b7"},"compId":48}]},{"type":"Label","props":{"y":286,"x":15,"width":115,"text":"收款账号","height":24,"fontSize":24,"color":"#a0a0a0","align":"right"},"compId":7},{"type":"Label","props":{"y":361,"x":15,"width":115,"text":"存款信息","height":24,"fontSize":24,"color":"#a0a0a0","align":"right"},"compId":34},{"type":"Image","props":{"y":238,"x":150,"width":285,"height":2},"compId":49,"child":[{"type":"Line","props":{"toY":0,"toX":295,"lineWidth":3,"lineColor":"#b7b7b7"},"compId":50}]},{"type":"Label","props":{"y":212,"x":15,"width":115,"var":"txt_type","text":"支付宝账号","height":24,"fontSize":22,"color":"#a0a0a0","align":"right"},"compId":51},{"type":"Image","props":{"y":385,"x":150,"width":285,"height":2},"compId":52,"child":[{"type":"Line","props":{"toY":0,"toX":295,"lineWidth":3,"lineColor":"#b7b7b7"},"compId":53}]},{"type":"Image","props":{"y":311,"x":150,"width":285,"height":2},"compId":54,"child":[{"type":"Line","props":{"toY":0,"toX":295,"lineWidth":3,"lineColor":"#b7b7b7"},"compId":55}]},{"type":"Label","props":{"y":474.5,"x":25,"wordWrap":true,"width":441,"var":"txt_tips0","text":"第一步:保存付款二维码,支付宝扫码转账到指定支付宝账号。","height":49,"fontSize":20,"color":"#919196","align":"left"},"compId":56},{"type":"Label","props":{"y":437,"x":25,"var":"txt_tip2","text":"微信转账请备注成功到账时间","fontSize":20,"color":"#919196"},"compId":60},{"type":"Label","props":{"y":411,"x":26,"text":"注:收款信息仅限本次使用！","fontSize":20,"color":"#919196"},"compId":61},{"type":"Label","props":{"y":524,"x":26,"wordWrap":true,"width":441,"visible":true,"var":"txt_cx","text":"如何查询订单号:\\n1.打开支付宝，点击右下角\"我的\"。\\n2.进入\"账单\",点击对应的转账信息即可查询转账订单。","height":66,"fontSize":16,"color":"#919196","align":"left"},"compId":62},{"type":"Label","props":{"y":286,"x":415,"width":25,"text":"元","height":24,"fontSize":24,"color":"#919196"},"compId":63}]},{"type":"TextInput","props":{"y":361,"x":150,"width":294,"var":"txt_info","promptColor":"#a0a0a0","prompt":"请备注转账人姓名","height":26,"fontSize":22,"color":"#ffffff"},"compId":35},{"type":"Label","props":{"y":138,"x":150,"width":230,"var":"txt_bankName","text":"1111","height":24,"fontSize":24,"color":"#FFFFFF"},"compId":20},{"type":"Button","props":{"y":129,"x":400,"var":"btn_copy1","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.5,"scaleX":0.5},"compId":23},{"type":"Button","props":{"y":517,"x":508,"var":"btn_prev","stateNum":1,"skin":"btns/ic_return_back.png","scaleY":0.5,"scaleX":0.5},"compId":14},{"type":"Button","props":{"y":523,"x":805.5,"var":"btn_tjcz","stateNum":1,"skin":"btns/transfered_money.png","scaleY":0.5,"scaleX":0.5},"compId":15},{"type":"Label","props":{"y":287,"x":150,"width":258,"var":"txt_zh","text":"1111","height":24,"fontSize":24,"color":"#FFFFFF"},"compId":28},{"type":"Label","props":{"y":212,"x":150,"width":230,"var":"txt_name","text":"1111","height":24,"fontSize":24,"color":"#FFFFFF"},"compId":24},{"type":"Button","props":{"y":205,"x":400,"var":"btn_copy2","stateNum":1,"skin":"btns/ic_copy2.png","scaleY":0.5,"scaleX":0.5},"compId":27},{"type":"Box","props":{"y":20,"width":462,"right":10,"height":500},"compId":66,"child":[{"type":"Button","props":{"y":324,"var":"btn_save","stateNum":1,"skin":"btns/save_qr.png","scaleY":0.5,"scaleX":0.5,"centerX":4},"compId":65},{"type":"Label","props":{"y":460,"width":456,"text":"第二步:填写转账信息,点击我已转账。","height":24,"fontSize":20,"color":"#919196","centerX":0,"align":"center"},"compId":67},{"type":"Label","props":{"y":366,"text":"--说明--","fontSize":24,"color":"#919196","centerX":0},"compId":68},{"type":"Label","props":{"y":415,"wordWrap":true,"width":440,"var":"txt_tips1","text":"以上支付宝账号限本次存款使用,账户不定期更换!","height":28,"fontSize":20,"color":"#919196","centerX":0},"compId":69},{"type":"Image","props":{"y":69,"width":200,"var":"img_ewm","height":200,"centerX":0},"compId":70},{"type":"Label","props":{"y":280,"width":224,"text":"扫描二维码完成支付","height":24,"fontSize":24,"color":"#919196","centerX":0,"align":"center"},"compId":71}]}],"loadList":["bgs/ddeposit_chonzhishoukuanbg.png","btns/ic_copy2.png","btns/ic_return_back.png","btns/transfered_money.png","btns/save_qr.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(Cz_xx_ewmUI.uiView);
+        }
+    }
+    REG("ui.Cz_xx_ewmUI",Cz_xx_ewmUI);
+    export class FanYongListUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;
@@ -86,7 +130,7 @@ export module ui {
         }
     }
     REG("ui.FanYongListUI",FanYongListUI);
-    export class HallUiUI extends View {
+    export class HallUiUI extends Laya.View {
 		public img_bg:Laya.Image;
 		public b_top:Laya.Box;
 		public txt_name:Laya.Label;
@@ -121,7 +165,7 @@ export module ui {
         }
     }
     REG("ui.HallUiUI",HallUiUI);
-    export class HuoDongUiUI extends View {
+    export class HuoDongUiUI extends Laya.View {
 		public b_bg:Laya.Box;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
@@ -136,7 +180,7 @@ export module ui {
         }
     }
     REG("ui.HuoDongUiUI",HuoDongUiUI);
-    export class KeFuUiUI extends View {
+    export class KeFuUiUI extends Laya.View {
 		public b_zx:Laya.Box;
 		public b_kf:Laya.Box;
 		public btn_lx:Laya.Button;
@@ -153,7 +197,7 @@ export module ui {
         }
     }
     REG("ui.KeFuUiUI",KeFuUiUI);
-    export class LingQuHistroyUI extends Dialog {
+    export class LingQuHistroyUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;
@@ -165,7 +209,7 @@ export module ui {
         }
     }
     REG("ui.LingQuHistroyUI",LingQuHistroyUI);
-    export class LingQuYongJinUI extends Dialog {
+    export class LingQuYongJinUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public txt_money1:Laya.Label;
 		public txt_money2:Laya.Label;
@@ -180,7 +224,7 @@ export module ui {
         }
     }
     REG("ui.LingQuYongJinUI",LingQuYongJinUI);
-    export class LoginUiUI extends Dialog {
+    export class LoginUiUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public btn_login:Laya.Button;
 		public txt_name:Laya.TextInput;
@@ -194,7 +238,7 @@ export module ui {
         }
     }
     REG("ui.LoginUiUI",LoginUiUI);
-    export class MailUI extends Dialog {
+    export class MailUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips1:Laya.Label;
@@ -206,7 +250,7 @@ export module ui {
         }
     }
     REG("ui.MailUI",MailUI);
-    export class MailInfoUI extends Dialog {
+    export class MailInfoUI extends Laya.Dialog {
 		public txt_info:Laya.TextArea;
 		public btn_close:Laya.Button;
 		public btn_remove:Laya.Button;
@@ -218,7 +262,7 @@ export module ui {
         }
     }
     REG("ui.MailInfoUI",MailInfoUI);
-    export class MiniLoadingUI extends Dialog {
+    export class MiniLoadingUI extends Laya.Dialog {
 		public ani1:Laya.Animation;
         public static  uiView:any ={"type":"Dialog","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Animation","props":{"y":283,"x":530,"var":"ani1","source":"icons/ic_loading0.png,icons/ic_loading1.png,icons/ic_loading2.png,icons/ic_loading3.png","scaleY":0.5,"scaleX":0.5,"interval":200,"autoPlay":true},"compId":5}],"loadList":["icons/ic_loading0.png,icons/ic_loading1.png,icons/ic_loading2.png,icons/ic_loading3.png"],"loadList3D":[]};
         constructor(){ super()}
@@ -228,7 +272,7 @@ export module ui {
         }
     }
     REG("ui.MiniLoadingUI",MiniLoadingUI);
-    export class NoticeUI extends Dialog {
+    export class NoticeUI extends Laya.Dialog {
 		public img_gg:Laya.Image;
 		public btn_close:Laya.Button;
         public static  uiView:any ={"type":"Dialog","props":{"width":953,"height":568},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_news_dialog.png","right":0,"left":0,"bottom":0},"compId":3},{"type":"Image","props":{"y":96,"x":17,"width":917,"var":"img_gg","height":439},"compId":5},{"type":"Button","props":{"y":10,"x":867,"var":"btn_close","stateNum":1,"skin":"btns/ic_close.png"},"compId":8}],"loadList":["bgs/ic_news_dialog.png","btns/ic_close.png"],"loadList3D":[]};
@@ -239,7 +283,7 @@ export module ui {
         }
     }
     REG("ui.NoticeUI",NoticeUI);
-    export class NoticeMsgUI extends Dialog {
+    export class NoticeMsgUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public txt_gg:Laya.TextArea;
 		public btn_ok:Laya.Button;
@@ -251,7 +295,7 @@ export module ui {
         }
     }
     REG("ui.NoticeMsgUI",NoticeMsgUI);
-    export class RegisterUiUI extends Dialog {
+    export class RegisterUiUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public btn_ok:Laya.Button;
 		public txt_name:Laya.TextInput;
@@ -265,7 +309,7 @@ export module ui {
         }
     }
     REG("ui.RegisterUiUI",RegisterUiUI);
-    export class SetUiUI extends Dialog {
+    export class SetUiUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public tab_1:Laya.Tab;
 		public b_sound:Laya.Box;
@@ -292,7 +336,7 @@ export module ui {
         }
     }
     REG("ui.SetUiUI",SetUiUI);
-    export class SubGameListUI extends View {
+    export class SubGameListUI extends Laya.View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public img_title:Laya.Image;
@@ -309,7 +353,7 @@ export module ui {
         }
     }
     REG("ui.SubGameListUI",SubGameListUI);
-    export class TiXianUI extends View {
+    export class TiXianUI extends Laya.View {
 		public b_tx:Laya.Box;
 		public txt_money:Laya.Label;
 		public txt_input:Laya.TextInput;
@@ -340,7 +384,7 @@ export module ui {
         }
     }
     REG("ui.TiXianUI",TiXianUI);
-    export class TiXianHistroyUI extends Dialog {
+    export class TiXianHistroyUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
@@ -352,7 +396,7 @@ export module ui {
         }
     }
     REG("ui.TiXianHistroyUI",TiXianHistroyUI);
-    export class TuiGuangUI extends View {
+    export class TuiGuangUI extends Laya.View {
 		public b_1:Laya.Box;
 		public txt_myId:Laya.Label;
 		public btn_fx_hy:Laya.Button;
@@ -400,7 +444,7 @@ export module ui {
         }
     }
     REG("ui.TuiGuangUI",TuiGuangUI);
-    export class UserInfoUI extends View {
+    export class UserInfoUI extends Laya.View {
 		public b_info:Laya.Box;
 		public txt_account:Laya.Label;
 		public txt_level:Laya.Label;
@@ -446,7 +490,7 @@ export module ui {
         }
     }
     REG("ui.UserInfoUI",UserInfoUI);
-    export class UserInfo1UI extends View {
+    export class UserInfo1UI extends Laya.View {
 		public b_info:Laya.Box;
 		public btn_xg1:Laya.Box;
 		public b_touZhu:Laya.Box;
@@ -471,7 +515,7 @@ export module ui {
         }
     }
     REG("ui.UserInfo1UI",UserInfo1UI);
-    export class XiMaUI extends View {
+    export class XiMaUI extends Laya.View {
 		public btn_sd:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips1:Laya.Label;
@@ -487,7 +531,7 @@ export module ui {
         }
     }
     REG("ui.XiMaUI",XiMaUI);
-    export class XiMaHistroyUI extends Dialog {
+    export class XiMaHistroyUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;

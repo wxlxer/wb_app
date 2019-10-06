@@ -18,6 +18,7 @@ import { g_playerData } from "./data/PlayerData";
 import login from "./Global";
 import { GameListMgr } from "./gameList/GameList";
 import PlatfromList from "./gameList/PlatfromList";
+import { g_chongZhiData } from "./data/ChongZhiData";
 
 export default class Hall extends gamelib.core.Ui_NetHandle
 {
@@ -182,9 +183,8 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._res['b_unlogin'].visible = false;
 
 
-                g_net.requestWithToken(gamelib.GameMsg.Bankinfo,{payType:"bank"});
-                g_net.requestWithToken(gamelib.GameMsg.Bankinfo,{payType:""});
-                g_net.requestWithToken(gamelib.GameMsg.Payinfolist,{payType:"PHONE"});
+                
+                // g_net.requestWithToken(gamelib.GameMsg.Payinfolist,{payType:"PHONE"});
 
 
                 break;
@@ -207,6 +207,11 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 g_playerData.m_wx = requestData.WeChat;
                 g_playerData.m_mail = requestData.mailbox;
                 break;    
+            case gamelib.GameMsg.Readmoney:
+                g_uiMgr.closeMiniLoading();
+                g_playerData.m_money = parseInt(data.retMsg);
+                this._res['txt_money'].text = g_playerData.m_money;
+                break;
             case gamelib.GameMsg.MemberInfo:
                 var temp:any = JSON.parse(data.retMsg);
                 g_playerData.m_userName = temp.Username;
@@ -260,7 +265,17 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 g_uiMgr.closeMiniLoading();
                 if(window['enterGame'])
                 {
-                    window['enterGame'].call(window,{url:data.retmsg})
+                    window['enterGame'].call(window,{url:data.retMsg})
+                }
+                break;
+            case gamelib.GameMsg.Bankinfo:
+                if(requestData.payType == "bank")
+                {
+                    g_chongZhiData.parseBankerListXX(data.retData);
+                }
+                else
+                {
+                    g_chongZhiData.parseEwmListXX(data.retData);
                 }
                 break;
 

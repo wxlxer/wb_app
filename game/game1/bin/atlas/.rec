@@ -150,7 +150,6 @@ P 5F08551C money_get_out_box.png
 R 5A9D239E moneychart.png
 R EA4A0DC1 new_extension_line.png
 R EC6C3C22 newer_extension_bg.png
-P E65E56F2 nfc_icon.png
 P FCDF9F7B nfc_title_bg.9.png
 R 70BB4957 open_envelopes.png
 R 08937011 package_open.png
@@ -458,7 +457,9 @@ P 01BAE7F5 vslider.png
 D icons
 P E6166DB5 bankIcon.png
 P B97AEF92 dgetcharge_tixianyinliankatubiao.png
+P 8AC4DB5F ic_agent.png
 P 503D900A ic_alert_error.png
+P 8D0D10E2 ic_alipay.png
 P 34D183DE ic_charge_discount.png
 P 26753881 ic_dot.png
 P 08778E8B ic_golden.png
@@ -485,6 +486,7 @@ P 7AB581A0 ic_pc_vip6.png
 P 475D2C5D ic_pc_vip7.png
 P F047EC10 ic_pc_vip8.png
 P 27C76601 ic_pc_vip9.png
+P EB165DBB ic_QQ.png
 P 52CF62E4 ic_tixiam_record.png
 P 0DDA51D6 ic_toast_success.png
 P 7DE2C421 ic_up_vip1.png
@@ -507,6 +509,8 @@ P 2998C5C2 ic_vip_6.png
 P 1F831FA6 ic_vip_7.png
 P FC2207B1 ic_vip_8.png
 P 9A7E6F8C ic_vip_9.png
+P 5BC22863 ic_wechat.png
+P E65E56F2 nfc_icon.png
 P CB2947BD placeholder.png
 P 090853BB read_message.png
 P FD955265 rights_1.png

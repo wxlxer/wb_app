@@ -1,6 +1,7 @@
 import TiXianHistroy from "./TiXianHistroy";
 import BasePanel from "../BasePanel";
 import TabList from "../control/TabList";
+import { g_playerData } from "../data/PlayerData";
 
 export default class TiXianUi extends BasePanel
 {
@@ -41,6 +42,7 @@ export default class TiXianUi extends BasePanel
     protected onShow():void
     {
         super.onShow();
+        this._res['txt_money'].text = g_playerData.m_money + "元";
         this._tab.selectedIndex = 0;
         this.onTabChange(0);
 
