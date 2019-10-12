@@ -6,6 +6,12 @@ export default function login(username:string,pwd:string):void
 
     
 }
+export var UiConfig = {
+    list_item_1:"comp/list_itembg1.png",
+    list_item_2:"comp/list_itembg2.png",
+    txt_color_select:"#28100C",
+    txt_color_normal:"#DFDFDF" 
+}
 
 export function copyStr(str:string):void
 {

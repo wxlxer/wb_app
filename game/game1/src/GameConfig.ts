@@ -4,18 +4,18 @@
 * 游戏初始化配置;
 */
 export default class GameConfig{
-    static width:number=1280;
-    static height:number=720;
-    static scaleMode:string="fixedauto";
-    static screenMode:string="horizontal";
-    static alignV:string="middle";
-    static alignH:string="center";
-    static startScene:any="TiXian.scene";
+    static width:number=640;
+    static height:number=1136;
+    static scaleMode:string="fixedwidth";
+    static screenMode:string="none";
+    static alignV:string="top";
+    static alignH:string="left";
+    static startScene:any="UserInfo.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=false;
     static physicsDebug:boolean=false;
-    static exportSceneToJson:boolean=false;
+    static exportSceneToJson:boolean=true;
     constructor(){}
     static init(){
         var reg: Function = Laya.ClassUtils.regClass;

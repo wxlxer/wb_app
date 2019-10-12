@@ -4,7 +4,7 @@ import Dialog=Laya.Dialog;
 import Scene=Laya.Scene;
 var REG: Function = Laya.ClassUtils.regClass;
 export module ui {
-    export class AlertUI extends Laya.Dialog {
+    export class AlertUI extends Dialog {
 		public img_bg:Laya.Image;
 		public btn_close:Laya.Button;
 		public btn_ok:Laya.Button;
@@ -18,7 +18,7 @@ export module ui {
         }
     }
     REG("ui.AlertUI",AlertUI);
-    export class BankUI extends Laya.View {
+    export class BankUI extends View {
         public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"loadList":[],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
@@ -27,7 +27,7 @@ export module ui {
         }
     }
     REG("ui.BankUI",BankUI);
-    export class ChongZhiHistroyUI extends Laya.Dialog {
+    export class ChongZhiHistroyUI extends Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
@@ -39,7 +39,7 @@ export module ui {
         }
     }
     REG("ui.ChongZhiHistroyUI",ChongZhiHistroyUI);
-    export class ChongZhiUiUI extends Laya.View {
+    export class ChongZhiUiUI extends View {
 		public b_left:Laya.Box;
 		public list_1:Laya.List;
 		public b_title:Laya.Box;
@@ -60,7 +60,7 @@ export module ui {
         }
     }
     REG("ui.ChongZhiUiUI",ChongZhiUiUI);
-    export class Cz_xx_BankUI extends Laya.View {
+    export class Cz_xx_BankUI extends View {
 		public txt_bankName:Laya.Label;
 		public btn_copy1:Laya.Button;
 		public txt_name:Laya.Label;
@@ -79,7 +79,7 @@ export module ui {
         }
     }
     REG("ui.Cz_xx_BankUI",Cz_xx_BankUI);
-    export class Cz_xx_chooseMoneyUI extends Laya.View {
+    export class Cz_xx_chooseMoneyUI extends View {
 		public list_2:Laya.List;
 		public list_3:Laya.List;
 		public txt_oldPwd:Laya.TextInput;
@@ -93,7 +93,7 @@ export module ui {
         }
     }
     REG("ui.Cz_xx_chooseMoneyUI",Cz_xx_chooseMoneyUI);
-    export class Cz_xx_ewmUI extends Laya.View {
+    export class Cz_xx_ewmUI extends View {
 		public s_bg:Laya.Box;
 		public txt_type:Laya.Label;
 		public txt_tips0:Laya.Label;
@@ -118,7 +118,7 @@ export module ui {
         }
     }
     REG("ui.Cz_xx_ewmUI",Cz_xx_ewmUI);
-    export class FanYongListUI extends Laya.Dialog {
+    export class FanYongListUI extends Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;
@@ -130,7 +130,7 @@ export module ui {
         }
     }
     REG("ui.FanYongListUI",FanYongListUI);
-    export class HallUiUI extends Laya.View {
+    export class HallUiUI extends View {
 		public img_bg:Laya.Image;
 		public b_top:Laya.Box;
 		public txt_name:Laya.Label;
@@ -165,7 +165,7 @@ export module ui {
         }
     }
     REG("ui.HallUiUI",HallUiUI);
-    export class HuoDongUiUI extends Laya.View {
+    export class HuoDongUiUI extends View {
 		public b_bg:Laya.Box;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
@@ -180,7 +180,7 @@ export module ui {
         }
     }
     REG("ui.HuoDongUiUI",HuoDongUiUI);
-    export class KeFuUiUI extends Laya.View {
+    export class KeFuUiUI extends View {
 		public b_zx:Laya.Box;
 		public b_kf:Laya.Box;
 		public btn_lx:Laya.Button;
@@ -197,7 +197,7 @@ export module ui {
         }
     }
     REG("ui.KeFuUiUI",KeFuUiUI);
-    export class LingQuHistroyUI extends Laya.Dialog {
+    export class LingQuHistroyUI extends Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;
@@ -209,7 +209,7 @@ export module ui {
         }
     }
     REG("ui.LingQuHistroyUI",LingQuHistroyUI);
-    export class LingQuYongJinUI extends Laya.Dialog {
+    export class LingQuYongJinUI extends Dialog {
 		public btn_close:Laya.Button;
 		public txt_money1:Laya.Label;
 		public txt_money2:Laya.Label;
@@ -224,7 +224,7 @@ export module ui {
         }
     }
     REG("ui.LingQuYongJinUI",LingQuYongJinUI);
-    export class LoginUiUI extends Laya.Dialog {
+    export class LoginUiUI extends Dialog {
 		public btn_close:Laya.Button;
 		public btn_login:Laya.Button;
 		public txt_name:Laya.TextInput;
@@ -238,7 +238,7 @@ export module ui {
         }
     }
     REG("ui.LoginUiUI",LoginUiUI);
-    export class MailUI extends Laya.Dialog {
+    export class MailUI extends Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips1:Laya.Label;
@@ -250,7 +250,7 @@ export module ui {
         }
     }
     REG("ui.MailUI",MailUI);
-    export class MailInfoUI extends Laya.Dialog {
+    export class MailInfoUI extends Dialog {
 		public txt_info:Laya.TextArea;
 		public btn_close:Laya.Button;
 		public btn_remove:Laya.Button;
@@ -262,7 +262,7 @@ export module ui {
         }
     }
     REG("ui.MailInfoUI",MailInfoUI);
-    export class MiniLoadingUI extends Laya.Dialog {
+    export class MiniLoadingUI extends Dialog {
 		public ani1:Laya.Animation;
         public static  uiView:any ={"type":"Dialog","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Animation","props":{"y":283,"x":530,"var":"ani1","source":"icons/ic_loading0.png,icons/ic_loading1.png,icons/ic_loading2.png,icons/ic_loading3.png","scaleY":0.5,"scaleX":0.5,"interval":200,"autoPlay":true},"compId":5}],"loadList":["icons/ic_loading0.png,icons/ic_loading1.png,icons/ic_loading2.png,icons/ic_loading3.png"],"loadList3D":[]};
         constructor(){ super()}
@@ -272,7 +272,7 @@ export module ui {
         }
     }
     REG("ui.MiniLoadingUI",MiniLoadingUI);
-    export class NoticeUI extends Laya.Dialog {
+    export class NoticeUI extends Dialog {
 		public img_gg:Laya.Image;
 		public btn_close:Laya.Button;
         public static  uiView:any ={"type":"Dialog","props":{"width":953,"height":568},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_news_dialog.png","right":0,"left":0,"bottom":0},"compId":3},{"type":"Image","props":{"y":96,"x":17,"width":917,"var":"img_gg","height":439},"compId":5},{"type":"Button","props":{"y":10,"x":867,"var":"btn_close","stateNum":1,"skin":"btns/ic_close.png"},"compId":8}],"loadList":["bgs/ic_news_dialog.png","btns/ic_close.png"],"loadList3D":[]};
@@ -283,7 +283,7 @@ export module ui {
         }
     }
     REG("ui.NoticeUI",NoticeUI);
-    export class NoticeMsgUI extends Laya.Dialog {
+    export class NoticeMsgUI extends Dialog {
 		public btn_close:Laya.Button;
 		public txt_gg:Laya.TextArea;
 		public btn_ok:Laya.Button;
@@ -295,7 +295,7 @@ export module ui {
         }
     }
     REG("ui.NoticeMsgUI",NoticeMsgUI);
-    export class RegisterUiUI extends Laya.Dialog {
+    export class RegisterUiUI extends Dialog {
 		public btn_close:Laya.Button;
 		public btn_ok:Laya.Button;
 		public txt_name:Laya.TextInput;
@@ -309,7 +309,7 @@ export module ui {
         }
     }
     REG("ui.RegisterUiUI",RegisterUiUI);
-    export class SetUiUI extends Laya.Dialog {
+    export class SetUiUI extends Dialog {
 		public btn_close:Laya.Button;
 		public tab_1:Laya.Tab;
 		public b_sound:Laya.Box;
@@ -336,7 +336,7 @@ export module ui {
         }
     }
     REG("ui.SetUiUI",SetUiUI);
-    export class SubGameListUI extends Laya.View {
+    export class SubGameListUI extends View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public img_title:Laya.Image;
@@ -353,7 +353,7 @@ export module ui {
         }
     }
     REG("ui.SubGameListUI",SubGameListUI);
-    export class TiXianUI extends Laya.View {
+    export class TiXianUI extends View {
 		public b_tx:Laya.Box;
 		public txt_money:Laya.Label;
 		public txt_input:Laya.TextInput;
@@ -384,7 +384,7 @@ export module ui {
         }
     }
     REG("ui.TiXianUI",TiXianUI);
-    export class TiXianHistroyUI extends Laya.Dialog {
+    export class TiXianHistroyUI extends Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
@@ -396,7 +396,7 @@ export module ui {
         }
     }
     REG("ui.TiXianHistroyUI",TiXianHistroyUI);
-    export class TuiGuangUI extends Laya.View {
+    export class TuiGuangUI extends View {
 		public b_1:Laya.Box;
 		public txt_myId:Laya.Label;
 		public btn_fx_hy:Laya.Button;
@@ -444,7 +444,7 @@ export module ui {
         }
     }
     REG("ui.TuiGuangUI",TuiGuangUI);
-    export class UserInfoUI extends Laya.View {
+    export class UserInfoUI extends View {
 		public b_info:Laya.Box;
 		public txt_account:Laya.Label;
 		public txt_level:Laya.Label;
@@ -454,17 +454,11 @@ export module ui {
 		public txt_wx:Laya.TextInput;
 		public btn_xg1:Laya.Box;
 		public b_mingxi:Laya.Box;
-		public btn_time1:Laya.Image;
-		public btn_status:Laya.Image;
-		public txt_time1:Laya.Label;
-		public txt_status:Laya.Label;
+		public list_tab1:Laya.List;
+		public time_start1:Laya.Image;
+		public time_end1:Laya.Image;
 		public list_mx:Laya.List;
 		public txt_tips2:Laya.Label;
-		public txt_cz:Laya.Label;
-		public txt_yh:Laya.Label;
-		public txt_tx:Laya.Label;
-		public txt_fs:Laya.Label;
-		public txt_ye:Laya.Label;
 		public b_baoBiao:Laya.Box;
 		public list_tab2:Laya.List;
 		public txt_time2:Laya.Image;
@@ -478,11 +472,11 @@ export module ui {
 		public list_tab:Laya.List;
 		public b_touzujilv:Laya.Box;
 		public list_1:Laya.List;
-		public list_tab1:Laya.List;
-		public cb_pt:Laya.Image;
 		public txt_tips1:Laya.Label;
-		public cb_time:Laya.ComboBox;
-        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720,"centerY":0},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"bgs/ic_qipai_bg.png","right":0,"left":0,"bottom":0},"compId":115},{"type":"Image","props":{"y":10,"x":10,"skin":"comp/dactivity_nav_left.png"},"compId":99},{"type":"Box","props":{"var":"b_info","top":130,"right":10,"left":303,"height":590},"compId":16,"child":[{"type":"Image","props":{"y":0,"x":0,"width":969,"skin":"bgs/ic_pc_title.png","right":0,"left":0,"height":48},"compId":176,"child":[{"type":"Image","props":{"x":23,"skin":"icons/ic_dot.png","centerY":0},"compId":177},{"type":"Label","props":{"x":76,"text":"基础信息","fontSize":24,"color":"#eaa65a","centerY":0},"compId":178}]},{"type":"Label","props":{"y":82,"x":64,"text":"账号：","fontSize":22,"color":"#eaa65a"},"compId":183},{"type":"Label","props":{"y":82,"x":129,"var":"txt_account","text":"玩家账号","fontSize":22,"color":"#FFFFFF"},"compId":184},{"type":"Label","props":{"y":135,"x":184,"width":267,"var":"txt_level","text":"玩家账号","styleSkin":"comp/ic_input_bg.png","height":27,"fontSize":22,"color":"#FFFFFF"},"compId":186},{"type":"Label","props":{"y":137,"x":69,"width":44,"text":"会员等级:","height":22,"fontSize":22,"color":"#eaa65a"},"compId":185},{"type":"Label","props":{"y":199,"x":69,"text":"姓名：","fontSize":22,"color":"#eaa65a"},"compId":188},{"type":"TextInput","props":{"y":195,"x":135,"width":245,"var":"txt_name","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":189},{"type":"Label","props":{"y":264,"x":69,"text":"邮箱：","fontSize":22,"color":"#eaa65a"},"compId":198},{"type":"TextInput","props":{"y":260,"x":135,"width":245,"var":"txt_mail","type":"email","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":199},{"type":"Label","props":{"y":332,"x":69,"text":"电话：","fontSize":22,"color":"#eaa65a"},"compId":200},{"type":"TextInput","props":{"y":329,"x":138,"width":241,"var":"txt_tel","type":"number","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":201},{"type":"Label","props":{"y":403,"x":69,"text":"微信：","fontSize":22,"color":"#eaa65a"},"compId":204},{"type":"TextInput","props":{"y":399,"x":136,"width":249,"var":"txt_wx","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":205},{"type":"Box","props":{"y":488,"width":133,"var":"btn_xg1","right":504,"height":41},"compId":367,"child":[{"type":"Image","props":{"y":4,"x":0,"stateNum":1,"skin":"btns/ic_edit.png","scaleY":0.7,"scaleX":0.7,"centerY":0},"compId":368},{"type":"Label","props":{"y":8.5,"x":66,"text":"编辑","fontSize":24,"color":"#eaa65a"},"compId":369}]}]},{"type":"Box","props":{"width":967,"var":"b_mingxi","top":130,"right":10,"left":303,"height":574},"compId":260,"child":[{"type":"Image","props":{"x":0,"width":967,"skin":"bgs/ic_gathering_bg.png","right":0,"left":0,"height":584,"bottom":0},"compId":261},{"type":"Image","props":{"y":0,"width":969,"skin":"bgs/ic_pc_title.png","right":0,"left":0,"height":48},"compId":265,"child":[{"type":"Label","props":{"x":46,"text":"交易时间","fontSize":24,"color":"#eaa65a","centerY":0},"compId":266},{"type":"Label","props":{"x":584,"text":"交易状态","fontSize":24,"color":"#eaa65a","centerY":0},"compId":267},{"type":"Image","props":{"y":4,"x":187,"width":229,"var":"btn_time1","skin":"comp/ic_pc_edit.png","sizeGrid":"22,22,22,22","height":44},"compId":268},{"type":"Image","props":{"y":0,"x":705,"width":229,"var":"btn_status","skin":"comp/ic_pc_edit.png","sizeGrid":"22,22,22,22","height":44},"compId":269},{"type":"Label","props":{"y":12,"x":206,"width":167,"var":"txt_time1","text":"派彩时间","height":24,"fontSize":24,"color":"#ffffff"},"compId":364},{"type":"Label","props":{"y":12,"x":716,"width":167,"var":"txt_status","text":"派彩时间","height":24,"fontSize":24,"color":"#ffffff"},"compId":365}]},{"type":"Image","props":{"y":70,"x":0,"width":188,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":275,"child":[{"type":"Label","props":{"text":"派彩时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":276}]},{"type":"Image","props":{"y":70,"x":189,"width":198,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":277,"child":[{"type":"Label","props":{"text":"注单号","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":278}]},{"type":"Image","props":{"y":70,"x":388,"width":180,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":279,"child":[{"type":"Label","props":{"text":"游戏名称","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":280}]},{"type":"Image","props":{"y":70,"x":569,"width":189,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":281,"child":[{"type":"Label","props":{"text":"投注金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":282}]},{"type":"Image","props":{"y":70,"x":759,"width":198,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},"compId":283,"child":[{"type":"Label","props":{"text":"已派奖","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":284}]},{"type":"List","props":{"y":119,"width":967,"var":"list_mx","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"right":0,"left":0,"height":339},"compId":285,"child":[{"type":"Box","props":{"right":0,"renderType":"render","left":0},"compId":287,"child":[{"type":"Image","props":{"y":0,"width":962,"skin":"comp/list_item_bg1.png","right":5,"name":"item_bg","left":0,"height":50},"compId":286},{"type":"Label","props":{"y":0,"x":0,"width":185,"valign":"middle","text":"label","name":"txt_1","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},"compId":288},{"type":"Label","props":{"y":0,"x":197,"width":185,"valign":"middle","text":"label","name":"txt_2","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},"compId":289},{"type":"Label","props":{"y":0,"x":391,"width":175,"valign":"middle","text":"label","name":"txt_3","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},"compId":290},{"type":"Label","props":{"y":0,"x":577,"width":179,"valign":"middle","text":"label","name":"txt_4","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},"compId":291},{"type":"Label","props":{"y":0,"x":770,"width":179,"valign":"middle","text":"label","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},"compId":292}]}]},{"type":"Label","props":{"var":"txt_tips2","text":"您暂时还没有任何数据 先去游戏下吧","fontSize":24,"color":"#ffffff","centerY":33,"centerX":0},"compId":294,"child":[{"type":"Image","props":{"y":-99,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5,"centerX":0},"compId":295}]},{"type":"Box","props":{"y":476,"x":46},"compId":302,"child":[{"type":"Label","props":{"y":0,"x":0,"text":"-合计-","fontSize":22,"color":"#828287"},"compId":296},{"type":"Label","props":{"y":0,"x":139,"text":"充值:","fontSize":22,"color":"#828287"},"compId":297},{"type":"Label","props":{"y":0,"x":380,"text":"提现:","fontSize":22,"color":"#828287"},"compId":298},{"type":"Label","props":{"y":53,"x":139,"text":"优惠:","fontSize":22,"color":"#828287"},"compId":299},{"type":"Label","props":{"y":53,"x":380,"text":"返水:","fontSize":22,"color":"#828287"},"compId":300},{"type":"Label","props":{"y":53,"x":743,"text":"余额","fontSize":22,"color":"#828287"},"compId":301},{"type":"Label","props":{"y":0,"x":189,"width":145,"var":"txt_cz","text":"0.0","height":22,"fontSize":22,"color":"#13764F"},"compId":304},{"type":"Label","props":{"y":53,"x":189.1123046875,"width":145,"var":"txt_yh","text":"0.0","height":22,"fontSize":22,"color":"#CE9956"},"compId":305},{"type":"Label","props":{"y":0,"x":439,"width":145,"var":"txt_tx","text":"0.0","height":22,"fontSize":22,"color":"#6B0D27"},"compId":306},{"type":"Label","props":{"y":53,"x":439,"width":145,"var":"txt_fs","text":"0.0","height":22,"fontSize":22,"color":"#CE9956"},"compId":307},{"type":"Label","props":{"y":55,"x":792,"width":126,"var":"txt_ye","text":"0.0","height":22,"fontSize":22,"color":"#CE9956"},"compId":308}]}]},{"type":"Box","props":{"var":"b_baoBiao","top":130,"right":10,"left":303,"height":590},"compId":18,"child":[{"type":"Image","props":{"y":60,"width":967,"skin":"bgs/ic_pc_bgm.png","right":0,"left":0,"height":524},"compId":238},{"type":"List","props":{"y":0,"x":0,"width":894,"var":"list_tab2","spaceX":5,"repeatY":1,"repeatX":5,"left":0,"height":57},"compId":232,"child":[{"type":"Box","props":{"renderType":"render"},"compId":233,"child":[{"type":"Image","props":{"y":0,"x":0,"width":250,"skin":"bgs/chart_noselect.png","scaleY":0.7,"scaleX":0.7,"name":"bg_normal","height":80},"compId":234},{"type":"Image","props":{"y":0,"x":0,"width":250,"skin":"bgs/chart_select.png","scaleY":0.7,"scaleX":0.7,"name":"bg_selected","height":80},"compId":235},{"type":"Label","props":{"y":12,"x":1,"width":171,"text":"我的推广","name":"txt_label","height":28,"fontSize":28,"align":"center"},"compId":236}]}]},{"type":"Image","props":{"y":77,"width":969,"skin":"bgs/ic_pc_title.png","right":0,"left":4,"height":48},"compId":239,"child":[{"type":"Label","props":{"x":46,"text":"时间设置","fontSize":24,"color":"#eaa65a","centerY":0},"compId":241}]},{"type":"Image","props":{"y":76,"x":185,"width":229,"var":"txt_time2","skin":"comp/ic_pc_edit.png","sizeGrid":"22,22,22,22","height":44},"compId":253},{"type":"Label","props":{"y":86,"x":187,"width":187,"var":"txt_time3","text":"派彩时间","height":24,"fontSize":24,"color":"#ffffff"},"compId":366},{"type":"Box","props":{"y":214,"x":83},"compId":314,"child":[{"type":"Image","props":{"y":62,"x":0,"width":600,"skin":"bgs/pc_horizonal_line.png","centerX":0},"compId":315},{"type":"Image","props":{"y":111,"x":246,"skin":"bgs/ic_safe_split.png"},"compId":316},{"type":"Image","props":{"y":111,"x":571,"skin":"bgs/ic_safe_split.png"},"compId":317},{"type":"Image","props":{"y":185,"x":0,"width":150,"skin":"bgs/pc_text_bg.png","height":40},"compId":318,"child":[{"type":"Label","props":{"y":6,"x":0,"text":"有效投注总额","fontSize":28,"color":"#C9B190"},"compId":323}]},{"type":"Image","props":{"y":185,"x":340,"width":150,"skin":"bgs/pc_text_bg.png","height":40},"compId":319,"child":[{"type":"Label","props":{"y":6,"x":0,"width":154,"text":"派彩总额","height":28,"fontSize":28,"color":"#C9B190","align":"center"},"compId":324}]},{"type":"Image","props":{"y":185,"x":617,"width":150,"skin":"bgs/pc_text_bg.png","height":40},"compId":320,"child":[{"type":"Label","props":{"y":6,"x":0,"width":157,"text":"返点总额","height":28,"fontSize":28,"color":"#C9B190","align":"center"},"compId":325}]},{"type":"Label","props":{"y":6,"x":264,"text":"盈利总额:","fontSize":34,"color":"#414142"},"compId":321},{"type":"Label","props":{"y":0,"x":415,"var":"txt_ylze","text":"0.0","fontSize":40,"color":"#148759"},"compId":322},{"type":"Label","props":{"y":119,"x":-1,"width":173,"var":"txt_yxtzze","text":"0.0","height":40,"fontSize":40,"color":"#FAB965","align":"center"},"compId":326},{"type":"Label","props":{"y":119,"x":336.72314453125,"width":173,"var":"txt_pcze","text":"0.0","height":40,"fontSize":40,"color":"#FAB965","align":"center"},"compId":327},{"type":"Label","props":{"y":119,"x":616,"width":173,"var":"txt_fdze","text":"0.0","height":40,"fontSize":40,"color":"#FAB965","align":"center"},"compId":328}]}]},{"type":"Box","props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},"compId":104,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":106},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":107},{"type":"Image","props":{"x":329,"skin":"bgs/ic_user_info.png","scaleY":0.5,"scaleX":0.5,"centerY":0},"compId":108}]},{"type":"List","props":{"y":0,"x":0,"width":295,"var":"list_tab","top":125,"spaceY":5,"repeatY":5,"repeatX":1,"left":0,"height":578},"compId":105,"child":[{"type":"Box","props":{"renderType":"render"},"compId":109,"child":[{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_pc_grxx.png","name":"bg_normal","height":96},"compId":110},{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_pc_grxx_pressed.png","name":"bg_selected","height":96},"compId":111}]}]},{"type":"Box","props":{"width":967,"var":"b_touzujilv","top":130,"right":10,"left":303,"height":581},"compId":330,"child":[{"type":"Image","props":{"y":0,"width":967,"skin":"bgs/ic_gathering_bg.png","right":0,"left":0,"height":584},"compId":331},{"type":"List","props":{"y":153,"width":967,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","right":0,"left":0,"height":429},"compId":332,"child":[{"type":"Box","props":{"name":"render"},"compId":333,"child":[{"type":"Image","props":{"y":0,"x":0,"width":957,"skin":"comp/list_item_bg1.png","sizeGrid":"14,13,10,13","name":"item_bg","height":60},"compId":334},{"type":"Label","props":{"y":26,"x":0,"width":188,"text":"#f4ce7f","name":"txt_1","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},"compId":336},{"type":"Label","props":{"y":26,"x":200,"width":188,"text":"#f4ce7f","name":"txt_2","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},"compId":337},{"type":"Label","props":{"y":26,"x":387,"width":191,"text":"#f4ce7f","name":"txt_3","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},"compId":338},{"type":"Label","props":{"y":26,"x":585,"width":192,"text":"#f4ce7f","name":"txt_4","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},"compId":339},{"type":"Label","props":{"x":777,"width":169,"text":"#f4ce7f","name":"txt_5","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},"compId":340}]}]},{"type":"List","props":{"y":0,"x":0,"width":926,"var":"list_tab1","spaceX":5,"repeatY":1,"height":58},"compId":341,"child":[{"type":"Box","props":{"renderType":"render"},"compId":342,"child":[{"type":"Image","props":{"skin":"btns/ic_pc_grbb_tab.png","scaleY":0.5,"scaleX":0.5,"name":"bg_normal"},"compId":343},{"type":"Image","props":{"y":0,"x":0,"skin":"btns/ic_pc_grbb_tab_pressed.png","scaleY":0.5,"scaleX":0.5,"name":"bg_selected"},"compId":344},{"type":"Label","props":{"y":15,"x":0,"width":180,"text":"棋牌投注记录","name":"txt_label","height":24,"fontSize":24,"align":"center"},"compId":345}]}]},{"type":"Label","props":{"y":72,"x":12,"text":"派彩时间","fontSize":24,"color":"#ffffff"},"compId":346},{"type":"Label","props":{"y":72,"x":671,"text":"游戏平台","fontSize":24,"color":"#ffffff"},"compId":349},{"type":"Image","props":{"y":67,"x":783,"var":"cb_pt","skin":"bgs/ic_pc_edit.png","scaleY":0.5,"scaleX":0.5},"compId":350},{"type":"Image","props":{"y":113.5,"x":0,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":352,"child":[{"type":"Label","props":{"text":"派彩时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":353}]},{"type":"Image","props":{"y":113.5,"x":194,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":354,"child":[{"type":"Label","props":{"text":"注单号","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":355}]},{"type":"Image","props":{"y":113,"x":388,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":356,"child":[{"type":"Label","props":{"text":"游戏名称","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":357}]},{"type":"Image","props":{"y":113,"x":582,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":358,"child":[{"type":"Label","props":{"text":"投注金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":359}]},{"type":"Image","props":{"y":113.5,"x":776,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},"compId":360,"child":[{"type":"Label","props":{"text":"已派奖","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},"compId":361}]},{"type":"Label","props":{"y":0,"x":0,"var":"txt_tips1","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":101,"centerX":0},"compId":362,"child":[{"type":"Image","props":{"y":-94,"x":-10,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5},"compId":363}]},{"type":"ComboBox","props":{"y":73,"x":125.5,"width":165,"var":"cb_time","stateNum":1,"skin":"comp/combobox.png","labels":"所有时间,今天,昨天,一个月内","labelSize":22,"labelColors":"#FFFFFF,#FFFFFF,#FFFFFF,#FFFFFF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":32},"compId":370}]}],"loadList":["bgs/ic_qipai_bg.png","comp/dactivity_nav_left.png","bgs/ic_pc_title.png","icons/ic_dot.png","comp/ic_input_bg.png","btns/ic_edit.png","bgs/ic_gathering_bg.png","comp/ic_pc_edit.png","comp/list_title.png","comp/vscroll.png","comp/list_item_bg1.png","comp/bg_data_null.png","bgs/ic_pc_bgm.png","bgs/chart_noselect.png","bgs/chart_select.png","bgs/pc_horizonal_line.png","bgs/ic_safe_split.png","bgs/pc_text_bg.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_user_info.png","btns/ic_pc_grxx.png","btns/ic_pc_grxx_pressed.png","btns/ic_pc_grbb_tab.png","btns/ic_pc_grbb_tab_pressed.png","bgs/ic_pc_edit.png","bgs/ic_pc_pop_wind.png","comp/combobox.png"],"loadList3D":[]};
+		public cb_pt:Laya.ComboBox;
+		public time_start:Laya.Image;
+		public time_end:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720,"centerY":0},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"bgs/ic_qipai_bg.png","right":0,"left":0,"bottom":0},"compId":115},{"type":"Image","props":{"y":10,"x":10,"skin":"comp/dactivity_nav_left.png"},"compId":99},{"type":"Box","props":{"var":"b_info","top":130,"right":10,"left":303,"height":590},"compId":16,"child":[{"type":"Image","props":{"y":0,"x":0,"width":969,"skin":"bgs/ic_pc_title.png","right":0,"left":0,"height":48},"compId":176,"child":[{"type":"Image","props":{"x":23,"skin":"icons/ic_dot.png","centerY":0},"compId":177},{"type":"Label","props":{"x":76,"text":"基础信息","fontSize":24,"color":"#eaa65a","centerY":0},"compId":178}]},{"type":"Label","props":{"y":82,"x":64,"text":"账号：","fontSize":22,"color":"#eaa65a"},"compId":183},{"type":"Label","props":{"y":82,"x":129,"var":"txt_account","text":"玩家账号","fontSize":22,"color":"#FFFFFF"},"compId":184},{"type":"Label","props":{"y":135,"x":184,"width":267,"var":"txt_level","text":"玩家账号","styleSkin":"comp/ic_input_bg.png","height":27,"fontSize":22,"color":"#FFFFFF"},"compId":186},{"type":"Label","props":{"y":137,"x":69,"width":44,"text":"会员等级:","height":22,"fontSize":22,"color":"#eaa65a"},"compId":185},{"type":"Label","props":{"y":199,"x":69,"text":"姓名：","fontSize":22,"color":"#eaa65a"},"compId":188},{"type":"TextInput","props":{"y":195,"x":135,"width":245,"var":"txt_name","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":189},{"type":"Label","props":{"y":264,"x":69,"text":"邮箱：","fontSize":22,"color":"#eaa65a"},"compId":198},{"type":"TextInput","props":{"y":260,"x":135,"width":245,"var":"txt_mail","type":"email","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":199},{"type":"Label","props":{"y":332,"x":69,"text":"电话：","fontSize":22,"color":"#eaa65a"},"compId":200},{"type":"TextInput","props":{"y":329,"x":138,"width":241,"var":"txt_tel","type":"number","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":201},{"type":"Label","props":{"y":403,"x":69,"text":"微信：","fontSize":22,"color":"#eaa65a"},"compId":204},{"type":"TextInput","props":{"y":399,"x":136,"width":249,"var":"txt_wx","text":"玩家账号","skin":"comp/ic_input_bg.png","height":31,"fontSize":22,"color":"#FFFFFF"},"compId":205},{"type":"Box","props":{"y":488,"width":133,"var":"btn_xg1","right":504,"height":41},"compId":367,"child":[{"type":"Image","props":{"y":4,"x":0,"stateNum":1,"skin":"btns/ic_edit.png","scaleY":0.7,"scaleX":0.7,"centerY":0},"compId":368},{"type":"Label","props":{"y":8.5,"x":66,"text":"编辑","fontSize":24,"color":"#eaa65a"},"compId":369}]}]},{"type":"Box","props":{"width":978,"var":"b_mingxi","top":130,"height":581,"centerX":150},"compId":260,"child":[{"type":"Image","props":{"y":84,"width":948,"skin":"comp/panel_bg1.png","left":0,"height":490},"compId":261},{"type":"List","props":{"y":0,"x":0,"var":"list_tab1","spaceX":5,"repeatY":1,"repeatX":5,"height":72},"compId":378,"child":[{"type":"Box","props":{"width":182,"renderType":"render","height":74},"compId":379,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"comp/tab_1.png","name":"bg_normal"},"compId":380},{"type":"Image","props":{"y":0,"x":0,"skin":"comp/tab_2.png","name":"bg_selected"},"compId":381},{"type":"Label","props":{"x":1,"width":182,"text":"我的推广","name":"txt_label","height":28,"fontSize":28,"centerY":0,"align":"center"},"compId":382}]}]},{"type":"Box","props":{"y":100,"x":0},"compId":383,"child":[{"type":"Label","props":{"text":"开始时间","left":50,"height":24,"fontSize":24,"color":"#A1A1A1","centerY":0},"compId":385},{"type":"Image","props":{"x":155,"width":178,"var":"time_start1","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36,"centerY":0},"compId":404,"child":[{"type":"Label","props":{"y":0,"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},"compId":405}]},{"type":"Label","props":{"text":"结束时间","left":600,"height":24,"fontSize":24,"color":"#A1A1A1","centerY":0},"compId":406},{"type":"Image","props":{"x":704,"width":178,"var":"time_end1","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36,"centerY":0},"compId":407,"child":[{"type":"Label","props":{"y":0,"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},"compId":408}]}]},{"type":"List","props":{"y":207,"width":945,"var":"list_mx","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"left":0,"height":357},"compId":285,"child":[{"type":"Box","props":{"right":0,"renderType":"render","left":0},"compId":287,"child":[{"type":"Image","props":{"y":0,"x":0,"width":946,"skin":"comp/list_itembg1.png","sizeGrid":"14,13,10,13","name":"item_bg","height":42},"compId":398},{"type":"Label","props":{"x":0,"width":236,"valign":"middle","text":"label","name":"txt_1","height":24,"fontSize":20,"color":"#00F41C","centerY":0,"align":"center"},"compId":288},{"type":"Label","props":{"x":239,"width":235,"valign":"middle","text":"label","name":"txt_2","height":24,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":289},{"type":"Label","props":{"x":473,"width":236,"valign":"middle","text":"label","name":"txt_3","height":24,"fontSize":18,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":290},{"type":"Label","props":{"x":712,"width":235,"valign":"middle","text":"label","name":"txt_4","height":24,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":291}]}]},{"type":"Box","props":{"y":149,"x":0},"compId":389,"child":[{"type":"Image","props":{"y":0,"x":0,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":390,"child":[{"type":"Label","props":{"text":"状态","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},"compId":391}]},{"type":"Image","props":{"y":0,"x":237,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":392,"child":[{"type":"Label","props":{"text":"金额","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},"compId":393}]},{"type":"Image","props":{"y":0,"x":473,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":394,"child":[{"type":"Label","props":{"text":"时间","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},"compId":395}]},{"type":"Image","props":{"y":0,"x":710,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":396,"child":[{"type":"Label","props":{"text":"备注","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},"compId":397}]}]},{"type":"Label","props":{"y":0,"x":0,"var":"txt_tips2","text":"您暂时没有任何数据,先去游戏一下吧!","fontSize":24,"color":"#F8F8F8","centerY":101,"centerX":0,"alpha":0.43},"compId":399,"child":[{"type":"Image","props":{"y":-121,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5,"centerX":-3},"compId":400}]}]},{"type":"Box","props":{"var":"b_baoBiao","top":130,"right":10,"left":303,"height":590},"compId":18,"child":[{"type":"Image","props":{"y":60,"width":967,"skin":"bgs/ic_pc_bgm.png","right":0,"left":0,"height":524},"compId":238},{"type":"List","props":{"y":0,"x":0,"width":894,"var":"list_tab2","spaceX":5,"repeatY":1,"repeatX":5,"left":0,"height":57},"compId":232,"child":[{"type":"Box","props":{"renderType":"render"},"compId":233,"child":[{"type":"Image","props":{"y":0,"x":0,"width":250,"skin":"bgs/chart_noselect.png","scaleY":0.7,"scaleX":0.7,"name":"bg_normal","height":80},"compId":234},{"type":"Image","props":{"y":0,"x":0,"width":250,"skin":"bgs/chart_select.png","scaleY":0.7,"scaleX":0.7,"name":"bg_selected","height":80},"compId":235},{"type":"Label","props":{"y":12,"x":1,"width":171,"text":"我的推广","name":"txt_label","height":28,"fontSize":28,"align":"center"},"compId":236}]}]},{"type":"Image","props":{"y":77,"width":969,"skin":"bgs/ic_pc_title.png","right":0,"left":4,"height":48},"compId":239,"child":[{"type":"Label","props":{"x":46,"text":"时间设置","fontSize":24,"color":"#eaa65a","centerY":0},"compId":241}]},{"type":"Image","props":{"y":76,"x":185,"width":229,"var":"txt_time2","skin":"comp/ic_pc_edit.png","sizeGrid":"22,22,22,22","height":44},"compId":253},{"type":"Label","props":{"y":86,"x":187,"width":187,"var":"txt_time3","text":"派彩时间","height":24,"fontSize":24,"color":"#ffffff"},"compId":366},{"type":"Box","props":{"y":214,"x":83},"compId":314,"child":[{"type":"Image","props":{"y":62,"x":0,"width":600,"skin":"bgs/pc_horizonal_line.png","centerX":0},"compId":315},{"type":"Image","props":{"y":111,"x":246,"skin":"bgs/ic_safe_split.png"},"compId":316},{"type":"Image","props":{"y":111,"x":571,"skin":"bgs/ic_safe_split.png"},"compId":317},{"type":"Image","props":{"y":185,"x":0,"width":150,"skin":"bgs/pc_text_bg.png","height":40},"compId":318,"child":[{"type":"Label","props":{"y":6,"x":0,"text":"有效投注总额","fontSize":28,"color":"#C9B190"},"compId":323}]},{"type":"Image","props":{"y":185,"x":340,"width":150,"skin":"bgs/pc_text_bg.png","height":40},"compId":319,"child":[{"type":"Label","props":{"y":6,"x":0,"width":154,"text":"派彩总额","height":28,"fontSize":28,"color":"#C9B190","align":"center"},"compId":324}]},{"type":"Image","props":{"y":185,"x":617,"width":150,"skin":"bgs/pc_text_bg.png","height":40},"compId":320,"child":[{"type":"Label","props":{"y":6,"x":0,"width":157,"text":"返点总额","height":28,"fontSize":28,"color":"#C9B190","align":"center"},"compId":325}]},{"type":"Label","props":{"y":6,"x":264,"text":"盈利总额:","fontSize":34,"color":"#414142"},"compId":321},{"type":"Label","props":{"y":0,"x":415,"var":"txt_ylze","text":"0.0","fontSize":40,"color":"#148759"},"compId":322},{"type":"Label","props":{"y":119,"x":-1,"width":173,"var":"txt_yxtzze","text":"0.0","height":40,"fontSize":40,"color":"#FAB965","align":"center"},"compId":326},{"type":"Label","props":{"y":119,"x":336.72314453125,"width":173,"var":"txt_pcze","text":"0.0","height":40,"fontSize":40,"color":"#FAB965","align":"center"},"compId":327},{"type":"Label","props":{"y":119,"x":616,"width":173,"var":"txt_fdze","text":"0.0","height":40,"fontSize":40,"color":"#FAB965","align":"center"},"compId":328}]}]},{"type":"Box","props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},"compId":104,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":106},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":107},{"type":"Image","props":{"x":329,"skin":"bgs/ic_user_info.png","scaleY":0.5,"scaleX":0.5,"centerY":0},"compId":108}]},{"type":"List","props":{"y":0,"x":0,"width":295,"var":"list_tab","top":125,"spaceY":5,"repeatY":5,"repeatX":1,"left":0,"height":578},"compId":105,"child":[{"type":"Box","props":{"renderType":"render"},"compId":109,"child":[{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_pc_grxx.png","name":"bg_normal","height":96},"compId":110},{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_pc_grxx_pressed.png","name":"bg_selected","height":96},"compId":111}]}]},{"type":"Box","props":{"width":978,"var":"b_touzujilv","top":130,"height":581,"centerX":150},"compId":330,"child":[{"type":"Image","props":{"y":0,"width":967,"skin":"comp/panel_bg1.png","right":0,"left":0,"height":584},"compId":331},{"type":"List","props":{"y":133,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","right":10,"left":0,"height":440},"compId":332,"child":[{"type":"Box","props":{"name":"render"},"compId":333,"child":[{"type":"Image","props":{"y":0,"x":0,"width":946,"skin":"comp/list_itembg1.png","sizeGrid":"14,13,10,13","name":"item_bg","height":42},"compId":334},{"type":"Label","props":{"x":0,"width":151,"text":"123458","name":"txt_1","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":336},{"type":"Label","props":{"x":159,"width":150,"text":"欢乐麻将","name":"txt_2","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":337},{"type":"Label","props":{"x":309,"width":159,"text":"10253","name":"txt_3","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":338},{"type":"Label","props":{"x":479,"width":148,"text":"25058","name":"txt_4","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":339},{"type":"Label","props":{"x":795,"width":151,"text":"+88.88","name":"txt_6","height":26,"fontSize":26,"color":"#00F41C","centerY":0,"align":"center"},"compId":340},{"type":"Label","props":{"x":627,"width":159,"text":"2019-10-10 10:00","name":"txt_5","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},"compId":377}]}]},{"type":"Label","props":{"y":29,"x":20,"text":"选择平台","fontSize":24,"color":"#A1A1A1"},"compId":346},{"type":"Image","props":{"y":68.5,"x":2,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":352,"child":[{"type":"Label","props":{"text":"注单号","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},"compId":353}]},{"type":"Image","props":{"y":68,"x":160,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":354,"child":[{"type":"Label","props":{"text":"游戏名称","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},"compId":355}]},{"type":"Image","props":{"y":68,"x":318,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":356,"child":[{"type":"Label","props":{"text":"投注金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},"compId":357}]},{"type":"Image","props":{"y":68,"x":476,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":358,"child":[{"type":"Label","props":{"text":"有效投注","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},"compId":359}]},{"type":"Image","props":{"y":68,"x":792,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":360,"child":[{"type":"Label","props":{"text":"结算","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},"compId":361}]},{"type":"Label","props":{"var":"txt_tips1","text":"您暂时没有任何数据,先去游戏一下吧!","fontSize":24,"color":"#F8F8F8","centerY":101,"centerX":0,"alpha":0.43},"compId":362,"child":[{"type":"Image","props":{"y":-121,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5,"centerX":-3},"compId":363}]},{"type":"ComboBox","props":{"y":27,"x":124.5,"width":178,"var":"cb_pt","stateNum":1,"skin":"comp/combobox.png","selectedIndex":0,"labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36},"compId":370},{"type":"Label","props":{"y":31,"text":"开始时间","fontSize":24,"color":"#A1A1A1","centerX":-134},"compId":371},{"type":"Image","props":{"y":28,"width":178,"var":"time_start","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36,"centerX":0},"compId":372,"child":[{"type":"Label","props":{"y":0,"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},"compId":402}]},{"type":"Label","props":{"y":30,"text":"结束时间","right":188,"fontSize":24,"color":"#A1A1A1"},"compId":373},{"type":"Image","props":{"y":25,"width":178,"var":"time_end","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","right":10,"labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36},"compId":374,"child":[{"type":"Label","props":{"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},"compId":401}]},{"type":"Image","props":{"y":68.5,"x":634,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},"compId":375,"child":[{"type":"Label","props":{"text":"投注时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},"compId":376}]}]}],"loadList":["bgs/ic_qipai_bg.png","comp/dactivity_nav_left.png","bgs/ic_pc_title.png","icons/ic_dot.png","comp/ic_input_bg.png","btns/ic_edit.png","comp/panel_bg1.png","comp/tab_1.png","comp/tab_2.png","comp/combobox.png","comp/vscroll.png","comp/list_itembg1.png","comp/list_title2.png","comp/bg_data_null.png","bgs/ic_pc_bgm.png","bgs/chart_noselect.png","bgs/chart_select.png","comp/ic_pc_edit.png","bgs/pc_horizonal_line.png","bgs/ic_safe_split.png","bgs/pc_text_bg.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_user_info.png","btns/ic_pc_grxx.png","btns/ic_pc_grxx_pressed.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -490,7 +484,7 @@ export module ui {
         }
     }
     REG("ui.UserInfoUI",UserInfoUI);
-    export class UserInfo1UI extends Laya.View {
+    export class UserInfo1UI extends View {
 		public b_info:Laya.Box;
 		public btn_xg1:Laya.Box;
 		public b_touZhu:Laya.Box;
@@ -515,7 +509,7 @@ export module ui {
         }
     }
     REG("ui.UserInfo1UI",UserInfo1UI);
-    export class XiMaUI extends Laya.View {
+    export class XiMaUI extends View {
 		public btn_sd:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips1:Laya.Label;
@@ -531,7 +525,7 @@ export module ui {
         }
     }
     REG("ui.XiMaUI",XiMaUI);
-    export class XiMaHistroyUI extends Laya.Dialog {
+    export class XiMaHistroyUI extends Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;

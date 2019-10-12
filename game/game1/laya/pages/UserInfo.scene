@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":330,
-    "selecteID":370,
+    "selecteID":374,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720,"centerY":0},
     "nodeParent":-1,
-    "maxID":371,
+    "maxID":409,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -296,7 +296,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_mingxi",
-            "props":{"width":967,"var":"b_mingxi","top":130,"right":10,"left":303,"height":574},
+            "props":{"width":978,"var":"b_mingxi","top":130,"height":581,"centerX":150},
             "nodeParent":2,
             "label":"b_mingxi",
             "isOpen":false,
@@ -308,7 +308,7 @@
                 {
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"x":0,"width":967,"skin":"bgs/ic_gathering_bg.png","right":0,"left":0,"height":584,"bottom":0},
+                    "props":{"y":84,"width":948,"skin":"comp/panel_bg1.png","left":0,"height":490},
                     "nodeParent":260,
                     "label":"Image",
                     "isDirectory":false,
@@ -319,238 +319,169 @@
                         ]
                 },
                 {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":0,"width":969,"skin":"bgs/ic_pc_title.png","right":0,"left":0,"height":48},
+                    "type":"List",
+                    "searchKey":"List,list_tab1",
+                    "props":{"y":0,"x":0,"var":"list_tab1","spaceX":5,"repeatY":1,"repeatX":5,"height":72},
                     "nodeParent":260,
-                    "label":"Image",
+                    "label":"list_tab1",
                     "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":265,
+                    "compId":378,
+                    "child":[
+                        {
+                            "type":"Box",
+                            "searchKey":"Box",
+                            "props":{"width":182,"renderType":"render","height":74},
+                            "nodeParent":378,
+                            "label":"Box",
+                            "isOpen":true,
+                            "isDirectory":true,
+                            "isAniNode":false,
+                            "hasChild":true,
+                            "compId":379,
+                            "child":[
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image,bg_normal",
+                                    "props":{"y":0,"x":0,"skin":"comp/tab_1.png","name":"bg_normal"},
+                                    "nodeParent":379,
+                                    "label":"bg_normal",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":380,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image,bg_selected",
+                                    "props":{"y":0,"x":0,"skin":"comp/tab_2.png","name":"bg_selected"},
+                                    "nodeParent":379,
+                                    "label":"bg_selected",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":381,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label,txt_label",
+                                    "props":{"x":1,"width":182,"text":"我的推广","name":"txt_label","height":28,"fontSize":28,"centerY":0,"align":"center"},
+                                    "nodeParent":379,
+                                    "label":"txt_label",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":382,
+                                    "child":[
+                                        ]
+                                }]
+                        }],
+                    "$HIDDEN":false
+                },
+                {
+                    "type":"Box",
+                    "searchKey":"Box",
+                    "props":{"y":100,"x":0},
+                    "nodeParent":260,
+                    "label":"Box",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":383,
                     "child":[
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"x":46,"text":"交易时间","fontSize":24,"color":"#eaa65a","centerY":0},
-                            "nodeParent":265,
+                            "props":{"text":"开始时间","left":50,"height":24,"fontSize":24,"color":"#A1A1A1","centerY":0},
+                            "nodeParent":383,
                             "label":"Label",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":266,
+                            "compId":385,
                             "child":[
                                 ]
+                        },
+                        {
+                            "type":"Image",
+                            "searchKey":"Image,time_start1",
+                            "props":{"x":155,"width":178,"var":"time_start1","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36,"centerY":0},
+                            "nodeParent":383,
+                            "label":"time_start1",
+                            "isOpen":true,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":404,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"y":0,"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},
+                                    "nodeParent":404,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":405,
+                                    "child":[
+                                        ]
+                                }]
                         },
                         {
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"x":584,"text":"交易状态","fontSize":24,"color":"#eaa65a","centerY":0},
-                            "nodeParent":265,
+                            "props":{"text":"结束时间","left":600,"height":24,"fontSize":24,"color":"#A1A1A1","centerY":0},
+                            "nodeParent":383,
                             "label":"Label",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":267,
+                            "compId":406,
                             "child":[
                                 ]
                         },
                         {
                             "type":"Image",
-                            "searchKey":"Image,btn_time1",
-                            "props":{"y":4,"x":187,"width":229,"var":"btn_time1","skin":"comp/ic_pc_edit.png","sizeGrid":"22,22,22,22","height":44},
-                            "nodeParent":265,
-                            "label":"btn_time1",
-                            "isDirectory":false,
+                            "searchKey":"Image,time_end1",
+                            "props":{"x":704,"width":178,"var":"time_end1","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36,"centerY":0},
+                            "nodeParent":383,
+                            "label":"time_end1",
+                            "isOpen":true,
+                            "isDirectory":true,
                             "isAniNode":true,
-                            "hasChild":false,
-                            "compId":268,
+                            "hasChild":true,
+                            "compId":407,
                             "child":[
-                                ]
-                        },
-                        {
-                            "type":"Image",
-                            "searchKey":"Image,btn_status",
-                            "props":{"y":0,"x":705,"width":229,"var":"btn_status","skin":"comp/ic_pc_edit.png","sizeGrid":"22,22,22,22","height":44},
-                            "nodeParent":265,
-                            "label":"btn_status",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":269,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label,txt_time1",
-                            "props":{"y":12,"x":206,"width":167,"var":"txt_time1","text":"派彩时间","height":24,"fontSize":24,"color":"#ffffff"},
-                            "nodeParent":265,
-                            "label":"txt_time1",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":364,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label,txt_status",
-                            "props":{"y":12,"x":716,"width":167,"var":"txt_status","text":"派彩时间","height":24,"fontSize":24,"color":"#ffffff"},
-                            "nodeParent":265,
-                            "label":"txt_status",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":365,
-                            "child":[
-                                ]
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"y":0,"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},
+                                    "nodeParent":407,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":408,
+                                    "child":[
+                                        ]
+                                }]
                         }]
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":70,"x":0,"width":188,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},
-                    "nodeParent":260,
-                    "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":275,
-                    "child":[
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"text":"派彩时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
-                            "nodeParent":275,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":276,
-                            "child":[
-                                ]
-                        }],
-                    "$HIDDEN":false
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":70,"x":189,"width":198,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},
-                    "nodeParent":260,
-                    "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":277,
-                    "child":[
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"text":"注单号","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
-                            "nodeParent":277,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":278,
-                            "child":[
-                                ]
-                        }],
-                    "$HIDDEN":false
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":70,"x":388,"width":180,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},
-                    "nodeParent":260,
-                    "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":279,
-                    "child":[
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"text":"游戏名称","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
-                            "nodeParent":279,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":280,
-                            "child":[
-                                ]
-                        }],
-                    "$HIDDEN":false
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":70,"x":569,"width":189,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},
-                    "nodeParent":260,
-                    "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":281,
-                    "child":[
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"text":"投注金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
-                            "nodeParent":281,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":282,
-                            "child":[
-                                ]
-                        }],
-                    "$HIDDEN":false
-                },
-                {
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":70,"x":759,"width":198,"skin":"comp/list_title.png","sizeGrid":"2,2,2,2","height":40},
-                    "nodeParent":260,
-                    "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":283,
-                    "child":[
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"text":"已派奖","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
-                            "nodeParent":283,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":284,
-                            "child":[
-                                ]
-                        }],
-                    "$HIDDEN":false
                 },
                 {
                     "type":"List",
                     "searchKey":"List,list_mx",
-                    "props":{"y":119,"width":967,"var":"list_mx","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"right":0,"left":0,"height":339},
+                    "props":{"y":207,"width":945,"var":"list_mx","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"left":0,"height":357},
                     "nodeParent":260,
                     "label":"list_mx",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
@@ -562,7 +493,7 @@
                             "props":{"right":0,"renderType":"render","left":0},
                             "nodeParent":285,
                             "label":"Box",
-                            "isOpen":true,
+                            "isOpen":false,
                             "isDirectory":true,
                             "isAniNode":false,
                             "hasChild":true,
@@ -571,20 +502,20 @@
                                 {
                                     "type":"Image",
                                     "searchKey":"Image,item_bg",
-                                    "props":{"y":0,"width":962,"skin":"comp/list_item_bg1.png","right":5,"name":"item_bg","left":0,"height":50},
+                                    "props":{"y":0,"x":0,"width":946,"skin":"comp/list_itembg1.png","sizeGrid":"14,13,10,13","name":"item_bg","height":42},
                                     "nodeParent":287,
                                     "label":"item_bg",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
-                                    "compId":286,
+                                    "compId":398,
                                     "child":[
                                         ]
                                 },
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_1",
-                                    "props":{"y":0,"x":0,"width":185,"valign":"middle","text":"label","name":"txt_1","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},
+                                    "props":{"x":0,"width":236,"valign":"middle","text":"label","name":"txt_1","height":24,"fontSize":20,"color":"#00F41C","centerY":0,"align":"center"},
                                     "nodeParent":287,
                                     "label":"txt_1",
                                     "isDirectory":false,
@@ -597,7 +528,7 @@
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_2",
-                                    "props":{"y":0,"x":197,"width":185,"valign":"middle","text":"label","name":"txt_2","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},
+                                    "props":{"x":239,"width":235,"valign":"middle","text":"label","name":"txt_2","height":24,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":287,
                                     "label":"txt_2",
                                     "isDirectory":false,
@@ -610,7 +541,7 @@
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_3",
-                                    "props":{"y":0,"x":391,"width":175,"valign":"middle","text":"label","name":"txt_3","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},
+                                    "props":{"x":473,"width":236,"valign":"middle","text":"label","name":"txt_3","height":24,"fontSize":18,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":287,
                                     "label":"txt_3",
                                     "isDirectory":false,
@@ -623,7 +554,7 @@
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_4",
-                                    "props":{"y":0,"x":577,"width":179,"valign":"middle","text":"label","name":"txt_4","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},
+                                    "props":{"x":712,"width":235,"valign":"middle","text":"label","name":"txt_4","height":24,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":287,
                                     "label":"txt_4",
                                     "isDirectory":false,
@@ -632,205 +563,157 @@
                                     "compId":291,
                                     "child":[
                                         ]
-                                },
+                                }]
+                        }]
+                },
+                {
+                    "type":"Box",
+                    "searchKey":"Box",
+                    "props":{"y":149,"x":0},
+                    "nodeParent":260,
+                    "label":"Box",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":389,
+                    "child":[
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":0,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
+                            "nodeParent":389,
+                            "label":"Image",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":390,
+                            "child":[
                                 {
                                     "type":"Label",
                                     "searchKey":"Label",
-                                    "props":{"y":0,"x":770,"width":179,"valign":"middle","text":"label","height":24,"fontSize":24,"color":"#FFFFFF","centerY":0,"align":"center"},
-                                    "nodeParent":287,
+                                    "props":{"text":"状态","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},
+                                    "nodeParent":390,
                                     "label":"Label",
                                     "isDirectory":false,
-                                    "isAniNode":false,
+                                    "isAniNode":true,
                                     "hasChild":false,
-                                    "compId":292,
+                                    "compId":391,
                                     "child":[
                                         ]
-                                }]
+                                }],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":237,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
+                            "nodeParent":389,
+                            "label":"Image",
+                            "isOpen":true,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":392,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"text":"金额","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},
+                                    "nodeParent":392,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":393,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":473,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
+                            "nodeParent":389,
+                            "label":"Image",
+                            "isOpen":true,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":394,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"text":"时间","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},
+                                    "nodeParent":394,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":395,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":0,"x":710,"width":236,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
+                            "nodeParent":389,
+                            "label":"Image",
+                            "isOpen":true,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":396,
+                            "child":[
+                                {
+                                    "type":"Label",
+                                    "searchKey":"Label",
+                                    "props":{"text":"备注","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},
+                                    "nodeParent":396,
+                                    "label":"Label",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":397,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
                         }]
                 },
                 {
                     "type":"Label",
                     "searchKey":"Label,txt_tips2",
-                    "props":{"var":"txt_tips2","text":"您暂时还没有任何数据 先去游戏下吧","fontSize":24,"color":"#ffffff","centerY":33,"centerX":0},
+                    "props":{"y":0,"x":0,"var":"txt_tips2","text":"您暂时没有任何数据,先去游戏一下吧!","fontSize":24,"color":"#F8F8F8","centerY":101,"centerX":0,"alpha":0.43},
                     "nodeParent":260,
                     "label":"txt_tips2",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":294,
+                    "compId":399,
                     "child":[
                         {
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":-99,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5,"centerX":0},
-                            "nodeParent":294,
+                            "props":{"y":-121,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5,"centerX":-3},
+                            "nodeParent":399,
                             "label":"Image",
                             "isOpen":true,
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":295,
+                            "compId":400,
                             "child":[
                                 ]
                         }],
                     "$HIDDEN":false
-                },
-                {
-                    "type":"Box",
-                    "searchKey":"Box",
-                    "props":{"y":476,"x":46},
-                    "nodeParent":260,
-                    "label":"Box",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":302,
-                    "child":[
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":0,"x":0,"text":"-合计-","fontSize":22,"color":"#828287"},
-                            "nodeParent":302,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":296,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":0,"x":139,"text":"充值:","fontSize":22,"color":"#828287"},
-                            "nodeParent":302,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":297,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":0,"x":380,"text":"提现:","fontSize":22,"color":"#828287"},
-                            "nodeParent":302,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":298,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":53,"x":139,"text":"优惠:","fontSize":22,"color":"#828287"},
-                            "nodeParent":302,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":299,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":53,"x":380,"text":"返水:","fontSize":22,"color":"#828287"},
-                            "nodeParent":302,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":300,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label",
-                            "props":{"y":53,"x":743,"text":"余额","fontSize":22,"color":"#828287"},
-                            "nodeParent":302,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":301,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label,txt_cz",
-                            "props":{"y":0,"x":189,"width":145,"var":"txt_cz","text":"0.0","height":22,"fontSize":22,"color":"#13764F"},
-                            "nodeParent":302,
-                            "label":"txt_cz",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":304,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label,txt_yh",
-                            "props":{"y":53,"x":189.1123046875,"width":145,"var":"txt_yh","text":"0.0","height":22,"fontSize":22,"color":"#CE9956"},
-                            "nodeParent":302,
-                            "label":"txt_yh",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":305,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label,txt_tx",
-                            "props":{"y":0,"x":439,"width":145,"var":"txt_tx","text":"0.0","height":22,"fontSize":22,"color":"#6B0D27"},
-                            "nodeParent":302,
-                            "label":"txt_tx",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":306,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label,txt_fs",
-                            "props":{"y":53,"x":439,"width":145,"var":"txt_fs","text":"0.0","height":22,"fontSize":22,"color":"#CE9956"},
-                            "nodeParent":302,
-                            "label":"txt_fs",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":307,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Label",
-                            "searchKey":"Label,txt_ye",
-                            "props":{"y":55,"x":792,"width":126,"var":"txt_ye","text":"0.0","height":22,"fontSize":22,"color":"#CE9956"},
-                            "nodeParent":302,
-                            "label":"txt_ye",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":308,
-                            "child":[
-                                ]
-                        }]
                 }],
             "$HIDDEN":true
         },
@@ -1227,7 +1110,8 @@
                     "compId":108,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -1288,7 +1172,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_touzujilv",
-            "props":{"width":967,"var":"b_touzujilv","top":130,"right":10,"left":303,"height":581},
+            "props":{"width":978,"var":"b_touzujilv","top":130,"height":581,"centerX":150},
             "nodeParent":2,
             "label":"b_touzujilv",
             "isOpen":true,
@@ -1301,7 +1185,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":0,"width":967,"skin":"bgs/ic_gathering_bg.png","right":0,"left":0,"height":584},
+                    "props":{"y":0,"width":967,"skin":"comp/panel_bg1.png","right":0,"left":0,"height":584},
                     "nodeParent":330,
                     "label":"Image",
                     "isDirectory":false,
@@ -1309,13 +1193,14 @@
                     "hasChild":false,
                     "compId":331,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 },
                 {
                     "x":30,
                     "type":"List",
                     "searchKey":"List,list_1",
-                    "props":{"y":153,"width":967,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","right":0,"left":0,"height":429},
+                    "props":{"y":133,"var":"list_1","vScrollBarSkin":"comp/vscroll.png","right":10,"left":0,"height":440},
                     "nodeParent":330,
                     "label":"list_1",
                     "isOpen":false,
@@ -1339,7 +1224,7 @@
                                 {
                                     "type":"Image",
                                     "searchKey":"Image,item_bg",
-                                    "props":{"y":0,"x":0,"width":957,"skin":"comp/list_item_bg1.png","sizeGrid":"14,13,10,13","name":"item_bg","height":60},
+                                    "props":{"y":0,"x":0,"width":946,"skin":"comp/list_itembg1.png","sizeGrid":"14,13,10,13","name":"item_bg","height":42},
                                     "nodeParent":333,
                                     "label":"item_bg",
                                     "isDirectory":false,
@@ -1352,7 +1237,7 @@
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_1",
-                                    "props":{"y":26,"x":0,"width":188,"text":"#f4ce7f","name":"txt_1","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},
+                                    "props":{"x":0,"width":151,"text":"123458","name":"txt_1","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":333,
                                     "label":"txt_1",
                                     "isDirectory":false,
@@ -1365,7 +1250,7 @@
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_2",
-                                    "props":{"y":26,"x":200,"width":188,"text":"#f4ce7f","name":"txt_2","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},
+                                    "props":{"x":159,"width":150,"text":"欢乐麻将","name":"txt_2","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":333,
                                     "label":"txt_2",
                                     "isDirectory":false,
@@ -1378,7 +1263,7 @@
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_3",
-                                    "props":{"y":26,"x":387,"width":191,"text":"#f4ce7f","name":"txt_3","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},
+                                    "props":{"x":309,"width":159,"text":"10253","name":"txt_3","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":333,
                                     "label":"txt_3",
                                     "isDirectory":false,
@@ -1391,7 +1276,7 @@
                                 {
                                     "type":"Label",
                                     "searchKey":"Label,txt_4",
-                                    "props":{"y":26,"x":585,"width":192,"text":"#f4ce7f","name":"txt_4","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},
+                                    "props":{"x":479,"width":148,"text":"25058","name":"txt_4","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":333,
                                     "label":"txt_4",
                                     "isDirectory":false,
@@ -1403,14 +1288,27 @@
                                 },
                                 {
                                     "type":"Label",
+                                    "searchKey":"Label,txt_6",
+                                    "props":{"x":795,"width":151,"text":"+88.88","name":"txt_6","height":26,"fontSize":26,"color":"#00F41C","centerY":0,"align":"center"},
+                                    "nodeParent":333,
+                                    "label":"txt_6",
+                                    "isDirectory":false,
+                                    "isAniNode":false,
+                                    "hasChild":false,
+                                    "compId":340,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Label",
                                     "searchKey":"Label,txt_5",
-                                    "props":{"x":777,"width":169,"text":"#f4ce7f","name":"txt_5","height":26,"fontSize":26,"color":"#f4ce7f","centerY":0,"align":"center"},
+                                    "props":{"x":627,"width":159,"text":"2019-10-10 10:00","name":"txt_5","height":20,"fontSize":20,"color":"#A1A1A1","centerY":0,"align":"center"},
                                     "nodeParent":333,
                                     "label":"txt_5",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
-                                    "compId":340,
+                                    "compId":377,
                                     "child":[
                                         ]
                                 }]
@@ -1419,76 +1317,9 @@
                 },
                 {
                     "x":30,
-                    "type":"List",
-                    "searchKey":"List,list_tab1",
-                    "props":{"y":0,"x":0,"width":926,"var":"list_tab1","spaceX":5,"repeatY":1,"height":58},
-                    "nodeParent":330,
-                    "label":"list_tab1",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":341,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Box",
-                            "searchKey":"Box",
-                            "props":{"renderType":"render"},
-                            "nodeParent":341,
-                            "label":"Box",
-                            "isOpen":false,
-                            "isDirectory":true,
-                            "isAniNode":false,
-                            "hasChild":true,
-                            "compId":342,
-                            "child":[
-                                {
-                                    "type":"Image",
-                                    "searchKey":"Image,bg_normal",
-                                    "props":{"skin":"btns/ic_pc_grbb_tab.png","scaleY":0.5,"scaleX":0.5,"name":"bg_normal"},
-                                    "nodeParent":342,
-                                    "label":"bg_normal",
-                                    "isDirectory":false,
-                                    "isAniNode":false,
-                                    "hasChild":false,
-                                    "compId":343,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "type":"Image",
-                                    "searchKey":"Image,bg_selected",
-                                    "props":{"y":0,"x":0,"skin":"btns/ic_pc_grbb_tab_pressed.png","scaleY":0.5,"scaleX":0.5,"name":"bg_selected"},
-                                    "nodeParent":342,
-                                    "label":"bg_selected",
-                                    "isDirectory":false,
-                                    "isAniNode":false,
-                                    "hasChild":false,
-                                    "compId":344,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "type":"Label",
-                                    "searchKey":"Label,txt_label",
-                                    "props":{"y":15,"x":0,"width":180,"text":"棋牌投注记录","name":"txt_label","height":24,"fontSize":24,"align":"center"},
-                                    "nodeParent":342,
-                                    "label":"txt_label",
-                                    "isDirectory":false,
-                                    "isAniNode":false,
-                                    "hasChild":false,
-                                    "compId":345,
-                                    "child":[
-                                        ]
-                                }]
-                        }]
-                },
-                {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":72,"x":12,"text":"派彩时间","fontSize":24,"color":"#ffffff"},
+                    "props":{"y":29,"x":20,"text":"选择平台","fontSize":24,"color":"#A1A1A1"},
                     "nodeParent":330,
                     "label":"Label",
                     "isDirectory":false,
@@ -1500,49 +1331,22 @@
                 },
                 {
                     "x":30,
-                    "type":"Label",
-                    "searchKey":"Label",
-                    "props":{"y":72,"x":671,"text":"游戏平台","fontSize":24,"color":"#ffffff"},
-                    "nodeParent":330,
-                    "label":"Label",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":349,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image,cb_pt",
-                    "props":{"y":67,"x":783,"var":"cb_pt","skin":"bgs/ic_pc_edit.png","scaleY":0.5,"scaleX":0.5},
-                    "nodeParent":330,
-                    "label":"cb_pt",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":350,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":113.5,"x":0,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                    "props":{"y":68.5,"x":2,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
                     "nodeParent":330,
                     "label":"Image",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":352,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"text":"派彩时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                            "props":{"text":"注单号","right":0,"left":0,"height":26,"fontSize":24,"color":"#FFD39F","centerY":0,"align":"center"},
                             "nodeParent":352,
                             "label":"Label",
                             "isDirectory":false,
@@ -1558,19 +1362,20 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":113.5,"x":194,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                    "props":{"y":68,"x":160,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
                     "nodeParent":330,
                     "label":"Image",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":354,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"text":"注单号","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                            "props":{"text":"游戏名称","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},
                             "nodeParent":354,
                             "label":"Label",
                             "isDirectory":false,
@@ -1586,19 +1391,20 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":113,"x":388,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                    "props":{"y":68,"x":318,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
                     "nodeParent":330,
                     "label":"Image",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":356,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"text":"游戏名称","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                            "props":{"text":"投注金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},
                             "nodeParent":356,
                             "label":"Label",
                             "isDirectory":false,
@@ -1614,19 +1420,20 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":113,"x":582,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                    "props":{"y":68,"x":476,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
                     "nodeParent":330,
                     "label":"Image",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":358,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"text":"投注金额","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                            "props":{"text":"有效投注","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},
                             "nodeParent":358,
                             "label":"Label",
                             "isDirectory":false,
@@ -1642,19 +1449,20 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":113.5,"x":776,"width":191,"skin":"bgs/ic_pc_pop_wind.png","sizeGrid":"2,2,2,2","height":40},
+                    "props":{"y":68,"x":792,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
                     "nodeParent":330,
                     "label":"Image",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":360,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label",
-                            "props":{"text":"已派奖","right":0,"left":0,"height":26,"fontSize":26,"color":"#f3d667","centerY":0,"align":"center"},
+                            "props":{"text":"结算","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},
                             "nodeParent":360,
                             "label":"Label",
                             "isDirectory":false,
@@ -1670,19 +1478,20 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label,txt_tips1",
-                    "props":{"y":0,"x":0,"var":"txt_tips1","text":"暂无数据","fontSize":28,"color":"#ffffff","centerY":101,"centerX":0},
+                    "props":{"var":"txt_tips1","text":"您暂时没有任何数据,先去游戏一下吧!","fontSize":24,"color":"#F8F8F8","centerY":101,"centerX":0,"alpha":0.43},
                     "nodeParent":330,
                     "label":"txt_tips1",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":362,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":-94,"x":-10,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5},
+                            "props":{"y":-121,"skin":"comp/bg_data_null.png","scaleY":0.5,"scaleX":0.5,"centerX":-3},
                             "nodeParent":362,
                             "label":"Image",
                             "isOpen":true,
@@ -1698,16 +1507,128 @@
                 {
                     "x":30,
                     "type":"ComboBox",
-                    "searchKey":"ComboBox,cb_time",
-                    "props":{"y":73,"x":125.5,"width":165,"var":"cb_time","stateNum":1,"skin":"comp/combobox.png","labels":"所有时间,今天,昨天,一个月内","labelSize":22,"labelColors":"#FFFFFF,#FFFFFF,#FFFFFF,#FFFFFF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":32},
+                    "searchKey":"ComboBox,cb_pt",
+                    "props":{"y":27,"x":124.5,"width":178,"var":"cb_pt","stateNum":1,"skin":"comp/combobox.png","selectedIndex":0,"labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36},
                     "nodeParent":330,
-                    "label":"cb_time",
+                    "label":"cb_pt",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":370,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "searchKey":"Label",
+                    "props":{"y":31,"text":"开始时间","fontSize":24,"color":"#A1A1A1","centerX":-134},
+                    "nodeParent":330,
+                    "label":"Label",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":371,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,time_start",
+                    "props":{"y":28,"width":178,"var":"time_start","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36,"centerX":0},
+                    "nodeParent":330,
+                    "label":"time_start",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":372,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"y":0,"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},
+                            "nodeParent":372,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":402,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "searchKey":"Label",
+                    "props":{"y":30,"text":"结束时间","right":188,"fontSize":24,"color":"#A1A1A1"},
+                    "nodeParent":330,
+                    "label":"Label",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":373,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,time_end",
+                    "props":{"y":25,"width":178,"var":"time_end","stateNum":1,"skin":"comp/combobox.png","selectedLabel":"AG视讯","right":10,"labels":"AG视讯,电子游戏","labelSize":22,"labelColors":"#DFDFDF,#DFDFDF,#DFDFDF,#DFDFDF","itemSize":24,"itemColors":"#847C68,#ffffff,#ffffff,##847C68,#847C68","height":36},
+                    "nodeParent":330,
+                    "label":"time_end",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":374,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"x":4,"width":151,"text":"2019-12-12","height":24,"fontSize":24,"color":"#DFDFDF","centerY":0},
+                            "nodeParent":374,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":401,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":68.5,"x":634,"width":158,"skin":"comp/list_title2.png","sizeGrid":"2,2,2,2"},
+                    "nodeParent":330,
+                    "label":"Image",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":375,
+                    "child":[
+                        {
+                            "type":"Label",
+                            "searchKey":"Label",
+                            "props":{"text":"投注时间","right":0,"left":0,"height":26,"fontSize":26,"color":"#FFD39F","centerY":0,"align":"center"},
+                            "nodeParent":375,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":376,
+                            "child":[
+                                ]
+                        }],
+                    "$HIDDEN":false
                 }],
             "$HIDDEN":false
         }],

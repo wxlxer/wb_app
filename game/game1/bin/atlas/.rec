@@ -400,8 +400,7 @@ P 27E0F905 checkbox_0.png
 P 6B7AB858 clip_num.png
 P 63A22FAC clip_tree_arrow.png
 P D749C312 clip_tree_folder.png
-P 26BEA153 combobox.png
-P 704C5D70 combobox1.png
+P AD5872AA combobox.png
 R 7E1FCC2E dactivity_nav_left.png
 P A53BA587 db7_room.png
 P 0EC1FBBC ddeposit_chonzhizhifubaotongdao.png
@@ -436,7 +435,12 @@ P E3BE4759 laba_bg.png
 P BA2A0579 label.png
 P 9FB4E708 list_item_bg1.png
 P B5E259B4 list_item_bg2.png
+R 9226704D list_itembg1.png
+R 7DC6913F list_itembg2.png
 P D5EA3105 list_title.png
+P 71193E3D list_title2.png
+R 33AEAAEB panel_bg.png
+R 9208AC3C panel_bg1.png
 P B017E53E progress$bar.png
 P C05839CD progress.png
 R 307A5A95 progress_load_bg_select.png
@@ -446,6 +450,8 @@ P 7902A26C radio_chose.png
 P 179FD21E radio_unchose.png
 P 3C493DD4 radiogroup.png
 P 5BA25C15 tab.png
+P 1AA9BCCC tab_1.png
+P 82923A52 tab_2.png
 P A3D7A036 textarea.png
 P A3D7A036 textinput.png
 P 155402C0 vscroll$bar.png
