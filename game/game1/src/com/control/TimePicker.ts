@@ -2,6 +2,7 @@ export default class TimePicker extends Laya.EventDispatcher
 {
     private _res:Laya.Image;
     private _label:Laya.Label;
+    private _offSize:number = 0;
     public constructor(res:Laya.Image)
     {
         super();
@@ -19,6 +20,13 @@ export default class TimePicker extends Laya.EventDispatcher
     public get time():string{
         return this._label.text;
     }   
+    public set time(value:string){
+        this._label.text = value;
+    }
+    public setOffsize(time:number):void
+    {
+        this._offSize = time;
+    }
 
     private onClick(evt:Laya.Event):void
     {
@@ -28,7 +36,7 @@ export default class TimePicker extends Laya.EventDispatcher
             window['showDatePicker'](function(txt){
                 self._label.text = txt;
                 self.event(Laya.Event.CHANGE,txt);
-            });
+            },this._offSize);
         }
     }
 }

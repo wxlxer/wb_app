@@ -24,6 +24,27 @@ export function copyStr(str:string):void
     })
 }
 /**
+ * 获得指定的日期 
+ * @param str "/Date(1568794397000)/"
+ * @param withTime 是否包含时间
+ * @return 2012-12-14 02:03:00
+ */
+export function getDate(str:string,withTime:boolean = true):string
+{
+    var time:number = utils.MathUtility.GetNumInString(str);
+    var date:Date = new Date(time);
+    var str:string = date.toLocaleDateString();
+    var date_str:string = str.replace(/\//g,"-");
+    
+    if(withTime)
+    {
+        str = date.toTimeString();
+        date_str += " " + str.split(" ")[0];
+
+    }
+    return date_str;
+}
+/**
  * 保存图片到相册
  */
 export function saveImageToGallery(img:Laya.Image):void
@@ -56,3 +77,9 @@ export function saveImageToGallery(img:Laya.Image):void
             g_uiMgr.showTip('保存失败',true);
     });
 }
+
+export function saveSystemObj(obj:any):void
+{
+    g_systemData = obj;
+}
+export var g_systemData:any;

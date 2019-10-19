@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":4,
-    "selecteID":11,
+    "selectedBox":192,
+    "selecteID":193,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":192,
+    "maxID":194,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -50,14 +50,13 @@
             "props":{"y":120,"x":0,"width":283,"var":"b_left","top":120,"left":0,"height":600},
             "nodeParent":2,
             "label":"b_left",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":144,
             "child":[
                 {
-                    "x":30,
                     "type":"List",
                     "searchKey":"List,list_1",
                     "props":{"var":"list_1","vScrollBarSkin":"comp/vscroll.png","top":0,"spaceY":5,"right":0,"left":0,"bottom":0},
@@ -70,7 +69,6 @@
                     "compId":146,
                     "child":[
                         {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box",
                             "props":{"renderType":"render"},
@@ -83,7 +81,6 @@
                             "compId":147,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,bg_normal",
                                     "props":{"x":0,"width":283,"skin":"bgs/ic_charge_unchose.png","name":"bg_normal","height":86},
@@ -98,7 +95,6 @@
                                     "$HIDDEN":false
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,bg_selected",
                                     "props":{"width":283,"skin":"bgs/ic_charge_chose.png","name":"bg_selected","height":86},
@@ -114,7 +110,6 @@
                                     "$HIDDEN":false
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,img_type",
                                     "props":{"x":16,"width":50,"skin":"icons/nfc_icon.png","name":"img_type","height":50,"centerY":0},
@@ -128,7 +123,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_label",
                                     "props":{"y":30,"x":89,"width":189,"text":"label","name":"txt_label","height":26,"fontSize":26},
@@ -142,7 +136,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,img_yh",
                                     "props":{"y":5.5,"x":223,"skin":"icons/ic_charge_discount.png","scaleY":0.5,"scaleX":0.5,"name":"img_yh"},
@@ -163,7 +156,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,b_title",
-            "props":{"y":0,"var":"b_title","right":0,"left":0,"height":120},
+            "props":{"y":0,"var":"b_title","right":0,"mouseThrough":true,"left":0,"height":120},
             "nodeParent":2,
             "label":"b_title",
             "isOpen":true,
@@ -233,28 +226,13 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_refresh",
-                    "props":{"var":"btn_refresh","stateNum":"1","skin":"btns/btn_refresh.png","right":292,"centerY":0},
+                    "props":{"y":60,"x":959,"var":"btn_refresh","stateNum":"1","skin":"btns/btn_refresh.png","right":292,"centerY":0,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":4,
                     "label":"btn_refresh",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":10,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_histroy",
-                    "props":{"y":27,"var":"btn_histroy","stateNum":"1","skin":"btns/ic_recharge_jilu.png","scaleY":0.8,"scaleX":0.8,"right":14},
-                    "nodeParent":4,
-                    "label":"btn_histroy",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":9,
                     "child":[
                         ]
                 },
@@ -280,13 +258,14 @@
             "props":{"y":122,"var":"b_zf","right":5,"left":298,"height":598},
             "nodeParent":2,
             "label":"b_zf",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":136,
             "child":[
                 {
+                    "x":30,
                     "type":"UIView",
                     "source":"Cz_xx_chooseMoney.scene",
                     "searchKey":"UIView",
@@ -298,7 +277,8 @@
                     "hasChild":false,
                     "compId":190,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 }],
             "$HIDDEN":true
         },
@@ -329,7 +309,7 @@
                     "child":[
                         ]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -338,14 +318,13 @@
             "props":{"var":"b_banklist","top":120,"right":5,"left":293,"bottom":0},
             "nodeParent":2,
             "label":"b_banklist",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":25,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":39,"x":60,"skin":"icons/ic_dot.png"},
@@ -359,7 +338,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":38,"x":92,"text":"充值收款银行选择","fontSize":22,"color":"#d6c09a"},
@@ -373,7 +351,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"List",
                     "searchKey":"List,list_banklist",
                     "props":{"y":83,"var":"list_banklist","vScrollBarSkin":"comp/vscroll.png","spaceY":5,"right":5,"left":10,"height":446},
@@ -386,7 +363,6 @@
                     "compId":130,
                     "child":[
                         {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box",
                             "props":{"right":0,"renderType":"render","left":0},
@@ -399,7 +375,6 @@
                             "compId":131,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image",
                                     "props":{"y":0,"skin":"bgs/ic_member_find_bg.png","sizeGrid":"16,24,13,24","right":0,"left":0,"height":144},
@@ -413,7 +388,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,img_bank",
                                     "props":{"y":25,"x":50,"width":70,"skin":"icons/bankIcon.png","sizeGrid":"30,34,26,34","name":"img_bank","height":70},
@@ -427,7 +401,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_info",
                                     "props":{"y":25,"x":148,"text":"网银、手机网页庄站通道送2%","name":"txt_info","fontSize":30,"color":"#ffffff","bold":true},
@@ -441,7 +414,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Label",
                                     "searchKey":"Label,txt_id",
                                     "props":{"y":79,"x":148,"text":"2123156465464564.","name":"txt_id","fontSize":30,"color":"#ffffff","bold":true},
@@ -455,7 +427,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Button",
                                     "searchKey":"Button,btn_ok",
                                     "props":{"y":40,"x":766,"stateNum":"1","skin":"btns/ic_to_recharge.png","scaleY":0.5,"scaleX":0.5,"name":"btn_ok"},
@@ -470,7 +441,7 @@
                                 }]
                         }]
                 }],
-            "$HIDDEN":false
+            "$HIDDEN":true
         },
         {
             "x":15,
@@ -479,14 +450,13 @@
             "props":{"var":"b_input","top":120,"right":5,"left":293,"bottom":0},
             "nodeParent":2,
             "label":"b_input",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":26,
             "child":[
                 {
-                    "x":30,
                     "type":"UIView",
                     "source":"Cz_xx_Bank.scene",
                     "searchKey":"UIView",
@@ -501,11 +471,78 @@
                         ]
                 }],
             "$HIDDEN":true
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,b_xs",
+            "props":{"var":"b_xs","top":120,"right":5,"left":293,"bottom":0},
+            "nodeParent":2,
+            "label":"b_xs",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":192,
+            "child":[
+                {
+                    "x":30,
+                    "type":"UIView",
+                    "source":"Cz_xs.scene",
+                    "searchKey":"UIView",
+                    "props":{},
+                    "nodeParent":192,
+                    "label":"UIView",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":193,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {
             "nodes":[
-                ],
+                {
+                    "target":10,
+                    "keyframes":{
+                        "x":[
+                            {
+                                "value":959,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "key":"x",
+                                "index":0
+                            }],
+                        "rotation":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "key":"rotation",
+                                "index":0
+                            },
+                            {
+                                "value":180,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "key":"rotation",
+                                "index":20
+                            },
+                            {
+                                "value":360,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "key":"rotation",
+                                "index":40
+                            }]
+                    }
+                }],
             "name":"ani1",
             "id":1,
             "frameRate":24,

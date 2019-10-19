@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":10,
-    "selecteID":14,
+    "selectedBox":2,
+    "selecteID":6,
     "searchKey":"View",
     "props":{"width":980,"sceneColor":"#000000","height":600},
     "nodeParent":-1,
@@ -130,7 +130,7 @@
             "x":15,
             "type":"List",
             "searchKey":"List,list_3",
-            "props":{"y":138,"x":0,"width":957,"var":"list_3","vScrollBarSkin":"comp/vscroll.png","spaceY":20,"spaceX":120,"right":10,"left":10,"height":163},
+            "props":{"y":138,"x":0,"width":957,"var":"list_3","vScrollBarSkin":"comp/vscroll.png","spaceY":20,"spaceX":120,"right":10,"left":10,"height":180},
             "nodeParent":2,
             "label":"list_3",
             "isOpen":true,
@@ -201,7 +201,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":309,"x":0,"width":967,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":5,"height":164},
+            "props":{"y":349,"width":970,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":5,"height":124},
             "nodeParent":2,
             "label":"Image",
             "isOpen":true,
@@ -278,20 +278,6 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":8,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Label",
-            "searchKey":"Label",
-            "props":{"y":408,"x":32,"text":"温馨提示:冲只成功到账备注真实姓名","fontSize":24,"color":"#B88C5B"},
-            "nodeParent":2,
-            "label":"Label",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":9,
             "child":[
                 ]
         }],

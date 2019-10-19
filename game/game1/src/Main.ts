@@ -2,6 +2,7 @@ import GameConfig from "./GameConfig";
 import { ui } from "./ui/layaMaxUI";
 import Hall from "./com/Hall";
 import MiniLoadingUi from "./com/MiniLoadingUi";
+import { g_gameData } from "./com/data/GameData";
 class Main  extends gamelib.core.GameMain
 {
 	constructor() {
@@ -31,6 +32,9 @@ class Main  extends gamelib.core.GameMain
 
 		var main:Hall = new Hall();
 		main.show();
+
+
+		window['g_gameData'] = g_gameData;
 	}
 }
 //激活启动类

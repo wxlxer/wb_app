@@ -10,13 +10,13 @@ export default class BaseHistroy extends gamelib.core.Ui_NetHandle
     {
         this._list = this._res["list_1"];
         this._tips = this._res['txt_tips'];
-        this._list.selectHandler = Laya.Handler.create(this,this.onItemRender,null,false);
+        this._list.renderHandler = Laya.Handler.create(this,this.onItemRender,null,false);
         this._list.dataSource = [];
     }
     public setData(data:any):void
     {
         this._list.dataSource = data;
-        this._tips.visible = data.length == 0;
+        this._tips.visible = data == null || data.length == 0;
     }
     protected onItemRender(box:Laya.Box,index:number):void
     {

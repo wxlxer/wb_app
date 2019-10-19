@@ -155,7 +155,19 @@ export default class GameData
         return result;
     } 
 
-
+    public getAllPlatformNames():Array<PlatformData>
+    {
+        var result:Array<PlatformData> = [];
+        for(var key in this._allPlatform)
+        {
+            var arr:Array<PlatformData> = this._allPlatform[key];
+            for(var temp of arr)
+            {
+               result.push(temp);
+            }
+        }
+        return result;
+    }
     /**
      * 
      * @param pfd 添加平台数据

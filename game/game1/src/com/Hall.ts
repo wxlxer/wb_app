@@ -15,10 +15,12 @@ import RegisterUi from "./login/RegisterUi";
 import TabList from "./control/TabList";
 import { g_gameData, GameType, checkLogin } from "./data/GameData";
 import { g_playerData } from "./data/PlayerData";
-import login from "./Global";
+import login, { saveSystemObj } from "./Global";
 import { GameListMgr } from "./gameList/GameList";
 import PlatfromList from "./gameList/PlatfromList";
 import { g_chongZhiData } from "./data/ChongZhiData";
+import SetPassword from "./tixian/SetPassword";
+import VerifyPassword from "./tixian/VerifyPassword";
 
 export default class Hall extends gamelib.core.Ui_NetHandle
 {
@@ -149,8 +151,8 @@ export default class Hall extends gamelib.core.Ui_NetHandle
         // g_net.request(gamelib.GameMsg.GongGao,{});
         // g_net.request(gamelib.GameMsg.Indexhot,{});
 
-        // g_net.request(gamelib.GameMsg.Getapi,{});
-        // g_net.request(gamelib.GameMsg.Systemseting,{});
+        g_net.request(gamelib.GameMsg.Getapi,{});
+        g_net.request(gamelib.GameMsg.Systemseting,{});
         
         //请求热门游戏
         // g_net.request(gamelib.GameMsg.Getapigame,{gametype:-3,pageSize:100,pageIndex:1});
@@ -159,15 +161,17 @@ export default class Hall extends gamelib.core.Ui_NetHandle
         // g_net.request(gamelib.GameMsg.Getapitypegame,{});
         // g_net.request(gamelib.GameMsg.Getapigame,{});
         
-        
+        var temp = new VerifyPassword();
+        temp.show();
 
         this._tab.selectedIndex = 0;
     }
     public reciveNetMsg(msg:string,requestData:any,data:any)
     {
         console.log(msg,requestData,data);
-        if(data.retCode != 0)
+        if(data.retCode != 0 && msg != gamelib.GameMsg.Readmoney)
         {
+            g_uiMgr.closeMiniLoading();
             g_uiMgr.showTip(data.retMsg);
             return;
         }                
@@ -225,7 +229,9 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._res['txt_name'].text = g_playerData.m_userName;
                 this._res['txt_money'].text = g_playerData.m_money;
                 break;
-            
+            case gamelib.GameMsg.Systemseting:
+                saveSystemObj(data.retData);
+                break;
             case gamelib.GameMsg.GongGao:
                 this._noticeMsg = this._noticeMsg || new NoticeMsg();
                 if(this._noticeMsg.setData(data))
@@ -305,7 +311,13 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                 this._info.show();
                 break;
             case "btn_reload":
-                
+                if(!checkLogin())
+                {
+                    return;
+                }
+                var ani:Laya.FrameAnimation = this._res["ani1"];
+                ani.play(0,false);
+                g_net.requestWithToken(gamelib.GameMsg.Readmoney,{});
                 break;
             case "img_web":
                 utils.tools.copyToClipboard("ddddd");

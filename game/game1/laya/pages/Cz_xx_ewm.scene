@@ -87,7 +87,7 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":137,"x":15,"width":115,"text":"个人信息","height":22,"fontSize":22,"color":"#a0a0a0","align":"right"},
+                    "props":{"y":137,"x":15,"width":115,"text":"收款人","height":22,"fontSize":22,"color":"#a0a0a0","align":"right"},
                     "nodeParent":41,
                     "label":"Label",
                     "isOpen":true,
@@ -130,7 +130,7 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":286,"x":15,"width":115,"text":"收款账号","height":24,"fontSize":24,"color":"#a0a0a0","align":"right"},
+                    "props":{"y":226,"x":15,"width":115,"text":"存款金额","height":24,"fontSize":24,"color":"#a0a0a0","align":"right"},
                     "nodeParent":41,
                     "label":"Label",
                     "isOpen":true,
@@ -143,102 +143,19 @@
                 },
                 {
                     "x":30,
-                    "type":"Label",
-                    "searchKey":"Label",
-                    "props":{"y":361,"x":15,"width":115,"text":"存款信息","height":24,"fontSize":24,"color":"#a0a0a0","align":"right"},
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":251,"x":150,"width":285,"height":2},
                     "nodeParent":41,
-                    "label":"Label",
+                    "label":"Image",
                     "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":34,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":238,"x":150,"width":285,"height":2},
-                    "nodeParent":41,
-                    "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":49,
-                    "child":[
-                        {
-                            "type":"Line",
-                            "searchKey":"Line",
-                            "props":{"toY":0,"toX":295,"lineWidth":3,"lineColor":"#b7b7b7"},
-                            "nodeParent":49,
-                            "label":"Line",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":50,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "searchKey":"Label,txt_type",
-                    "props":{"y":212,"x":15,"width":115,"var":"txt_type","text":"支付宝账号","height":24,"fontSize":22,"color":"#a0a0a0","align":"right"},
-                    "nodeParent":41,
-                    "label":"txt_type",
-                    "isOpen":true,
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":51,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":385,"x":150,"width":285,"height":2},
-                    "nodeParent":41,
-                    "label":"Image",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":52,
-                    "child":[
-                        {
-                            "type":"Line",
-                            "searchKey":"Line",
-                            "props":{"toY":0,"toX":295,"lineWidth":3,"lineColor":"#b7b7b7"},
-                            "nodeParent":52,
-                            "label":"Line",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":53,
-                            "child":[
-                                ]
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image",
-                    "props":{"y":311,"x":150,"width":285,"height":2},
-                    "nodeParent":41,
-                    "label":"Image",
-                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":54,
                     "child":[
                         {
+                            "x":45,
                             "type":"Line",
                             "searchKey":"Line",
                             "props":{"toY":0,"toX":295,"lineWidth":3,"lineColor":"#b7b7b7"},
@@ -314,7 +231,7 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label",
-                    "props":{"y":286,"x":415,"width":25,"text":"元","height":24,"fontSize":24,"color":"#919196"},
+                    "props":{"y":226,"x":415,"width":25,"text":"元","height":24,"fontSize":24,"color":"#919196"},
                     "nodeParent":41,
                     "label":"Label",
                     "isDirectory":false,
@@ -324,21 +241,6 @@
                     "child":[
                         ]
                 }]
-        },
-        {
-            "x":15,
-            "type":"TextInput",
-            "searchKey":"TextInput,txt_info",
-            "props":{"y":361,"x":150,"width":294,"var":"txt_info","promptColor":"#a0a0a0","prompt":"请备注转账人姓名","height":26,"fontSize":22,"color":"#ffffff"},
-            "nodeParent":2,
-            "label":"txt_info",
-            "isOpen":false,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":35,
-            "child":[
-                ]
         },
         {
             "x":15,
@@ -400,43 +302,13 @@
             "x":15,
             "type":"Label",
             "searchKey":"Label,txt_zh",
-            "props":{"y":287,"x":150,"width":258,"var":"txt_zh","text":"1111","height":24,"fontSize":24,"color":"#FFFFFF"},
+            "props":{"y":221,"x":150,"width":258,"var":"txt_zh","text":"1111","height":24,"fontSize":24,"color":"#FFFFFF"},
             "nodeParent":2,
             "label":"txt_zh",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":28,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Label",
-            "searchKey":"Label,txt_name",
-            "props":{"y":212,"x":150,"width":230,"var":"txt_name","text":"1111","height":24,"fontSize":24,"color":"#FFFFFF"},
-            "nodeParent":2,
-            "label":"txt_name",
-            "isOpen":false,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":24,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Button",
-            "searchKey":"Button,btn_copy2",
-            "props":{"y":205,"x":400,"var":"btn_copy2","stateNum":"1","skin":"btns/ic_copy2.png","scaleY":0.5,"scaleX":0.5},
-            "nodeParent":2,
-            "label":"btn_copy2",
-            "isOpen":true,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":27,
             "child":[
                 ]
         },

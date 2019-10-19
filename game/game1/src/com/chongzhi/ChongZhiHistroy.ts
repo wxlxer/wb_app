@@ -28,14 +28,14 @@ export default class ChongZhiHistroy extends BaseHistroy
         //1线上 2线下
         g_net.requestWithToken(gamelib.GameMsg.moneyinfo,{
             moneytype:1,            
-            page:0,
+            page:1,
             pagesize:100,
             inputtime1:start_date,
             inputtime2:end_date
         })
         g_net.requestWithToken(gamelib.GameMsg.moneyinfo,{
             moneytype:2,            
-            page:0,
+            page:1,
             pagesize:100,
             inputtime1:start_date,
             inputtime2:end_date

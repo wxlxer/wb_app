@@ -46,7 +46,7 @@ export default class ChongZhi extends BasePanel
         this._xxList.push(this._xx_bankList);
         this._xxList.push(this._xx_choseMoney);
 
-        this.addBtnToListener('btn_sx');
+        this.addBtnToListener('btn_refresh');
         this.addBtnToListener('btn_histroy');
 
         this._tab.dataSource = [];
@@ -175,8 +175,10 @@ export default class ChongZhi extends BasePanel
     {
         switch(evt.currentTarget.name)
         {
-            case "btn_sx"://刷新
-                g_uiMgr.showMiniLoading();
+            case "btn_refresh"://刷新
+                var ani:Laya.FrameAnimation = this._res['ani1'];
+                ani.play(0,false);
+                // g_uiMgr.showMiniLoading();
                 g_net.requestWithToken(gamelib.GameMsg.Readmoney,{})
                 break;
             case "btn_histroy": //充值历史

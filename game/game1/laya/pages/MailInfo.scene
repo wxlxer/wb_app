@@ -60,7 +60,7 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,btn_remove",
-            "props":{"y":469,"var":"btn_remove","stateNum":"1","skin":"btns/delete_message.png","scaleY":0.5,"scaleX":0.5,"centerX":0},
+            "props":{"y":556,"var":"btn_remove","stateNum":"1","skin":"btns/delete_message.png","scaleY":0.5,"scaleX":0.5,"centerX":4},
             "nodeParent":2,
             "label":"btn_remove",
             "isDirectory":false,

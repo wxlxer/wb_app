@@ -1182,6 +1182,10 @@ var gamelib;
         */
         GameMsg.Getqkpwd = "/AppApi/CashOperationApi/getqkpwd";
         /**
+        * 44.	验证取款密码
+        */
+        GameMsg.Qkpassword = "/AppApi/MemberApi/qkpassword";
+        /**
          * 获得进入游戏的地址
          */
         GameMsg.GetApilogin = "/AppApi/GameLoginApi/GetApilogin";

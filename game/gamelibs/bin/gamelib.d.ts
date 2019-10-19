@@ -676,6 +676,10 @@ declare module gamelib {
         */
         static Getqkpwd: string;
         /**
+        * 44.	验证取款密码
+        */
+        static Qkpassword: string;
+        /**
          * 获得进入游戏的地址
          */
         static GetApilogin: string;

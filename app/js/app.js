@@ -102,7 +102,7 @@ function application_open_alpay()
 
 }
 /**
- * 打开支付宝
+ * 打开微信
  */
 function application_open_wx()
 {
@@ -121,7 +121,42 @@ function application_open_wx()
 			console.log('Open system default browser failed: ' + e.message);  
 		});  
 	}  
+}
 
+/*
+	打开一个弹窗
+	content 内容，可以为HTML文本
+	title 标题，默认空
+	style	样式控制，如果为null,或者不填写，为默认样式
+*/
+function application_layer_show(content,title,style)
+{
+	if(typeof(content) == 'undefined'|| content == null)
+		return;
+	var t;
+	
+	if(typeof(title) == 'undefined'|| title == null)
+		t = false;
+	else
+		t = title;
+		
+	if(typeof(style) != 'object'|| style == null)
+	{
+		layer.open({
+		  type: 2,
+		  title: t,
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['90%', '90%'],
+		  anim: 2,
+		  content: content  //url
+		});
+		return;
+	}
+	
+	var s = style;	
+	s.content = content;	
+	layer.open(s);
 }
 
 	

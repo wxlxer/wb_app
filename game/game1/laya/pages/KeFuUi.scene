@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":17,
+    "selecteID":29,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":39,
+    "maxID":48,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -31,23 +31,8 @@
         {
             "x":15,
             "type":"Box",
-            "searchKey":"Box,b_zx",
-            "props":{"y":92,"x":293,"var":"b_zx"},
-            "nodeParent":2,
-            "label":"b_zx",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":15,
-            "child":[
-                ],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Box",
             "searchKey":"Box,b_kf",
-            "props":{"var":"b_kf","top":125,"right":25,"left":300,"bottom":0},
+            "props":{"y":164,"x":332,"width":872,"var":"b_kf"},
             "nodeParent":2,
             "label":"b_kf",
             "isOpen":true,
@@ -58,128 +43,128 @@
             "child":[
                 {
                     "x":30,
-                    "type":"List",
-                    "searchKey":"List,list_1",
-                    "props":{"y":46,"x":0,"width":970,"spaceX":5,"repeatY":1,"name":"list_1","height":505},
+                    "type":"Image",
+                    "searchKey":"Image,b_zx",
+                    "props":{"y":32,"x":11,"width":246,"var":"b_zx","skin":"bgs/kf_bg.png"},
                     "nodeParent":17,
-                    "label":"list_1",
+                    "label":"b_zx",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":33,
+                    "compId":39,
                     "child":[
                         {
                             "x":45,
-                            "type":"Box",
-                            "searchKey":"Box",
-                            "props":{"width":307,"renderType":"render","height":496},
-                            "nodeParent":33,
-                            "label":"Box",
-                            "isOpen":true,
-                            "isDirectory":true,
-                            "isAniNode":false,
-                            "hasChild":true,
-                            "compId":34,
+                            "type":"Button",
+                            "searchKey":"Button,btn_zx",
+                            "props":{"y":356,"x":8,"var":"btn_zx","stateNum":"1","skin":"btns/kf_zx.png"},
+                            "nodeParent":39,
+                            "label":"btn_zx",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":40,
                             "child":[
-                                {
-                                    "x":60,
-                                    "type":"Image",
-                                    "searchKey":"Image",
-                                    "props":{"y":0,"x":0,"width":307,"skin":"bgs/ic_gathering_bg.png","sizeGrid":"5,5,5,5","height":496},
-                                    "nodeParent":34,
-                                    "label":"Image",
-                                    "isDirectory":false,
-                                    "isAniNode":false,
-                                    "hasChild":false,
-                                    "compId":20,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Label",
-                                    "searchKey":"Label,txt_name",
-                                    "props":{"y":366,"text":"QQ客服","right":0,"name":"txt_name","left":0,"height":24,"fontSize":24,"color":"#ffffff","align":"center"},
-                                    "nodeParent":34,
-                                    "label":"txt_name",
-                                    "isDirectory":false,
-                                    "isAniNode":false,
-                                    "hasChild":false,
-                                    "compId":22,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Button",
-                                    "searchKey":"Button,btn_lx",
-                                    "props":{"y":404,"var":"btn_lx","stateNum":"1","skin":"btns/ic_customer_lianxi.png","scaleY":0.5,"scaleX":0.5,"centerX":0},
-                                    "nodeParent":34,
-                                    "label":"btn_lx",
-                                    "isDirectory":false,
-                                    "isAniNode":false,
-                                    "hasChild":false,
-                                    "compId":21,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Label",
-                                    "searchKey":"Label,txt_id",
-                                    "props":{"y":330,"text":"游戏专员","name":"txt_id","fontSize":24,"color":"#ffffff","centerX":0},
-                                    "nodeParent":34,
-                                    "label":"txt_id",
-                                    "isDirectory":false,
-                                    "isAniNode":false,
-                                    "hasChild":false,
-                                    "compId":23,
-                                    "child":[
-                                        ]
-                                },
-                                {
-                                    "x":60,
-                                    "type":"Box",
-                                    "searchKey":"Box",
-                                    "props":{"y":141,"x":117.5},
-                                    "nodeParent":34,
-                                    "label":"Box",
-                                    "isOpen":true,
-                                    "isDirectory":true,
-                                    "isAniNode":false,
-                                    "hasChild":true,
-                                    "compId":36,
-                                    "child":[
-                                        {
-                                            "x":75,
-                                            "type":"Image",
-                                            "searchKey":"Image",
-                                            "props":{"y":-17,"x":-18,"width":98,"skin":"comp/img_touxiangMask.png","sizeGrid":"45,45,45,45","renderType":"mask","height":98},
-                                            "nodeParent":36,
-                                            "label":"Image",
-                                            "isDirectory":false,
-                                            "isAniNode":false,
-                                            "hasChild":false,
-                                            "compId":37,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "x":75,
-                                            "type":"Image",
-                                            "searchKey":"Image,img_head",
-                                            "props":{"y":0,"x":0,"var":"img_head","skin":"comp/dindex_index_icon.png"},
-                                            "nodeParent":36,
-                                            "label":"img_head",
-                                            "isDirectory":false,
-                                            "isAniNode":false,
-                                            "hasChild":false,
-                                            "compId":38,
-                                            "child":[
-                                                ]
-                                        }]
-                                }]
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":30,"skin":"bgs/kf_icon1.png","centerX":0},
+                            "nodeParent":39,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":41,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,b_qq",
+                    "props":{"y":32,"x":324,"width":246,"var":"b_qq","skin":"bgs/kf_bg.png"},
+                    "nodeParent":17,
+                    "label":"b_qq",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":42,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_qq",
+                            "props":{"y":356,"x":8,"var":"btn_qq","stateNum":"1","skin":"btns/kf_zx.png"},
+                            "nodeParent":42,
+                            "label":"btn_qq",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":43,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":30,"skin":"bgs/kf_icon2.png","centerX":0},
+                            "nodeParent":42,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":44,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,b_wx",
+                    "props":{"y":32,"x":637,"width":246,"var":"b_wx","skin":"bgs/kf_bg.png"},
+                    "nodeParent":17,
+                    "label":"b_wx",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":45,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,btn_wx",
+                            "props":{"y":356,"x":8,"var":"btn_wx","stateNum":"1","skin":"btns/kf_zx.png"},
+                            "nodeParent":45,
+                            "label":"btn_wx",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":46,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":30,"skin":"bgs/kf_icon3.png","centerX":0},
+                            "nodeParent":45,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":47,
+                            "child":[
+                                ]
                         }]
                 }],
             "$HIDDEN":false
@@ -244,7 +229,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"x":329,"skin":"bgs/ic_cus_title.png","scaleY":0.5,"scaleX":0.5,"centerY":0},
+                    "props":{"x":329,"skin":"bgs/ic_cus_title.png","centerY":0},
                     "nodeParent":24,
                     "label":"Image",
                     "isDirectory":false,
@@ -259,17 +244,16 @@
             "x":15,
             "type":"List",
             "searchKey":"List,list_tab",
-            "props":{"width":295,"var":"list_tab","top":125,"spaceY":5,"repeatX":1,"left":0,"height":578},
+            "props":{"width":295,"var":"list_tab","top":125,"spaceY":3,"repeatY":2,"repeatX":1,"left":0,"height":537},
             "nodeParent":2,
             "label":"list_tab",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":29,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"renderType":"render"},
@@ -282,7 +266,6 @@
                     "compId":30,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,bg_normal",
                             "props":{"y":0,"x":0,"width":287,"skin":"btns/ic_cus_fqc.png","name":"bg_normal","height":96},
@@ -296,7 +279,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,bg_selected",
                             "props":{"y":0,"x":0,"width":287,"skin":"btns/ic_cus_fqc_pressed.png","name":"bg_selected","height":96},

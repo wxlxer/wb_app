@@ -30,7 +30,6 @@ export default class ErweimaCz extends Plug
         this._chongzhi = chongzhi;
         this._res = this._box.getChildAt(0) as ui.Cz_xx_ewmUI;
         this.addBtnToList("btn_copy1",this._res);
-        this.addBtnToList("btn_copy2",this._res);
         this.addBtnToList("btn_save",this._res);
         this.addBtnToList("btn_open",this._res);
         this.addBtnToList("btn_tjcz",this._res);
@@ -41,7 +40,6 @@ export default class ErweimaCz extends Plug
     {
         this._data = data;
         this._res.txt_bankName.text = data['payname'];
-        this._res.txt_name.text = "";
         this._res.txt_zh.text = money +"";
         this._tabIndex = tabIndex;
 
@@ -63,20 +61,12 @@ export default class ErweimaCz extends Plug
             case "btn_copy1":
                 copyStr(this._res.txt_bankName.text);
                 break;
-            case "btn_copy2":
-                copyStr(this._res.txt_name.text);
-                break;
             case "btn_save":
                 saveImageToGallery(this._res.img_ewm);
                 break;
             case "btn_open":
                 break;
             case "btn_tjcz":
-                if(this._res.txt_info.text == "")
-                {
-                    g_uiMgr.showTip("转账信息不能为空",true);
-                    return;
-                }
                 g_net.requestWithToken(gamelib.GameMsg.Moneyinqr,{save:1,money:this._res.txt_zh.text,type:this._data['payname'],par:this._data["type"]});
                 this._chongzhi.onTabChange(this._tabIndex);
                 break;

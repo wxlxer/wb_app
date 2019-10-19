@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":69,
+    "selectedBox":31,
+    "selecteID":32,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":72,
+    "maxID":73,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -459,7 +459,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"top":0,"skin":"bgs/ic_home_bottom.png","right":0,"left":0,"bottom":0},
+                    "props":{"y":0,"skin":"bgs/ic_home_bottom.png","right":0,"left":0,"height":100},
                     "nodeParent":31,
                     "label":"Image",
                     "isDirectory":false,
@@ -471,123 +471,171 @@
                 },
                 {
                     "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_tg",
-                    "props":{"var":"btn_tg","stateNum":"1","skin":"btns/ic_promotion.png","scaleY":0.5,"scaleX":0.5,"left":15,"centerY":0},
+                    "type":"Box",
+                    "searchKey":"Box",
+                    "props":{"width":1280,"centerX":0},
                     "nodeParent":31,
-                    "label":"btn_tg",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":34,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_tixian",
-                    "props":{"var":"btn_tixian","stateNum":"1","skin":"btns/ic_withdrawal.png","scaleY":0.5,"scaleX":0.5,"right":185,"centerY":1},
-                    "nodeParent":31,
-                    "label":"btn_tixian",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":39,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,btn_cz",
-                    "props":{"var":"btn_cz","stateNum":"1","skin":"btns/ic_recharge.png","scaleY":0.5,"scaleX":0.5,"right":10,"centerY":0},
-                    "nodeParent":31,
-                    "label":"btn_cz",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":40,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"HBox",
-                    "searchKey":"HBox",
-                    "props":{"y":16,"right":370,"left":236,"align":"none"},
-                    "nodeParent":31,
-                    "label":"HBox",
+                    "label":"Box",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":62,
+                    "compId":72,
                     "child":[
                         {
                             "x":45,
                             "type":"Button",
-                            "searchKey":"Button,btn_huodong",
-                            "props":{"var":"btn_huodong","stateNum":"1","skin":"btns/ic_activity.png","scaleY":0.7,"scaleX":0.7,"left":0},
-                            "nodeParent":62,
-                            "label":"btn_huodong",
-                            "isOpen":true,
+                            "searchKey":"Button,btn_tg",
+                            "props":{"y":18,"x":15,"var":"btn_tg","stateNum":"1","skin":"btns/ic_promotion.png","scaleY":0.5,"scaleX":0.5,"left":15,"centerY":0},
+                            "nodeParent":72,
+                            "label":"btn_tg",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":35,
+                            "compId":34,
                             "child":[
                                 ]
                         },
                         {
                             "x":45,
                             "type":"Button",
-                            "searchKey":"Button,btn_xm",
-                            "props":{"var":"btn_xm","stateNum":"1","skin":"btns/ic_shuffle.png","scaleY":0.7,"scaleX":0.7,"centerY":1,"centerX":-98},
-                            "nodeParent":62,
-                            "label":"btn_xm",
+                            "searchKey":"Button,btn_tixian",
+                            "props":{"y":11,"x":933,"var":"btn_tixian","stateNum":"1","skin":"btns/ic_withdrawal.png","scaleY":0.5,"scaleX":0.5,"right":185,"centerY":1},
+                            "nodeParent":72,
+                            "label":"btn_tixian",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":38,
+                            "compId":39,
                             "child":[
                                 ]
                         },
                         {
                             "x":45,
                             "type":"Button",
-                            "searchKey":"Button,btn_mail",
-                            "props":{"var":"btn_mail","stateNum":"1","skin":"btns/ic_message.png","scaleY":0.7,"scaleX":0.7,"centerY":1,"centerX":102},
-                            "nodeParent":62,
-                            "label":"btn_mail",
+                            "searchKey":"Button,btn_cz",
+                            "props":{"y":9,"x":1108,"var":"btn_cz","stateNum":"1","skin":"btns/ic_recharge.png","scaleY":0.5,"scaleX":0.5,"right":10,"centerY":0},
+                            "nodeParent":72,
+                            "label":"btn_cz",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":36,
+                            "compId":40,
                             "child":[
                                 ]
                         },
                         {
                             "x":45,
-                            "type":"Button",
-                            "searchKey":"Button,btn_kf",
-                            "props":{"y":0,"var":"btn_kf","stateNum":"1","skin":"btns/ic_customer_service.png","scaleY":0.7,"scaleX":0.7,"right":0},
-                            "nodeParent":62,
-                            "label":"btn_kf",
-                            "isOpen":true,
-                            "isDirectory":false,
+                            "type":"HBox",
+                            "searchKey":"HBox",
+                            "props":{"y":16,"x":236,"right":370,"left":236,"align":"none"},
+                            "nodeParent":72,
+                            "label":"HBox",
+                            "isOpen":false,
+                            "isDirectory":true,
                             "isAniNode":true,
-                            "hasChild":false,
-                            "compId":37,
+                            "hasChild":true,
+                            "compId":62,
                             "child":[
-                                ]
+                                {
+                                    "type":"Button",
+                                    "searchKey":"Button,btn_huodong",
+                                    "props":{"var":"btn_huodong","stateNum":"1","skin":"btns/ic_activity.png","scaleY":0.7,"scaleX":0.7,"left":0},
+                                    "nodeParent":62,
+                                    "label":"btn_huodong",
+                                    "isOpen":true,
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":35,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Button",
+                                    "searchKey":"Button,btn_xm",
+                                    "props":{"var":"btn_xm","stateNum":"1","skin":"btns/ic_shuffle.png","scaleY":0.7,"scaleX":0.7,"centerY":1,"centerX":-98},
+                                    "nodeParent":62,
+                                    "label":"btn_xm",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":38,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Button",
+                                    "searchKey":"Button,btn_mail",
+                                    "props":{"var":"btn_mail","stateNum":"1","skin":"btns/ic_message.png","scaleY":0.7,"scaleX":0.7,"centerY":1,"centerX":102},
+                                    "nodeParent":62,
+                                    "label":"btn_mail",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":36,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Button",
+                                    "searchKey":"Button,btn_kf",
+                                    "props":{"y":0,"var":"btn_kf","stateNum":"1","skin":"btns/ic_customer_service.png","scaleY":0.7,"scaleX":0.7,"right":0},
+                                    "nodeParent":62,
+                                    "label":"btn_kf",
+                                    "isOpen":true,
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":37,
+                                    "child":[
+                                        ]
+                                }]
                         }]
                 }]
         }],
     "animations":[
         {
             "nodes":[
-                ],
+                {
+                    "target":14,
+                    "keyframes":{
+                        "x":[
+                            {
+                                "value":307,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":14,
+                                "key":"x",
+                                "index":0
+                            }],
+                        "rotation":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":14,
+                                "key":"rotation",
+                                "index":0
+                            },
+                            {
+                                "value":180,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":14,
+                                "key":"rotation",
+                                "index":20
+                            },
+                            {
+                                "value":360,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":14,
+                                "key":"rotation",
+                                "index":40
+                            }]
+                    }
+                }],
             "name":"ani1",
             "id":1,
             "frameRate":24,
