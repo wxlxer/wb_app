@@ -9,6 +9,7 @@ import Plug from "../Plug";
 import { g_chongZhiData, EwmInfo } from "../data/ChongZhiData";
 import { g_uiMgr } from "../UiMainager";
 import { g_playerData } from "../data/PlayerData";
+import XianShang from "./XianShang";
 
 
 export default class ChongZhi extends BasePanel
@@ -20,7 +21,7 @@ export default class ChongZhi extends BasePanel
     private _xx_bank:BankCzXX;      //线下银行卡充值
     private _xx_bankList:BankList;     //线下银行卡列表
     private _xx_choseMoney:ChoseMoney;      //选择金额
-
+    private _xianshang:XianShang;
     private _xxList:Array<Plug>;
      
     private _isRequesting:boolean;
@@ -39,12 +40,14 @@ export default class ChongZhi extends BasePanel
         this._xx_bankList = new BankList(this._res,this);
         this._xx_choseMoney = new ChoseMoney(this._res,this);
         this._xx_ewm = new ErweimaCz(this._res,this);
+        this._xianshang = new XianShang(this._res,this);
 
         this._xxList = [];
         this._xxList.push(this._xx_ewm);
         this._xxList.push(this._xx_bank);
         this._xxList.push(this._xx_bankList);
         this._xxList.push(this._xx_choseMoney);
+        this._xxList.push(this._xianshang);
 
         this.addBtnToListener('btn_refresh');
         this.addBtnToListener('btn_histroy');
@@ -69,6 +72,9 @@ export default class ChongZhi extends BasePanel
             case gamelib.GameMsg.Readmoney:
                 this._res['txt_money'].text = g_playerData.m_money;
                 break;     
+            case gamelib.GameMsg.Payinfolist:
+                this.checkData();
+                break;
         }
     }
 
@@ -85,15 +91,15 @@ export default class ChongZhi extends BasePanel
     }
     private checkData():void
     {
-        if(g_chongZhiData.m_xx_ewmList == null|| g_chongZhiData.m_xx_bankList == null)
+        if(g_chongZhiData.m_xx_ewmList == null|| g_chongZhiData.m_xx_bankList == null ||g_chongZhiData.m_xianshangData == null)
         {
             if(!this._isRequesting)
             {
-                g_uiMgr.showMiniLoading();
-        
+                g_uiMgr.showMiniLoading();        
                 this._isRequesting = true;
                 g_net.requestWithToken(gamelib.GameMsg.Bankinfo,{payType:"bank"});
                 g_net.requestWithToken(gamelib.GameMsg.Bankinfo,{payType:""});
+                g_net.requestWithToken(gamelib.GameMsg.Payinfolist,{});
             }
             
         }
@@ -104,15 +110,6 @@ export default class ChongZhi extends BasePanel
             this._tab.selectedIndex = 0;
             this.onTabChange(0);
         }
-    }
-    private initTabData():void
-    {
-        var arr:Array<any> = [];
-        for(var i:number = 0; i < 3; i++)
-        {
-            arr.push({"label":"",icon:"",isHot:false});
-        }
-        this._tab.dataSource = arr;
     }
     
     
@@ -131,8 +128,9 @@ export default class ChongZhi extends BasePanel
         {
             this.showBankList_xx();
         }
-        else
-        {
+        else if(data.type == "xianshang"){
+            this.showXianShang();
+        }else{
             this.showChoseMoney_XX(g_chongZhiData.getEwmInfoByType(data.type));
         }
     }
@@ -141,6 +139,12 @@ export default class ChongZhi extends BasePanel
     // {
 
     // }、
+    private showXianShang():void{
+        for(var temp of this._xxList)
+            temp.close();
+        this._xianshang.show();
+        this._xianshang.setData(g_chongZhiData.m_xianshangData);
+    }
     /*
      *显示银行卡充值 
      */

@@ -35,9 +35,27 @@ export default class KeFu extends BasePanel
         this._res['b_kf'].visible = index == 0;
         this._res['b_wt'].visible = index == 1;
 
-        if(index == 1)
-        {
-           window['application_layer_show'](g_systemData.web_grawhelp);
+        // if(index == 1)
+        // {
+        //    window['application_layer_show'](g_systemData.web_grawhelp);
+        // }
+
+        this._res['txt_info'].text = g_systemData.web_grawhelp;
+    }
+    protected onClickObjects(evt:Laya.Event):void{
+        var url:string = "";
+        switch(evt.currentTarget.name){
+            case "btn_zx":
+            url = g_systemData.kf_link;
+                window['application_layer_show'](url);
+                break;
+            case "btn_qq":                
+                url = 'http://wpa.qq.com/msgrd?v=3&uin=' + g_systemData.kf_qq + '&site=qq&menu=yes';
+                window.open(url);
+                break;
+            case "btn_wx":
+                utils.tools.copyStrToClipboard(g_systemData.kf_wx);
+                break;
         }
     }
     

@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":27,
-    "selecteID":28,
+    "selectedBox":10,
+    "selecteID":31,
     "searchKey":"View",
     "props":{"width":980,"sceneColor":"#000000","height":600},
     "nodeParent":-1,
-    "maxID":31,
+    "maxID":32,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -49,25 +49,27 @@
             "props":{"y":0,"x":0,"width":964,"var":"list_2","spaceX":10,"repeatY":1,"height":61},
             "nodeParent":2,
             "label":"list_2",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":5,
             "child":[
                 {
+                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
-                    "props":{"renderType":"render"},
+                    "props":{"width":182,"renderType":"render","height":61},
                     "nodeParent":5,
                     "label":"Box",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":false,
                     "hasChild":true,
                     "compId":10,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,bg_normal",
                             "props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao2.png","name":"bg_normal"},
@@ -81,6 +83,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,bg_selected",
                             "props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao.png","name":"bg_selected"},
@@ -94,9 +97,10 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,txt_label",
-                            "props":{"y":6,"x":0,"width":176,"text":"微信","name":"txt_label","height":28,"fontSize":24,"align":"center"},
+                            "props":{"x":50,"width":111,"text":"网银支付","name":"txt_label","height":28,"fontSize":24,"centerY":0.5,"align":"center"},
                             "nodeParent":10,
                             "label":"txt_label",
                             "isDirectory":false,
@@ -107,15 +111,16 @@
                                 ]
                         },
                         {
-                            "type":"Label",
-                            "searchKey":"Label,txt_info",
-                            "props":{"y":36,"x":0,"width":176,"text":"微信","name":"txt_info","height":20,"fontSize":22,"align":"center"},
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image,img_icon",
+                            "props":{"x":12,"name":"img_icon","centerY":0.5},
                             "nodeParent":10,
-                            "label":"txt_info",
+                            "label":"img_icon",
                             "isDirectory":false,
                             "isAniNode":false,
                             "hasChild":false,
-                            "compId":14,
+                            "compId":31,
                             "child":[
                                 ]
                         }]
@@ -128,13 +133,14 @@
             "props":{"y":369,"width":970,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":0,"height":111},
             "nodeParent":2,
             "label":"Image",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":7,
             "child":[
                 {
+                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":28,"x":32,"text":"充值金额","fontSize":36,"color":"#ffffff","bold":true},
@@ -148,6 +154,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":20,"x":246,"width":479,"skin":"comp/big_input_box.png","sizeGrid":"20,20,20,20","height":60},
@@ -174,6 +181,7 @@
                         }]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_clear",
                     "props":{"y":20,"var":"btn_clear","stateNum":"1","skin":"btns/ic_clear_bg.png","scaleY":0.6,"scaleX":0.6,"right":50},
@@ -245,7 +253,7 @@
                             "x":45,
                             "type":"Image",
                             "searchKey":"Image,img_choose",
-                            "props":{"y":6.5,"x":0,"skin":"comp/radio_unchose.png","name":"img_choose"},
+                            "props":{"y":6.5,"x":0,"skin":"comp/radio_chose.png","name":"img_choose"},
                             "nodeParent":28,
                             "label":"img_choose",
                             "isDirectory":false,

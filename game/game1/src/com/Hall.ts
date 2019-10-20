@@ -284,6 +284,9 @@ export default class Hall extends gamelib.core.Ui_NetHandle
                     g_chongZhiData.parseEwmListXX(data.retData);
                 }
                 break;
+            case gamelib.GameMsg.Payinfolist:
+                g_chongZhiData.m_xianshangData = data.retData;
+                break    
 
         }
     }

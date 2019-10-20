@@ -1,5 +1,8 @@
 export default class ChongZhiData
 {
+    
+
+    public m_xianshangData:Array<any>;
     public m_xx_bankList:Array<any>;
     public m_xx_ewmList: any ;//<{title:string,type:string,list:Array<any>}>;
     public constructor(){
@@ -53,6 +56,14 @@ export default class ChongZhiData
             item.icon = this.m_xx_ewmList[key][0].icon;
             result.push(item)
         }
+        //在线存款
+        var item:any = {                
+            type:"xianshang",
+            colors:["#DDB47A","#503215"]
+        }
+        item.label = "在线支付";
+        item.icon = "";
+        result.push(item)
         return result;
     }
     public getEwmInfoByType(type:number):Array<EwmInfo>

@@ -4,7 +4,7 @@ import Dialog=Laya.Dialog;
 import Scene=Laya.Scene;
 var REG: Function = Laya.ClassUtils.regClass;
 export module ui {
-    export class AlertUI extends Dialog {
+    export class AlertUI extends Laya.Dialog {
 		public img_bg:Laya.Image;
 		public btn_close:Laya.Button;
 		public btn_ok:Laya.Button;
@@ -18,7 +18,7 @@ export module ui {
         }
     }
     REG("ui.AlertUI",AlertUI);
-    export class BankUI extends View {
+    export class BankUI extends Laya.View {
         public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"loadList":[],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
@@ -27,7 +27,7 @@ export module ui {
         }
     }
     REG("ui.BankUI",BankUI);
-    export class ChongZhiHistroyUI extends Dialog {
+    export class ChongZhiHistroyUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
@@ -39,7 +39,7 @@ export module ui {
         }
     }
     REG("ui.ChongZhiHistroyUI",ChongZhiHistroyUI);
-    export class ChongZhiUiUI extends View {
+    export class ChongZhiUiUI extends Laya.View {
 		public ani1:Laya.FrameAnimation;
 		public b_left:Laya.Box;
 		public list_1:Laya.List;
@@ -61,13 +61,13 @@ export module ui {
         }
     }
     REG("ui.ChongZhiUiUI",ChongZhiUiUI);
-    export class Cz_xsUI extends View {
+    export class Cz_xsUI extends Laya.View {
 		public list_2:Laya.List;
 		public txt_oldPwd:Laya.TextInput;
 		public btn_clear:Laya.Button;
 		public btn_ok:Laya.Button;
 		public list_1:Laya.List;
-        public static  uiView:any ={"type":"View","props":{"width":980,"height":600},"compId":2,"child":[{"type":"Image","props":{"y":524,"x":0,"width":966,"skin":"bgs/xm_bg2.png","scaleY":-1,"height":524},"compId":4},{"type":"Label","props":{"y":95,"x":32,"text":"请选择您所使用的银行","fontSize":24,"color":"#ffffff"},"compId":3},{"type":"List","props":{"y":0,"x":0,"width":964,"var":"list_2","spaceX":10,"repeatY":1,"height":61},"compId":5,"child":[{"type":"Box","props":{"renderType":"render"},"compId":10,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao2.png","name":"bg_normal"},"compId":11},{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao.png","name":"bg_selected"},"compId":12},{"type":"Label","props":{"y":6,"x":0,"width":176,"text":"微信","name":"txt_label","height":28,"fontSize":24,"align":"center"},"compId":13},{"type":"Label","props":{"y":36,"x":0,"width":176,"text":"微信","name":"txt_info","height":20,"fontSize":22,"align":"center"},"compId":14}]}]},{"type":"Image","props":{"y":369,"width":970,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":0,"height":111},"compId":7,"child":[{"type":"Label","props":{"y":28,"x":32,"text":"充值金额","fontSize":36,"color":"#ffffff","bold":true},"compId":19},{"type":"Image","props":{"y":20,"x":246,"width":479,"skin":"comp/big_input_box.png","sizeGrid":"20,20,20,20","height":60},"compId":20,"child":[{"type":"TextInput","props":{"y":12,"x":11,"width":456,"var":"txt_oldPwd","type":"number","prompt":"存款金额必须在1~10000之间","height":36,"fontSize":30,"color":"#d6c09a"},"compId":21}]},{"type":"Button","props":{"y":20,"var":"btn_clear","stateNum":1,"skin":"btns/ic_clear_bg.png","scaleY":0.6,"scaleX":0.6,"right":50},"compId":22}]},{"type":"Button","props":{"y":0,"x":0,"var":"btn_ok","stateNum":1,"skin":"btns/ic_commit_charge.png","scaleY":0.6,"scaleX":0.6,"centerX":0,"bottom":10},"compId":8},{"type":"List","props":{"y":168,"x":32,"width":843,"var":"list_1","spaceX":10,"repeatY":1,"height":51},"compId":27,"child":[{"type":"Box","props":{"renderType":"render"},"compId":28,"child":[{"type":"Image","props":{"y":0,"x":31,"width":155,"skin":"icons/CCB.jpg","name":"img_icon","height":40},"compId":29},{"type":"Image","props":{"y":6.5,"x":0,"skin":"comp/radio_unchose.png","name":"img_choose"},"compId":30}]}]}],"loadList":["bgs/xm_bg2.png","comp/ddeposit_chonzhizhifubaotongdao2.png","comp/ddeposit_chonzhizhifubaotongdao.png","bgs/ic_safe_yue_bg.png","comp/big_input_box.png","btns/ic_clear_bg.png","btns/ic_commit_charge.png","icons/CCB.jpg","comp/radio_unchose.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":980,"height":600},"compId":2,"child":[{"type":"Image","props":{"y":524,"x":0,"width":966,"skin":"bgs/xm_bg2.png","scaleY":-1,"height":524},"compId":4},{"type":"Label","props":{"y":95,"x":32,"text":"请选择您所使用的银行","fontSize":24,"color":"#ffffff"},"compId":3},{"type":"List","props":{"y":0,"x":0,"width":964,"var":"list_2","spaceX":10,"repeatY":1,"height":61},"compId":5,"child":[{"type":"Box","props":{"width":182,"renderType":"render","height":61},"compId":10,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao2.png","name":"bg_normal"},"compId":11},{"type":"Image","props":{"y":0,"x":0,"skin":"comp/ddeposit_chonzhizhifubaotongdao.png","name":"bg_selected"},"compId":12},{"type":"Label","props":{"x":50,"width":111,"text":"网银支付","name":"txt_label","height":28,"fontSize":24,"centerY":0.5,"align":"center"},"compId":13},{"type":"Image","props":{"x":12,"name":"img_icon","centerY":0.5},"compId":31}]}]},{"type":"Image","props":{"y":369,"width":970,"skin":"bgs/ic_safe_yue_bg.png","sizeGrid":"19,15,36,13","right":5,"left":0,"height":111},"compId":7,"child":[{"type":"Label","props":{"y":28,"x":32,"text":"充值金额","fontSize":36,"color":"#ffffff","bold":true},"compId":19},{"type":"Image","props":{"y":20,"x":246,"width":479,"skin":"comp/big_input_box.png","sizeGrid":"20,20,20,20","height":60},"compId":20,"child":[{"type":"TextInput","props":{"y":12,"x":11,"width":456,"var":"txt_oldPwd","type":"number","prompt":"存款金额必须在1~10000之间","height":36,"fontSize":30,"color":"#d6c09a"},"compId":21}]},{"type":"Button","props":{"y":20,"var":"btn_clear","stateNum":1,"skin":"btns/ic_clear_bg.png","scaleY":0.6,"scaleX":0.6,"right":50},"compId":22}]},{"type":"Button","props":{"y":0,"x":0,"var":"btn_ok","stateNum":1,"skin":"btns/ic_commit_charge.png","scaleY":0.6,"scaleX":0.6,"centerX":0,"bottom":10},"compId":8},{"type":"List","props":{"y":168,"x":32,"width":843,"var":"list_1","spaceX":10,"repeatY":1,"height":51},"compId":27,"child":[{"type":"Box","props":{"renderType":"render"},"compId":28,"child":[{"type":"Image","props":{"y":0,"x":31,"width":155,"skin":"icons/CCB.jpg","name":"img_icon","height":40},"compId":29},{"type":"Image","props":{"y":6.5,"x":0,"skin":"comp/radio_chose.png","name":"img_choose"},"compId":30}]}]}],"loadList":["bgs/xm_bg2.png","comp/ddeposit_chonzhizhifubaotongdao2.png","comp/ddeposit_chonzhizhifubaotongdao.png","bgs/ic_safe_yue_bg.png","comp/big_input_box.png","btns/ic_clear_bg.png","btns/ic_commit_charge.png","icons/CCB.jpg","comp/radio_chose.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -75,7 +75,7 @@ export module ui {
         }
     }
     REG("ui.Cz_xsUI",Cz_xsUI);
-    export class Cz_xx_BankUI extends View {
+    export class Cz_xx_BankUI extends Laya.View {
 		public txt_bankName:Laya.Label;
 		public btn_copy1:Laya.Button;
 		public txt_name:Laya.Label;
@@ -94,7 +94,7 @@ export module ui {
         }
     }
     REG("ui.Cz_xx_BankUI",Cz_xx_BankUI);
-    export class Cz_xx_chooseMoneyUI extends View {
+    export class Cz_xx_chooseMoneyUI extends Laya.View {
 		public list_2:Laya.List;
 		public list_3:Laya.List;
 		public txt_oldPwd:Laya.TextInput;
@@ -108,7 +108,7 @@ export module ui {
         }
     }
     REG("ui.Cz_xx_chooseMoneyUI",Cz_xx_chooseMoneyUI);
-    export class Cz_xx_ewmUI extends View {
+    export class Cz_xx_ewmUI extends Laya.View {
 		public s_bg:Laya.Box;
 		public txt_tips0:Laya.Label;
 		public txt_tip2:Laya.Label;
@@ -129,7 +129,7 @@ export module ui {
         }
     }
     REG("ui.Cz_xx_ewmUI",Cz_xx_ewmUI);
-    export class FanYongListUI extends Dialog {
+    export class FanYongListUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;
@@ -141,7 +141,7 @@ export module ui {
         }
     }
     REG("ui.FanYongListUI",FanYongListUI);
-    export class HallUiUI extends View {
+    export class HallUiUI extends Laya.View {
 		public ani1:Laya.FrameAnimation;
 		public img_bg:Laya.Image;
 		public b_top:Laya.Box;
@@ -177,7 +177,7 @@ export module ui {
         }
     }
     REG("ui.HallUiUI",HallUiUI);
-    export class HuoDongUiUI extends View {
+    export class HuoDongUiUI extends Laya.View {
 		public b_bg:Laya.Box;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
@@ -197,7 +197,7 @@ export module ui {
         }
     }
     REG("ui.HuoDongUiUI",HuoDongUiUI);
-    export class KeFuUiUI extends View {
+    export class KeFuUiUI extends Laya.View {
 		public b_kf:Laya.Box;
 		public b_zx:Laya.Image;
 		public btn_zx:Laya.Button;
@@ -206,10 +206,11 @@ export module ui {
 		public b_wx:Laya.Image;
 		public btn_wx:Laya.Button;
 		public b_wt:Laya.Box;
+		public txt_info:Laya.TextArea;
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public list_tab:Laya.List;
-        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"y":0,"skin":"comp/dactivity_nav_left.png","left":0},"compId":14},{"type":"Box","props":{"y":164,"x":332,"width":872,"var":"b_kf"},"compId":17,"child":[{"type":"Image","props":{"y":32,"x":11,"width":246,"var":"b_zx","skin":"bgs/kf_bg.png"},"compId":39,"child":[{"type":"Button","props":{"y":356,"x":8,"var":"btn_zx","stateNum":1,"skin":"btns/kf_zx.png"},"compId":40},{"type":"Image","props":{"y":30,"skin":"bgs/kf_icon1.png","centerX":0},"compId":41}]},{"type":"Image","props":{"y":32,"x":324,"width":246,"var":"b_qq","skin":"bgs/kf_bg.png"},"compId":42,"child":[{"type":"Button","props":{"y":356,"x":8,"var":"btn_qq","stateNum":1,"skin":"btns/kf_zx.png"},"compId":43},{"type":"Image","props":{"y":30,"skin":"bgs/kf_icon2.png","centerX":0},"compId":44}]},{"type":"Image","props":{"y":32,"x":637,"width":246,"var":"b_wx","skin":"bgs/kf_bg.png"},"compId":45,"child":[{"type":"Button","props":{"y":356,"x":8,"var":"btn_wx","stateNum":1,"skin":"btns/kf_zx.png"},"compId":46},{"type":"Image","props":{"y":30,"skin":"bgs/kf_icon3.png","centerX":0},"compId":47}]}]},{"type":"Box","props":{"var":"b_wt","top":125,"left":300},"compId":19},{"type":"Box","props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},"compId":24,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":25},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":26},{"type":"Image","props":{"x":329,"skin":"bgs/ic_cus_title.png","centerY":0},"compId":27}]},{"type":"List","props":{"width":295,"var":"list_tab","top":125,"spaceY":3,"repeatY":2,"repeatX":1,"left":0,"height":537},"compId":29,"child":[{"type":"Box","props":{"renderType":"render"},"compId":30,"child":[{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_cus_fqc.png","name":"bg_normal","height":96},"compId":31},{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_cus_fqc_pressed.png","name":"bg_selected","height":96},"compId":32}]}]}],"loadList":["comp/dactivity_nav_left.png","bgs/kf_bg.png","btns/kf_zx.png","bgs/kf_icon1.png","bgs/kf_icon2.png","bgs/kf_icon3.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_cus_title.png","btns/ic_cus_fqc.png","btns/ic_cus_fqc_pressed.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"y":0,"skin":"comp/dactivity_nav_left.png","left":0},"compId":14},{"type":"Box","props":{"y":164,"x":332,"width":872,"var":"b_kf"},"compId":17,"child":[{"type":"Image","props":{"y":32,"x":11,"width":246,"var":"b_zx","skin":"bgs/kf_bg.png"},"compId":39,"child":[{"type":"Button","props":{"y":356,"x":8,"var":"btn_zx","stateNum":1,"skin":"btns/kf_zx.png"},"compId":40},{"type":"Image","props":{"y":30,"skin":"bgs/kf_icon1.png","centerX":0},"compId":41}]},{"type":"Image","props":{"y":32,"x":324,"width":246,"var":"b_qq","skin":"bgs/kf_bg.png"},"compId":42,"child":[{"type":"Button","props":{"y":356,"x":8,"var":"btn_qq","stateNum":1,"skin":"btns/kf_zx.png"},"compId":43},{"type":"Image","props":{"y":30,"skin":"bgs/kf_icon2.png","centerX":0},"compId":44}]},{"type":"Image","props":{"y":32,"x":637,"width":246,"var":"b_wx","skin":"bgs/kf_bg.png"},"compId":45,"child":[{"type":"Button","props":{"y":356,"x":8,"var":"btn_wx","stateNum":1,"skin":"btns/kf_zx.png"},"compId":46},{"type":"Image","props":{"y":30,"skin":"bgs/kf_icon3.png","centerX":0},"compId":47}]}]},{"type":"Box","props":{"var":"b_wt","top":125,"left":300},"compId":19,"child":[{"type":"TextArea","props":{"y":0,"width":974,"var":"txt_info","vScrollBarSkin":"comp/vscroll.png","text":"TextArea","overflow":"scroll","height":588,"fontSize":24,"editable":false,"color":"#FFFFFF","centerX":0},"compId":48}]},{"type":"Box","props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},"compId":24,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":25},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":26},{"type":"Image","props":{"x":329,"skin":"bgs/ic_cus_title.png","centerY":0},"compId":27}]},{"type":"List","props":{"width":295,"var":"list_tab","top":125,"spaceY":3,"repeatY":2,"repeatX":1,"left":0,"height":537},"compId":29,"child":[{"type":"Box","props":{"renderType":"render"},"compId":30,"child":[{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_cus_fqc.png","name":"bg_normal","height":96},"compId":31},{"type":"Image","props":{"y":0,"x":0,"width":287,"skin":"btns/ic_cus_fqc_pressed.png","name":"bg_selected","height":96},"compId":32}]}]}],"loadList":["comp/dactivity_nav_left.png","bgs/kf_bg.png","btns/kf_zx.png","bgs/kf_icon1.png","bgs/kf_icon2.png","bgs/kf_icon3.png","comp/vscroll.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_cus_title.png","btns/ic_cus_fqc.png","btns/ic_cus_fqc_pressed.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -217,7 +218,7 @@ export module ui {
         }
     }
     REG("ui.KeFuUiUI",KeFuUiUI);
-    export class LingQuHistroyUI extends Dialog {
+    export class LingQuHistroyUI extends Laya.Dialog {
 		public list_1:Laya.List;
 		public btn_close:Laya.Button;
 		public txt_tips1:Laya.Label;
@@ -229,7 +230,7 @@ export module ui {
         }
     }
     REG("ui.LingQuHistroyUI",LingQuHistroyUI);
-    export class LingQuYongJinUI extends Dialog {
+    export class LingQuYongJinUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public txt_money1:Laya.Label;
 		public txt_money2:Laya.Label;
@@ -244,7 +245,7 @@ export module ui {
         }
     }
     REG("ui.LingQuYongJinUI",LingQuYongJinUI);
-    export class LoginUiUI extends Dialog {
+    export class LoginUiUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public btn_login:Laya.Button;
 		public txt_name:Laya.TextInput;
@@ -258,7 +259,7 @@ export module ui {
         }
     }
     REG("ui.LoginUiUI",LoginUiUI);
-    export class MailUI extends Dialog {
+    export class MailUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips1:Laya.Box;
@@ -270,7 +271,7 @@ export module ui {
         }
     }
     REG("ui.MailUI",MailUI);
-    export class MailInfoUI extends Dialog {
+    export class MailInfoUI extends Laya.Dialog {
 		public txt_info:Laya.TextArea;
 		public btn_close:Laya.Button;
 		public btn_remove:Laya.Button;
@@ -282,7 +283,7 @@ export module ui {
         }
     }
     REG("ui.MailInfoUI",MailInfoUI);
-    export class MiniLoadingUI extends Dialog {
+    export class MiniLoadingUI extends Laya.Dialog {
 		public ani1:Laya.Animation;
         public static  uiView:any ={"type":"Dialog","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Animation","props":{"y":283,"x":530,"var":"ani1","source":"icons/ic_loading0.png,icons/ic_loading1.png,icons/ic_loading2.png,icons/ic_loading3.png","scaleY":0.5,"scaleX":0.5,"interval":200,"autoPlay":true},"compId":5}],"loadList":["icons/ic_loading0.png,icons/ic_loading1.png,icons/ic_loading2.png,icons/ic_loading3.png"],"loadList3D":[]};
         constructor(){ super()}
@@ -292,7 +293,7 @@ export module ui {
         }
     }
     REG("ui.MiniLoadingUI",MiniLoadingUI);
-    export class NoticeUI extends Dialog {
+    export class NoticeUI extends Laya.Dialog {
 		public img_gg:Laya.Image;
 		public btn_close:Laya.Button;
         public static  uiView:any ={"type":"Dialog","props":{"width":953,"height":568},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_news_dialog.png","right":0,"left":0,"bottom":0},"compId":3},{"type":"Image","props":{"y":96,"x":17,"width":917,"var":"img_gg","height":439},"compId":5},{"type":"Button","props":{"y":10,"x":867,"var":"btn_close","stateNum":1,"skin":"btns/ic_close.png"},"compId":8}],"loadList":["bgs/ic_news_dialog.png","btns/ic_close.png"],"loadList3D":[]};
@@ -303,7 +304,7 @@ export module ui {
         }
     }
     REG("ui.NoticeUI",NoticeUI);
-    export class NoticeMsgUI extends Dialog {
+    export class NoticeMsgUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public txt_gg:Laya.TextArea;
 		public btn_ok:Laya.Button;
@@ -315,7 +316,7 @@ export module ui {
         }
     }
     REG("ui.NoticeMsgUI",NoticeMsgUI);
-    export class RegisterUiUI extends Dialog {
+    export class RegisterUiUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public btn_ok:Laya.Button;
 		public txt_name:Laya.TextInput;
@@ -329,7 +330,7 @@ export module ui {
         }
     }
     REG("ui.RegisterUiUI",RegisterUiUI);
-    export class SetBankPasswordUI extends Dialog {
+    export class SetBankPasswordUI extends Laya.Dialog {
 		public b_input1:Laya.Box;
 		public txt_input1:Laya.TextInput;
 		public b_input2:Laya.Box;
@@ -343,7 +344,7 @@ export module ui {
         }
     }
     REG("ui.SetBankPasswordUI",SetBankPasswordUI);
-    export class SetUiUI extends Dialog {
+    export class SetUiUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public tab_1:Laya.Tab;
 		public b_sound:Laya.Box;
@@ -370,7 +371,7 @@ export module ui {
         }
     }
     REG("ui.SetUiUI",SetUiUI);
-    export class SubGameListUI extends View {
+    export class SubGameListUI extends Laya.View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public img_title:Laya.Image;
@@ -387,7 +388,7 @@ export module ui {
         }
     }
     REG("ui.SubGameListUI",SubGameListUI);
-    export class TiXianUI extends View {
+    export class TiXianUI extends Laya.View {
 		public b_tx:Laya.Box;
 		public txt_input:Laya.TextInput;
 		public btn_clear:Laya.Button;
@@ -413,7 +414,7 @@ export module ui {
         }
     }
     REG("ui.TiXianUI",TiXianUI);
-    export class TiXianHistroyUI extends Dialog {
+    export class TiXianHistroyUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
@@ -425,14 +426,16 @@ export module ui {
         }
     }
     REG("ui.TiXianHistroyUI",TiXianHistroyUI);
-    export class TuiGuangUI extends View {
+    export class TuiGuangUI extends Laya.View {
 		public b_1:Laya.Box;
-		public btn_fx_hy:Laya.Button;
-		public btn_fx_qq:Laya.Button;
 		public img_ewm:Laya.Image;
 		public btn_copy:Laya.Button;
 		public txt_web:Laya.Label;
 		public btn_xq:Laya.Button;
+		public txt_tg_jr:Laya.Label;
+		public txt_tg_hy:Laya.Label;
+		public txt_tg_yj:Laya.Label;
+		public txt_tg_wl:Laya.Label;
 		public b_2:Laya.Box;
 		public txt_id:Laya.Label;
 		public txt_info:Laya.TextArea;
@@ -441,7 +444,7 @@ export module ui {
 		public btn_close:Laya.Button;
 		public list_tab:Laya.List;
 		public btn_gz:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_recharge_bg.png","right":0,"left":0,"bottom":0},"compId":127},{"type":"Box","props":{"y":196,"width":1221,"var":"b_1","height":527,"centerX":0},"compId":22,"child":[{"type":"Image","props":{"y":327,"x":694,"skin":"bgs/tg_bg2.png"},"compId":179},{"type":"Button","props":{"y":104.5,"x":956,"width":256,"var":"btn_fx_hy","stateNum":1,"skin":"btns/sharetofriend.png","scaleY":1,"scaleX":1,"height":80},"compId":26},{"type":"Button","props":{"y":197,"x":956,"width":256,"var":"btn_fx_qq","stateNum":1,"skin":"btns/sharetoqq.png","height":80},"compId":27},{"type":"Image","props":{"y":55.5,"x":694,"var":"img_ewm","skin":"comp/ewmbg.png"},"compId":65},{"type":"Image","props":{"y":349,"x":718,"width":310,"skin":"bgs/ic_website_bg.png","sizeGrid":"2,2,2,2","height":54},"compId":66},{"type":"Button","props":{"y":341,"x":1047,"width":130,"var":"btn_copy","stateNum":1,"skin":"btns/copywebsite.png","height":76},"compId":67},{"type":"Label","props":{"y":362,"x":729,"width":299,"var":"txt_web","text":"123456","height":28,"fontSize":28,"color":"#ffffff"},"compId":68},{"type":"Image","props":{"y":28,"x":663,"skin":"comp/line.png"},"compId":178},{"type":"Box","props":{"y":94.5,"x":0},"compId":180,"child":[{"type":"Image","props":{"y":-46,"x":0,"skin":"bgs/tg_bg1.png"},"compId":176},{"type":"Image","props":{"y":41,"x":38,"skin":"bgs/tg_img1.png"},"compId":181},{"type":"Image","props":{"y":173,"x":199,"skin":"bgs/tg_img4.png"},"compId":182},{"type":"Image","props":{"y":40,"x":337,"skin":"bgs/tg_img2.png"},"compId":183},{"type":"Image","props":{"y":-69,"x":199,"skin":"bgs/tg_img3.png"},"compId":184},{"type":"Button","props":{"y":-46,"x":-15,"var":"btn_xq","stateNum":1,"skin":"btns/tg_info.png"},"compId":177},{"type":"Label","props":{"y":228,"x":141.646484375,"text":"label","fontSize":24,"color":"#FF0000"},"compId":185},{"type":"Label","props":{"y":108,"x":288.29296875,"text":"label","fontSize":24,"color":"#FF0000"},"compId":186},{"type":"Label","props":{"y":228,"x":451,"text":"label","fontSize":24,"color":"#FF0000"},"compId":187},{"type":"Label","props":{"y":341,"x":289.646484375,"text":"label","fontSize":24,"color":"#FF0000"},"compId":188}]}]},{"type":"Box","props":{"y":206.5,"width":1221,"var":"b_2","height":506,"centerX":0},"compId":71,"child":[{"type":"Image","props":{"y":22,"x":-3.5,"skin":"bgs/tg_bg4.png"},"compId":189},{"type":"Image","props":{"y":68,"x":4,"skin":"bgs/tg_bg5.png"},"compId":190},{"type":"Label","props":{"y":33,"x":12,"text":"代理账号:","fontSize":24,"color":"#A1A1A1"},"compId":191},{"type":"Label","props":{"y":33,"x":114.66796875,"var":"txt_id","text":"当前账号","fontSize":24,"color":"#FFD39F"},"compId":192},{"type":"TextArea","props":{"y":79,"x":12,"width":1202,"var":"txt_info","promptColor":"#A1A1A1","prompt":"请尽量注明您的优势!","overflow":"scroll","height":253,"fontSize":24,"color":"#FFFFFF"},"compId":193},{"type":"Button","props":{"y":391,"var":"btn_sq","stateNum":1,"skin":"btns/tg_sq.png","centerX":0},"compId":194}]},{"type":"Box","props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},"compId":118,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":120},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":121},{"type":"Image","props":{"x":334,"skin":"bgs/ic_extension_title.png","scaleY":1,"scaleX":1,"centerY":0},"compId":122}]},{"type":"List","props":{"width":609,"var":"list_tab","top":120,"spaceX":80,"repeatY":1,"repeatX":2,"height":83,"centerX":0},"compId":119,"child":[{"type":"Box","props":{"renderType":"render"},"compId":123,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"btns/tg_tab1_2.png","name":"bg_normal"},"compId":124},{"type":"Image","props":{"y":0,"x":0,"skin":"btns/tg_tab1_1.png","name":"bg_selected"},"compId":125}]}]},{"type":"Button","props":{"y":130.5,"x":1016,"var":"btn_gz","stateNum":1,"skin":"btns/tg_ldx.png"},"compId":175}],"loadList":["bgs/ic_recharge_bg.png","bgs/tg_bg2.png","btns/sharetofriend.png","btns/sharetoqq.png","comp/ewmbg.png","bgs/ic_website_bg.png","btns/copywebsite.png","comp/line.png","bgs/tg_bg1.png","bgs/tg_img1.png","bgs/tg_img4.png","bgs/tg_img2.png","bgs/tg_img3.png","btns/tg_info.png","bgs/tg_bg4.png","bgs/tg_bg5.png","btns/tg_sq.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_extension_title.png","btns/tg_tab1_2.png","btns/tg_tab1_1.png","btns/tg_ldx.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":1280,"height":720},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_recharge_bg.png","right":0,"left":0,"bottom":0},"compId":127},{"type":"Box","props":{"y":196,"width":1221,"var":"b_1","height":527,"centerX":0},"compId":22,"child":[{"type":"Image","props":{"y":402,"x":694,"skin":"bgs/tg_bg2.png"},"compId":179},{"type":"Image","props":{"y":55.5,"x":694,"var":"img_ewm","skin":"comp/ewmbg.png"},"compId":65},{"type":"Image","props":{"y":28,"x":983,"skin":"bgs/tg_girl.png"},"compId":195},{"type":"Image","props":{"y":427,"x":718,"width":310,"skin":"bgs/ic_website_bg.png","sizeGrid":"2,2,2,2","height":54},"compId":66},{"type":"Button","props":{"y":416,"x":1047,"width":130,"var":"btn_copy","stateNum":1,"skin":"btns/copywebsite.png","height":76},"compId":67},{"type":"Label","props":{"y":436,"x":729,"width":299,"var":"txt_web","text":"123456","height":28,"fontSize":28,"color":"#ffffff"},"compId":68},{"type":"Image","props":{"y":28,"x":663,"skin":"comp/line.png"},"compId":178},{"type":"Box","props":{"y":94.5,"x":0},"compId":180,"child":[{"type":"Image","props":{"y":-46,"x":0,"skin":"bgs/tg_bg1.png"},"compId":176},{"type":"Image","props":{"y":41,"x":38,"skin":"bgs/tg_img1.png"},"compId":181},{"type":"Image","props":{"y":173,"x":199,"skin":"bgs/tg_img4.png"},"compId":182},{"type":"Image","props":{"y":40,"x":337,"skin":"bgs/tg_img2.png"},"compId":183},{"type":"Image","props":{"y":-69,"x":199,"skin":"bgs/tg_img3.png"},"compId":184},{"type":"Button","props":{"y":-46,"x":-15,"var":"btn_xq","stateNum":1,"skin":"btns/tg_info.png"},"compId":177},{"type":"Label","props":{"y":228,"x":113.646484375,"var":"txt_tg_jr","text":"12345678","fontSize":24,"color":"#FF0000","align":"center"},"compId":185},{"type":"Label","props":{"y":108,"x":264.29296875,"var":"txt_tg_hy","text":"12345678","fontSize":24,"color":"#FF0000","align":"center"},"compId":186},{"type":"Label","props":{"y":217,"x":411,"var":"txt_tg_yj","text":"12345678","fontSize":24,"color":"#FF0000","align":"center"},"compId":187},{"type":"Label","props":{"y":341,"x":261.646484375,"var":"txt_tg_wl","text":"12345678","fontSize":24,"color":"#FF0000","align":"center"},"compId":188}]},{"type":"Image","props":{"y":314,"x":729,"skin":"bgs/tg_img.png"},"compId":196}]},{"type":"Box","props":{"y":206.5,"width":1221,"var":"b_2","height":506,"centerX":0},"compId":71,"child":[{"type":"Image","props":{"y":22,"x":-3.5,"skin":"bgs/tg_bg4.png"},"compId":189},{"type":"Image","props":{"y":68,"x":4,"skin":"bgs/tg_bg5.png"},"compId":190},{"type":"Label","props":{"y":33,"x":12,"text":"代理账号:","fontSize":24,"color":"#A1A1A1"},"compId":191},{"type":"Label","props":{"y":33,"x":114.66796875,"var":"txt_id","text":"当前账号","fontSize":24,"color":"#FFD39F"},"compId":192},{"type":"TextArea","props":{"y":79,"x":12,"width":1202,"var":"txt_info","promptColor":"#A1A1A1","prompt":"请尽量注明您的优势!","overflow":"scroll","height":253,"fontSize":24,"color":"#FFFFFF"},"compId":193},{"type":"Button","props":{"y":391,"var":"btn_sq","stateNum":1,"skin":"btns/tg_sq.png","centerX":0},"compId":194}]},{"type":"Box","props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},"compId":118,"child":[{"type":"Image","props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},"compId":120},{"type":"Button","props":{"y":4,"x":0,"var":"btn_close","stateNum":1,"skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},"compId":121},{"type":"Image","props":{"x":334,"skin":"bgs/ic_extension_title.png","scaleY":1,"scaleX":1,"centerY":0},"compId":122}]},{"type":"List","props":{"width":609,"var":"list_tab","top":120,"spaceX":80,"repeatY":1,"repeatX":2,"height":83,"centerX":0},"compId":119,"child":[{"type":"Box","props":{"renderType":"render"},"compId":123,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"btns/tg_tab1_2.png","name":"bg_normal"},"compId":124},{"type":"Image","props":{"y":0,"x":0,"skin":"btns/tg_tab1_1.png","name":"bg_selected"},"compId":125}]}]},{"type":"Button","props":{"y":130.5,"var":"btn_gz","stateNum":1,"skin":"btns/tg_ldx.png","right":50},"compId":175}],"loadList":["bgs/ic_recharge_bg.png","bgs/tg_bg2.png","comp/ewmbg.png","bgs/tg_girl.png","bgs/ic_website_bg.png","btns/copywebsite.png","comp/line.png","bgs/tg_bg1.png","bgs/tg_img1.png","bgs/tg_img4.png","bgs/tg_img2.png","bgs/tg_img3.png","btns/tg_info.png","bgs/tg_img.png","bgs/tg_bg4.png","bgs/tg_bg5.png","btns/tg_sq.png","bgs/ic_home_top_bg.png","btns/back_btn.png","bgs/ic_extension_title.png","btns/tg_tab1_2.png","btns/tg_tab1_1.png","btns/tg_ldx.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -449,7 +452,7 @@ export module ui {
         }
     }
     REG("ui.TuiGuangUI",TuiGuangUI);
-    export class TuiGuang_GZUI extends Dialog {
+    export class TuiGuang_GZUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public txt_info:Laya.TextArea;
         public static  uiView:any ={"type":"Dialog","props":{"width":954,"height":560},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"bgs/tg_gz_bg.png"},"compId":3},{"type":"Button","props":{"y":0,"x":896,"var":"btn_close","stateNum":1,"skin":"btns/ic_close.png","scaleY":0.6,"scaleX":0.6},"compId":4},{"type":"TextArea","props":{"y":139,"x":44,"width":867,"var":"txt_info","text":"1、每个推荐人只可享受一次奖励\\n 2、成为老用户后才能推荐新用户\\n 3、邀请的新用户达到条件后，老用户才能返佣,佣金达到流水即可提款\\n 4、佣金会在系统规定时间发放\\n 5、如有疑问请联系客服\\n","height":373,"fontSize":24,"editable":false,"color":"#F7C695"},"compId":22}],"loadList":["bgs/tg_gz_bg.png","btns/ic_close.png"],"loadList3D":[]};
@@ -460,7 +463,7 @@ export module ui {
         }
     }
     REG("ui.TuiGuang_GZUI",TuiGuang_GZUI);
-    export class TuiGuang_XQUI extends Dialog {
+    export class TuiGuang_XQUI extends Laya.Dialog {
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;
 		public txt_tips:Laya.Label;
@@ -472,7 +475,7 @@ export module ui {
         }
     }
     REG("ui.TuiGuang_XQUI",TuiGuang_XQUI);
-    export class UserInfoUI extends View {
+    export class UserInfoUI extends Laya.View {
 		public b_info:Laya.Box;
 		public txt_account:Laya.Label;
 		public txt_level:Laya.Label;
@@ -504,7 +507,7 @@ export module ui {
         }
     }
     REG("ui.UserInfoUI",UserInfoUI);
-    export class VerifyBankPasswordUI extends Dialog {
+    export class VerifyBankPasswordUI extends Laya.Dialog {
 		public b_input1:Laya.Box;
 		public txt_input:Laya.TextInput;
 		public btn_close:Laya.Button;
@@ -517,7 +520,7 @@ export module ui {
         }
     }
     REG("ui.VerifyBankPasswordUI",VerifyBankPasswordUI);
-    export class XiMaUI extends View {
+    export class XiMaUI extends Laya.View {
 		public b_title:Laya.Box;
 		public btn_close:Laya.Button;
 		public list_1:Laya.List;

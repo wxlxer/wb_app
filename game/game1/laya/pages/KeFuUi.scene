@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":29,
+    "selectedBox":19,
+    "selecteID":48,
     "searchKey":"View",
     "props":{"width":1280,"sceneColor":"#000000","height":720},
     "nodeParent":-1,
-    "maxID":48,
+    "maxID":49,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -35,14 +35,13 @@
             "props":{"y":164,"x":332,"width":872,"var":"b_kf"},
             "nodeParent":2,
             "label":"b_kf",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":17,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,b_zx",
                     "props":{"y":32,"x":11,"width":246,"var":"b_zx","skin":"bgs/kf_bg.png"},
@@ -55,7 +54,6 @@
                     "compId":39,
                     "child":[
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_zx",
                             "props":{"y":356,"x":8,"var":"btn_zx","stateNum":"1","skin":"btns/kf_zx.png"},
@@ -69,7 +67,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":30,"skin":"bgs/kf_icon1.png","centerX":0},
@@ -84,7 +81,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,b_qq",
                     "props":{"y":32,"x":324,"width":246,"var":"b_qq","skin":"bgs/kf_bg.png"},
@@ -97,7 +93,6 @@
                     "compId":42,
                     "child":[
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_qq",
                             "props":{"y":356,"x":8,"var":"btn_qq","stateNum":"1","skin":"btns/kf_zx.png"},
@@ -111,7 +106,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":30,"skin":"bgs/kf_icon2.png","centerX":0},
@@ -126,7 +120,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,b_wx",
                     "props":{"y":32,"x":637,"width":246,"var":"b_wx","skin":"bgs/kf_bg.png"},
@@ -139,7 +132,6 @@
                     "compId":45,
                     "child":[
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,btn_wx",
                             "props":{"y":356,"x":8,"var":"btn_wx","stateNum":"1","skin":"btns/kf_zx.png"},
@@ -153,7 +145,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":30,"skin":"bgs/kf_icon3.png","centerX":0},
@@ -176,12 +167,26 @@
             "props":{"var":"b_wt","top":125,"left":300},
             "nodeParent":2,
             "label":"b_wt",
-            "isDirectory":false,
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
+            "hasChild":true,
             "compId":19,
             "child":[
-                ]
+                {
+                    "x":30,
+                    "type":"TextArea",
+                    "searchKey":"TextArea,txt_info",
+                    "props":{"y":0,"width":974,"var":"txt_info","vScrollBarSkin":"comp/vscroll.png","text":"TextArea","overflow":"scroll","height":588,"fontSize":24,"editable":false,"color":"#FFFFFF","centerX":0},
+                    "nodeParent":19,
+                    "label":"txt_info",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":48,
+                    "child":[
+                        ]
+                }]
         },
         {
             "x":15,
@@ -190,14 +195,13 @@
             "props":{"y":0,"x":0,"var":"b_title","right":0,"left":0,"height":120},
             "nodeParent":2,
             "label":"b_title",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":24,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"top":0,"skin":"bgs/ic_home_top_bg.png","right":0,"left":0,"height":120},
@@ -212,7 +216,6 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,btn_close",
                     "props":{"y":4,"x":0,"var":"btn_close","stateNum":"1","skin":"btns/back_btn.png","scaleY":0.85,"scaleX":0.85},
@@ -226,7 +229,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"x":329,"skin":"bgs/ic_cus_title.png","centerY":0},

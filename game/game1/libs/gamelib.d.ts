@@ -70,7 +70,7 @@ declare namespace gamelib.core {
         setData(params: any): void;
         show(): void;
         close(): void;
-        private __init();
+        private __init;
         /**
         * 将按钮添加到事件监听列表中。
         * 需要重写onClickObjects方法来实现点击逻辑
@@ -138,7 +138,7 @@ declare namespace gamelib.core {
          * @param    {laya.events.Event}      evt [description]
          * @access private
          */
-        private onClickBg(evt?);
+        private onClickBg;
         /**
          * 按钮点击事件的回掉
          * @function onClickObjects
@@ -218,7 +218,7 @@ declare namespace gamelib.alert {
          * cancelLabel：取消按钮的文本
          */
         setData(params: any): void;
-        private timer(label, time);
+        private timer;
         onClose(): void;
         protected onClickObjects(evt: laya.events.Event): void;
         protected onClickCloseBtn(evt: laya.events.Event): void;
@@ -259,8 +259,8 @@ declare module gamelib.alert {
          * @param    {string}     msg [description]
          */
         add(msg: string): void;
-        private checkShow();
-        private onScroll();
+        private checkShow;
+        private onScroll;
     }
     /**
      * @class Pmd_Laba
@@ -274,9 +274,9 @@ declare module gamelib.alert {
         constructor();
         init(): void;
         add(msg: string): void;
-        private checkShow();
-        private scrollText(msg);
-        private scrollEnd();
+        private checkShow;
+        private scrollText;
+        private scrollEnd;
     }
 }
 declare module gamelib.control {
@@ -318,10 +318,10 @@ declare namespace gamelib.core {
     class DialogManager extends laya.ui.DialogManager {
         constructor();
         open(dialog: laya.ui.Dialog, closeOther?: boolean, showEffect?: boolean): void;
-        private popupEffect1(dialog);
-        private closeEffect1(dialog, type);
-        private _onResize(e);
-        private _centerDialog(dialog);
+        private popupEffect1;
+        private closeEffect1;
+        private _onResize;
+        private _centerDialog;
     }
 }
 declare namespace gamelib.core {
@@ -452,7 +452,7 @@ declare namespace gamelib.core {
          * @access protected
          */
         protected onResloaded(): void;
-        private playBgm();
+        private playBgm;
         /**
          * 全局信号处理方法
          * @function onSignal
@@ -628,6 +628,10 @@ declare module gamelib {
          */
         static Oldwithnewinfolist: string;
         /**
+         * 老带新统计
+         */
+        static Oldstatisticalinformation: string;
+        /**
          * 33.	站内信
          */
         static Websitemaillist: string;
@@ -696,7 +700,7 @@ declare namespace gamelib.core {
         constructor();
         request(url: string, data: any): void;
         requestWithToken(url: string, data: any): void;
-        private onReciveNetMsg(api, requestData, data);
+        private onReciveNetMsg;
         addListener(target: INet): void;
         removeListener(target: INet): void;
     }
@@ -973,7 +977,7 @@ declare namespace gamelib.core {
          * @DateTime 2018-03-16T14:19:04+0800
          * @param    {number}                 index [description]
          */
-        private onBgmPlayEnd(index);
+        private onBgmPlayEnd;
         /**
          * 获得背景音乐的资源地址
          * @function
@@ -981,7 +985,7 @@ declare namespace gamelib.core {
          * @param    {number}                 index [description]
          * @return   {string}                       [description]
          */
-        private getBgmUrl(index);
+        private getBgmUrl;
     }
 }
 /**
@@ -1105,7 +1109,7 @@ declare namespace gamelib.data {
          * @param    {any}                 value [description]
          */
         addConfigByType(type: number, value: any): void;
-        private getKey(type);
+        private getKey;
         /**
          * 向服务器发包，保存当前的配置
          * @function saveConfig
@@ -1200,30 +1204,30 @@ declare class md5 {
     private hexcase;
     private b64pad;
     hex_md5(s: any): string;
-    private b64_md5(s);
-    private any_md5(s, e);
-    private hex_hmac_md5(k, d);
-    private b64_hmac_md5(k, d);
-    private any_hmac_md5(k, d, e);
-    private md5_vm_test();
-    private rstr_md5(s);
-    private rstr_hmac_md5(key, data);
-    private rstr2hex(input);
-    private rstr2b64(input);
-    private rstr2any(input, encoding);
-    private str2rstr_utf8(input);
-    private str2rstr_utf16le(input);
-    private str2rstr_utf16be(input);
-    private rstr2binl(input);
-    private binl2rstr(input);
-    private binl_md5(x, len);
-    private md5_cmn(q, a, b, x, s, t);
-    private md5_ff(a, b, c, d, x, s, t);
-    private md5_gg(a, b, c, d, x, s, t);
-    private md5_hh(a, b, c, d, x, s, t);
-    private md5_ii(a, b, c, d, x, s, t);
-    private safe_add(x, y);
-    private bit_rol(num, cnt);
+    private b64_md5;
+    private any_md5;
+    private hex_hmac_md5;
+    private b64_hmac_md5;
+    private any_hmac_md5;
+    private md5_vm_test;
+    private rstr_md5;
+    private rstr_hmac_md5;
+    private rstr2hex;
+    private rstr2b64;
+    private rstr2any;
+    private str2rstr_utf8;
+    private str2rstr_utf16le;
+    private str2rstr_utf16be;
+    private rstr2binl;
+    private binl2rstr;
+    private binl_md5;
+    private md5_cmn;
+    private md5_ff;
+    private md5_gg;
+    private md5_hh;
+    private md5_ii;
+    private safe_add;
+    private bit_rol;
 }
 declare module utils {
     class MathUtility {

@@ -17,6 +17,10 @@ export default class TuiGuang extends BasePanel
     private _histroy:TuiGuangHistroy;
 
     private _boxs:Array<Laya.Box>;
+
+    private _info:any;
+    private _tongji:any;
+    private _request:boolean = false;
     public constructor()
     {
         super('ui.TuiGuangUI');
@@ -54,16 +58,47 @@ export default class TuiGuang extends BasePanel
                     g_uiMgr.showTip("申请失败!" + data.retMsg);
                 }
                 break;
+            case gamelib.GameMsg.Oldwithnewinfo:
+                this._info = data.retData;
+                this.check();
+                break;  
+            case gamelib.GameMsg.Oldstatisticalinformation:
+                this._tongji = data.retMsg.split(",");
+                
+                this.check();
+                break;
         }
     }
     protected onShow():void
     {
         super.onShow();
         this._res['txt_id'].text = g_playerData.m_userName;
-        this._res['txt_info'].text = ""
+        this._res['txt_info'].text = "";
         this._tab.selectedIndex = 0 ;
-        this.onTabChange(0)
-        
+        this.onTabChange(0);
+        this.check();
+    }
+    protected onClose():void
+    {
+        super.onClose();
+        this._info = null;
+        this._tongji = null;
+        this._request = false;
+    }
+    private check():void{
+        if(this._info == null || this._tongji == null){
+            if(this._request == false){
+                this._request = true;
+                g_uiMgr.showMiniLoading();
+                g_net.requestWithToken(gamelib.GameMsg.Oldstatisticalinformation,{});
+                g_net.requestWithToken(gamelib.GameMsg.Oldwithnewinfo,{});
+            }
+        }
+        else{
+            g_uiMgr.closeMiniLoading();
+            this.onTabChange(0);
+            this.check();
+        }
     }
     private onTabChange(index:number):void
     {
@@ -78,8 +113,18 @@ export default class TuiGuang extends BasePanel
      */
     private showMyTuiGuang():void
     {
+       
         this._res['b_1'].visible = true;
         this._res['b_2'].visible = false;
+        if(this._tongji == null)
+            return;
+        this._res['txt_tg_jr'].text = this._tongji[0];
+        this._res['txt_tg_wl'].text = this._tongji[1];
+        this._res['txt_tg_yj'].text = this._tongji[2];
+        this._res['txt_tg_hy'].text = this._tongji[3];
+
+        utils.tools.setLabelDisplayValue(this._res['txt_web'],this._info.TuiRul);
+        this._qrc.setUrl(GameVar.s_domain +  this._info.QrUrl);
     }
     /**
      * 
@@ -110,13 +155,8 @@ export default class TuiGuang extends BasePanel
                 g_uiMgr.showMiniLoading();
                 g_net.requestWithToken(gamelib.GameMsg.Subagent,{subcontent:this._res['txt_info'].text});
                 break;
-            case "btn_fx_hy":
-            case "btn_fx_qq":
-            case "btn_fx_pyq":
-                this.doShare(evt.currentTarget.name);
-                break;
             case "btn_copy":
-                utils.tools.copyToClipboard(this._res['txt_web'].text,function()
+                utils.tools.copyToClipboard(this._info.TuiRul,function()
                 {
                     g_uiMgr.showTip("拷贝成功");
                 })
